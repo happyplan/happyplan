@@ -1,0 +1,10 @@
+---
+layout: default
+title: Home
+---
+<h2>Articles</h2>
+<ul class="posts">
+{% for post in site.posts %}
+	<li><time datetime="{{ post.date }}" class="time">{{ post.date | date_to_string }}</time> <a href="{{site.baseurl}}{{ post.url }}" class="title">{{ post.title }}</a>
+{% endfor %}
+</ul>
