@@ -10,8 +10,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('svgo-grunt');
     grunt.loadNpmTasks('grunt-img');
 
-	// Project configuration.
-	grunt.initConfig({
+    // Project configuration.
+    grunt.initConfig({
 
         clean: {
             build: 'build/',
@@ -26,22 +26,22 @@ module.exports = function(grunt) {
             }
         },
 
-		jekyll: {
-			server : {
-				src:            'src',
-				dest:           'build',
-				server:         true,
-				server_port:    8000,
-				auto:           false,
-                baseurl:        '/blog'
-			},
-			build: {
-				src:            'src',
-				dest:           'build',
-                baseurl:        '/blog',
+        jekyll: {
+            server : {
+                src:            'src',
+                dest:           'build',
+                server:         true,
+                server_port:    8000,
+                auto:           false,
+                baseurl:        ''
+            },
+            build: {
+                src:            'src',
+                dest:           'build',
+                baseurl:        '',
                 pygments:       true
-			}
-		},
+            }
+        },
 
         concat: {
             build: {
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
             }
         },
 
-		compass: {
+        compass: {
             dev: {
                 src: 'src/_styles',
                 dest: 'build/css',
@@ -98,19 +98,19 @@ module.exports = function(grunt) {
                 debugsass: false,
                 relativeassets: true
             }
-		},
+        },
 
-		watch: {
-			global: {
-				files: ['src/**/*'],
-				tasks: ['dev']
-			}
-		}
-	});
+        watch: {
+            global: {
+                files: ['src/**/*'],
+                tasks: ['dev']
+            }
+        }
+    });
 
-	// Default task. Run standard jekyll server.
-	grunt.registerTask('default', 'prod');
+    // Default task. Run standard jekyll server.
+    grunt.registerTask('default', 'prod');
     grunt.registerTask('prod', 'clean:build img:src jekyll:build copy:assets concat:build min:build shell:fontcustom clean:svg compass:prod');
     grunt.registerTask('dev', 'clean:build jekyll:build copy:assets concat:build shell:fontcustom clean:svg compass:dev');
-	grunt.registerTask('server', 'jekyll:server');
+    grunt.registerTask('server', 'jekyll:server');
 };
