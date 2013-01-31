@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "happy-plan",
   "version": "1.0.0",
-  "description": "bloggy blog",
+  "description": "A happy plan to generate a static website based on jekyll + grunt.js",
   "dependencies": {
     "grunt-compass": "~0.3.7",
     "grunt-jekyll": "~0.2.2",
@@ -15,13 +15,14 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/kud/blog.git"
+    "url": "git://github.com/kud/happy-plan.git"
   },
   "keywords": [
-    "blog",
-    "kud",
-    "frontend",
-    "web"
+    "static",
+    "website",
+    "generator",
+    "jekyll",
+    "frontend"
   ],
   "author": "Erwann MEST",
   "license": "BSD"
