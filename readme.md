@@ -2,7 +2,7 @@
 
 Happy plan is a static file generator using [jekyll](https://github.com/mojombo/jekyll), [compass](http://compass-style.org/), [fontcustom](http://fontcustom.com/) and [grunt](http://gruntjs.com/). It's all about fun and so easy to publish on gh-pages.
 
-Oh, by the way, [what happy plan is](http://www.youtube.com/watch?v=5zVVKXT8Vi0)?
+Oh, by the way, [what is happy plan](http://www.youtube.com/watch?v=5zVVKXT8Vi0)?
 
 ## Installation
 
