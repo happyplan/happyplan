@@ -4,13 +4,13 @@
 
 Default grunt task build the website
 
-    grunt
+    grunt prod
 
 ## Watch
 
 Using watch will allow you to test & dev your posts
 
-    grunt watch
+    grunt
 
 # Migrations
 

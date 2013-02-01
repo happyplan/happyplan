@@ -109,7 +109,7 @@ module.exports = function(grunt) {
     });
 
     // Default task. Run standard jekyll server.
-    grunt.registerTask('default', 'prod');
+    grunt.registerTask('default', 'watch');
     grunt.registerTask('prod', 'clean:build img:src jekyll:build copy:assets concat:build min:build shell:fontcustom clean:svg compass:prod');
     grunt.registerTask('dev', 'clean:build jekyll:build copy:assets concat:build shell:fontcustom clean:svg compass:dev');
     grunt.registerTask('server', 'jekyll:server');
