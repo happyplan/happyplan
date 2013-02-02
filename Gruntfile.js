@@ -17,9 +17,6 @@ module.exports = function(grunt) {
         clean: {
             build: {
                 src: ['build']
-            },
-            svg: {
-                src: ['build/img/svg']
             }
         },
 
@@ -43,7 +40,13 @@ module.exports = function(grunt) {
         copy: {
             assets: {
                 files: [
-                    { src: ['src/_assets/**'], dest: 'build/' }
+                    { src: ['src/_assets/fonts'], dest: 'build/assets/fonts' }
+                ]
+            },
+            dev: {
+                files: [
+                    // to avoid imagemin when dev
+                    { src: ['src/_assets/img'], dest: 'build/assets/img' }
                 ]
             }
         },
@@ -60,8 +63,8 @@ module.exports = function(grunt) {
         compass: {
             dev: {
                 options: {
-                    sassDir: 'src/_styles',
-                    cssDir: 'build/css',
+                    sassDir: 'src/_assets/styles',
+                    cssDir: 'build/assets/css',
                     outputStyle: 'expanded',
                     noLineComments: false,
                     debugInfo: true,
@@ -70,8 +73,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    sassDir: 'src/_styles',
-                    cssDir: 'build/css',
+                    sassDir: 'src/_assets/_styles',
+                    cssDir: 'build/assets/css',
                     outputStyle: 'compressed',
                     noLineComments: true,
                     force: true,
@@ -93,8 +96,8 @@ module.exports = function(grunt) {
                     progressive: true
                 },
                 files: {
-                    'build/img': 'build/img/*',
-                    'build/content/img': 'build/content/img/*'
+                    'build/assets/img': 'src/_assets/img/*',
+                    'build/uploads': 'build/uploads/*'
                 }
             }
         },
@@ -124,9 +127,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'watch');
 
-    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:assets', 'concat:build', 'shell:fontcustom', 'clean:svg']);
-    grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist' ]);
-    grunt.registerTask('dev', ['build', 'compass:dev']);
+    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:assets', 'concat:build', 'shell:fontcustom']);
+    grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
+    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:dev']);
 
     grunt.registerTask('server', 'jekyll:server');
 };
