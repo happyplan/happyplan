@@ -1,19 +1,19 @@
 # Happy Plan!
 
-> When Grunt.js use Jekyll as a peon
+> When Grunt.js uses Jekyll as a peon.
 
-Happy plan is bundle of awesome tool to be used as a static website generator. It's all about fun and so easy to publish on gh-pages.
+Happy plan is bundle of amazing tools to be used as a static website generator. It's all about fun and so easy to publish on gh-pages.
 
-What in it ?
+### What in it ?
 
-* A static Website generator from html or markdown : [Jekyll](https://github.com/mojombo/jekyll)
-* A task-based command line build tool : [Grunt.js](http://gruntjs.com/) & some pre defined task (scripts, styles & images automatic compression)
-* A awesome CSS pre-processor, Sass direclty served with [Compass](http://compass-style.org/)
-* A quick way to provide scalable icon as font thanks to [Fontcustom](http://fontcustom.com/) & a Grunt task.
-* A [Livereload](http://livereload.com/) server ([tiny-lr](https://github.com/mklabs/tiny-lr)), to make development as fast as hell.
-* Bower
+* A static website generator from html or markdown: [Jekyll](https://github.com/mojombo/jekyll).
+* A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & some pre-defined tasks (scripts, styles & images automatic compression).
+* An amazing CSS pre-processor, Sass directly served with [Compass](http://compass-style.org/).
+* A quick way to provide scalable icons as font thanks to [Fontcustom](http://fontcustom.com/) & a Grunt task.
+* A [Livereload](http://livereload.com/) server ([tiny-lr](https://github.com/mklabs/tiny-lr)) to make development as fast as hell.
+* A package manager for the web called [Bower](https://github.com/twitter/bower).
 
-Oh, by the way, [why "happy plan"](http://www.youtube.com/watch?v=5zVVKXT8Vi0) ?
+Oh, by the way, [why "happy plan"](http://www.youtube.com/watch?v=5zVVKXT8Vi0)?
 
 ## Requirements
 
@@ -21,53 +21,53 @@ The easy way on OS X.
 
 ### Jekyll
 
-    (sudo) gem install jekyll
+    $ (sudo) gem install jekyll
 
 [More about how to install Jekyll](https://github.com/mojombo/jekyll/wiki/install)
 
 ### Node.js
 
-    brew install node
+    $ brew install node
 
 [More about how to install Node](https://github.com/joyent/node/wiki/Installation)
 
 #### Npm
 
-    curl http://npmjs.org/install.sh | sh
+    $ curl http://npmjs.org/install.sh | sh
 
-[More about how to install Npm](https://github.com/isaacs/npm)    
+[More about how to install Npm](https://github.com/isaacs/npm)
 
 ### Grunt.js (0.4)
 
-    npm install -g grunt-cli
+    $ npm install -g grunt-cli
 
 ### Compass
 
-    (sudo) gem install compass
+    $ (sudo) gem install compass
 
 ### Optionals
 
 #### Fontcustom
 
-    brew install fontforge eot-utils ttfautohint
-    (sudo) gem install fontcustom
+    $ brew install fontforge eot-utils ttfautohint
+    $ (sudo) gem install fontcustom
 
 [More about how to install Fontcustom](http://fontcustom.com/#installation)
 
 ##### More for [grunt-webfont](https://github.com/sapegin/grunt-webfont) task
 
-    brew install ttf2eot
-    brew install https://raw.github.com/sapegin/grunt-webfont/master/Formula/sfnt2woff.rb
+    $ brew install ttf2eot
+    $ brew install https://raw.github.com/sapegin/grunt-webfont/master/Formula/sfnt2woff.rb
 
 #### [Bower](https://github.com/twitter/bower)
 
-    npm install bower -g
+    $ npm install bower -g
 
 ## Installation
 
 When everything above is okay, just run
 
-    npm install
+    $ npm install
 
 That's it. Now you can start your website bro'.
 
