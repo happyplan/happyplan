@@ -2,9 +2,9 @@
 
 > When Grunt.js uses Jekyll as a peon.
 
-Happy plan is bundle of amazing tools to be used as a static website generator. It's all about fun and so easy to publish on gh-pages.
+Happy plan is bundle of amazing tools to be used as a static website generator. It's all about fun and so easy to publish on [gh-pages](http://pages.github.com/).
 
-### What in it ?
+### What in it?
 
 * A static website generator from html or markdown: [Jekyll](https://github.com/mojombo/jekyll).
 * A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & some pre-defined tasks (scripts, styles & images automatic compression).
@@ -23,19 +23,19 @@ The easy way on OS X.
 
     $ (sudo) gem install jekyll
 
-[More about how to install Jekyll](https://github.com/mojombo/jekyll/wiki/install)
+⇒ [More about how to install Jekyll](https://github.com/mojombo/jekyll/wiki/install)
 
 ### Node.js
 
     $ brew install node
 
-[More about how to install Node](https://github.com/joyent/node/wiki/Installation)
+⇒ [More about how to install Node](https://github.com/joyent/node/wiki/Installation)
 
 #### Npm
 
     $ curl http://npmjs.org/install.sh | sh
 
-[More about how to install Npm](https://github.com/isaacs/npm)
+⇒ [More about how to install Npm](https://github.com/isaacs/npm)
 
 ### Grunt.js (0.4)
 
@@ -52,7 +52,7 @@ The easy way on OS X.
     $ brew install fontforge eot-utils ttfautohint
     $ (sudo) gem install fontcustom
 
-[More about how to install Fontcustom](http://fontcustom.com/#installation)
+⇒ [More about how to install Fontcustom](http://fontcustom.com/#installation)
 
 ##### More for [grunt-webfont](https://github.com/sapegin/grunt-webfont) task
 
@@ -65,7 +65,7 @@ The easy way on OS X.
 
 ## Installation
 
-When everything above is okay, just run
+When everything above is okay, just run:
 
     $ npm install
 
@@ -79,13 +79,13 @@ To build the website
 
 ## Development
 
-Using `watch` will allow you to test & dev your posts, with livereload included (need a [livereload browser extension](http://go.livereload.com/extensions))
+Using `watch` will allow you to test & dev your posts with livereload included (it needs a [livereload browser extension](http://go.livereload.com/extensions))
 
     $ grunt
 
 ## Publish on gh-pages (github)
 
-If you want to publish your build on the gh-pages
+If you want to publish your build on the gh-pages:
 
     $ bin/publish.sh
 
@@ -93,7 +93,7 @@ This script just build the website (grunt dist) & commit + push on gh-pages bran
 
 ## Create a new post
 
-Want to create a new post quickly ? No problem.
+Want to create a new post quickly? No problem.
 
     $ node bin/newpost.js
 
