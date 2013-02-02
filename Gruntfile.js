@@ -5,48 +5,62 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-regarde');
+    grunt.loadNpmTasks('grunt-contrib-livereload');
 
     // Project configuration.
+    var happyPlan = grunt.file.readJSON('happy-plan.json');
+
     grunt.initConfig({
+
+        happyPlan : happyPlan,
 
         clean: {
             build: {
-                src: ['build']
+                src: ['<%= happyPlan.build._path %>']
             }
         },
 
         jekyll: {
             server : {
-                src:            'src',
-                dest:           'build',
+                src:            '<%= happyPlan.src._path %>',
+                dest:           '<%= happyPlan.build._path %>',
                 server:         true,
                 server_port:    8000,
                 auto:           false,
-                baseurl:        ''
+                baseurl:        '<%= happyPlan.baseUrl %>'
             },
             build: {
-                src:            'src',
-                dest:           'build',
-                baseurl:        '',
+                src:            '<%= happyPlan.src._path %>',
+                dest:           '<%= happyPlan.build._path %>',
+                baseurl:        '<%= happyPlan.baseUrl %>',
                 pygments:       true
             }
         },
 
         copy: {
-            assets: {
+            fonts: {
                 files: [
-                    { src: ['src/_assets/fonts'], dest: 'build/assets/fonts' }
+                    {
+                        expand: true,
+                        cwd: '<%= happyPlan.src.assets.fonts %>',
+                        src: ['**'],
+                        dest: '<%= happyPlan.build.assets.fonts %>/' }
                 ]
             },
-            dev: {
+            // to avoid imagemin when dev
+            fakeImagemin: {
                 files: [
-                    // to avoid imagemin when dev
-                    { src: ['src/_assets/img'], dest: 'build/assets/img' }
+                    {
+                        expand: true,
+                        cwd: '<%= happyPlan.src.assets.images %>/', 
+                        src: ['**'],
+                        dest: '<%= happyPlan.build.assets.images %>/'
+                    }
                 ]
             }
         },
@@ -54,38 +68,73 @@ module.exports = function(grunt) {
         concat: {
             build: {
                 src: [
-                    'src/_js/app.js'
+                    '<%= happyPlan.src.assets.scripts %>/app.js'
                 ],
-                dest: 'build/js/app.js'
+                dest: '<%= happyPlan.build.assets.scripts %>/app.js'
+            }
+        },
+
+        webfont: {
+            icons: {
+                src: '<%= happyPlan.src.assets.fontcustom %>/icons/*.svg',
+                dest: '<%= happyPlan.build.assets.fonts %>/icons',
+                destCss: '<%= happyPlan.src.assets.styles %>',
+                options: {
+                    styles: 'icon',
+                    stylesheet: 'scss',
+                    hashes: false
+                }
             }
         },
 
         compass: {
             dev: {
                 options: {
-                    sassDir: 'src/_assets/styles',
-                    cssDir: 'build/assets/css',
+                    sassDir: '<%= happyPlan.src.assets.styles %>',
+                    cssDir: '<%= happyPlan.build.assets.styles %>',
+                    imagesDir: '<%= happyPlan.src.assets.images %>',
+                    javascriptsDir: '<%= happyPlan.src.assets.scripts %>',
+                    fontsDir: '<%= happyPlan.src.assets.fonts %>',
+
+                    // here we give to compass build path (without build root)
+                    raw: [
+                        'http_path = "' + happyPlan.baseUrl + '"',
+                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build._path, '') + '"',
+                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build._path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build._path, '') + '"',
+                    ].join("\n"),
+
                     outputStyle: 'expanded',
                     noLineComments: false,
-                    debugInfo: true,
-                    relativeAssets: true
+                    debugInfo: true
                 }
             },
             dist: {
                 options: {
-                    sassDir: 'src/_assets/_styles',
-                    cssDir: 'build/assets/css',
+                    sassDir: '<%= happyPlan.src.assets.styles %>',
+                    cssDir: '<%= happyPlan.build.assets.styles %>',
+                    imagesDir: '<%= happyPlan.src.assets.images %>',
+                    javascriptsDir: '<%= happyPlan.src.assets.scripts %>',
+                    fontsDir: '<%= happyPlan.src.assets.fonts %>',
+
+                    // here we give to compass build path (without build root)
+                    raw: [
+                        'http_path = "' + happyPlan.baseUrl + '"',
+                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build._path, '') + '"',
+                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build._path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build._path, '') + '"',
+                    ].join("\n"),
+
                     outputStyle: 'compressed',
                     noLineComments: true,
-                    force: true,
-                    relativeAssets: true
+                    force: true
                 }
             }
         },
 
         uglify: {
             build: {
-                'build/js/app.js': ['build/js/app.js']
+                '<%= happyPlan.build.assets.scripts %>/app.js': ['<%= happyPlan.build.assets.scripts %>/app.js']
             }
         },
 
@@ -96,40 +145,49 @@ module.exports = function(grunt) {
                     progressive: true
                 },
                 files: {
-                    'build/assets/img': 'src/_assets/img/*',
-                    'build/uploads': 'build/uploads/*'
+                    '<%= happyPlan.build.assets.images %>': '<%= happyPlan.src.assets.images %>/**/*',
+                    '<%= happyPlan.build.medias %>': '<%= happyPlan.build.medias %>/**/*'
                 }
             }
         },
 
-        shell: {
-            fontcustom: {
-                command: 'bin/fontcustom.sh',
-                stdout: true
-            },
-            newpost: {
-                command: 'bin/newpost.sh',
-                stdout: true
-            },
-            publish: {
-                command: 'bin/publish.sh',
-                stdout: true
-            }
-        },
-
-        watch: {
-            global: {
-                files: ['src/**/*'],
+        regarde: {
+            html: {
+                files: ['<%= happyPlan.src._path %>/**/*.html', '<%= happyPlan.src._path %>/**/*.md'],
                 tasks: ['dev']
+            },
+            js: {
+                files: ['<%= happyPlan.src.assets.scripts %>/**/*'],
+                tasks: ['concat:build']
+            },
+            scss: {
+                files: ['<%= happyPlan.src.assets.styles %>/**/*'],
+                tasks: ['compass:dev']
+            },
+            fonts: {
+                files: ['<%= happyPlan.src.assets.fonts %>/**/*'],
+                tasks: ['copy:fonts']
+            },
+            images: {
+                files: ['<%= happyPlan.src.assets.images %>/**/*.scss'],
+                tasks: ['copy:fakeImagemin']
+            },
+            icons: {
+                files: ['<%= happyPlan.src.assets.fontcustom %>/icons/*.svg'],
+                tasks: 'webfont:icons'
+            },
+            livereload: {
+                files: ['<%= happyPlan.build.assets._path %>/**'],
+                tasks: 'livereload'
             }
         }
     });
 
-    grunt.registerTask('default', 'watch');
+    grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
 
-    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:assets', 'concat:build', 'shell:fontcustom']);
+    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
+    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
-    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:dev']);
 
     grunt.registerTask('server', 'jekyll:server');
 };

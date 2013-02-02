@@ -6,16 +6,16 @@
     "grunt": "0.4.x",
     "grunt-contrib-clean": ">=0.4.0rc6",
     "grunt-jekyll": "~0.2.2",
+    "grunt-contrib-copy": ">=0.4.0rc7",
     "grunt-contrib-concat": ">=0.1.2rc6",
+    "grunt-webfont": "git://github.com/MoOx/grunt-webfont.git",
     "grunt-contrib-compass": ">=0.1.1rc7",
-    "grunt-shell": "git://github.com/excellenteasy/grunt-shell.git#rc5compat",
-    "svgo-grunt": "0.0.2",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-imagemin": ">=0.1.1rc8"
-
   },
   "devDependencies": {
-    "grunt-contrib-watch": "*"
+    "grunt-regarde": "git://github.com/yeoman/grunt-regarde.git",
+    "grunt-contrib-livereload": "*"
   },
   "repository": {
     "type": "git",

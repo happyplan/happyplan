@@ -1,0 +1,27 @@
+{
+    "baseUrl": "",
+    "src": {
+        "_path": "src",
+        "assets": {
+            "_path": "src/_assets",
+            "scripts": "src/_assets/scripts",
+            "styles": "src/_assets/styles",
+            "images": "src/_assets/images",
+            "fonts": "src/_assets/fonts",
+            "fontcustom": "src/_assets/fontcustom"
+        },
+        "medias": "medias"
+    },
+    "build": {
+        "_path": "build",
+        "assets": {
+            "_path": "build/assets",
+            "scripts": "build/assets/js",
+            "styles": "build/assets/css",
+            "images": "build/assets/img",
+            "fonts": "build/assets/fonts",
+            "fontcustom": "build/assets/fonts"
+        },
+        "medias": "medias"
+    }
+}
