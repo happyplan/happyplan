@@ -1,18 +1,22 @@
 {
   "name": "happy-plan",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A happy plan to generate a static website based on jekyll + grunt.js",
   "dependencies": {
-    "grunt-compass": "~0.3.7",
+    "grunt": "0.4.x",
+    "grunt-contrib-clean": ">=0.4.0rc6",
     "grunt-jekyll": "~0.2.2",
-    "lodash": "~0.8.2",
-    "grunt-shell": "~0.1.4",
-    "grunt-contrib-clean": "~0.3.1",
-    "svgo-grunt": "0.0.2",
-    "grunt-img": "~0.1.4",
-    "grunt-contrib-copy": "~0.3.2"
+    "grunt-contrib-copy": ">=0.4.0rc7",
+    "grunt-contrib-concat": ">=0.1.2rc6",
+    "grunt-webfont": "git://github.com/MoOx/grunt-webfont.git",
+    "grunt-contrib-compass": ">=0.1.1rc7",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-imagemin": ">=0.1.1rc8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-regarde": "git://github.com/yeoman/grunt-regarde.git",
+    "grunt-contrib-livereload": "*"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/kud/happy-plan.git"

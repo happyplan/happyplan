@@ -1,5 +1,5 @@
 #!/bin/sh
-grunt
+grunt dist
 git add .
 git commit -am "Source updated"
 git branch -D gh-pages
