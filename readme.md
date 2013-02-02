@@ -19,23 +19,17 @@ Oh, by the way, [why "happy plan"](http://www.youtube.com/watch?v=5zVVKXT8Vi0)?
 
 The easy way on OS X.
 
-### Jekyll
+### Jekyll [+](https://github.com/mojombo/jekyll/wiki/install)
 
     $ (sudo) gem install jekyll
 
-⇒ [More about how to install Jekyll](https://github.com/mojombo/jekyll/wiki/install)
-
-### Node.js
+### Node.js [+](https://github.com/joyent/node/wiki/Installation)
 
     $ brew install node
 
-⇒ [More about how to install Node](https://github.com/joyent/node/wiki/Installation)
-
-#### Npm
+#### Npm [+](https://github.com/isaacs/npm)
 
     $ curl http://npmjs.org/install.sh | sh
-
-⇒ [More about how to install Npm](https://github.com/isaacs/npm)
 
 ### Grunt.js (0.4)
 
@@ -47,12 +41,10 @@ The easy way on OS X.
 
 ### Optionals
 
-#### Fontcustom
+#### Fontcustom [+](http://fontcustom.com/#installation)
 
     $ brew install fontforge eot-utils ttfautohint
     $ (sudo) gem install fontcustom
-
-⇒ [More about how to install Fontcustom](http://fontcustom.com/#installation)
 
 ##### More for [grunt-webfont](https://github.com/sapegin/grunt-webfont) task
 
