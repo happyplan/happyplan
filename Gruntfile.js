@@ -62,6 +62,16 @@ module.exports = function(grunt) {
                         dest: '<%= happyPlan.build.assets.images %>/'
                     }
                 ]
+            },
+            livereload: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= happyPlan.src.assets.scripts %>',
+                        src: ['livereload.js'],
+                        dest: '<%= happyPlan.build.assets.scripts %>/'
+                    }
+                ]
             }
         },
 
@@ -189,7 +199,7 @@ module.exports = function(grunt) {
 
     //grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
     grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build']);
-    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin']);
+    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin', 'copy:livereload']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
 
     grunt.registerTask('server', 'jekyll:server');
