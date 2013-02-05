@@ -57,7 +57,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= happyPlan.src.assets.images %>/', 
+                        cwd: '<%= happyPlan.src.assets.images %>/',
                         src: ['**'],
                         dest: '<%= happyPlan.build.assets.images %>/'
                     }
@@ -68,9 +68,9 @@ module.exports = function(grunt) {
         concat: {
             build: {
                 src: [
-                    '<%= happyPlan.src.assets.scripts %>/app.js'
+                    '<%= happyPlan.src.assets.scripts %>/script.js'
                 ],
-                dest: '<%= happyPlan.build.assets.scripts %>/app.js'
+                dest: '<%= happyPlan.build.assets.scripts %>/script.js'
             }
         },
 
@@ -134,7 +134,9 @@ module.exports = function(grunt) {
 
         uglify: {
             build: {
-                '<%= happyPlan.build.assets.scripts %>/app.js': ['<%= happyPlan.build.assets.scripts %>/app.js']
+                files: {
+                    '<%= happyPlan.build.assets.scripts %>/script.js': ['<%= happyPlan.build.assets.scripts %>/script.js']
+                }
             }
         },
 
@@ -185,7 +187,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
 
-    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
+    //grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
+    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build']);
     grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
 

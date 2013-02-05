@@ -10,7 +10,7 @@
     "grunt-contrib-concat": ">=0.1.2rc6",
     "grunt-webfont": "git://github.com/MoOx/grunt-webfont.git",
     "grunt-contrib-compass": ">=0.1.1rc7",
-    "grunt-contrib-uglify": "*",
+    "grunt-contrib-uglify": ">=0.1.1rc6",
     "grunt-contrib-imagemin": ">=0.1.1rc8"
   },
   "devDependencies": {
