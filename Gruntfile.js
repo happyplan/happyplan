@@ -21,22 +21,22 @@ module.exports = function(grunt) {
 
         clean: {
             build: {
-                src: ['<%= happyPlan.build._path %>']
+                src: ['<%= happyPlan.build.path %>']
             }
         },
 
         jekyll: {
             server : {
-                src:            '<%= happyPlan.src._path %>',
-                dest:           '<%= happyPlan.build._path %>',
+                src:            '<%= happyPlan.src.path %>',
+                dest:           '<%= happyPlan.build.path %>',
                 server:         true,
                 server_port:    8000,
                 auto:           false,
                 baseurl:        '<%= happyPlan.baseUrl %>'
             },
             build: {
-                src:            '<%= happyPlan.src._path %>',
-                dest:           '<%= happyPlan.build._path %>',
+                src:            '<%= happyPlan.src.path %>',
+                dest:           '<%= happyPlan.build.path %>',
                 baseurl:        '<%= happyPlan.baseUrl %>',
                 pygments:       true
             }
@@ -108,10 +108,10 @@ module.exports = function(grunt) {
 
                     // here we give to compass build path (without build root)
                     raw: [
-                        'http_path = "' + happyPlan.baseUrl + '"',
-                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build._path, '') + '"',
-                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build._path, '') + '"',
-                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build._path, '') + '"',
+                        'httppath = "' + happyPlan.baseUrl + '"',
+                        'http_imagespath = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
+                        'http_javascriptspath = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
+                        'http_fontspath = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
                     ].join("\n"),
 
                     outputStyle: 'expanded',
@@ -129,10 +129,10 @@ module.exports = function(grunt) {
 
                     // here we give to compass build path (without build root)
                     raw: [
-                        'http_path = "' + happyPlan.baseUrl + '"',
-                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build._path, '') + '"',
-                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build._path, '') + '"',
-                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build._path, '') + '"',
+                        'httppath = "' + happyPlan.baseUrl + '"',
+                        'http_imagespath = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
+                        'http_javascriptspath = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
+                        'http_fontspath = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
                     ].join("\n"),
 
                     outputStyle: 'compressed',
@@ -165,7 +165,7 @@ module.exports = function(grunt) {
 
         regarde: {
             html: {
-                files: ['<%= happyPlan.src._path %>/**/*.html', '<%= happyPlan.src._path %>/**/*.md'],
+                files: ['<%= happyPlan.src.path %>/**/*.html', '<%= happyPlan.src.path %>/**/*.md'],
                 tasks: ['dev']
             },
             js: {
@@ -189,7 +189,7 @@ module.exports = function(grunt) {
                 tasks: 'webfont:icons'
             },
             livereload: {
-                files: ['<%= happyPlan.build.assets._path %>/**'],
+                files: ['<%= happyPlan.build.assets.path %>/**'],
                 tasks: 'livereload'
             }
         }
