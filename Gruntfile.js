@@ -2,15 +2,15 @@ module.exports = function(grunt) {
 
     // Imports
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-regarde');
     grunt.loadNpmTasks('grunt-contrib-livereload');
+    grunt.loadNpmTasks('grunt-jekyll');
+    grunt.loadNpmTasks('grunt-webfont');
+    grunt.loadNpmTasks('grunt-regarde');
 
     // Project configuration.
     var happyPlan = grunt.file.readJSON('happy-plan.json');
@@ -22,6 +22,9 @@ module.exports = function(grunt) {
         clean: {
             build: {
                 src: ['<%= happyPlan.build.path %>']
+            },
+            jekyll: {
+                 src: ['<%= happyPlan.build.path %>/jekyll']
             }
         },
 
@@ -35,21 +38,70 @@ module.exports = function(grunt) {
                 baseurl:        '<%= happyPlan.baseUrl %>'
             },
             build: {
-                src:            '<%= happyPlan.src.path %>',
-                dest:           '<%= happyPlan.build.path %>',
+                src:            'build/jekyll/',
+                dest:           'build/',
                 baseurl:        '<%= happyPlan.baseUrl %>',
                 pygments:       true
             }
         },
 
         copy: {
+            jekyllPages: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/pages/',
+                        src: ['**'],
+                        dest: 'build/jekyll/'
+                    }
+                ]
+            },
+            jekyllPosts: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/posts/',
+                        src: ['**'],
+                        dest: 'build/jekyll/_posts/'
+                    }
+                ]
+            },
+            jekyllLayouts: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/layouts/',
+                        src: ['**'],
+                        dest: 'build/jekyll/_layouts/'
+                    }
+                ]
+            },
+            jekyllPartials: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/partials/',
+                        src: ['**'],
+                        dest: 'build/jekyll/_includes/'
+                    }
+                ]
+            },
+            jekyllConfig: {
+                files: [
+                    {
+                        src: 'src/config/config.yml',
+                        dest: 'build/jekyll/_config.yml'
+                    }
+                ]
+            },
             fonts: {
                 files: [
                     {
                         expand: true,
                         cwd: '<%= happyPlan.src.assets.fonts %>',
                         src: ['**'],
-                        dest: '<%= happyPlan.build.assets.fonts %>/' }
+                        dest: '<%= happyPlan.build.assets.fonts %>/'
+                    }
                 ]
             },
             // to avoid imagemin when dev
@@ -198,9 +250,11 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
 
     //grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
-    grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build']);
+    grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'copy:fonts', 'concat:build']);
     grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin', 'copy:livereload']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
+
+    grunt.registerTask('jekyll:copy', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
 
     grunt.registerTask('server', 'jekyll:server');
 };
