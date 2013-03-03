@@ -10,6 +10,12 @@
             "fonts": "src/assets/fonts",
             "fontcustom": "src/assets/svg-fonts"
         },
+        "jekyll": {
+            "pages": "src/pages",
+            "posts": "src/layouts",
+            "partials": "src/partials",
+            "config": "src/config/config.yml"
+        },
         "medias": "src/assets/contents"
     },
     "build": {

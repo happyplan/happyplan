@@ -248,8 +248,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
-
-    //grunt.registerTask('build', ['clean:build', 'jekyll:build', 'copy:fonts', 'concat:build', 'webfont:icons']);
     grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'copy:fonts', 'concat:build']);
     grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin', 'copy:livereload']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
