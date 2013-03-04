@@ -227,7 +227,9 @@ module.exports = function(grunt) {
                 tasks: ['jshint']
             },
             html: {
-                files: ['<%= happyPlan.src.path %>/**/*.html', '<%= happyPlan.src.path %>/**/*.md'],
+                files: [
+                    '<%= happyPlan.src.path %>/**/*.{html,md,txt}'
+                ],
                 tasks: ['dev']
             },
             js: {
