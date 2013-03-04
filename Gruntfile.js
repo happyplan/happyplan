@@ -161,9 +161,9 @@ module.exports = function(grunt) {
                     // here we give to compass build path (without build root)
                     raw: [
                         'httppath = "' + happyPlan.baseUrl + '"',
-                        'http_imagespath = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
-                        'http_javascriptspath = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
-                        'http_fontspath = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
+                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
+                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
                     ].join("\n"),
 
                     outputStyle: 'expanded',
@@ -182,9 +182,9 @@ module.exports = function(grunt) {
                     // here we give to compass build path (without build root)
                     raw: [
                         'httppath = "' + happyPlan.baseUrl + '"',
-                        'http_imagespath = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
-                        'http_javascriptspath = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
-                        'http_fontspath = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
+                        'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
+                        'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
                     ].join("\n"),
 
                     outputStyle: 'compressed',
