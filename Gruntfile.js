@@ -219,6 +219,13 @@ module.exports = function(grunt) {
         },
 
         regarde: {
+            jshint: {
+                files: [
+                    '**/*.js',
+                    '**/*.json'
+                ],
+                tasks: ['jshint']
+            },
             html: {
                 files: ['<%= happyPlan.src.path %>/**/*.html', '<%= happyPlan.src.path %>/**/*.md'],
                 tasks: ['dev']
@@ -252,8 +259,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
     grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'copy:fonts', 'concat:build']);
-    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeUglify', 'copy:fakeImagemin']);
-    grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
+    grunt.registerTask('dev', ['jshint', 'build', 'compass:dev', 'copy:fakeUglify', 'copy:fakeImagemin']);
+    grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
 
     grunt.registerTask('jekyll:copy', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
 
