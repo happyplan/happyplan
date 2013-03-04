@@ -2,8 +2,11 @@
   "name": "happy-plan",
   "version": "0.2.0",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
+  "author": "Erwann MEST",
+  "license": "BSD",
   "dependencies": {},
   "devDependencies": {
+    "bower": "0.8",
     "grunt": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-jekyll": "~0.2.2",
@@ -31,6 +34,8 @@
     "gh-pages",
     "bower"
   ],
-  "author": "Erwann MEST",
-  "license": "BSD"
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  }
 }

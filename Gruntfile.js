@@ -267,4 +267,7 @@ module.exports = function(grunt) {
     grunt.registerTask('jekyll:copy', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
 
     grunt.registerTask('server', 'jekyll:server');
+
+    // waiting for https://github.com/gruntjs/grunt-contrib-imagemin/issues/11 to use just 'dist' here
+    grunt.registerTask('test', ['jshint', 'build', 'compass:dist', 'uglify:build', 'copy:fakeImagemin']);
 };
