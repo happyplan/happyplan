@@ -118,7 +118,7 @@ module.exports = function(grunt) {
                     }
                 ]
             },
-            livereload: {
+            fakeUglify: {
                 files: [
                     {
                         expand: true,
@@ -252,7 +252,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
     grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'copy:fonts', 'concat:build']);
-    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeImagemin', 'copy:livereload']);
+    grunt.registerTask('dev', ['build', 'compass:dev', 'copy:fakeUglify', 'copy:fakeImagemin']);
     grunt.registerTask('dist', ['build', 'compass:dist', 'uglify:build', 'imagemin:dist']);
 
     grunt.registerTask('jekyll:copy', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
