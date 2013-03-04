@@ -2,9 +2,9 @@
   "name": "happy-plan",
   "version": "0.2.0",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4",
+    "grunt": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-jekyll": "~0.2.2",
     "grunt-contrib-copy": "0.4.0",
@@ -14,7 +14,8 @@
     "grunt-contrib-uglify": "~0.1.1",
     "grunt-contrib-imagemin": "~0.1.1",
     "grunt-regarde": "0.1.1",
-    "grunt-contrib-livereload": "~0.1.1"
+    "grunt-contrib-livereload": "~0.1.1",
+    "grunt-contrib-jshint": "~0.2.0"
   },
   "repository": {
     "type": "git",

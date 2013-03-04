@@ -29,5 +29,16 @@
             "fontcustom": "build/assets/fonts"
         },
         "medias": "build/assets/contents"
+    },
+    "grunt": {
+        "jshint": {
+            "files": [
+                "Gruntfile.js",
+                "package.json",
+                "happy-plan.json",
+                "<%= happyPlan.src.assets.scripts %>/**/*.js",
+                "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
+            ]
+        }
     }
 }

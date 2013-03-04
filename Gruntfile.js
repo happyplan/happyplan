@@ -1,16 +1,17 @@
 module.exports = function(grunt) {
 
     // Imports
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-jekyll');
+    grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-livereload');
-    grunt.loadNpmTasks('grunt-jekyll');
-    grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-regarde');
+    grunt.loadNpmTasks('grunt-contrib-livereload');
 
     // Project configuration.
     var happyPlan = grunt.file.readJSON('happy-plan.json');
@@ -18,6 +19,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         happyPlan : happyPlan,
+        
+        jshint: happyPlan.grunt.jshint,
 
         clean: {
             build: {
@@ -163,7 +166,7 @@ module.exports = function(grunt) {
                         'httppath = "' + happyPlan.baseUrl + '"',
                         'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
                         'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
-                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"'
                     ].join("\n"),
 
                     outputStyle: 'expanded',
@@ -184,7 +187,7 @@ module.exports = function(grunt) {
                         'httppath = "' + happyPlan.baseUrl + '"',
                         'http_images_path = "' + happyPlan.baseUrl + happyPlan.build.assets.images.replace(happyPlan.build.path, '') + '"',
                         'http_javascripts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.scripts.replace(happyPlan.build.path, '') + '"',
-                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"',
+                        'http_fonts_path = "' + happyPlan.baseUrl + happyPlan.build.assets.fonts.replace(happyPlan.build.path, '') + '"'
                     ].join("\n"),
 
                     outputStyle: 'compressed',
