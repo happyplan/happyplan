@@ -1,4 +1,7 @@
-@import "compass";
+// Comment if you don't want to use normalize.css. Do not forget to do: $ bower install normalize.scss
+@import "../components/normalize.scss/_normalize.scss";
+
+//@import "compass/css3"; // don't import all compass in one shot, (i said that for your perf)
 
 // Uncomment this if you use svg icon with fontcustom
 // @font-face {

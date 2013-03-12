@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 .sass-cache
 build
+src/assets/components/*
+!src/assets/components/.empty

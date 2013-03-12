@@ -1,27 +1,44 @@
 {
     "baseUrl": "",
     "src": {
-        "_path": "src",
+        "path": "src",
         "assets": {
-            "_path": "src/_assets",
-            "scripts": "src/_assets/scripts",
-            "styles": "src/_assets/styles",
-            "images": "src/_assets/images",
-            "fonts": "src/_assets/fonts",
-            "fontcustom": "src/_assets/fontcustom"
+            "path": "src/assets",
+            "scripts": "src/assets/scripts",
+            "styles": "src/assets/styles",
+            "images": "src/assets/images",
+            "fonts": "src/assets/fonts",
+            "fontcustom": "src/assets/svg-fonts"
         },
-        "medias": "medias"
+        "jekyll": {
+            "pages": "src/pages",
+            "posts": "src/layouts",
+            "partials": "src/partials",
+            "config": "src/config/config.yml"
+        },
+        "medias": "src/medias"
     },
     "build": {
-        "_path": "build",
+        "path": "build",
         "assets": {
-            "_path": "build/assets",
+            "path": "build/assets",
             "scripts": "build/assets/js",
             "styles": "build/assets/css",
             "images": "build/assets/img",
             "fonts": "build/assets/fonts",
             "fontcustom": "build/assets/fonts"
         },
-        "medias": "medias"
+        "medias": "build/medias"
+    },
+    "grunt": {
+        "jshint": {
+            "files": [
+                "Gruntfile.js",
+                "package.json",
+                "happy-plan.json",
+                "<%= happyPlan.src.assets.scripts %>/**/*.js",
+                "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
+            ]
+        }
     }
 }

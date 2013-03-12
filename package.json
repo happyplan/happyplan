@@ -2,20 +2,23 @@
   "name": "happy-plan",
   "version": "0.2.0",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
-  "dependencies": {
-    "grunt": "0.4.x",
-    "grunt-contrib-clean": ">=0.4.0rc6",
-    "grunt-jekyll": "~0.2.2",
-    "grunt-contrib-copy": ">=0.4.0rc7",
-    "grunt-contrib-concat": ">=0.1.2rc6",
-    "grunt-webfont": "git://github.com/MoOx/grunt-webfont.git",
-    "grunt-contrib-compass": ">=0.1.1rc7",
-    "grunt-contrib-uglify": ">=0.1.1rc6",
-    "grunt-contrib-imagemin": ">=0.1.1rc8"
-  },
+  "author": "Erwann MEST",
+  "license": "BSD",
+  "dependencies": {},
   "devDependencies": {
-    "grunt-regarde": "git://github.com/yeoman/grunt-regarde.git",
-    "grunt-contrib-livereload": "*"
+    "bower": "0.8",
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-jekyll": "~0.2.2",
+    "grunt-contrib-copy": "0.4.0",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-webfont": "~0.1.0",
+    "grunt-contrib-compass": "~0.1.2",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-imagemin": "~0.1.1",
+    "grunt-regarde": "0.1.1",
+    "grunt-contrib-livereload": "~0.1.1",
+    "grunt-contrib-jshint": "~0.2.0"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,8 @@
     "gh-pages",
     "bower"
   ],
-  "author": "Erwann MEST",
-  "license": "BSD"
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  }
 }
