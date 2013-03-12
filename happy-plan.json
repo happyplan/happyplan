@@ -16,7 +16,7 @@
             "partials": "src/partials",
             "config": "src/config/config.yml"
         },
-        "medias": "src/assets/contents"
+        "medias": "src/medias"
     },
     "build": {
         "path": "build",
@@ -28,7 +28,7 @@
             "fonts": "build/assets/fonts",
             "fontcustom": "build/assets/fonts"
         },
-        "medias": "build/assets/contents"
+        "medias": "build/medias"
     },
     "grunt": {
         "jshint": {
