@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         happyPlan : happyPlan,
-        
+
         jshint: happyPlan.grunt.jshint,
 
         clean: {
@@ -245,7 +245,7 @@ module.exports = function(grunt) {
                 tasks: ['copy:fonts']
             },
             images: {
-                files: ['<%= happyPlan.src.assets.images %>/**/*.scss'],
+                files: ['<%= happyPlan.src.assets.images %>/**/*'],
                 tasks: ['copy:fakeImagemin']
             },
             icons: {
