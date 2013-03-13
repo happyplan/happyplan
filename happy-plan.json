@@ -8,7 +8,7 @@
             "styles": "src/assets/styles",
             "images": "src/assets/images",
             "fonts": "src/assets/fonts",
-            "fontcustom": "src/assets/svg-fonts"
+            "fontcustom": "src/assets/svg-to-fonts"
         },
         "jekyll": {
             "pages": "src/pages",
