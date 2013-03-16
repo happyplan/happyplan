@@ -7,7 +7,7 @@
             "scripts": "src/assets/scripts",
             "styles": "src/assets/styles",
             "images": "src/assets/images",
-            "fonts": "src/assets/fonts",
+            "static": "src/assets/static",
             "fontcustom": "src/assets/svg-to-fonts"
         },
         "jekyll": {
@@ -25,7 +25,7 @@
             "scripts": "build/assets/js",
             "styles": "build/assets/css",
             "images": "build/assets/img",
-            "fonts": "build/assets/fonts",
+            "static": "build/assets/",
             "fontcustom": "build/assets/fonts"
         },
         "medias": "build/medias"
