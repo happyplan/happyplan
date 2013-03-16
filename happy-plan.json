@@ -18,17 +18,17 @@
         },
         "medias": "src/medias"
     },
-    "build": {
-        "path": "build",
+    "dist": {
+        "path": "dist",
         "assets": {
-            "path": "build/assets",
-            "scripts": "build/assets/js",
-            "styles": "build/assets/css",
-            "images": "build/assets/img",
-            "static": "build/assets/",
-            "fontcustom": "build/assets/fonts"
+            "path": "dist/assets",
+            "scripts": "dist/assets/js",
+            "styles": "dist/assets/css",
+            "images": "dist/assets/img",
+            "static": "dist/assets/",
+            "fontcustom": "dist/assets/fonts"
         },
-        "medias": "build/medias"
+        "medias": "dist/medias"
     },
     "grunt": {
         "jshint": {

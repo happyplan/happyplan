@@ -7,7 +7,7 @@ git checkout -b gh-pages
 mv .gitignore .gitignore.tmp
 git rm -rqf .
 mv .gitignore.tmp .gitignore
-cp -r build/* .
+cp -r dist/* .
 git add .
 git rm .gitignore
 git commit -m "Site updated"
