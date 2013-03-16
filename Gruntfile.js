@@ -12,7 +12,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-webfont');
 
   // Project configuration.
   var happyPlan = grunt.file.readJSON('happy-plan.json');
@@ -118,6 +117,16 @@ module.exports = function(grunt) {
             cwd: '<%= happyPlan.src.assets.images %>/',
             src: ['**'],
             dest: '<%= happyPlan.dist.assets.images %>/'
+          }
+        ]
+      },
+      medias: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= happyPlan.src.medias %>/',
+            src: ['**'],
+            dest: '<%= happyPlan.dist.medias %>/'
           }
         ]
       }
@@ -276,7 +285,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
-  grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'shell:svgToFonts', 'copy:images', 'copy:static', 'concat:dist']);
+  grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist']);
 
