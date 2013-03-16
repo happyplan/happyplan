@@ -141,6 +141,8 @@ module.exports = function(grunt) {
       }
     },
 
+    /*
+    Doesn't work
     webfont: {
       icons: {
         src: '<%= happyPlan.src.assets.fontcustom %>/*.svg',
@@ -152,11 +154,11 @@ module.exports = function(grunt) {
             hashes: false
         }
       }
-    },
+    },*/
 
     // Some shell cmds
     shell: {
-      fontcustom: {
+      svgToFonts: {
         command: './bin/fontcustom.sh',
         options: {
           stdout: true
@@ -274,7 +276,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
-  grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'copy:images', 'copy:static', 'concat:build']);
+  grunt.registerTask('build', ['clean:build', 'jekyll:copy', 'jekyll:build', 'clean:jekyll', 'shell:svgToFonts', 'copy:images', 'copy:static', 'concat:build']);
   grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist', ['jshint', 'build', 'compass:build', 'uglify:build', 'imagemin:build']);
 
