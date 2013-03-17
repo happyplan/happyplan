@@ -288,7 +288,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
-  grunt.registerTask('build', ['clean:dist', 'copy:root', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist']);
 
