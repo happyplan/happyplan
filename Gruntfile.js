@@ -256,13 +256,15 @@ module.exports = function(grunt) {
     },
 
     regarde: {
+      /*
+      Can't watch, troubles with js watch
       jshint: {
           files: [
               '**/*.js',
               '**/*.json'
           ],
           tasks: ['jshint']
-      },
+      },*/
       html: {
           files: ['<%= happyPlan.src.path %>/**/*.{html,md,txt}'],
           tasks: ['dev']
