@@ -17,7 +17,7 @@
             "config": "src/config/config.yml"
         },
         "medias": "src/medias",
-        "root": "src/root",
+        "root": "src/root"
     },
     "dist": {
         "path": "dist",
@@ -30,7 +30,7 @@
             "fontcustom": "dist/assets/fonts"
         },
         "medias": "dist/medias",
-        "root": "dist/",
+        "root": "dist/"
     },
     "grunt": {
         "jshint": {
