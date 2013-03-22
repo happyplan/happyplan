@@ -7,17 +7,17 @@ Happy plan is bundle of amazing tools to be used as a static website generator. 
 ### What in it?
 
 * A static website generator from html or markdown: [Jekyll](https://github.com/mojombo/jekyll).
-* A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & some pre-defined tasks (scripts, styles & images automatic compression).
-* An amazing CSS pre-processor, Sass directly served with [Compass](http://compass-style.org/).
+* A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & some pre-defined tasks (scripts, styles & images automatic minification & compression).
+* An amazing CSS pre-processor, [Sass](http://sass-lang.com/) directly served with [Compass](http://compass-style.org/).
 * A quick way to provide scalable icons as font thanks to [Fontcustom](http://fontcustom.com/) & a Grunt task.
-* A [Livereload](http://livereload.com/) server ([tiny-lr](https://github.com/mklabs/tiny-lr)) to make development as fast as hell.
-* A package manager for the web called [Bower](https://github.com/twitter/bower).
+* A [Livereload](http://livereload.com/) server ([tiny-lr](https://github.com/mklabs/tiny-lr) provided by the [grunt-contrib-livereload](https://github.com/gruntjs/grunt-contrib-livereload) task) to make development as fast as hell.
+* A package manager for the web called [Bower](https://github.com/twitter/bower) to handle web components.
 
-Oh, by the way, [why "happy plan"](http://www.youtube.com/watch?v=5zVVKXT8Vi0)?
+Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 
 ## Requirements
 
-The easy way on OS X.
+The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :).
 
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
@@ -31,11 +31,11 @@ The easy way on OS X.
 
     $ curl http://npmjs.org/install.sh | sh
 
-### Grunt.js (0.4)
+### Grunt.js (>0.4) [[+](http://gruntjs.com/getting-started)]
 
     $ npm install -g grunt-cli
 
-### Compass
+### Compass [[+](http://compass-style.org/install/)]
 
     $ (sudo) gem install compass
 
@@ -51,9 +51,11 @@ The easy way on OS X.
     $ brew install ttf2eot
     $ brew install https://raw.github.com/sapegin/grunt-webfont/master/Formula/sfnt2woff.rb
 
-#### [Bower](https://github.com/twitter/bower)
+#### Bower [[+](https://github.com/twitter/bower#installing-bower)]
 
     $ npm install bower -g
+
+---
 
 ## Installation
 
@@ -75,6 +77,8 @@ Using `watch` will allow you to test & dev your posts with livereload included (
 
     $ grunt
 
+---
+
 ## Publish on gh-pages (github)
 
 If you want to publish your build on the gh-pages:
@@ -85,13 +89,13 @@ This script just build the website (grunt dist) & commit + push on gh-pages bran
 
 ### Please, read it
 
-You absolutely must create two branches: ```src``` for your dev branch, and ```gh-pages``` to publish your static files. The script will push it for you.
+You absolutely must to at least create two branches: a source branch (`master` or `src`) for your devevelopment branch, and `gh-pages` to publish your static files. The script will push it for you.
 
 #### Warning for username.github.com
 
-```username.github.com``` is a bit special. Instead of having ```gh-pages```, static files should be on ```master``` branch.
+`username.github.com` is a bit special. It's act already like a `gh-pages` branch, so builded files should be on `master` branch. So use a `src` branch for the source.
 
-You have to modify yourself the ```publish.sh``` file. An option will come to not change the file, it'll be easier.
+You have to modify yourself the `publish.sh` file for now. An option will come to not change the file, it'll be easier.
 
 ## Create a new post
 
@@ -102,6 +106,8 @@ Want to create a new post quickly? No problem.
 This create a new post in `src/_posts`.
 
 For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
+
+---
 
 # Migrations
 
