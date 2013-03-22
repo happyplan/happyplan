@@ -1,3 +1,4 @@
+/* globals module:true require:true */
 module.exports = function(grunt) {
 
   // Imports
@@ -9,9 +10,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-webfont');
   grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-contrib-livereload');
-  grunt.loadNpmTasks('grunt-shell');
 
   // Project configuration.
   var happyPlan = grunt.file.readJSON('happy-plan.json');
@@ -159,28 +160,17 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    /*
-    Doesn't work
+    
+    // @todo skip this task if !(require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/icons/*.svg'))
     webfont: {
       icons: {
-        src: '<%= happyPlan.src.assets.fontcustom %>/*.svg',
-        dest: '<%= happyPlan.dist.assets.fonts %>/icons',
+        src: '<%= happyPlan.src.assets.webfont %>/*.svg',
+        dest: '<%= happyPlan.dist.assets.webfont %>/icons',
         destCss: '<%= happyPlan.src.assets.styles %>',
         options: {
-            styles: 'icon',
+            styles: 'font-icons',
             stylesheet: 'scss',
             hashes: false
-        }
-      }
-    },*/
-
-    // Some shell cmds
-    shell: {
-      svgToFonts: {
-        command: './bin/fontcustom.sh',
-        options: {
-          stdout: true
         }
       }
     },
@@ -277,7 +267,7 @@ module.exports = function(grunt) {
           tasks: ['copy:images']
       },
       icons: {
-          files: ['<%= happyPlan.src.assets.fontcustom %>/icons/*.svg'],
+          files: ['<%= happyPlan.src.assets.webfont %>/icons/*.svg'],
           tasks: ['']
       },
       livereload: {
@@ -288,7 +278,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
-  grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'copy:root', 'webfont:icons', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist']);
 
