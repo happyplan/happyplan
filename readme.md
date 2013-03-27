@@ -17,7 +17,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 
 ## Requirements
 
-The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :).
+The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)).
 
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
@@ -89,7 +89,7 @@ This script just build the website (grunt dist) & commit + push on gh-pages bran
 
 ### Please, read it
 
-You absolutely must to at least create two branches: a source branch (`master` or `src`) for your devevelopment branch, and `gh-pages` to publish your static files. The script will push it for you.
+You absolutely must to create one branche: a source branch `src` for your devevelopment branch, and `gh-pages` or `master` to publish your static files. The script will push it for you.
 
 #### Warning for username.github.com
 
