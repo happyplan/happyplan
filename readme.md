@@ -89,7 +89,7 @@ This script just build the website (grunt dist) & commit + push on gh-pages bran
 
 ### Please, read it
 
-You absolutely must to create one branche: a source branch `src` for your devevelopment branch, and `gh-pages` or `master` to publish your static files. The script will push it for you.
+You absolutely must create one branche: a source branch `src` for your devevelopment branch, and `gh-pages` or `master` to publish your static files. The script will push it for you.
 
 #### Warning for username.github.com
 
