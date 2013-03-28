@@ -18,7 +18,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 ## TL;DR
 According you already have ruby and npm installed.
 
-  $ gem install jekyll compass fontcustom && npm install -g grunt-cli bower && npm install
+    $ gem install jekyll compass fontcustom && npm install -g grunt-cli bower && npm install
 
 ## Requirements
 
