@@ -79,11 +79,7 @@ Using `watch` will allow you to test & dev your posts with livereload included (
 
 ## Server
 
-You certainly need an http server to display your website. No problem, just use this command:
-
-    $ node server.js
-
-and connect you to `http://localhost:8080`.
+When you start `$ grunt`, you already have a server started to display your webpages. Just go there: `http://localhost:8080` :)
 
 ---
 
