@@ -5,12 +5,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-jekyll');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-contrib-livereload');
+  grunt.loadNpmTasks('grunt-jekyll');
+  grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-shell');
 
   // Project configuration.
@@ -21,6 +22,21 @@ module.exports = function(grunt) {
     happyPlan: happyPlan,
 
     jshint: happyPlan.grunt.jshint,
+
+    // Server
+    connect: {
+      server: {
+        options: {
+          port: 8080,
+          base: 'dist'
+        }
+      }
+    },
+
+    // Livereload
+    livereload: {
+      port: 35728
+    },
 
     // Remove folders and files
     clean: {
@@ -287,14 +303,14 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['dev', 'livereload-start', 'regarde']);
+  grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'regarde']);
   grunt.registerTask('build', ['clean:dist', 'jekyll:copy', 'jekyll:dist', 'clean:jekyll', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist']);
 
   grunt.registerTask('jekyll:copy', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
 
-  grunt.registerTask('server', 'jekyll:server');
+  grunt.registerTask('server', 'connect:server');
 
   // waiting for https://github.com/gruntjs/grunt-contrib-imagemin/issues/11 to use just 'build' here
   grunt.registerTask('test', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'copy:images']);
