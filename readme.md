@@ -15,6 +15,11 @@ Happy plan is bundle of amazing tools to be used as a static website generator. 
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 
+## TL;DR
+According you already have ruby and npm installed.
+
+  $ gem install jekyll compass fontcustom && npm install -g grunt-cli bower && npm install
+
 ## Requirements
 
 The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)).
