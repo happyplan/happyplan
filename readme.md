@@ -123,6 +123,8 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 
 Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter/wordpress-to-jekyll-exporter) seems a quick & good choice (+ keep disqus thread id !)
 
+---
+
 # Support
 
 Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
