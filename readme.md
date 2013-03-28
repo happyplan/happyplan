@@ -125,7 +125,7 @@ Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter
 
 # Support
 
-Come up and say hello on [IRC](http://webchat.freenode.net/)! We'll be glad to answer you if you have any questions.
+Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
 
     #happyplan @ irc.freenode.net
 
