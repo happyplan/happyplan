@@ -18,7 +18,9 @@
     "grunt-regarde": "0.1.1",
     "grunt-contrib-livereload": "~0.1.1",
     "grunt-contrib-jshint": "~0.2.0",
-    "grunt-shell": "~0.2.1"
+    "grunt-shell": "~0.2.1",
+    "moment": "~2.0.0",
+    "connect": "~2.7.3"
   },
   "repository": {
     "type": "git",

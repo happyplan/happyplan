@@ -77,6 +77,14 @@ Using `watch` will allow you to test & dev your posts with livereload included (
 
     $ grunt
 
+## Server
+
+You certainly need an http server to display your website. No problem, just use this command:
+
+    $ node server.js
+
+and connect you to `http://localhost:8080`.
+
 ---
 
 ## Publish on gh-pages (github)
@@ -114,4 +122,10 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 [Jekyll already have a migration doc](https://github.com/mojombo/jekyll/wiki/blog-migrations)
 
 Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter/wordpress-to-jekyll-exporter) seems a quick & good choice (+ keep disqus thread id !)
+
+# Support
+
+Come up and say hello on [IRC](irc://irc.freenode.net/happyplan)! We'll be glad to answer you if you have any questions.
+
+`#happyplan @ irc.freenode.net`
 
