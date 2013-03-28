@@ -279,27 +279,31 @@ module.exports = function(grunt) {
     regarde: {
       html: {
           files: ['<%= happyPlan.src.path %>/**/*.{html,md,txt,xml}'],
-          tasks: ['jekyll:build', 'livereload']
+          tasks: ['jekyll:build']
       },
       js: {
           files: ['<%= happyPlan.src.assets.scripts %>/**/*'],
-          tasks: ['concat:dist', 'livereload']
+          tasks: ['concat:dist']
       },
       scss: {
           files: ['<%= happyPlan.src.assets.styles %>/**/*'],
-          tasks: ['compass:dev', 'livereload']
+          tasks: ['compass:dev']
       },
       static: {
           files: ['<%= happyPlan.src.assets.static %>/**/*'],
-          tasks: ['copy:static', 'livereload']
+          tasks: ['copy:static']
       },
       images: {
           files: ['<%= happyPlan.src.assets.images %>/**/*'],
-          tasks: ['copy:images', 'livereload']
+          tasks: ['copy:images']
       },
       icons: {
           files: ['<%= happyPlan.src.assets.fontcustom %>/icons/*.svg'],
           tasks: ['']
+      },
+      livereload: {
+          files: ['<%= happyPlan.dist.path %>/**/*'],
+          tasks: ['livereload']
       }
     }
   });
