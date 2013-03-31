@@ -131,17 +131,17 @@ If you want to publish your build on the gh-pages:
 
     $ bin/publish.sh
 
-This script just build the website (grunt dist) & commit + push on gh-pages branch.
+This script builds the website (grunt dist) & commit + push on gh-pages branch.
 
 ### Please, read it
 
-You absolutely must create one branche: a source branch `src` for your devevelopment branch, and `gh-pages` or `master` to publish your static files. The script will push it for you.
+If you want to publish your website with the publish script, you absolutely need that your source branch is called `src`.
 
 #### Warning for username.github.com
 
-`username.github.com` is a bit special. It's act already like a `gh-pages` branch, so builded files should be on `master` branch. So use a `src` branch for the source.
+`username.github.com` is a bit special. Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (don't try `gh-pages`, it won't work).
 
-You have to modify yourself the `publish.sh` file for now. An option will come to not change the file, it'll be easier.
+For that, simply use `$ bin/publish.sh --master (or -m)`
 
 ## Create a new post
 
