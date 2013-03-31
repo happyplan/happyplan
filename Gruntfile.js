@@ -300,7 +300,7 @@ module.exports = function(grunt) {
           tasks: ['compass:dev']
       },
       static: {
-          files: ['<%= happyPlan.src.assets.static %>/**/*'],
+          files: ['<%= happyPlan.src.assets.static %>/**/*', '!<%= happyPlan.src.assets.static %>/**/_*/**'],
           tasks: ['copy:static']
       },
       images: {
