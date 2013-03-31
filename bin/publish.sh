@@ -6,7 +6,7 @@ parse_git_branch() {
 CURRENT_BRANCH="$(parse_git_branch)"
 
 PUBLISH_BRANCH="gh-pages"
-if [ $1 ] && [ $1 = "--master" ] || [ $1 = "-m" ]
+if [ $1 ] && [ $1 = "--master" ] || [ $1 ] && [ $1 = "-m" ]
   then
     PUBLISH_BRANCH="master"
 fi
