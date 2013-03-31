@@ -11,9 +11,11 @@
     <body>
         {{ content }}
         <script src="{{site.baseurl}}/assets/js/script.js"></script>
-        {% if site.livereload %}<script>document.write('<script src="//'
-    + (location.host || 'localhost').split(':')[0]
-    + ':35728/livereload.js"></'
-    + 'script>')</script>{% endif %}
+        {% if site.livereload %}
+        <script>document.write('<script src=\"http://'
+        + (location.host || 'localhost').split(':')[0]
+        + ':35728/livereload.js?snipver=1\"><\\/script>')
+        </script>
+        {% endif %}
     </body>
 </html>

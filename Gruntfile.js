@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  // Imports
+  // imports
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -14,16 +14,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-shell');
 
-  // Project configuration.
+  // project configuration
   var happyPlan = grunt.file.readJSON('happy-plan.json');
 
+  // grujnt configuration
   grunt.initConfig({
 
     happyPlan: happyPlan,
 
     jshint: happyPlan.grunt.jshint,
 
-    // Server
+    // server
     connect: {
       server: {
         options: {
@@ -33,12 +34,12 @@ module.exports = function(grunt) {
       }
     },
 
-    // Livereload
+    // livereload
     livereload: {
       port: 35728
     },
 
-    // Remove folders and files
+    // remove folders and files
     clean: {
       dist: {
         src: ['<%= happyPlan.dist.path %>']
@@ -47,14 +48,14 @@ module.exports = function(grunt) {
         src: ['build/']
       },
       jekyll: {
-        src: ['build/jekyll_tmp', 'build/jekyll']
+        src: ['build/.jekyll', 'build/jekyll']
       }
     },
 
-    // Static file generator
+    // static file generator
     jekyll: {
-      dist: {
-        src:            'build/jekyll_tmp/',
+      compile: {
+        src:            'build/.jekyll/',
         dest:           'build/jekyll/',
         baseurl:        '<%= happyPlan.baseUrl %>',
         pygments:       true
@@ -77,9 +78,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/pages/',
+            cwd: 'src/_pages/',
             src: ['**'],
-            dest: 'build/jekyll_tmp/'
+            dest: 'build/.jekyll/'
           }
         ]
       },
@@ -87,9 +88,9 @@ module.exports = function(grunt) {
         files: [
           {
               expand: true,
-              cwd: 'src/posts/',
-              src: ['**'],
-              dest: 'build/jekyll_tmp/_posts/'
+              cwd: 'src/_posts/',
+              src: ['**', '!_*'],
+              dest: 'build/.jekyll/_posts/'
           }
         ]
       },
@@ -97,9 +98,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/layouts/',
+            cwd: 'src/_layouts/',
             src: ['**'],
-            dest: 'build/jekyll_tmp/_layouts/'
+            dest: 'build/.jekyll/_layouts/'
           }
         ]
       },
@@ -107,17 +108,17 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/partials/',
+            cwd: 'src/_partials/',
             src: ['**'],
-            dest: 'build/jekyll_tmp/_includes/'
+            dest: 'build/.jekyll/_includes/'
           }
         ]
       },
       jekyllConfig: {
         files: [
           {
-            src: 'src/config/config.yml',
-            dest: 'build/jekyll_tmp/_config.yml'
+            src: 'src/_config/config.yml',
+            dest: 'build/.jekyll/_config.yml'
           }
         ]
       },
@@ -126,7 +127,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= happyPlan.src.assets.static %>',
-            src: ['**'],
+            src: ['**/*', '!**/_*/**'],
             dest: '<%= happyPlan.dist.assets.static %>/'
           }
         ]
@@ -155,15 +156,15 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= happyPlan.src.root %>/',
-            src: ['**'],
+            cwd: '<%= happyPlan.src.path %>',
+            src: ['**/*','!**/_*/**'],
             dest: '<%= happyPlan.dist.root %>/'
           }
         ]
       }
     },
 
-    // Concat scripts
+    // concat scripts
     concat: {
       dist: {
         files: {
@@ -172,7 +173,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Minify javascript
+    // minify javascript
     uglify: {
       dist: {
         files: {
@@ -196,7 +197,7 @@ module.exports = function(grunt) {
       }
     },*/
 
-    // Some shell cmds
+    // some shell cmds
     shell: {
       svgToFonts: {
         command: './bin/fontcustom.sh',
@@ -206,7 +207,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Time to have some styles!
+    // time to have some styles!
     compass: {
       dev: {
         options: {
@@ -252,7 +253,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Optimise images
+    // optimise images
     imagemin: {
       dist: {
         options: {
@@ -276,10 +277,11 @@ module.exports = function(grunt) {
       }
     },
 
+    // watch
     regarde: {
       html: {
           files: ['<%= happyPlan.src.path %>/**/*.{html,md,txt,xml}'],
-          tasks: ['jekyll:build']
+          tasks: ['jekyll:dist']
       },
       js: {
           files: ['<%= happyPlan.src.assets.scripts %>/**/*'],
@@ -308,15 +310,18 @@ module.exports = function(grunt) {
     }
   });
 
+  // main commands
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'regarde']);
-  grunt.registerTask('build', ['clean:dist', 'jekyll:build', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
-  grunt.registerTask('dev', ['jshint', 'build', 'compass:dev']);
-  grunt.registerTask('dist', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
+  grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
+  grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
+  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
 
-  // Jekyll
-  grunt.registerTask('jekyll:copyToTmp', ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
-  grunt.registerTask('jekyll:build', ['clean:jekyll','jekyll:copyToTmp', 'jekyll:dist', 'copy:jekyllBuildToDist']);
+  // jekyll
+  grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
+  grunt.registerTask('jekyll:build',  ['clean:jekyll','jekyll:copy', 'jekyll:compile']);
+  grunt.registerTask('jekyll:copy',   ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllConfig', 'copy:jekyllLayouts']);
 
+  // server
   grunt.registerTask('server', 'connect:server');
 
   // waiting for https://github.com/gruntjs/grunt-contrib-imagemin/issues/11 to use just 'build' here
