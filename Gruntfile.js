@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-regarde');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-open');
 
   // project configuration
   var happyPlan = grunt.file.readJSON('happy-plan.json');
@@ -23,6 +24,13 @@ module.exports = function(grunt) {
     happyPlan: happyPlan,
 
     jshint: happyPlan.grunt.jshint,
+
+    // open in browser
+    open : {
+      dev : {
+        path: 'http://127.0.0.1:8080/'
+      }
+    },
 
     // server
     connect: {
@@ -311,7 +319,7 @@ module.exports = function(grunt) {
   });
 
   // main commands
-  grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'regarde']);
+  grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
