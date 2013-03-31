@@ -4,20 +4,20 @@
         "path": "src",
         "assets": {
             "path": "src/assets",
-            "scripts": "src/assets/scripts",
-            "styles": "src/assets/styles",
-            "images": "src/assets/images",
-            "static": "src/assets/static",
-            "fontcustom": "src/assets/svg-to-fonts"
+            "scripts": "src/assets/_scripts",
+            "styles": "src/assets/_styles",
+            "images": "src/assets/_images",
+            "static": "src/assets",
+            "fontcustom": "src/assets/_svg-to-fonts"
         },
         "jekyll": {
-            "pages": "src/pages",
-            "posts": "src/layouts",
-            "partials": "src/partials",
-            "config": "src/config/config.yml"
+            "pages": "src/_pages",
+            "posts": "src/_layouts",
+            "partials": "src/_partials",
+            "config": "src/_config/config.yml"
         },
         "medias": "src/medias",
-        "root": "src/root"
+        "root": "src"
     },
     "dist": {
         "path": "dist",
@@ -26,11 +26,11 @@
             "scripts": "dist/assets/js",
             "styles": "dist/assets/css",
             "images": "dist/assets/img",
-            "static": "dist/assets/",
+            "static": "dist/assets",
             "fontcustom": "dist/assets/fonts"
         },
         "medias": "dist/medias",
-        "root": "dist/"
+        "root": "dist"
     },
     "grunt": {
         "jshint": {
