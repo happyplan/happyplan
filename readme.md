@@ -15,6 +15,43 @@ Happy plan is bundle of amazing tools to be used as a static website generator. 
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 
+## Arborescence
+
+    .
+    ├── bin                             // Some binaries used by happy plan
+    │   ├── newpost.js                  // Allows you to create a new post via $ node ./bin/newpost.js
+    │   └── publish.sh                  // To publish on gh-pages via $ ./bin/publish.sh
+    ├── build                           // Where your app is built but you don't have to care about it
+    ├── dist                            // Your final app
+    ├── src                             // This is where all comes
+    │   ├── _config                     // Everything about config
+    │   │   └── config.yml              // Configure jekyll
+    │   ├── _layouts                    // Layouts
+    │   │   ├── default.html            // The layout called by default
+    │   │   └── post.html               // A layout which calls default and adds some markups
+    │   ├── _pages                      // Your pages which will be at the root of the project
+    │   │   ├── feed.xml                // RSS page
+    │   │   └── index.html              // Main page
+    │   ├── _partials                   // Elements you can call everywhere in your pages (it's the jekyll _includes folder)
+    │   ├── _posts                      // Posts for blog
+    │   │   └── _drafts                 // Posts you don't want to publish
+    │   ├── assets                      // All about design
+    │   │   ├── _components             // Folder for bower elements
+    │   │   ├── _images                 // Design images
+    │   │   ├── _scripts                // JS
+    │   │   │   └── script.js           // a JS file
+    │   │   ├── _styles                 // CSS
+    │   │   │   ├── _fontcustom.scss    // Used if you use fontcustom (svg-to-font tool), do not edit it
+    │   │   │   └── style.scss          // Where you put all your styles
+    │   │   ├── _svg-to-fonts           // SVG transformed into fonts
+    │   │   └── fonts                   // Fonts
+    │   └── medias                      // Content elements like videos, images, audios
+    ├── .bowerrc                        // Where you define your options for bower
+    ├── Gruntfile.js                    // Compilation file
+    ├── component.json                  // Where you define your options used by bower
+    ├── happy-plan.json                 // All paths used by happy plan
+    └── readme.md                       // PLEASE, READ IT
+
 ## TL;DR
 According you already have ruby and npm installed.
 
