@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander'),
+    sys = require('sys'),
+    spawn = require('child_process').spawn;
+
+program
+  .version('0.0.1');
+
+program
+  .command('dev')
+  .description('development mode')
+  .action(function(){
+    var grunt = spawn('grunt');
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+  });
+
+program
+  .command('dist')
+  .description('distributing mode')
+  .action(function(){
+    var grunt = spawn('grunt', ['dist']);
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+  });
+
+if(process.argv.length == 2) {
+  program.help();
+}
+
+program.parse(process.argv);
+

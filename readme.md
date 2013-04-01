@@ -153,6 +153,11 @@ This create a new post in `src/_posts`.
 
 For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
 
+## Command helper
+
+    $ happyplan dist
+    $ happyplan dev
+
 ---
 
 # Migrations
