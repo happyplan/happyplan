@@ -72,6 +72,18 @@ module.exports = function(grunt) {
 
     // Copy folders and files
     copy: {
+      cssAsScss: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/assets/_components',
+            src: ['**/*.css'],
+            dest: 'src/assets/_components',
+            filter: 'isFile',
+            ext:    ".scss"
+          }
+        ]
+      },
       jekyllBuildToDist: {
         files: [
           {
