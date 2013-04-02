@@ -324,7 +324,7 @@ module.exports = function(grunt) {
           tasks: ['']
       },
       livereload: {
-          files: ['<%= happyPlan.dist.path %>/**/*'],
+          files: ['<%= happyPlan.dist.path %>/**/*.*'],
           tasks: ['livereload']
       }
     }
