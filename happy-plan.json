@@ -1,46 +1,55 @@
 {
-    "baseUrl": "",
-    "src": {
-        "path": "src",
-        "assets": {
-            "path": "src/assets",
-            "scripts": "src/assets/_scripts",
-            "styles": "src/assets/_styles",
-            "images": "src/assets/_images",
-            "static": "src/assets",
-            "fontcustom": "src/assets/_svg-to-fonts"
-        },
-        "jekyll": {
-            "pages": "src/_pages",
-            "posts": "src/_layouts",
-            "partials": "src/_partials",
-            "config": "src/_config/config.yml"
-        },
-        "medias": "src/medias",
-        "root": "src"
+  "src": {
+    "path": "src",
+    "assets": {
+      "path": "<%= happyPlan.src.path %>/assets",
+      "scripts": "<%= happyPlan.src.assets.path %>/_scripts",
+      "styles": "<%= happyPlan.src.assets.path %>/_styles",
+      "images": "<%= happyPlan.src.assets.path %>/_images",
+      "static": "<%= happyPlan.src.assets.path %>",
+      "fontcustom": "<%= happyPlan.src.assets.path %>/_svg-to-fonts"
+      "components": "<%= happyPlan.src.assets.path %>/_components"
     },
-    "dist": {
-        "path": "dist",
-        "assets": {
-            "path": "dist/assets",
-            "scripts": "dist/assets/js",
-            "styles": "dist/assets/css",
-            "images": "dist/assets/img",
-            "static": "dist/assets",
-            "fontcustom": "dist/assets/fonts"
-        },
-        "medias": "dist/medias",
-        "root": "dist"
+    "jekyll": {
+      "pages": "<%= happyPlan.src.path %>/_pages",
+      "posts": "<%= happyPlan.src.path %>/_layouts",
+      "partials": "<%= happyPlan.src.path %>/_partials",
+      "config": "<%= happyPlan.src.path %>/_config/config.yml"
     },
-    "grunt": {
-        "jshint": {
-            "files": [
-                "Gruntfile.js",
-                "package.json",
-                "happy-plan.json",
-                "<%= happyPlan.src.assets.scripts %>/**/*.js",
-                "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
-            ]
-        }
+    "medias": "<%= happyPlan.src.path %>/medias",
+    "root": "<%= happyPlan.src.path %>"
+  },
+  "build": {
+    "path": "build",
+    "jekyll": {
+        "tmp": "<%= happyPlan.build.path %>/.jekyll",
+        "compiled": "<%= happyPlan.build.path %>/jekyll"
+      }
+    },
+  },
+  "baseUrl": "",
+  "dist": {
+    "path": "dist/",
+    "assets": {
+      "path": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets",
+      "scripts": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets/js",
+      "styles": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets/css",
+      "images": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets/img",
+      "static": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets",
+      "fontcustom": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/assets/fonts"
+    },
+    "medias": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>/medias",
+    "root": "<%= happyPlan.dist.path %>/<%= happyPlan.baseUrl %>"
+  },
+  "grunt": {
+    "jshint": {
+      "files": [
+        "Gruntfile.js",
+        "package.json",
+        "happy-plan.json",
+        "<%= happyPlan.src.assets.scripts %>/**/*.js",
+        "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
+      ]
     }
+  }
 }

@@ -53,19 +53,19 @@ module.exports = function(grunt) {
         src: ['<%= happyPlan.dist.path %>']
       },
       build: {
-        src: ['build/']
+        src: ['<%= happyPlan.build.path %>']
       },
       jekyll: {
-        src: ['build/.jekyll', 'build/jekyll']
+        src: ['<%= happyPlan.build.jekyll.tmp %>', '<%= happyPlan.build.jekyll.compiled %>']
       }
     },
 
     // static file generator
     jekyll: {
       compile: {
-        src:            'build/.jekyll/',
-        dest:           'build/jekyll/',
-        baseurl:        '<%= happyPlan.baseUrl %>',
+        src:            '<%= happyPlan.build.jekyll.tmp %>',
+        dest:           '<%= happyPlan.build.jekyll.compiled %>',
+        baseurl:        '<%= happyPlan.baseUrl %>/',
         pygments:       true
       }
     },
@@ -76,9 +76,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/assets/_components',
+            cwd: '<%= happyPlan.src.assets.components %>',
             src: ['**/*.css'],
-            dest: 'src/assets/_components',
+            dest: '<%= happyPlan.src.assets.components %>',
             filter: 'isFile',
             ext:    ".scss"
           }
@@ -88,9 +88,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'build/jekyll/',
+            cwd: '<%= happyPlan.build.jekyll.compiled %>',
             src: ['**'],
-            dest: 'dist/'
+            dest: '<%= happyPlan.dist.root %>'
           }
         ]
       },
@@ -98,9 +98,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/_pages/',
+            cwd: '<%= happyPlan.src.jekyll.pages %>',
             src: ['**'],
-            dest: 'build/.jekyll/'
+            dest: '<%= happyPlan.build.jekyll.tmp.pages %>'
           }
         ]
       },
@@ -108,9 +108,9 @@ module.exports = function(grunt) {
         files: [
           {
               expand: true,
-              cwd: 'src/_posts/',
+              cwd: '<%= happyPlan.src.jekyll.posts %>',
               src: ['**', '!_*'],
-              dest: 'build/.jekyll/_posts/'
+              dest: '<%= happyPlan.build.jekyll.tmp.posts %>'
           }
         ]
       },
@@ -118,9 +118,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/_layouts/',
+            cwd: '<%= happyPlan.src.jekyll.layouts %>',
             src: ['**'],
-            dest: 'build/.jekyll/_layouts/'
+            dest: '<%= happyPlan.build.jekyll.tmp.layouts %>'
           }
         ]
       },
@@ -128,17 +128,17 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'src/_partials/',
+            cwd: '<%= happyPlan.src.jekyll.partials %>',
             src: ['**'],
-            dest: 'build/.jekyll/_includes/'
+            dest: '<%= happyPlan.build.jekyll.tmp.partials %>'
           }
         ]
       },
       jekyllConfig: {
         files: [
           {
-            src: 'src/_config/config.yml',
-            dest: 'build/.jekyll/_config.yml'
+            src: '<%= happyPlan.src.jekyll.config %>',
+            dest: '<%= happyPlan.build.jekyll.tmp.config %>'
           }
         ]
       },
@@ -148,7 +148,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: '<%= happyPlan.src.assets.static %>',
             src: ['**/*', '!**/_*/**'],
-            dest: '<%= happyPlan.dist.assets.static %>/'
+            dest: '<%= happyPlan.dist.assets.static %>'
           }
         ]
       },
@@ -156,9 +156,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= happyPlan.src.assets.images %>/',
+            cwd: '<%= happyPlan.src.assets.images %>',
             src: ['**'],
-            dest: '<%= happyPlan.dist.assets.images %>/'
+            dest: '<%= happyPlan.dist.assets.images %>'
           }
         ]
       },
@@ -166,9 +166,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= happyPlan.src.medias %>/',
+            cwd: '<%= happyPlan.src.medias %>',
             src: ['**'],
-            dest: '<%= happyPlan.dist.medias %>/'
+            dest: '<%= happyPlan.dist.medias %>'
           }
         ]
       },
@@ -178,7 +178,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: '<%= happyPlan.src.path %>',
             src: ['**/*','!**/_*/**'],
-            dest: '<%= happyPlan.dist.root %>/'
+            dest: '<%= happyPlan.dist.root %>'
           }
         ]
       }
