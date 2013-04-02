@@ -23,17 +23,16 @@
   "build": {
     "path": "build",
     "jekyll": {
-        "tmp": {
-          "path": "<%= happyPlan.build.path %>/.jekyll",
-          "pages": "<%= happyPlan.build.jekyll.tmp.path %>",
-          "layouts": "<%= happyPlan.build.jekyll.tmp.path %>/_layouts",
-          "posts": "<%= happyPlan.build.jekyll.tmp.path %>/_posts",
-          "partials": "<%= happyPlan.build.jekyll.tmp.path %>/_includes",
-          "config": "<%= happyPlan.build.jekyll.tmp.path %>/_config.yml"
-        },
-        "compiled": "<%= happyPlan.build.path %>/jekyll"
-      }
-    },
+      "tmp": {
+        "path": "<%= happyPlan.build.path %>/.jekyll",
+        "pages": "<%= happyPlan.build.jekyll.tmp.path %>",
+        "layouts": "<%= happyPlan.build.jekyll.tmp.path %>/_layouts",
+        "posts": "<%= happyPlan.build.jekyll.tmp.path %>/_posts",
+        "partials": "<%= happyPlan.build.jekyll.tmp.path %>/_includes",
+        "config": "<%= happyPlan.build.jekyll.tmp.path %>/_config.yml"
+      },
+      "compiled": "<%= happyPlan.build.path %>/jekyll"
+    }
   },
   "baseUrl": "",
   "dist": {
