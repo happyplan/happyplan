@@ -56,14 +56,14 @@ module.exports = function(grunt) {
         src: ['<%= happyPlan.build.path %>']
       },
       jekyll: {
-        src: ['<%= happyPlan.build.jekyll.tmp %>', '<%= happyPlan.build.jekyll.compiled %>']
+        src: ['<%= happyPlan.build.jekyll.tmp.path %>', '<%= happyPlan.build.jekyll.compiled %>']
       }
     },
 
     // static file generator
     jekyll: {
       compile: {
-        src:            '<%= happyPlan.build.jekyll.tmp %>',
+        src:            '<%= happyPlan.build.jekyll.tmp.path %>',
         dest:           '<%= happyPlan.build.jekyll.compiled %>',
         baseurl:        '<%= happyPlan.baseUrl %>/',
         pygments:       true
@@ -300,7 +300,7 @@ module.exports = function(grunt) {
     // watch
     regarde: {
       html: {
-          files: ['<%= happyPlan.src.path %>/**/*.{html,md,txt,xml}'],
+          files: ['<%= happyPlan.src.path %>**/*.{html,md,txt,xml}'],
           tasks: ['jekyll:dist']
       },
       js: {
@@ -324,7 +324,7 @@ module.exports = function(grunt) {
           tasks: ['']
       },
       livereload: {
-          files: ['<%= happyPlan.dist.path %>/**/*.*'],
+          files: ['<%= happyPlan.dist.path %>**/*.*'],
           tasks: ['livereload']
       }
     }
