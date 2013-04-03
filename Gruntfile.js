@@ -65,7 +65,7 @@ module.exports = function(grunt) {
       compile: {
         src:            '<%= happyPlan.build.jekyll.tmp.path %>',
         dest:           '<%= happyPlan.build.jekyll.compiled %>',
-        baseurl:        '<%= happyPlan.baseUrl %>/',
+        baseurl:        '<%= happyPlan.baseUrl %>',
         pygments:       true
       }
     },
@@ -312,7 +312,7 @@ module.exports = function(grunt) {
           tasks: ['compass:dev']
       },
       static: {
-          files: ['<%= happyPlan.src.assets.static %>/**/*', '!<%= happyPlan.src.assets.static %>/**/_*/**'],
+          files: ['<%= happyPlan.src.assets.static %>**/*', '!<%= happyPlan.src.assets.static %>**/_*/**'],
           tasks: ['copy:static']
       },
       images: {
