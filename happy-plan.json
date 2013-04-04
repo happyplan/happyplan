@@ -34,7 +34,7 @@
       "compiled": "<%= happyPlan.build.path %>jekyll"
     }
   },
-  "baseUrl": "blog/",
+  "baseUrl": "",
   "dist": {
     "path": "dist/",
     "assets": {
