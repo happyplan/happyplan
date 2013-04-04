@@ -18,7 +18,7 @@ module.exports = function(grunt) {
   // project configuration
   var happyPlan = grunt.file.readJSON('happy-plan.json');
 
-  // grujnt configuration
+  // grunt configuration
   grunt.initConfig({
 
     happyPlan: happyPlan,
