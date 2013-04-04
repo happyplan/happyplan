@@ -37,7 +37,8 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8080,
-          base: 'dist'
+          base: 'dist',
+          hostname: '' // Must be empty to be accessible everywhere and not only "localhost"
         }
       }
     },
