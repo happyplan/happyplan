@@ -1,8 +1,7 @@
 {
   "name": "",
   "version": "0.0.0",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "normalize.scss": "~2.1.0"
   }
 }

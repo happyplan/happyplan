@@ -1,4 +1,4 @@
 {
-  "directory" : "src/assets/components",
+  "directory" : "src/assets/_components",
   "json"      : "component.json"
 }

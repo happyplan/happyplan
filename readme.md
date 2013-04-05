@@ -15,9 +15,51 @@ Happy plan is bundle of amazing tools to be used as a static website generator. 
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 
+## Arborescence
+
+    .
+    ├── bin                             // Some binaries used by happy plan
+    │   ├── newpost.js                  // Allows you to create a new post via $ node ./bin/newpost.js
+    │   └── publish.sh                  // To publish on gh-pages via $ ./bin/publish.sh
+    ├── build                           // Where your app is built but you don't have to care about it
+    ├── dist                            // Your final app
+    ├── src                             // This is where all comes
+    │   ├── _config                     // Everything about config
+    │   │   └── config.yml              // Configure jekyll
+    │   ├── _layouts                    // Layouts
+    │   │   ├── default.html            // The layout called by default
+    │   │   └── post.html               // A layout which calls default and adds some markups
+    │   ├── _pages                      // Your pages which will be at the root of the project
+    │   │   ├── feed.xml                // RSS page
+    │   │   └── index.html              // Main page
+    │   ├── _partials                   // Elements you can call everywhere in your pages (it's the jekyll _includes folder)
+    │   ├── _posts                      // Posts for blog
+    │   │   └── _drafts                 // Posts you don't want to publish
+    │   ├── assets                      // All about design
+    │   │   ├── _components             // Folder for bower elements
+    │   │   ├── _images                 // Design images
+    │   │   ├── _scripts                // JS
+    │   │   │   └── script.js           // a JS file
+    │   │   ├── _styles                 // CSS
+    │   │   │   ├── _fontcustom.scss    // Used if you use fontcustom (svg-to-font tool), do not edit it
+    │   │   │   └── style.scss          // Where you put all your styles
+    │   │   ├── _svg-to-fonts           // SVG transformed into fonts
+    │   │   └── fonts                   // Fonts
+    │   └── medias                      // Content elements like videos, images, audios
+    ├── .bowerrc                        // Where you define your options for bower
+    ├── Gruntfile.js                    // Compilation file
+    ├── component.json                  // Where you define your options used by bower
+    ├── happy-plan.json                 // All paths used by happy plan
+    └── readme.md                       // PLEASE, READ IT
+
+## TL;DR
+According you already have ruby and npm installed.
+
+    $ gem install jekyll compass fontcustom && npm install -g grunt-cli bower && npm install
+
 ## Requirements
 
-The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :).
+The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)).
 
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
@@ -72,6 +114,10 @@ Using `watch` will allow you to test & dev your posts with livereload included (
 
     $ grunt
 
+## Server
+
+When you start `$ grunt`, you already have a server started to display your webpages. Just go there: `http://localhost:8080` :)
+
 ---
 
 ## Publish on gh-pages (github)
@@ -80,17 +126,17 @@ If you want to publish your build on the gh-pages:
 
     $ bin/publish.sh
 
-This script just build the website (grunt dist) & commit + push on gh-pages branch.
+This script builds the website (grunt dist) & commit + push on gh-pages branch.
 
 ### Please, read it
 
-You absolutely must to at least create two branches: a source branch (`master` or `src`) for your devevelopment branch, and `gh-pages` to publish your static files. The script will push it for you.
+If you want to publish your website with the publish script, you absolutely need that your source branch is called `src`.
 
 #### Warning for username.github.com
 
-`username.github.com` is a bit special. It's act already like a `gh-pages` branch, so builded files should be on `master` branch. So use a `src` branch for the source.
+`username.github.com` is a bit special. Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (don't try `gh-pages`, it won't work).
 
-You have to modify yourself the `publish.sh` file for now. An option will come to not change the file, it'll be easier.
+For that, simply use `$ bin/publish.sh --master (or -m)`
 
 ## Create a new post
 
@@ -102,6 +148,11 @@ This create a new post in `src/_posts`.
 
 For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
 
+## Command helper
+
+    $ happyplan dist
+    $ happyplan dev
+
 ---
 
 # Migrations
@@ -109,4 +160,12 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 [Jekyll already have a migration doc](https://github.com/mojombo/jekyll/wiki/blog-migrations)
 
 Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter/wordpress-to-jekyll-exporter) seems a quick & good choice (+ keep disqus thread id !)
+
+---
+
+# Support
+
+Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
+
+    #happyplan @ irc.freenode.net
 
