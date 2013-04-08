@@ -205,7 +205,6 @@ module.exports = function(grunt) {
       }
     },
     
-    // @todo skip this task if !(require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg'))
     webfont: {
       svgToFonts: {
         src: '<%= happyPlan.src.assets.webfont %>/*.svg',
@@ -322,11 +321,22 @@ module.exports = function(grunt) {
     }
   });
 
+  // webfont:svgToFonts wrapper
+  grunt.registerTask('svgToFonts', "Execute or skip 'webfont:svgToFonts' depending of the presence of SVG files in the '<%= happyPlan.src.assets.webfont %>' folder.", function() {
+    if (require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg')) {
+      grunt.log.writeln("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'.");
+      grunt.task.run('webfont:svgToFonts');
+    }
+    else {
+      grunt.log.writeln("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.");
+    }
+  });
+
   // main commands
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
-  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'webfont:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
 
   // jekyll
   grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
