@@ -1,4 +1,4 @@
-# Happy Plan! [![Build Status](https://travis-ci.org/kud/happy-plan.png)](https://travis-ci.org/kud/happy-plan)
+# Happy Plan! [![Build Status](https://travis-ci.org/kud/happy-plan.png?branch=master)](https://travis-ci.org/kud/happy-plan)
 
 > When Grunt.js uses Jekyll as a peon.
 
