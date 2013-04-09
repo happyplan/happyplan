@@ -23,7 +23,8 @@
     "connect": "~2.7.3",
     "grunt-contrib-connect": "~0.2.0",
     "grunt-open": "~0.2.0",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "assemble": "~0.3.30"
   },
   "repository": {
     "type": "git",

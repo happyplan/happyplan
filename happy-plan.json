@@ -1,6 +1,15 @@
 {
+  "localhost": {
+    "hostname": "127.0.0.1",
+    "port": 8080
+  },
   "src": {
     "path": "src/",
+    "configs": {
+      "_": "<%= happyPlan.src.path %>_configs",
+      "jekyll": "<%= happyPlan.src.configs._ %>/jekyll._config.yml.hlb",
+      "compass": "<%= happyPlan.src.configs._ %>/compass.config.rb.hlb"
+    },
     "assets": {
       "path": "<%= happyPlan.src.path %>assets/",
       "scripts": "<%= happyPlan.src.assets.path %>_scripts",
@@ -8,33 +17,28 @@
       "images": "<%= happyPlan.src.assets.path %>_images",
       "static": "<%= happyPlan.src.assets.path %>",
       "fontcustom": "<%= happyPlan.src.assets.path %>_svg-to-fonts",
-      "components": "<%= happyPlan.src.assets.path %>_components"
+      "bower_components": "<%= happyPlan.src.assets.path %>_bower_components"
     },
     "jekyll": {
       "pages": "<%= happyPlan.src.path %>_pages",
       "layouts": "<%= happyPlan.src.path %>_layouts",
       "posts": "<%= happyPlan.src.path %>_posts",
-      "partials": "<%= happyPlan.src.path %>_partials",
-      "config": "<%= happyPlan.src.path %>_config/config.yml"
+      "partials": "<%= happyPlan.src.path %>_partials"
     },
     "medias": "<%= happyPlan.src.path %>medias",
     "root": "<%= happyPlan.src.path %>"
   },
   "build": {
     "path": "build/",
+    "compass": {
+      "config": "<%= happyPlan.build.path %>/config.rb"
+    },
     "jekyll": {
-      "tmp": {
-        "path": "<%= happyPlan.build.path %>.jekyll/",
-        "pages": "<%= happyPlan.build.jekyll.tmp.path %>",
-        "layouts": "<%= happyPlan.build.jekyll.tmp.path %>_layouts",
-        "posts": "<%= happyPlan.build.jekyll.tmp.path %>_posts",
-        "partials": "<%= happyPlan.build.jekyll.tmp.path %>_includes",
-        "config": "<%= happyPlan.build.jekyll.tmp.path %>_config.yml"
-      },
-      "compiled": "<%= happyPlan.build.path %>jekyll"
+      "_": "<%= happyPlan.build.path %>jekyll",
+      "config": "<%= happyPlan.build.jekyll._ %>/_config.yml",
+      "dest": "<%= happyPlan.build.jekyll._ %>/build"
     }
   },
-  "baseUrl": "",
   "dist": {
     "path": "dist/",
     "assets": {
@@ -42,11 +46,20 @@
       "scripts": "<%= happyPlan.dist.assets.path %>js",
       "styles": "<%= happyPlan.dist.assets.path %>css",
       "images": "<%= happyPlan.dist.assets.path %>img",
-      "static": "<%= happyPlan.dist.assets.path %>",
-      "fontcustom": "<%= happyPlan.dist.assets.path %>fonts"
+      "fonts": "<%= happyPlan.dist.assets.path %>fonts",
+      "static": "<%= happyPlan.dist.assets.path %>"
     },
     "medias": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>medias",
     "root": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>"
+  },
+  "baseUrl": "",
+  "baseUrls": {
+    "_": "<%= happyPlan.baseUrl %>/",
+    "scripts": "<%= happyPlan.baseUrl %>/js",
+    "styles": "<%= happyPlan.baseUrl %>/css",
+    "images": "<%= happyPlan.baseUrl %>/img",
+    "fonts": "<%= happyPlan.baseUrl %>/fonts",
+    "medias": "<%= happyPlan.baseUrl %>/medias"
   },
   "grunt": {
     "jshint": {
@@ -58,5 +71,23 @@
         "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
       ]
     }
+  },
+  "bower": {
+    "bowerrc": {
+      "directory" : "<%= happyPlan.src.assets.bower_components %>",
+      "json"      : "bower.json"
+    },
+    "files": []
+  },
+  "jekyll": {
+    "permalink": "/:categories/:title"
+  },
+  "compass": {
+    "require": [],
+    "additional_import_paths": [
+      "<%= happyPlan.src.assets.bower_components %>",
+      "<%= happyPlan.src.assets.bower_components %>/"
+    ],
+    "meh": "last path is stupid, it's because of a compass import path issue I think. I should take a deeper look."
   }
 }
