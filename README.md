@@ -49,8 +49,9 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     ├── .bowerrc                        // Where you define your options for bower
     ├── Gruntfile.js                    // Compilation file
     ├── component.json                  // Where you define your options used by bower
-    ├── happy-plan.json                 // All paths used by happy plan
-    └── readme.md                       // PLEASE, READ IT
+    ├── happy-plan.default.json         // All config used by happy plan
+    ├── happy-plan.json                 // You can create this file to override the default config.
+    └── README.md                       // PLEASE, READ IT, but it seems you are
 
 ## TL;DR
 According you already have ruby and npm installed.
@@ -106,6 +107,10 @@ When everything above is okay, just run:
     $ npm install
 
 That's it. Now you can start your website bro'.
+
+## Configuration
+
+You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`.
 
 ## Build
 

@@ -1,27 +1,22 @@
 module.exports = function(grunt) {
 
   // imports
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-livereload');
-  grunt.loadNpmTasks('grunt-jekyll');
-  grunt.loadNpmTasks('grunt-regarde');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-open');
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
-  // set dev option to be true by default
-    grunt.option('env', typeof grunt.option('env') !== 'undefined' ? grunt.option('env') : 'dev');
+  // set option
+  grunt.option('env', typeof grunt.option('env') !== 'undefined' ? grunt.option('env') : 'dev');
+  grunt.log.writeln('Environnment is'.grey, grunt.option('env').cyan);
+
+  var deepmerge = require('deepmerge');
+  
+  var happyPlan = grunt.file.readJSON('happy-plan.default.json');
+  if (grunt.file.exists('happy-plan.json')) {
+    happyPlan = deepmerge(happyPlan, grunt.file.readJSON('happy-plan.json'));
+  }
   
   // project configuration
-  var pkg = grunt.file.readJSON('package.json'),
-      happyPlan = grunt.file.readJSON('happy-plan.json');
+  var pkg = grunt.file.readJSON('package.json');
 
   // grunt configuration
   grunt.initConfig({
@@ -53,7 +48,6 @@ module.exports = function(grunt) {
         options: {
           // require: happyPlan.compass.require.length>0 ? "require \"" + happyPlan.compass.require.join("\"\nrequire \"") + "\"" : "",
           // additional_import_paths: happyPlan.compass.additional_import_paths ? ("additional_import_paths = [" + (happyPlan.compass.additional_import_paths.length>0 ? ("\n    \"" + happyPlan.compass.additional_import_paths.join("\",\n    \"") + "\"\n]") : "]")) : '',
-          
           ext: '.rb'
         },
         files: {
