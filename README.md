@@ -108,9 +108,10 @@ When everything above is okay, just run:
 
 That's it. Now you can start your website bro'.
 
-## Configuration
+### Configuration
 
 You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`.
+
 
 ## Build
 
@@ -165,7 +166,30 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 
 ---
 
-# Migrations
+## Upgrading version
+
+To get latest stable update you can just merge
+
+    $ git remote add happy-plan git@github.com:kud/happy-plan.git
+    $ git pull happy-plan master
+
+To try experimental features, you can just git pull another branch like this
+
+    $ git pull happy-plan grunt-webfont
+    
+**When you update from remote be careful to following *Release history* to update if needed you configuration files until we found a simpler solution to handle updates**
+
+## Release History
+
+ * Unreleased   v0.?.?   Switch Fontcustom for grunt-webfont task
+ * Unreleased   v0.3.0   Update dependencies (Node 0.10 support), add JSHint & Travis-CI, add configurable configuration files, add embed server & auto open in the browser !
+ * 2013-02-02   v0.2.0   Add config file, change folder tree 
+ * 2013-01-31   v0.1.1   Update to Grunt 0.4
+ * 2013-01-29   v0.1.0   Real first release as Happy-Plan
+
+---
+
+## Migrations
 
 [Jekyll already have a migration doc](https://github.com/mojombo/jekyll/wiki/blog-migrations)
 
@@ -173,7 +197,7 @@ Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter
 
 ---
 
-# Support
+## Support
 
 Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
 
