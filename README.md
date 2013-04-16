@@ -110,8 +110,22 @@ That's it. Now you can start your website bro'.
 
 ### Configuration
 
-You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`.
+You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`. Both will be **deeply merged** together.
 
+To configure others used tools, you have differentes possibilities depending on the tool.
+
+#### Bower `.bowerrc`
+
+Bower configuration file is generated from the `bower.bowerrc` section in the `happy-plan`configuration
+
+#### `/src/_configs/*`
+`
+`.hlb` files are [handlebar](http://handlebarsjs.com/) templates parsed by [assemble](https://github.com/assemble/assemble) grunt task where Happy-Plan JSON configuration is available.
+You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `.sample` ones if one doesn't exist.
+
+* **Jekyll**: `_config.yml` is `/src/_configs/jekyll._config.yml.hlb`
+
+* **Compass**: `config.rb` is `/src/_configs/compass.config.rb.hlb
 
 ## Build
 
