@@ -41,7 +41,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     │   │   ├── _scripts                // JS
     │   │   │   └── script.js           // a JS file
     │   │   ├── _styles                 // CSS
-    │   │   │   ├── _fontcustom.scss    // Used if you use fontcustom (svg-to-font tool), do not edit it
+    │   │   │   ├── _font-icons.scss    // Used if you use grunt-webfont (svg-to-font tool), do not edit it
     │   │   │   └── style.scss          // Where you put all your styles
     │   │   ├── _svg-to-fonts           // SVG transformed into fonts
     │   │   └── fonts                   // Fonts
@@ -55,7 +55,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 ## TL;DR
 According you already have ruby and npm installed.
 
-    $ gem install jekyll compass fontcustom && npm install -g grunt-cli bower && npm install
+    $ gem install jekyll compass && npm install -g grunt-cli bower && npm install
 
 ## Requirements
 
@@ -90,7 +90,7 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 
 #### Bower [[+](https://github.com/twitter/bower#installing-bower)]
 
-    $ npm install bower -g
+    $ npm install -g bower
 
 ---
 
