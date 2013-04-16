@@ -46,9 +46,9 @@ module.exports = function(grunt) {
       },
       compass: {
         options: {
-          // require: happyPlan.compass.require.length>0 ? "require \"" + happyPlan.compass.require.join("\"\nrequire \"") + "\"" : "",
-          // additional_import_paths: happyPlan.compass.additional_import_paths ? ("additional_import_paths = [" + (happyPlan.compass.additional_import_paths.length>0 ? ("\n    \"" + happyPlan.compass.additional_import_paths.join("\",\n    \"") + "\"\n]") : "]")) : '',
-          ext: '.rb'
+          ext: '.rb',
+          require: happyPlan.compass.require.length>0 ? "require \"" + happyPlan.compass.require.join("\"\nrequire \"") + "\"" : "",
+          additional_import_paths: happyPlan.compass.additional_import_paths ? ("additional_import_paths = [" + (happyPlan.compass.additional_import_paths.length>0 ? ("\n    \"" + happyPlan.compass.additional_import_paths.join("\",\n    \"") + "\"\n]") : "]")) : ''
         },
         files: {
           'config.rb': ['<%= happyPlan.src.configs.compass %>']
@@ -276,11 +276,17 @@ module.exports = function(grunt) {
     // watch
     regarde: {
       configs: {
-        files: ['<%= happyPlan.src.configs._ %>/**/*'],
+        files: [
+          '<%= happyPlan.src.configs._ %>/*.*',
+          '!<%= happyPlan.src.configs.jekyll %>'
+        ],
         tasks: ['happyPlan:configs']
       },
       html: {
-          files: ['<%= happyPlan.src.path %>**/*.{html,md,txt,xml}'],
+          files: [
+            '<%= happyPlan.src.path %>**/*.{html,md,txt,xml}',
+            '<%= happyPlan.src.configs.jekyll %>'
+          ],
           tasks: ['jekyll:dist']
       },
       js: {
@@ -292,7 +298,10 @@ module.exports = function(grunt) {
           tasks: ['compass:dev']
       },
       static: {
-          files: ['<%= happyPlan.src.assets.static %>**/*.*', '!<%= happyPlan.src.assets.static %>**/_*/**'],
+          files: [
+            '<%= happyPlan.src.assets.static %>**/*.*',
+            '!<%= happyPlan.src.assets.static %>**/_*/**'
+          ],
           tasks: ['copy:static']
       },
       images: {
@@ -327,21 +336,23 @@ module.exports = function(grunt) {
   
   // configs shouldn't be fired each build, because if we do so, compass just start with a fresh cache (no-cache = fews seconds...)
   // So, 'regarde' fire 'configs' :)
-  grunt.registerTask('happyPlan:configs', ['assemble:compass', 'assemble:jekyll', 'happyPlan:config_bowerrc']);
+  grunt.registerTask('happyPlan:configs', ['assemble:compass', 'happyPlan:config_bowerrc']);
 
   // main commands
   grunt.registerTask('init', ['happyPlan:configs_sample', 'happyPlan:configs']);
   
-  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'init', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  // jekyll
+  grunt.registerTask('jekyll:config', ['assemble:jekyll']);
+  grunt.registerTask('jekyll:copy',   ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllLayouts']);
+  grunt.registerTask('jekyll:build',  ['clean:jekyll','jekyll:config', 'jekyll:copy', 'jekyll:compile']);
+  grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
+  
+  // public commands
+  grunt.registerTask('build',   ['clean:dist', 'init', 'jekyll:dist', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
-
-  // jekyll
-  grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
-  grunt.registerTask('jekyll:build',  ['clean:jekyll','jekyll:copy', 'jekyll:compile']);
-  grunt.registerTask('jekyll:copy',   ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllLayouts']);
-
+  
   // server
   grunt.registerTask('server', 'connect:server');
 

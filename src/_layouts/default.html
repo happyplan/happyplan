@@ -4,18 +4,13 @@
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
         <meta name="description" content="">
+        <base href="{{ site.baseurl }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" href="{{ site.base_urls.styles }}/{{ site.assets.main.style }}?{{ 'now' | date: "%Y%m%d%H%M%S" }}" 
         <link href="feed.xml" rel="alternate" type="application/rss+xml">
     </head>
     <body>
         {{ content }}
-        <script src="assets/js/script.js"></script>
-        {% if site.livereload %}
-        <script>document.write('<script async="" src=\"http://'
-        + (location.host || 'localhost').split(':')[0]
-        + ':35728/livereload.js?snipver=1\"><\/script>')
-        </script>
-        {% endif %}
+        <script src="{{ site.base_urls.scripts }}/{{ site.assets.main.script }}?{{ 'now' | date: "%Y%m%d%H%M%S" }}"></script>
     </body>
 </html>

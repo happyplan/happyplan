@@ -13,6 +13,10 @@ base_urls:
   styles: "{{ happyPlan.baseUrls.styles }}"
   images: "{{ happyPlan.baseUrls.images }}"
   fonts: "{{ happyPlan.baseUrls.fonts }}"
+assets:
+  main:
+    style: "{{ happyPlan.assets.main.style }}"
+    script: "{{ happyPlan.assets.main.script }}"
 
 # if you use apache & the .htaccess conf
 #include: ['.htaccess']

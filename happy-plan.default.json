@@ -15,6 +15,7 @@
       "scripts": "<%= happyPlan.src.assets.path %>_scripts",
       "styles": "<%= happyPlan.src.assets.path %>_styles",
       "images": "<%= happyPlan.src.assets.path %>_images",
+      "fonts": "<%= happyPlan.src.assets.path %>_fonts",
       "static": "<%= happyPlan.src.assets.path %>",
       "fontcustom": "<%= happyPlan.src.assets.path %>_svg-to-fonts",
       "bower_components": "<%= happyPlan.src.assets.path %>_bower_components"
@@ -52,7 +53,7 @@
     "medias": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>medias",
     "root": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>"
   },
-  "baseUrl": "",
+  "baseUrl": ".",
   "baseUrls": {
     "_": "<%= happyPlan.baseUrl %>/",
     "scripts": "<%= happyPlan.baseUrl %>/js",
@@ -60,6 +61,12 @@
     "images": "<%= happyPlan.baseUrl %>/img",
     "fonts": "<%= happyPlan.baseUrl %>/fonts",
     "medias": "<%= happyPlan.baseUrl %>/medias"
+  },
+  "assets": {
+    "main": {
+      "style": "style.css",
+      "script": "script.js"
+    }
   },
   "grunt": {
     "jshint": {
