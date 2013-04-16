@@ -345,6 +345,5 @@ module.exports = function(grunt) {
   // server
   grunt.registerTask('server', 'connect:server');
 
-  // waiting for https://github.com/gruntjs/grunt-contrib-imagemin/issues/11 to use just 'build' here
-  grunt.registerTask('test', ['jshint', 'build', 'compass:dist', 'uglify:dist', 'copy:images']);
+  grunt.registerTask('test', ['dist']);
 };
