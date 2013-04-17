@@ -7,7 +7,7 @@
       "styles": "<%= happyPlan.src.assets.path %>_styles",
       "images": "<%= happyPlan.src.assets.path %>_images",
       "static": "<%= happyPlan.src.assets.path %>",
-      "fontcustom": "<%= happyPlan.src.assets.path %>_svg-to-fonts",
+      "webfont": "<%= happyPlan.src.assets.path %>_svg-to-fonts",
       "components": "<%= happyPlan.src.assets.path %>_components"
     },
     "jekyll": {
@@ -43,7 +43,7 @@
       "styles": "<%= happyPlan.dist.assets.path %>css",
       "images": "<%= happyPlan.dist.assets.path %>img",
       "static": "<%= happyPlan.dist.assets.path %>",
-      "fontcustom": "<%= happyPlan.dist.assets.path %>fonts"
+      "webfont": "<%= happyPlan.dist.assets.path %>fonts"
     },
     "medias": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>medias",
     "root": "<%= happyPlan.dist.path %><%= happyPlan.baseUrl %>"

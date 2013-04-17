@@ -1,3 +1,4 @@
+/* globals module:true require:true */
 module.exports = function(grunt) {
 
   // imports
@@ -9,6 +10,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-webfont');
   grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-regarde');
@@ -202,28 +204,16 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    /*
-    Doesn't work
+    
     webfont: {
-      icons: {
-        src: '<%= happyPlan.src.assets.fontcustom %>/*.svg',
-        dest: '<%= happyPlan.dist.assets.fonts %>/icons',
+      svgToFonts: {
+        src: '<%= happyPlan.src.assets.webfont %>/*.svg',
+        dest: '<%= happyPlan.dist.assets.webfont %>',
         destCss: '<%= happyPlan.src.assets.styles %>',
         options: {
-            styles: 'icon',
+            styles: 'font-icons',
             stylesheet: 'scss',
             hashes: false
-        }
-      }
-    },*/
-
-    // some shell cmds
-    shell: {
-      svgToFonts: {
-        command: './bin/fontcustom.sh',
-        options: {
-          stdout: true
         }
       }
     },
@@ -320,8 +310,8 @@ module.exports = function(grunt) {
           files: ['<%= happyPlan.src.assets.images %>/**/*'],
           tasks: ['copy:images']
       },
-      icons: {
-          files: ['<%= happyPlan.src.assets.fontcustom %>/icons/*.svg'],
+      svgToFonts: {
+          files: ['<%= happyPlan.src.assets.webfont %>/*.svg'],
           tasks: ['']
       },
       livereload: {
@@ -331,11 +321,22 @@ module.exports = function(grunt) {
     }
   });
 
+  // webfont:svgToFonts wrapper
+  grunt.registerTask('svgToFonts', "Execute or skip 'webfont:svgToFonts' depending of the presence of SVG files in the '<%= happyPlan.src.assets.webfont %>' folder.", function() {
+    if (require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg')) {
+      grunt.log.writeln("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'.");
+      grunt.task.run('webfont:svgToFonts');
+    }
+    else {
+      grunt.log.writeln("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.");
+    }
+  });
+
   // main commands
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
-  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  grunt.registerTask('build',   ['clean:dist', 'jekyll:dist', 'copy:root', 'svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
 
   // jekyll
   grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
