@@ -1,7 +1,25 @@
-node_modules
+# dirty files
+.DS_Store
 npm-debug.log
+
+# cache
 .sass-cache
+
+# packages
+node_modules
+bower_components
+
+# build
 dist
 build
-src/assets/_components/*
-!src/assets/_components/.empty
+
+# config 
+src/_configs/*.hlb
+
+# generated config
+.bowerrc
+config.rb
+
+# bower folder
+src/assets/_bower_components/*
+!src/assets/_bower_components/.empty
