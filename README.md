@@ -49,8 +49,9 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     ├── .bowerrc                        // Where you define your options for bower
     ├── Gruntfile.js                    // Compilation file
     ├── component.json                  // Where you define your options used by bower
-    ├── happy-plan.json                 // All paths used by happy plan
-    └── readme.md                       // PLEASE, READ IT
+    ├── happy-plan.default.json         // All config used by happy plan
+    ├── happy-plan.json                 // You can create this file to override the default config.
+    └── README.md                       // PLEASE, READ IT, but it seems you are
 
 ## TL;DR
 According you already have ruby and npm installed.
@@ -101,6 +102,25 @@ When everything above is okay, just run:
     $ npm install
 
 That's it. Now you can start your website bro'.
+
+### Configuration
+
+You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`. Both will be **deeply merged** together.
+
+To configure others used tools, you have differentes possibilities depending on the tool.
+
+#### Bower `.bowerrc`
+
+Bower configuration file is generated from the `bower.bowerrc` section in the `happy-plan`configuration
+
+#### `/src/_configs/*`
+`
+`.hlb` files are [handlebar](http://handlebarsjs.com/) templates parsed by [assemble](https://github.com/assemble/assemble) grunt task where Happy-Plan JSON configuration is available.
+You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `.sample` ones if one doesn't exist.
+
+* **Jekyll**: `_config.yml` is `/src/_configs/jekyll._config.yml.hlb`
+
+* **Compass**: `config.rb` is `/src/_configs/compass.config.rb.hlb
 
 ## Build
 
@@ -155,7 +175,30 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 
 ---
 
-# Migrations
+## Upgrading version
+
+To get latest stable update you can just merge
+
+    $ git remote add happy-plan git@github.com:kud/happy-plan.git
+    $ git pull happy-plan master
+
+To try experimental features, you can just git pull another branch like this
+
+    $ git pull happy-plan grunt-webfont
+    
+**When you update from remote be careful to following *Release history* to update if needed you configuration files until we found a simpler solution to handle updates**
+
+## Release History
+
+ * Unreleased   v0.?.?   Switch Fontcustom for grunt-webfont task
+ * Unreleased   v0.3.0   Update dependencies (Node 0.10 support), add JSHint & Travis-CI, add configurable configuration files, add embed server & auto open in the browser !
+ * 2013-02-02   v0.2.0   Add config file, change folder tree 
+ * 2013-01-31   v0.1.1   Update to Grunt 0.4
+ * 2013-01-29   v0.1.0   Real first release as Happy-Plan
+
+---
+
+## Migrations
 
 [Jekyll already have a migration doc](https://github.com/mojombo/jekyll/wiki/blog-migrations)
 
@@ -163,7 +206,7 @@ Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter
 
 ---
 
-# Support
+## Support
 
 Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
 
