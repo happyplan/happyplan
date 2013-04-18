@@ -1,3 +1,4 @@
+/* globals module:true require:true */
 module.exports = function(grunt) {
 
   // imports
@@ -206,28 +207,16 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    /*
-    Doesn't work
+    
     webfont: {
-      icons: {
-        src: '<%= happyPlan.src.assets.fontcustom %>/*.svg',
-        dest: '<%= happyPlan.dist.assets.fonts %>/icons',
+      svgToFonts: {
+        src: '<%= happyPlan.src.assets.webfont %>/*.svg',
+        dest: '<%= happyPlan.dist.assets.fonts %>',
         destCss: '<%= happyPlan.src.assets.styles %>',
         options: {
-            styles: 'icon',
+            styles: 'font-icons',
             stylesheet: 'scss',
             hashes: false
-        }
-      }
-    },*/
-
-    // some shell cmds
-    shell: {
-      svgToFonts: {
-        command: './bin/fontcustom.sh',
-        options: {
-          stdout: true
         }
       }
     },
@@ -308,8 +297,8 @@ module.exports = function(grunt) {
           files: ['<%= happyPlan.src.assets.images %>/**/*.*'],
           tasks: ['copy:images']
       },
-      icons: {
-          files: ['<%= happyPlan.src.assets.fontcustom %>/icons/*.svg'],
+      svgToFonts: {
+          files: ['<%= happyPlan.src.assets.webfont %>/*.svg'],
           tasks: ['']
       },
       livereload: {
@@ -319,6 +308,7 @@ module.exports = function(grunt) {
     }
   });
 
+  // custom task
   grunt.registerTask('happyPlan:configs_sample', "Create default config template files from .sample if it doesn't exist", function() {
     ['jekyll', 'compass'].forEach(function(element, index, array) {
       var configFile = grunt.template.process(happyPlan.src.configs[element]);
@@ -338,8 +328,18 @@ module.exports = function(grunt) {
   // So, 'regarde' fire 'configs' :)
   grunt.registerTask('happyPlan:configs', ['assemble:compass', 'happyPlan:config_bowerrc']);
 
-  // main commands
-  grunt.registerTask('init', ['happyPlan:configs_sample', 'happyPlan:configs']);
+  // webfont:svgToFonts wrapper
+  grunt.registerTask('happyPlan:svgToFonts', "Execute or skip 'webfont:svgToFonts' depending of the presence of SVG files in the '<%= happyPlan.src.assets.webfont %>' folder.", function() {
+    if (require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg')) {
+      grunt.log.writeln("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'.");
+      grunt.task.run('webfont:svgToFonts');
+    }
+    else {
+      grunt.log.writeln("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.");
+    }
+  });
+
+  grunt.registerTask('happyPlan:init', ['happyPlan:configs_sample', 'happyPlan:configs']);
   
   // jekyll
   grunt.registerTask('jekyll:config', ['assemble:jekyll']);
@@ -348,7 +348,7 @@ module.exports = function(grunt) {
   grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
   
   // public commands
-  grunt.registerTask('build',   ['clean:dist', 'init', 'jekyll:dist', 'copy:root', 'shell:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
+  grunt.registerTask('build',   ['clean:dist', 'happyPlan:init', 'jekyll:dist', 'copy:root', 'happyPlan:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
