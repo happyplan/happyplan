@@ -305,6 +305,11 @@ module.exports = function(grunt) {
           files: ['<%= happyPlan.dist.path %>**/*.*'],
           tasks: ['livereload']
       }
+    },
+    
+    // Unit tests.
+    nodeunit: {
+      tests: ['test/*_test.js']
     }
   });
 
@@ -356,5 +361,5 @@ module.exports = function(grunt) {
   // server
   grunt.registerTask('server', 'connect:server');
 
-  grunt.registerTask('test', ['dist']);
+  grunt.registerTask('test', ['dist', 'nodeunit']);
 };

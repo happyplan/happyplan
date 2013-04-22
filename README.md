@@ -93,6 +93,11 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 
     $ npm install -g bower
 
+### Required for testing
+
+#### Tree [[+](http://mama.indstate.edu/users/ice/tree/)]
+
+    $ brew install tree
 ---
 
 ## Installation
@@ -173,6 +178,16 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
     $ happyplan dist
     $ happyplan dev
 
+## Contributing
+
+When you want to fix a bug or add a feature, just be sure to get all testing requirements installed, & run tests before making your *Pull Request*.
+
+You can run in one command the build process & the tests.
+
+    $ npm test
+
+In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specified in the `package.json`. In our case, it run `grunt test`. And to be precise, the `test` task run the `dist` task & the `nodeunit` one.
+
 ---
 
 ## Upgrading version
@@ -184,14 +199,13 @@ To get latest stable update you can just merge
 
 To try experimental features, you can just git pull another branch like this
 
-    $ git pull happy-plan grunt-webfont
+    $ git pull happy-plan feature-x
     
 **When you update from remote be careful to following *Release history* to update if needed you configuration files until we found a simpler solution to handle updates**
 
 ## Release History
 
- * Unreleased   v0.?.?   Switch Fontcustom for grunt-webfont task
- * Unreleased   v0.3.0   Update dependencies (Node 0.10 support), add JSHint & Travis-CI, add configurable configuration files, add embed server & auto open in the browser !
+  * Unreleased   v0.3.0   Update dependencies (Node 0.10 support), add JSHint & Travis-CI, add configurable configuration files, add embed server & auto open in the browser. Also switch Fontcustom for grunt-webfont.
  * 2013-02-02   v0.2.0   Add config file, change folder tree 
  * 2013-01-31   v0.1.1   Update to Grunt 0.4
  * 2013-01-29   v0.1.0   Real first release as Happy-Plan

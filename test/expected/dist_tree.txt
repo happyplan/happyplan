@@ -1,0 +1,13 @@
+dist
+├── assets
+│   ├── css
+│   │   └── style.css
+│   ├── fonts
+│   ├── img
+│   └── js
+│       └── script.js
+├── feed.xml
+├── index.html
+└── medias
+
+6 directories, 4 files
