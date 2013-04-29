@@ -125,7 +125,7 @@ You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `
 
 * **Jekyll**: `_config.yml` is `/src/_configs/jekyll._config.yml.hlb`
 
-* **Compass**: `config.rb` is `/src/_configs/compass.config.rb.hlb
+* **Compass**: `config.rb` is `/src/_configs/compass.config.rb.hlb`
 
 ## Build
 
@@ -200,13 +200,13 @@ To get latest stable update you can just merge
 To try experimental features, you can just git pull another branch like this
 
     $ git pull happy-plan feature-x
-    
+
 **When you update from remote be careful to following *Release history* to update if needed you configuration files until we found a simpler solution to handle updates**
 
 ## Release History
 
   * Unreleased   v0.3.0   Update dependencies (Node 0.10 support), add JSHint & Travis-CI, add configurable configuration files, add embed server & auto open in the browser. Also switch Fontcustom for grunt-webfont.
- * 2013-02-02   v0.2.0   Add config file, change folder tree 
+ * 2013-02-02   v0.2.0   Add config file, change folder tree
  * 2013-01-31   v0.1.1   Update to Grunt 0.4
  * 2013-01-29   v0.1.0   Real first release as Happy-Plan
 
