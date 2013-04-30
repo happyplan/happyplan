@@ -70,15 +70,26 @@ programme
 
         rl.close();
     });
+  });
 
-
-program
+programme
   .command('init')
   .description('initialize')
   .action(function(){
     var grunt = spawn('grunt', ['happyPlan:init']);
 
     grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+  });
+
+programme
+  .command('publish')
+  .description('publish on github')
+  .action(function(){
+    var publish = spawn('./bin/publish.sh');
+
+    publish.stdout.on('data', function (data) {
       process.stdout.write('' + data);
     });
   });
