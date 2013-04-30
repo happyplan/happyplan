@@ -71,6 +71,16 @@ programme
         rl.close();
     });
 
+
+program
+  .command('init')
+  .description('initialize')
+  .action(function(){
+    var grunt = spawn('grunt', ['happyPlan:init']);
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
   });
 
 if(process.argv.length == 2) {
