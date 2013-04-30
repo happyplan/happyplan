@@ -127,21 +127,27 @@ You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `
 
 * **Compass**: `config.rb` is `/src/_configs/compass.config.rb.hlb`
 
+To generate these 3 configurations files (bower, jekyll & compass) before launching the `dev` task (eg: to install a bower component) you can run
+
+    $ grunt happyPlan:init
+
+*This task is not required since it's launched by all build tasks*
+
 ## Build
 
 To build the website
 
     $ grunt dist
 
-## Development
+### Development
 
 Using `watch` will allow you to test & dev your posts with livereload included (it needs a [livereload browser extension](http://go.livereload.com/extensions))
 
     $ grunt
 
-## Server
+#### Server
 
-When you start `$ grunt`, you already have a server started to display your webpages. Just go there: `http://localhost:8080` :)
+When you start `$ grunt`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
 
 ---
 
@@ -175,8 +181,21 @@ For more informations about posts, just read [Jekyll's doc](https://github.com/m
 
 ## Command helper
 
-    $ happyplan dist
+There is an available `happyplan` binary. You can add `./bin`to your PATH to be able to call this bin directly instead of grunt.
+
+Here is the available commands
+
+Generate required configuration from `happy-plan.json`
+
+    $ happyplan init
+    
+Launch the development taskk (init, build, watch, server & auto open)
+
     $ happyplan dev
+    
+Launch the optimized build for distribution
+
+    $ happyplan dist
 
 ## Contributing
 
