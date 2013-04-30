@@ -23,7 +23,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-webfont": "*",
     "grunt-shell": "*",
-    "moment": "*",
+    "moment": "~2.0.0",
     "grunt-contrib-connect": "*",
     "grunt-open": "*",
     "assemble": "*",

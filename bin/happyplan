@@ -4,14 +4,18 @@
  * Module dependencies.
  */
 
-var program = require('commander'),
+var programme = require('commander'),
     sys = require('sys'),
-    spawn = require('child_process').spawn;
+    spawn = require('child_process').spawn,
+    fs = require('fs'),
+    readline = require('readline')
+    moment = require('moment');
 
-program
+programme
+  .command('*')
   .version('0.0.1');
 
-program
+programme
   .command('dev')
   .description('development mode')
   .action(function(){
@@ -22,7 +26,7 @@ program
     });
   });
 
-program
+programme
   .command('dist')
   .description('distributing mode')
   .action(function(){
@@ -33,9 +37,45 @@ program
     });
   });
 
+programme
+  .command('newpost')
+  .description('create a new post')
+  .action(function() {
+    // Config
+    var basePath = 'src/',
+        postName = 'fixme';
+        currentDate = moment().format('YYYY-MM-DD');
+
+    // Create Interface
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.question('What is your post? ', function(answer) {
+        if(answer !== '') {
+            postName = answer;
+        }
+
+        // Template
+        var fileContent = [
+          '---',
+          'layout: post',
+          'title: "' + postName + '"',
+          'tags: [\'removemeifunneeded\']',
+          '---'
+        ].join('\n');
+
+        fs.writeFile(basePath + '_posts/_drafts/' + currentDate + '-' + postName.toLowerCase().split(' ').join('-').split(',').join('') + '.md', fileContent);
+
+        rl.close();
+    });
+
+  });
+
 if(process.argv.length == 2) {
-  program.help();
+  programme.help();
 }
 
-program.parse(process.argv);
+programme.parse(process.argv);
 
