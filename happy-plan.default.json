@@ -56,10 +56,10 @@
   "baseUrl": ".",
   "baseUrls": {
     "_": "<%= happyPlan.baseUrl %>/",
-    "scripts": "<%= happyPlan.baseUrl %>/js",
-    "styles": "<%= happyPlan.baseUrl %>/css",
-    "images": "<%= happyPlan.baseUrl %>/img",
-    "fonts": "<%= happyPlan.baseUrl %>/fonts",
+    "scripts": "<%= happyPlan.baseUrl %>/assets/js",
+    "styles": "<%= happyPlan.baseUrl %>/assets/css",
+    "images": "<%= happyPlan.baseUrl %>/assets/img",
+    "fonts": "<%= happyPlan.baseUrl %>/assets/fonts",
     "medias": "<%= happyPlan.baseUrl %>/medias"
   },
   "assets": {

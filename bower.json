@@ -1,7 +1,7 @@
 {
-  "name": "",
-  "version": "0.0.0",
-  "dependencies": {
-    "normalize.scss": "~2.1.0"
+  "name": "happy-plan",
+  "version": "1.0.0",
+  "devDependencies": {
+    "normalize.scss": "*"
   }
 }
