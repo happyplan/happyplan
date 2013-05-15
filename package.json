@@ -4,8 +4,7 @@
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
   "author": "Erwann Mest",
   "license": "BSD",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "bower": "~0.9.2",
     "commander": "~1.1.1",
     "matchdep": "~0.1.2",
@@ -29,6 +28,7 @@
     "assemble": "~0.3.30",
     "grunt-contrib-nodeunit": "~0.1.2"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/kud/happy-plan.git"

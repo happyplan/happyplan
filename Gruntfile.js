@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 
   // imports
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
   // set option
