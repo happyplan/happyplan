@@ -189,20 +189,23 @@ module.exports = function(grunt) {
 
     // concat scripts
     concat: {
-      dist: {
-        files: {
-          '<%= happyPlan.dist.assets.scripts %>/script.js': ['<%= happyPlan.src.assets.scripts %>/*.js']
-        }
-      }
+      dist: deepmerge({
+          options: {
+            banner: "<%= happyPlan.assets.banner %>"
+          },
+          files: happyPlan.assets.scripts
+        }, happyPlan.grunt.concat || {})
     },
 
     // minify javascript
     uglify: {
-      dist: {
-        files: {
-          '<%= happyPlan.dist.assets.scripts %>/script.js': ['<%= happyPlan.dist.assets.scripts %>/script.js']
-        }
-      }
+      // just merge hp options correctly
+      dist: deepmerge({
+          options: {
+            banner: "<%= happyPlan.assets.banner %>"
+          },
+          files: happyPlan.assets.scripts
+        }, happyPlan.grunt.uglify || {})
     },
     
     webfont: {

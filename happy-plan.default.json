@@ -63,9 +63,13 @@
     "medias": "<%= happyPlan.baseUrl %>medias"
   },
   "assets": {
+    "banner": "/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today('yyyy-mm-dd') %> */\n",
     "main": {
       "style": "style.css",
       "script": "script.js"
+    },
+    "scripts": {
+      "<%= happyPlan.dist.assets.scripts %>/script.js": ["<%= happyPlan.src.assets.scripts %>/*.js"]
     }
   },
   "grunt": {
