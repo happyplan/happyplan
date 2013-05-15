@@ -6,7 +6,7 @@
   "license": "BSD",
   "dependencies": {},
   "devDependencies": {
-    "bower": "0.8",
+    "bower": "~0.9.2",
     "commander": "~1.1.1",
     "matchdep": "~0.1.2",
     "deepmerge": "~0.2.5",
