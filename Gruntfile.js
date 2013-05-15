@@ -211,9 +211,15 @@ module.exports = function(grunt) {
         dest: '<%= happyPlan.dist.assets.fonts %>',
         destCss: '<%= happyPlan.src.assets.styles %>',
         options: {
-            styles: 'font-icons',
+            relativeFontPath: require('path').relative(
+              // we must process template here because it's not already done by the grunt.init at this time
+              // PR if u have a better solution :)
+              __dirname + '/' + grunt.template.process('<%= happyPlan.dist.assets.styles %>', { data: { happyPlan: happyPlan}}),
+              __dirname + '/' + grunt.template.process('<%= happyPlan.dist.assets.fonts %>', { data: { happyPlan: happyPlan}})
+            ),
             stylesheet: 'scss',
-            hashes: false
+            hashes: false,
+            htmlDemo: false
         }
       }
     },
