@@ -338,12 +338,12 @@ module.exports = function(grunt) {
 
   // webfont:svgToFonts wrapper
   grunt.registerTask('happyPlan:svgToFonts', "Execute or skip 'webfont:svgToFonts' depending of the presence of SVG files in the '<%= happyPlan.src.assets.webfont %>' folder.", function() {
-    if (require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg')) {
-      grunt.log.writeln("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'.");
+    if (grunt.file.expand(grunt.template.process('<%= happyPlan.src.assets.webfont %>/*.svg')).length) {
+      grunt.log.writeln(grunt.template.process("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'."));
       grunt.task.run('webfont:svgToFonts');
     }
     else {
-      grunt.log.writeln("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.");
+      grunt.log.writeln(grunt.template.process("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.").yellow);
     }
   });
 
