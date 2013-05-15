@@ -96,10 +96,7 @@ module.exports = function(grunt) {
     // static file generator
     jekyll: {
       compile: {
-        src:            '<%= happyPlan.build.jekyll._ %>',
-        dest:           '<%= happyPlan.build.jekyll.dest %>',
-        baseurl:        '<%= happyPlan.baseUrl %>',
-        pygments:       true
+        config: '<%= happyPlan.build.jekyll._ %>/_config.yml'
       }
     },
 
