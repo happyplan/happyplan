@@ -43,7 +43,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     │   │   ├── _styles                 // CSS
     │   │   │   ├── _font-icons.scss    // Used if you use grunt-webfont (svg-to-font tool), do not edit it
     │   │   │   └── style.scss          // Where you put all your styles
-    │   │   ├── _svg-to-fonts           // SVG transformed into fonts
+    │   │   ├── _glyphicons           // SVG transformed into fonts
     │   │   └── fonts                   // Fonts
     │   └── medias                      // Content elements like videos, images, audios
     ├── .bowerrc                        // Where you define your options for bower
@@ -188,11 +188,11 @@ Here is the available commands
 Generate required configuration from `happy-plan.json`
 
     $ happyplan init
-    
+
 Launch the development taskk (init, build, watch, server & auto open)
 
     $ happyplan dev
-    
+
 Launch the optimized build for distribution
 
     $ happyplan dist

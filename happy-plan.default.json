@@ -17,7 +17,7 @@
       "images": "<%= happyPlan.src.assets.path %>_images",
       "fonts": "<%= happyPlan.src.assets.path %>_fonts",
       "static": "<%= happyPlan.src.assets.path %>",
-      "webfont": "<%= happyPlan.src.assets.path %>_svg-to-fonts",
+      "webfont": "<%= happyPlan.src.assets.path %>_glyphicons",
       "bower_components": "<%= happyPlan.src.assets.path %>_bower_components"
     },
     "jekyll": {
