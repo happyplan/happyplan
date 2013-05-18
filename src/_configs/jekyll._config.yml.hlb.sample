@@ -3,6 +3,11 @@
 env: {{ env }}
 version: "{{ pkg.version }}"
 
+source:      "{{ happyPlan.build.jekyll._ }}"
+destination: "{{ happyPlan.build.jekyll.dest }}"
+#plugins:     ./_plugins
+#layouts:     ./_layouts
+
 url: "{{ pkg.url }}"
 name: "{{ pkg.name }}"
 description: "{{ pkg.description }}"

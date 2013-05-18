@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 
   // imports
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
   // set option
@@ -96,10 +96,7 @@ module.exports = function(grunt) {
     // static file generator
     jekyll: {
       compile: {
-        src:            '<%= happyPlan.build.jekyll._ %>',
-        dest:           '<%= happyPlan.build.jekyll.dest %>',
-        baseurl:        '<%= happyPlan.baseUrl %>',
-        pygments:       true
+        config: '<%= happyPlan.build.jekyll._ %>/_config.yml'
       }
     },
 
@@ -192,20 +189,23 @@ module.exports = function(grunt) {
 
     // concat scripts
     concat: {
-      dist: {
-        files: {
-          '<%= happyPlan.dist.assets.scripts %>/script.js': ['<%= happyPlan.src.assets.scripts %>/*.js']
-        }
-      }
+      dist: deepmerge({
+          options: {
+            banner: "<%= happyPlan.assets.banner %>"
+          },
+          files: happyPlan.assets.scripts
+        }, happyPlan.grunt.concat || {})
     },
 
     // minify javascript
     uglify: {
-      dist: {
-        files: {
-          '<%= happyPlan.dist.assets.scripts %>/script.js': ['<%= happyPlan.dist.assets.scripts %>/script.js']
-        }
-      }
+      // just merge hp options correctly
+      dist: deepmerge({
+          options: {
+            banner: "<%= happyPlan.assets.banner %>"
+          },
+          files: happyPlan.assets.scripts
+        }, happyPlan.grunt.uglify || {})
     },
     
     webfont: {
@@ -214,9 +214,15 @@ module.exports = function(grunt) {
         dest: '<%= happyPlan.dist.assets.fonts %>',
         destCss: '<%= happyPlan.src.assets.styles %>',
         options: {
-            styles: 'font-icons',
+            relativeFontPath: require('path').relative(
+              // we must process template here because it's not already done by the grunt.init at this time
+              // PR if u have a better solution :)
+              __dirname + '/' + grunt.template.process('<%= happyPlan.dist.assets.styles %>', { data: { happyPlan: happyPlan}}),
+              __dirname + '/' + grunt.template.process('<%= happyPlan.dist.assets.fonts %>', { data: { happyPlan: happyPlan}})
+            ),
             stylesheet: 'scss',
-            hashes: false
+            hashes: false,
+            htmlDemo: false
         }
       }
     },
@@ -335,12 +341,12 @@ module.exports = function(grunt) {
 
   // webfont:svgToFonts wrapper
   grunt.registerTask('happyPlan:svgToFonts', "Execute or skip 'webfont:svgToFonts' depending of the presence of SVG files in the '<%= happyPlan.src.assets.webfont %>' folder.", function() {
-    if (require('fs').existsSync('<%= happyPlan.src.assets.webfont %>/*.svg')) {
-      grunt.log.writeln("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'.");
+    if (grunt.file.expand(grunt.template.process('<%= happyPlan.src.assets.webfont %>/*.svg')).length) {
+      grunt.log.writeln(grunt.template.process("SVG files in '<%= happyPlan.src.assets.webfont %>'. Executing 'webfont:svgToFonts'."));
       grunt.task.run('webfont:svgToFonts');
     }
     else {
-      grunt.log.writeln("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.");
+      grunt.log.writeln(grunt.template.process("No SVG file in '<%= happyPlan.src.assets.webfont %>'. Skipping 'webfont:svgToFonts'.").yellow);
     }
   });
 
