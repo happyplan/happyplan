@@ -1,0 +1,61 @@
+/*
+Syntax error: File to import not found or unreadable: ../_components/normalize.scss/_normalize.scss.
+              Load paths:
+                /Users/kud/Sites/_kud/happy-plan/src/assets/_styles
+                /Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets
+                /Users/kud/Sites/_kud/happy-plan/src/assets/_bower_components
+                /Users/kud/Sites/_kud/happy-plan/src/assets/_bower_components
+                Compass::SpriteImporter
+        on line 2 of /Users/kud/Sites/_kud/happy-plan/src/assets/_styles/style.scss
+
+1: /Users/kud/Sites/_kud/happy-plan/src/assets/_styles/style.scss
+
+Backtrace:
+/Users/kud/Sites/_kud/happy-plan/src/assets/_styles/style.scss:2
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/import_node.rb:45:in `import'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/tree/root_node.rb:20:in `render'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/engine.rb:315:in `_render'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/engine.rb:262:in `render'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:146:in `block (2 levels) in compile'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:132:in `timed'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:145:in `block in compile'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/logger.rb:46:in `red'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:144:in `compile'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:124:in `compile_if_required'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:109:in `block (2 levels) in run'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:107:in `each'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:107:in `block in run'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:132:in `timed'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:106:in `run'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/commands/update_project.rb:45:in `perform'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/commands/base.rb:18:in `execute'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/bin/compass:30:in `block in <top (required)>'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/bin/compass:44:in `call'
+/Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/bin/compass:44:in `<top (required)>'
+/Users/kud/.rbenv/versions/1.9.3-p194/bin/compass:23:in `load'
+/Users/kud/.rbenv/versions/1.9.3-p194/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: ../_components/normalize.scss/_normalize.scss.\A               Load paths:\A                 /Users/kud/Sites/_kud/happy-plan/src/assets/_styles\A                 /Users/kud/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets\A                 /Users/kud/Sites/_kud/happy-plan/src/assets/_bower_components\A                 /Users/kud/Sites/_kud/happy-plan/src/assets/_bower_components\A                 Compass::SpriteImporter\A         on line 2 of /Users/kud/Sites/_kud/happy-plan/src/assets/_styles/style.scss\A \A 1: /Users/kud/Sites/_kud/happy-plan/src/assets/_styles/style.scss"; }
