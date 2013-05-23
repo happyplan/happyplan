@@ -369,10 +369,12 @@ module.exports = function(grunt) {
   grunt.registerTask('build',   ['clean:dist', 'happyPlan:init', 'jekyll:dist', 'copy:root', 'happyPlan:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
+  grunt.registerTask('publish', ['dist', 'gh-pages']);
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
 
   // server
   grunt.registerTask('server', 'connect:server');
 
+  // test
   grunt.registerTask('test', ['dist', 'nodeunit']);
 };
