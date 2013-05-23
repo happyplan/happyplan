@@ -2,7 +2,7 @@
 
 > When Grunt.js uses Jekyll as a peon.
 
-Happy plan is bundle of amazing tools to be used as a static website generator. It's all about fun and so easy to publish on [gh-pages](http://pages.github.com/).
+Happy plan is a static website generator based on a bundle of amazing tools . It's just all about fun.
 
 ### What in it?
 
@@ -65,6 +65,10 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
     $ (sudo) gem install jekyll
+    
+### Compass [[+](http://compass-style.org/install/)]
+
+    $ (sudo) gem install compass
 
 ### Node.js [[+](https://github.com/joyent/node/wiki/Installation)]
 
@@ -77,10 +81,6 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 ### Grunt.js (>0.4) [[+](http://gruntjs.com/getting-started)]
 
     $ npm install -g grunt-cli
-
-### Compass [[+](http://compass-style.org/install/)]
-
-    $ (sudo) gem install compass
 
 ### Optionals
 
@@ -114,9 +114,9 @@ You can create a `happy-plan.json` at the root to override the content of `happy
 
 To configure others used tools, you have differentes possibilities depending on the tool.
 
-#### Bower `.bowerrc`
+#### Bower
 
-Bower configuration file is generated from the `bower.bowerrc` section in the `happy-plan`configuration
+Bower configuration file is generated from the `bower.bowerrc` section in the `happy-plan` configuration
 
 #### `/src/_configs/*`
 
@@ -147,7 +147,7 @@ Using `watch` will allow you to test & dev your posts with livereload included (
 
 #### Server
 
-When you start `$ grunt`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
+When you start `grunt`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
 
 ---
 
@@ -155,27 +155,32 @@ When you start `$ grunt`, you already have a server started to display your webp
 
 If you want to publish your build on the gh-pages:
 
-    $ bin/publish.sh
+    $ grunt publish
 
 This script builds the website (grunt dist) & commit + push on gh-pages branch.
-
-### Please, read it
-
-If you want to publish your website with the publish script, you absolutely need that your source branch is called `src`.
 
 #### Warning for username.github.com
 
 `username.github.com` is a bit special. Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (don't try `gh-pages`, it won't work).
 
-For that, simply use `$ bin/publish.sh --master (or -m)`
+For that, create or modify `happy-plan.json` and add this option:
+
+```
+"git": {
+    "branch": "master"
+  }
+```
+
+Now you can easily push your website on this branch via `$ grunt publish`
+
 
 ## Create a new post
 
 Want to create a new post quickly? No problem.
 
-    $ node bin/newpost.js
+    $ happyPlan newpost
 
-This create a new post in `src/_posts`.
+This create a new post in `src/_posts/_drafts`.
 
 For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
 
@@ -189,7 +194,7 @@ Generate required configuration from `happy-plan.json`
 
     $ happyplan init
 
-Launch the development taskk (init, build, watch, server & auto open)
+Launch the development task (init, build, watch, server & auto open)
 
     $ happyplan dev
 
