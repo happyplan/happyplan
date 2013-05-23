@@ -173,32 +173,27 @@ For that, create or modify `happy-plan.json` and add this option:
 
 Now you can easily push your website on this branch via `$ grunt publish`
 
-
-## Create a new post
-
-Want to create a new post quickly? No problem.
-
-    $ happyplan newpost
-
-This create a new post in `src/_posts/_drafts`.
-
-For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
-
 ## Command helper
 
 There is an available `happyplan` binary. You can add `./bin`to your PATH to be able to call this bin directly instead of grunt.
 
-Here is the available commands
+Here is the available commands:
 
-Generate required configuration from `happy-plan.json`
+##### Create a new post
+
+    $ happyplan newpost
+
+This create a new post in `src/_posts/_drafts`. For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
+
+##### Generate required configuration from `happy-plan.json`
 
     $ happyplan init
 
-Launch the development task (init, build, watch, server & auto open)
+##### Launch the development task (init, build, watch, server & auto open)
 
     $ happyplan dev
 
-Launch the optimized build for distribution
+##### Launch the optimized build for distribution
 
     $ happyplan dist
 
