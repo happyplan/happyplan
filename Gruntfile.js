@@ -10,12 +10,12 @@ module.exports = function(grunt) {
   grunt.log.writeln('Environnment is'.grey, grunt.option('env').cyan);
 
   var deepmerge = require('deepmerge');
-  
+
   var happyPlan = grunt.file.readJSON('happy-plan.default.json');
   if (grunt.file.exists('happy-plan.json')) {
     happyPlan = deepmerge(happyPlan, grunt.file.readJSON('happy-plan.json'));
   }
-  
+
   // project configuration
   var pkg = grunt.file.readJSON('package.json');
 
@@ -24,9 +24,17 @@ module.exports = function(grunt) {
 
     pkg: pkg,
     happyPlan: happyPlan,
-    
+
     jshint: happyPlan.grunt.jshint,
-    
+
+    'gh-pages': {
+      options: {
+        base: '<%= happyPlan.dist.path %>',
+        branch: '<%= happyPlan.git.branch %>'
+      },
+      src: ['**/*']
+    },
+
     assemble: {
       options: {
         // pass variables
@@ -34,7 +42,6 @@ module.exports = function(grunt) {
         env: grunt.option('env'),
         pkg: pkg,
         happyPlan: happyPlan,
-        
         engine: 'handlebars'
       },
       jekyll: {
@@ -207,7 +214,7 @@ module.exports = function(grunt) {
           files: happyPlan.assets.scripts
         }, happyPlan.grunt.uglify || {})
     },
-    
+
     webfont: {
       svgToFonts: {
         src: '<%= happyPlan.src.assets.webfont %>/*.svg',
@@ -312,7 +319,7 @@ module.exports = function(grunt) {
           tasks: ['livereload']
       }
     },
-    
+
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
@@ -329,12 +336,12 @@ module.exports = function(grunt) {
       }
     });
   });
-  
+
   grunt.registerTask('happyPlan:config_bowerrc', "Create a .bowerrc file from the Happy-Plan configuration", function() {
     grunt.file.write('.bowerrc', JSON.stringify(grunt.config.get('happyPlan').bower.bowerrc, null, 4));
     grunt.log.writeln('.bowerrc'.cyan + ' created.'.grey);
   });
-  
+
   // configs shouldn't be fired each build, because if we do so, compass just start with a fresh cache (no-cache = fews seconds...)
   // So, 'regarde' fire 'configs' :)
   grunt.registerTask('happyPlan:configs', ['assemble:compass', 'happyPlan:config_bowerrc']);
@@ -351,19 +358,19 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('happyPlan:init', ['happyPlan:configs_sample', 'happyPlan:configs']);
-  
+
   // jekyll
   grunt.registerTask('jekyll:config', ['assemble:jekyll']);
   grunt.registerTask('jekyll:copy',   ['copy:jekyllPages', 'copy:jekyllPosts', 'copy:jekyllPartials', 'copy:jekyllLayouts']);
   grunt.registerTask('jekyll:build',  ['clean:jekyll','jekyll:config', 'jekyll:copy', 'jekyll:compile']);
   grunt.registerTask('jekyll:dist',   ['jekyll:build', 'copy:jekyllBuildToDist']);
-  
+
   // public commands
   grunt.registerTask('build',   ['clean:dist', 'happyPlan:init', 'jekyll:dist', 'copy:root', 'happyPlan:svgToFonts', 'copy:images', 'copy:static', 'copy:medias', 'concat:dist']);
   grunt.registerTask('dev',     ['jshint', 'build', 'compass:dev']);
   grunt.registerTask('dist',    ['jshint', 'build', 'compass:dist', 'uglify:dist', 'imagemin:dist', 'clean:build']);
   grunt.registerTask('default', ['dev', 'livereload-start', 'server', 'open:dev', 'regarde']);
-  
+
   // server
   grunt.registerTask('server', 'connect:server');
 

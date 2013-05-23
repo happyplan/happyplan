@@ -13,7 +13,7 @@ bower_components
 dist
 build
 
-# config 
+# config
 src/_configs/*.hlb
 
 # generated config
@@ -23,3 +23,6 @@ config.rb
 # bower folder
 src/assets/_bower_components/*
 !src/assets/_bower_components/.empty
+
+# gh-page
+.grunt

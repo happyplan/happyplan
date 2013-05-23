@@ -100,5 +100,8 @@
       "<%= happyPlan.src.assets.bower_components %>/"
     ],
     "meh": "last path is stupid, it's because of a compass import path issue I think. I should take a deeper look."
+  },
+  "git": {
+    "branch": "gh-pages"
   }
 }

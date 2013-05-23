@@ -28,7 +28,9 @@
     "assemble": "~0.3.30",
     "grunt-contrib-nodeunit": "~0.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-gh-pages": "~0.4.0"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/kud/happy-plan.git"
