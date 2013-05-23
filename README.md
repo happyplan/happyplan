@@ -178,7 +178,7 @@ Now you can easily push your website on this branch via `$ grunt publish`
 
 Want to create a new post quickly? No problem.
 
-    $ happyPlan newpost
+    $ happyplan newpost
 
 This create a new post in `src/_posts/_drafts`.
 
