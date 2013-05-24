@@ -249,4 +249,4 @@ Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)!
 
     #happyplan @ irc.freenode.net
 
-And folllow them on Twitter too: [@happyplanapp](https://twitter.com/happyplanapp)
+And folllow us on Twitter too: [@happyplanapp](https://twitter.com/happyplanapp)
