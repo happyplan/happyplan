@@ -1,5 +1,8 @@
 # Happy Plan! [![Build Status](https://travis-ci.org/kud/happy-plan.png?branch=master)](https://travis-ci.org/kud/happy-plan)
 
+![Logo](https://raw.github.com/kud/happy-plan/master/logo.png)
+
+
 > When Grunt.js uses Jekyll as a peon.
 
 Happy plan is a static website generator based on a bundle of amazing tools . It's just all about fun.
@@ -231,4 +234,8 @@ Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)!
     #happyplan @ irc.freenode.net
 
 And folllow us on Twitter too: [@happyplanapp](https://twitter.com/happyplanapp)
+
+## Credits
+
+Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent logo.
 

@@ -34,7 +34,6 @@ programme.option({
         currentDate = moment().format('YYYY-MM-DD'),
         answer = data.name;
 
-
     if(answer !== '') {
       postName = answer;
     }
