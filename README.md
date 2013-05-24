@@ -248,3 +248,5 @@ Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter
 Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
 
     #happyplan @ irc.freenode.net
+
+And folllow them on Twitter too: [@happyplanapp](https://twitter.com/happyplanapp)
