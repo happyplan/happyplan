@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var programme = require('celeri'),
+    sys = require('sys'),
+    spawn = require('child_process').spawn,
+    fs = require('fs'),
+    readline = require('readline')
+    moment = require('moment');
+
+programme.usage('happy [command]');
+
+programme.option({
+    command: 'publish',
+    description: 'Publish on a certain branch (like gh-pages).'
+}, function() {
+    var grunt = spawn('grunt', ['dist']);
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+});
+
+programme.option({
+    command: 'newpost :name',
+    description: 'Create a new post. Example: newpost "This is my new post\!"'
+}, function(data) {
+    // Config
+    var basePath = 'src/',
+        postName = 'fixme';
+        currentDate = moment().format('YYYY-MM-DD'),
+        answer = data.name;
+
+
+    if(answer !== '') {
+      postName = answer;
+    }
+
+    // Template
+    var fileContent = [
+      '---',
+      'layout: post',
+      'title: "' + postName + '"',
+      'tags: [\'removemeifunneeded\']',
+      '---'
+    ].join('\n');
+
+    var fileName = basePath + '_posts/_drafts/' + currentDate + '-' + postName.toLowerCase().split(' ').join('-').split(',').join('') + '.md';
+
+    fs.writeFile(fileName, fileContent);
+
+    console.log('Your new post was created: ' + fileName + '. Have fun!');
+});
+
+programme.option({
+    command: 'dist',
+    description: 'Distributing mode.'
+}, function() {
+    var grunt = spawn('grunt', ['dist']);
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+});
+
+
+programme.option({
+    command: 'dev',
+    description: 'Development mode.'
+}, function() {
+    var grunt = spawn('grunt');
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+});
+
+programme.option({
+    command: 'init',
+    description: 'Initialise the project.'
+}, function() {
+    var grunt = spawn('grunt', ['happyPlan:init']);
+
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+});
+
+if(process.argv.length == 2) {
+  programme.help();
+}
+
+programme.parse(process.argv);
+

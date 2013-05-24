@@ -60,7 +60,7 @@ According you already have ruby and npm installed.
 
 ## Requirements
 
-The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)).
+The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)). Oh and all `happy` commands can be started for the moment only if you add `./bin` in your `PATH`. If not, you have to add `bin/` before all commands like `bin/happy help`.
 
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
@@ -98,6 +98,7 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 #### Tree [[+](http://mama.indstate.edu/users/ice/tree/)]
 
     $ brew install tree
+
 ---
 
 ## Installation
@@ -129,35 +130,35 @@ You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `
 
 To generate these 3 configurations files (bower, jekyll & compass) before launching the `dev` task (eg: to install a bower component) you can run
 
-    $ grunt happyPlan:init
+    $ happy init
 
 *This task is not required since it's launched by all build tasks*
 
-## Build
-
-To build the website
-
-    $ grunt dist
+---
 
 ### Development
 
 Using `watch` will allow you to test & dev your posts with livereload included (it needs a [livereload browser extension](http://go.livereload.com/extensions))
 
-    $ grunt
+    $ happy dev
 
 #### Server
 
-When you start `grunt`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
+When you start `happy dev`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
 
----
+## Build
+
+To build the website
+
+    $ happy dist
 
 ## Publish on gh-pages (github)
 
 If you want to publish your build on the gh-pages:
 
-    $ grunt publish
+    $ happy publish
 
-This script builds the website (grunt dist) & commit + push on gh-pages branch.
+This script builds the website (happy dist) & commit + push on gh-pages branch.
 
 #### Warning for username.github.com
 
@@ -171,35 +172,15 @@ For that, create or modify `happy-plan.json` and add this option:
   }
 ```
 
-Now you can easily push your website on this branch via `$ grunt publish`
+Now you can easily push your website on this branch via `$ happy publish`
 
-## Command helper
-
-There is an available `happyplan` binary. You can add `./bin`to your PATH to be able to call this bin directly instead of grunt.
-
-Here is the available commands:
-
-##### Create a new post
+## Create a new post
 
     $ happyplan newpost
 
 This create a new post in `src/_posts/_drafts`. For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
 
-##### Generate required configuration from `happy-plan.json`
-
-    $ happyplan init
-
-##### Launch the development task (init, build, watch, server & auto open)
-
-    $ happyplan dev
-
-##### Launch the optimised build for distribution
-
-    $ happyplan dist
-
-##### Publish on github
-
-    $ happyplan publish
+---
 
 ## Contributing
 
@@ -250,3 +231,4 @@ Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)!
     #happyplan @ irc.freenode.net
 
 And folllow us on Twitter too: [@happyplanapp](https://twitter.com/happyplanapp)
+

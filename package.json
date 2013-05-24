@@ -6,7 +6,6 @@
   "license": "BSD",
   "dependencies": {
     "bower": "~0.9.2",
-    "commander": "~1.1.1",
     "matchdep": "~0.1.2",
     "deepmerge": "~0.2.5",
     "grunt": "~0.4.1",
@@ -27,7 +26,8 @@
     "grunt-open": "~0.2.0",
     "assemble": "~0.3.30",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-gh-pages": "~0.4.0"
+    "grunt-gh-pages": "~0.4.0",
+    "celeri": "~0.3.2"
   },
   "repository": {
     "type": "git",
