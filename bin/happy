@@ -7,11 +7,55 @@
 var programme = require('celeri'),
     sys = require('sys'),
     spawn = require('child_process').spawn,
-    fs = require('fs'),
+    fs = require('fs-extra'),
     readline = require('readline')
-    moment = require('moment');
+    moment = require('moment'),
+    bower = require('bower');
+
+// Config
+bower.config.directory = 'themes';
 
 programme.usage('happy [command]');
+
+/**
+ * Order is from bottom to top, celeri requirement.
+ */
+programme.option({
+  command: 'theme use :theme',
+  description: 'Use a theme. (Warning: it will overwrite your current src files)'
+}, function(data) {
+  fs.copy('themes/' + data.theme, 'src', function(err) {
+    if (err) {
+      console.error('➤ There\'s an error with "' + data.theme + '" theme. Are you sure it\'s the correct name?');
+      console.error('');
+      console.error('DEBUG:');
+      console.error(err);
+    }
+    else {
+      console.log('➤ You now use "' + data.theme + '" theme.');
+    }
+  });
+});
+
+programme.option({
+  command: 'theme install :theme',
+  description: 'Install a theme.'
+}, function(data) {
+  var error = false;
+
+  bower
+    .commands
+    .install([data.theme])
+    .on('error', function() {
+      console.log('➤ Error during installation of "' + data.theme + '" theme.');
+      error = true;
+    })
+    .on('end', function () {
+      if(!error) {
+        console.log('➤ "' + data.theme + '" installed.');
+      }
+    });
+});
 
 programme.option({
     command: 'publish',

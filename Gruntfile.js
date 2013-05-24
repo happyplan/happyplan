@@ -159,7 +159,6 @@ module.exports = function(grunt) {
           dest: '<%= happyPlan.build.jekyll._ %>/_includes'
         }]
       },
-
       static: {
         files: [{
           expand: true,

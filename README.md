@@ -139,7 +139,7 @@ To generate these 3 configurations files (bower, jekyll & compass) before launch
 
 ---
 
-### Development
+## Development
 
 Using `watch` will allow you to test & dev your posts with livereload included (it needs a [livereload browser extension](http://go.livereload.com/extensions))
 
@@ -179,9 +179,27 @@ Now you can easily push your website on this branch via `$ happy publish`
 
 ## Create a new post
 
-    $ happyplan newpost
+    $ happy newpost
 
 This create a new post in `src/_posts/_drafts`. For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
+
+---
+
+## Theming
+
+Aye, you can theme Happy Plan, great isn't it?
+
+#### Install a theme
+
+    $ happy theme install :themeName
+
+(It will download your theme via bower.)
+
+#### Use a theme
+
+    $ happy theme use :themeName
+
+(Warning, it overwrites your file in `src` folder.)
 
 ---
 

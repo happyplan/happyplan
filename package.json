@@ -27,7 +27,8 @@
     "assemble": "~0.3.30",
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt-gh-pages": "~0.4.0",
-    "celeri": "~0.3.2"
+    "celeri": "~0.3.2",
+    "fs-extra": "~0.6.1"
   },
   "repository": {
     "type": "git",
