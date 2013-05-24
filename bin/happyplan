@@ -83,16 +83,16 @@ programme
     });
   });
 
-// programme
-//   .command('publish')
-//   .description('publish on github')
-//   .action(function(){
-//     var publish = spawn('./bin/publish.sh');
+programme
+  .command('publish')
+  .description('publish on github')
+  .action(function(){
+    var grunt = spawn('grunt', ['publish']);
 
-//     publish.stdout.on('data', function (data) {
-//       process.stdout.write('' + data);
-//     });
-//   });
+    grunt.stdout.on('data', function (data) {
+      process.stdout.write('' + data);
+    });
+  });
 
 if(process.argv.length == 2) {
   programme.help();

@@ -193,9 +193,13 @@ This create a new post in `src/_posts/_drafts`. For more informations about post
 
     $ happyplan dev
 
-##### Launch the optimized build for distribution
+##### Launch the optimised build for distribution
 
     $ happyplan dist
+
+##### Publish on github
+
+    $ happyplan publish
 
 ## Contributing
 
