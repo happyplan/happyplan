@@ -199,7 +199,7 @@ Aye, you can theme Happy Plan, great isn't it?
 
     $ happy theme use :themeName
 
-(Warning, it overwrites your file in `src` folder.)
+(Warning, it overwrites your files in `src` folder.)
 
 ---
 
