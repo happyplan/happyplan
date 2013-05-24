@@ -5,7 +5,7 @@
 
 > When Grunt.js uses Jekyll as a peon.
 
-Happy plan is a static website generator based on a bundle of amazing tools . It's just all about fun.
+Happy plan is a static website generator based on a bundle of amazing tools. It's just all about fun.
 
 ### What in it?
 
