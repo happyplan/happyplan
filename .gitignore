@@ -24,5 +24,9 @@ config.rb
 src/assets/_bower_components/*
 !src/assets/_bower_components/.empty
 
+# themes folder
+themes/*
+!themes/.empty
+
 # gh-page
 .grunt
