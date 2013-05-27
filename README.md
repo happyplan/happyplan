@@ -46,7 +46,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     │   └── medias                      // Content elements like videos, images, audios
     ├── bower.json                      // Where you define your options used by bower
     ├── happyplan.json                  // You can create this file to override the default config.
-    
+
 
 ## TL;DR
 According you already have ruby and npm installed.
@@ -75,7 +75,7 @@ According you already have ruby and npm installed.
 
     $ npm install -g grunt-cli
 
-### Happy Plan cli 
+### Happy Plan cli
 
     $ npm install -g happyplan-cli
 
@@ -111,6 +111,16 @@ That's it. Now you can start your website bro'.
 You can create a `happyplan.json` at the root to override the content of [`happyplan.default.json`](https://github.com/happyplan/happyplan/blob/master/happy-plan.default.json). Both will be **deeply merged** together.
 
 To configure others used tools, you have differentes possibilities depending on the tool.
+
+#### Compass
+
+If you need/want to add some sass or compass plugin in Happy Plan, just modify your `happyplan.json` and add theses lines:
+
+```
+"compass": {
+  "require": ['my-plugin']
+}
+```
 
 #### Bower
 
