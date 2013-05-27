@@ -11,9 +11,9 @@ module.exports = function(grunt) {
 
   var deepmerge = require('deepmerge');
 
-  var happyPlan = grunt.file.readJSON('happy-plan.default.json');
-  if (grunt.file.exists('happy-plan.json')) {
-    happyPlan = deepmerge(happyPlan, grunt.file.readJSON('happy-plan.json'));
+  var happyPlan = grunt.file.readJSON('happyplan.default.json');
+  if (grunt.file.exists('happyplan.json')) {
+    happyPlan = deepmerge(happyPlan, grunt.file.readJSON('happyplan.json'));
   }
 
   // project configuration

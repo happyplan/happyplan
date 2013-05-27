@@ -1,6 +1,6 @@
 {
   "localhost": {
-    "hostname": "127.0.0.1",
+    "hostname": "localhost",
     "port": 8080
   },
   "src": {
@@ -77,7 +77,7 @@
       "files": [
         "Gruntfile.js",
         "package.json",
-        "happy-plan.json",
+        "happyplan.json",
         "<%= happyPlan.src.assets.scripts %>/**/*.js",
         "!<%= happyPlan.src.assets.scripts %>/lib/**/*"
       ]

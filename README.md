@@ -1,7 +1,6 @@
-# Happy Plan! [![Build Status](https://travis-ci.org/kud/happy-plan.png?branch=master)](https://travis-ci.org/kud/happy-plan)
+# Happy Plan! [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
 
-![Logo](https://raw.github.com/kud/happy-plan/master/logo.png)
-
+![Logo](https://raw.github.com/happyplan/happyplan/master/logo.png)
 
 > When Grunt.js uses Jekyll as a peon.
 
@@ -20,10 +19,6 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 
 ## Arborescence
 
-    .
-    ├── bin                             // Some binaries used by happy plan
-    │   ├── newpost.js                  // Allows you to create a new post via $ node ./bin/newpost.js
-    │   └── publish.sh                  // To publish on gh-pages via $ ./bin/publish.sh
     ├── build                           // Where your app is built but you don't have to care about it
     ├── dist                            // Your final app
     ├── src                             // This is where all comes
@@ -49,21 +44,16 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
     │   │   ├── _glyphicons           // SVG transformed into fonts
     │   │   └── fonts                   // Fonts
     │   └── medias                      // Content elements like videos, images, audios
-    ├── .bowerrc                        // Where you define your options for bower
-    ├── Gruntfile.js                    // Compilation file
-    ├── component.json                  // Where you define your options used by bower
-    ├── happy-plan.default.json         // All config used by happy plan
-    ├── happy-plan.json                 // You can create this file to override the default config.
-    └── README.md                       // PLEASE, READ IT, but it seems you are
+    ├── bower.json                      // Where you define your options used by bower
+    ├── happyplan.json                  // You can create this file to override the default config.
+    
 
 ## TL;DR
 According you already have ruby and npm installed.
 
-    $ gem install jekyll compass && npm install -g grunt-cli bower && npm install
+    $ gem install jekyll compass && npm install -g grunt-cli bower happyplan-cli && npm install
 
 ## Requirements
-
-The easy way is on **OS X** (but it shouldn't be so hard to make this working on any unix like system. Make a PR :)). Oh and all `happy` commands can be started for the moment only if you add `./bin` in your `PATH`. If not, you have to add `bin/` before all commands like `bin/happy help`.
 
 ### Jekyll [[+](https://github.com/mojombo/jekyll/wiki/install)]
 
@@ -84,6 +74,10 @@ The easy way is on **OS X** (but it shouldn't be so hard to make this working on
 ### Grunt.js (>0.4) [[+](http://gruntjs.com/getting-started)]
 
     $ npm install -g grunt-cli
+
+### Happy Plan cli 
+
+    $ npm install -g happyplan-cli
 
 ### Optionals
 
@@ -114,13 +108,13 @@ That's it. Now you can start your website bro'.
 
 ### Configuration
 
-You can create a `happy-plan.json` at the root to override the content of `happy-plan.default.json`. Both will be **deeply merged** together.
+You can create a `happyplan.json` at the root to override the content of [`happyplan.default.json`](https://github.com/happyplan/happyplan/blob/master/happy-plan.default.json). Both will be **deeply merged** together.
 
 To configure others used tools, you have differentes possibilities depending on the tool.
 
 #### Bower
 
-Bower configuration file is generated from the `bower.bowerrc` section in the `happy-plan` configuration
+Bower configuration file is generated from the `bower.bowerrc` section in the `happyplan` configuration
 
 #### `/src/_configs/*`
 
@@ -133,7 +127,7 @@ You can use edit `hlb` files `/src/_configs/*.hlb` that should be created from `
 
 To generate these 3 configurations files (bower, jekyll & compass) before launching the `dev` task (eg: to install a bower component) you can run
 
-    $ happy init
+    $ happyplan init
 
 *This task is not required since it's launched by all build tasks*
 
@@ -143,23 +137,23 @@ To generate these 3 configurations files (bower, jekyll & compass) before launch
 
 Using `watch` will allow you to test & dev your posts with livereload included (it needs a [livereload browser extension](http://go.livereload.com/extensions))
 
-    $ happy dev
+    $ happyplan dev
 
 #### Server
 
-When you start `happy dev`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
+When you start `happyplan dev`, you already have a server started to display your webpages. `http://localhost:8080` should be opened in your browser automatically :)
 
 ## Build
 
 To build the website
 
-    $ happy dist
+    $ happyplan dist
 
 ## Publish on gh-pages (github)
 
 If you want to publish your build on the gh-pages:
 
-    $ happy publish
+    $ happyplan publish
 
 This script builds the website (happy dist) & commit + push on gh-pages branch.
 
@@ -167,7 +161,7 @@ This script builds the website (happy dist) & commit + push on gh-pages branch.
 
 `username.github.com` is a bit special. Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (don't try `gh-pages`, it won't work).
 
-For that, create or modify `happy-plan.json` and add this option:
+For that, create or modify `happyplan.json` and add this option:
 
 ```
 "git": {
@@ -175,11 +169,11 @@ For that, create or modify `happy-plan.json` and add this option:
   }
 ```
 
-Now you can easily push your website on this branch via `$ happy publish`
+Now you can easily push your website on this branch via `$ happyplan publish`
 
 ## Create a new post
 
-    $ happy newpost
+    $ happyplan newpost
 
 This create a new post in `src/_posts/_drafts`. For more informations about posts, just read [Jekyll's doc](https://github.com/mojombo/jekyll/wiki)
 
@@ -191,13 +185,13 @@ Aye, you can theme Happy Plan, great isn't it?
 
 #### Install a theme
 
-    $ happy theme install :themeName
+    $ happyplan theme install :themeName
 
 (It will download your theme via bower.)
 
 #### Use a theme
 
-    $ happy theme use :themeName
+    $ happyplan theme use :themeName
 
 (Warning, it overwrites your files in `src` folder.)
 
@@ -214,19 +208,6 @@ You can run in one command the build process & the tests.
 In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specified in the `package.json`. In our case, it run `grunt test`. And to be precise, the `test` task run the `dist` task & the `nodeunit` one.
 
 ---
-
-## Upgrading version
-
-To get latest stable update you can just merge
-
-    $ git remote add happy-plan git@github.com:kud/happy-plan.git
-    $ git pull happy-plan master
-
-To try experimental features, you can just git pull another branch like this
-
-    $ git pull happy-plan feature-x
-
-**When you update from remote be careful to following *Release history* to update if needed you configuration files until we found a simpler solution to handle updates**
 
 ## Release History
 

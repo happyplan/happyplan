@@ -1,5 +1,5 @@
 {
-  "name": "happy-plan",
+  "name": "happyplan",
   "version": "0.3.0",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
   "author": "Erwann Mest",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kud/happy-plan.git"
+    "url": "git://github.com/happyplan/happyplan.git"
   },
   "keywords": [
     "static",
