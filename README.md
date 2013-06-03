@@ -1,4 +1,4 @@
-# Happy Plan! [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
+# Happy Plan! [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan) [![Project Status](http://githubkanban.herokuapp.com/images/happyplan_happyplan.png)](http://bit.ly/12qbilE)
 
 ![Logo](https://raw.github.com/happyplan/happyplan/master/logo.png)
 
