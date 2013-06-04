@@ -51,7 +51,11 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 ## TL;DR
 According you already have ruby and npm installed.
 
-    $ gem install jekyll compass && npm install -g grunt-cli bower happyplan-cli && npm install
+    $ git clone https://github.com/happyplan/happyplan
+    $ cd happyplan
+    $ gem install jekyll compass 
+    $ npm install -g grunt-cli bower happyplan-cli 
+    $ npm install
 
 ## Requirements
 
