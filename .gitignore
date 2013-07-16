@@ -12,21 +12,4 @@ bower_components
 # build
 dist
 build
-
-# config
-src/_configs/*.hlb
-
-# generated config
-.bowerrc
-config.rb
-
-# bower folder
-src/assets/_bower_components/*
-!src/assets/_bower_components/.empty
-
-# themes folder
-themes/*
-!themes/.empty
-
-# gh-page
-.grunt
+test/sandbox/*

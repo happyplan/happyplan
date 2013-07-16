@@ -1,0 +1,22 @@
+{
+  "theme": {
+    "faketheme": {
+      "_": "<%= happyplan.bower_components %>/faketheme",
+      "assets": {
+        "_": "<%= happyplan.theme.faketheme._ %>/assets",
+        "styles": "<%= happyplan.theme.faketheme.assets._ %>/_styles",
+        "images": "<%= happyplan.theme.faketheme.assets._ %>/_images",
+        "glyphicons": "<%= happyplan.theme.faketheme.assets._ %>/_glyphicons",
+        "fonts": "<%= happyplan.theme.faketheme.assets._ %>/fonts"
+      },
+      "html": {
+        "layouts": "<%= happyplan.theme.faketheme._ %>/layouts",
+        "partials": "<%= happyplan.theme.faketheme._ %>/partials",
+        "pages": "<%= happyplan.theme.faketheme._ %>/pages"
+      }
+    }
+  },
+  "jekyll": {
+    "permalink": "/:categories/:year/:title.html"
+  }
+}

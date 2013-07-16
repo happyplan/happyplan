@@ -1,0 +1,7 @@
+{
+  "theme": {
+    "local": {
+      "parent": "faketheme"
+    }
+  }
+}
