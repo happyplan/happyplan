@@ -106,11 +106,11 @@ Here is what you can get you will use happyplan :
 
 ### Configuration
 
-You can create a `happyplan.json` at the root to override the default configuration [`happyplan.json`](defaultconf). Both will be **deeply merged** together.
+You can create a `happyplan.json` at the root to override the default configuration [`happyplan.json`][defaultconf]. Both will be **deeply merged** together.
 
-_We encourage you to take a look to the [default configuration](defaultconf) before playing with it._
+_We encourage you to take a look to the [default configuration][defaultconf] before playing with it._
 
-As you can see in the [default configuration](defaultconf), _you can change every paths you want_. If you are not happy with basepath, just replace value at the top level (`"_"`).
+As you can see in the [default configuration][defaultconf], _you can change every paths you want_. If you are not happy with basepath, just replace value at the top level (`"_"`).
 Just be sure to be careful when you play with that :)
 
 By default, to configure tools used under the hood, there is a json dedicated section. You should be able to place any native parameters here of the tool in it.
@@ -266,7 +266,7 @@ Here is how themes are interpreted.
 
 ### Theme configuration
 
-Each theme have a section in the `theme` one. Just take a look in the [default configuration](defaultconf)
+Each theme have a section in the `theme` one. Just take a look in the (defaultconf)
 
 ### Inheritance 
 
@@ -284,8 +284,6 @@ A theme can herit from a parent theme. To do this, just add this section to you 
 
 For now `themename` should be a folder accessible in `bower_components` folder.
 But if you feel the need, it won't be difficult to make this lookup smarter.
-
-###
 
 ### Install a theme
 
@@ -342,4 +340,4 @@ Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent
 + [@kud](https://github.com/kud)
 + [@MoOx](https://github.com/MoOx)
 
-[defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json
+[defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"
