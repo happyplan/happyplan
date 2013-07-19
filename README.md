@@ -71,7 +71,7 @@ happyplan
 
 When everything above is okay, just run in your project root:
 
-    $ npm install happy-plan --save-dev
+    $ npm install happyplan --save-dev
 
 That's it. Now you can start your website bro'.
 
@@ -342,4 +342,4 @@ Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent
 + [@kud](https://github.com/kud)
 + [@MoOx](https://github.com/MoOx)
 
-[defaultconf]: https://github.com/happyplan/happyplan/blob/master/happy-plan.json
+[defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json
