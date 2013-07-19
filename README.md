@@ -23,7 +23,7 @@ According you already have Ruby and NPM installed.
 
 ```bash
 gem install jekyll compass
-npm install -g grunt-cli bower happyplan-cli
+npm install -g grunt-cli bower-canary happyplan-cli
 npm install happyplan --save-dev
 happyplan
 ```
@@ -63,7 +63,7 @@ happyplan
 
 #### Bower [[+](https://github.com/bower/bower#installing-bower)]
 
-    $ npm install -g bower
+    $ npm install -g bower-canary
 
 ---
 
@@ -77,7 +77,7 @@ That's it. Now you can start your website bro'.
 
 ## Arborescence
 
-Here is what you can get you will use happyplan : 
+Here is what you can get you will use happyplan :
 
     ├── assets                      // All about design
     │   ├── _glyphicons             // Svg icons to be served as webfont
@@ -122,7 +122,7 @@ Whenever it's possible, we will use simple json to whatever is needed conversion
 For now, only Jekyll is supported to render html & markdown.
 But we are open to alternatives or suggestion [[+](https://github.com/happyplan/happyplan/issues/45)];
 
-##### Jeykyll 
+##### Jeykyll
 
 `jekyll` configuration section will be used converted into YML for Jekyll build (using [`js-yaml`](https://github.com/nodeca/js-yaml)).
 
@@ -253,7 +253,7 @@ For more informations about posts, just read [Jekyll's post documentation](http:
 Aye, you can theme Happy Plan, great isn't it?
 
 _Just to let you know, everything is a theme for happyplan._
-Default files are just the default theme. Local files are just a local theme. 
+Default files are just the default theme. Local files are just a local theme.
 Every theme can have a `happyplan.json` configuration, so this should be very flexible.
 Here is how themes are interpreted.
 
@@ -268,7 +268,7 @@ Here is how themes are interpreted.
 
 Each theme have a section in the `theme` one. Just take a look in the (defaultconf)
 
-### Inheritance 
+### Inheritance
 
 A theme can herit from a parent theme. To do this, just add this section to you configuration:
 
