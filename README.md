@@ -24,7 +24,8 @@ According you already have Ruby and NPM installed.
 ```bash
 gem install jekyll compass
 npm install -g grunt-cli bower-canary happyplan-cli
-npm install happyplan --save-dev
+npm install happyplan
+npm init
 happyplan
 ```
 
@@ -71,9 +72,14 @@ happyplan
 
 When everything above is okay, just run in your project root:
 
-    $ npm install happyplan --save-dev
+    $ npm install happyplan
+    $ npm init
 
-That's it. Now you can start your website bro'.
+That's it. Now you can start your website bro', using default command
+
+    $ happyplan
+
+`/!\` _`npm init` will help you to create `package.json` which will be used for minimal requirements (title & version)._
 
 ## Arborescence
 
