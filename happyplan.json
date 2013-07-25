@@ -22,8 +22,11 @@
       "glyphicons": "<%= happyplan.build.assets._ %>/_glyphicons"
     },
     "media": "<%= happyplan.build._ %>/media",
-    "jekyll": "<%= happyplan.build._ %>/jekyll",
-    "jekyllConfig": "<%= happyplan.build.jekyll %>/_config.yml",
+    "jekyll": {
+      "src": "<%= happyplan.build._ %>/jekyll/src",
+      "dist": "<%= happyplan.build._ %>/jekyll/dist"
+    },
+    "jekyllConfig": "<%= happyplan.build.jekyll.src %>/_config.yml",
     "compassConfig": "<%= happyplan.build._ %>/config.rb"
   },
   "dist": {
@@ -101,8 +104,8 @@
     "env": "<%= happyplan.env %>",
     "version": "<%= pkg.version %>",
 
-    "source":      "<%= happyplan.build.jekyll %>",
-    "destination": "<%= happyplan.dist._ %>",
+    "source":      "<%= happyplan.build.jekyll.src %>",
+    "destination": "<%= happyplan.build.jekyll.dist %>",
 
     "url": "<%= pkg.url %>",
     "name": "<%= pkg.name %>",

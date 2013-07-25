@@ -2,6 +2,7 @@
 module.exports = function(grunt) {
 
   var deepmerge = require('deepmerge');
+  var path = require('path');
 
   var pkg = grunt.file.readJSON('package.json');
 
@@ -90,10 +91,10 @@ module.exports = function(grunt) {
   var prepareBuild_Tasks = {}; // all copy tasks names by types (html|assets)
   var availableFilesPerTheme = {
     "html": {
-      "layouts": "<%= happyplan.build.jekyll %>/_layouts",
-      "partials": "<%= happyplan.build.jekyll %>/_includes",
-      "plugins": "<%= happyplan.build.jekyll %>/_plugins",
-      "pages": "<%= happyplan.build.jekyll %>"
+      "layouts": "<%= happyplan.build.jekyll.src %>/_layouts",
+      "partials": "<%= happyplan.build.jekyll.src %>/_includes",
+      "plugins": "<%= happyplan.build.jekyll.src %>/_plugins",
+      "pages": "<%= happyplan.build.jekyll.src %>"
     },
     "assets": {
       "scripts": "<%= happyplan.build.assets.scripts %>",
@@ -146,13 +147,27 @@ module.exports = function(grunt) {
     expand: true,
     cwd: '<%= happyplan.theme.local.posts %>',
     src: ['**'],
-    dest: '<%= happyplan.build.jekyll %>/_posts'
+    dest: '<%= happyplan.build.jekyll.src %>/_posts'
   }]};
   prepareBuild_Tasks.html.push('copy:th_local-html--posts');
 
   // register preparation task for the entire html tree
   grunt.registerTask('happyplan:prepare-build-html', prepareBuild_Tasks.html);
   grunt.registerTask('happyplan:prepare-build-assets', prepareBuild_Tasks.assets);
+  
+  // clean theme paths
+  // this done here because in files section using minimatch & exclude pattern,
+  // paths not normalized don't match correctly
+  // ex: include /bla/./bla/**/*, exclude /bla/./bla/**/_* don't work as expected
+  for (var themeKey in happyplan.theme) {
+    ["html", "assets"].forEach(function(type) {
+      if (happyplan.theme[themeKey][type]) {
+        for (var childType in happyplan.theme[themeKey][type]) {
+          happyplan.theme[themeKey][type][childType] = path.normalize(grunt.template.process(happyplan.theme[themeKey][type][childType], { data: { happyplan: happyplan}}));
+        }
+      }
+    });
+  }
 
   // grunt configuration
   grunt.initConfig({
@@ -177,7 +192,7 @@ module.exports = function(grunt) {
         src: ['<%= happyplan.build._ %>']
       },
       jekyll: {
-        src: ['<%= happyplan.build.jekyll._ %>']
+        src: ['<%= happyplan.build.jekyll.src %>']
       }
     },
 
@@ -200,6 +215,15 @@ module.exports = function(grunt) {
           ext:    ".scss"
         }]
       },
+      
+      'jekyll-dist': {
+        files: [{
+          expand: true,
+          cwd: '<%= happyplan.build.jekyll.dist %>',
+          src: ['**'],
+          dest: '<%= happyplan.dist._ %>'
+        }]
+      },
 
       staticAssets: {
         files: [{
@@ -207,9 +231,8 @@ module.exports = function(grunt) {
           cwd: '<%= happyplan.build.assets._ %>',
           src: [
             '**/*',
-            '!*/_*',
             '!_*',
-            '!_**/*'
+            '!**/_*'
           ],
           dest: '<%= happyplan.dist.assets._ %>'
         }]
@@ -228,18 +251,6 @@ module.exports = function(grunt) {
           cwd: '<%= happyplan.theme.local.media %>',
           src: ['**'],
           dest: '<%= happyplan.dist.media %>'
-        }]
-      },
-
-      buildToDist: {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.build._ %>',
-          src: [
-            '**/*',
-            '!_*/**'
-          ],
-          dest: '<%= happyplan.dist._ %>'
         }]
       }
     }),
@@ -370,30 +381,38 @@ module.exports = function(grunt) {
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.html.pages %>/**/*.{html,md,txt,xml}',
           ],
-          tasks: ['happyplan:build-html']
-      },
-      js: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*.*'],
-          tasks: ['concat:scripts_dev']
-      },
-      scss: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*.*'],
-          tasks: ['compass:dev']
+          tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
       },
       staticAssets: {
           files: [
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/_**/*'
+            '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/_*',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/**/*'
           ],
           tasks: ['copy:staticAssets']
       },
+      js: {
+          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*.*'],
+          tasks: ['copy:th_local-assets--scripts', 'concat:scripts_dev']
+      },
+      scss: {
+          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*.*'],
+          tasks: ['copy:th_local-assets--styles', 'compass:dev']
+      },
       images: {
           files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*.*'],
-          tasks: ['copy:images']
+          tasks: ['copy:th_local-assets--images', 'copy:images']
       },
       glyphicons: {
           files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/*.svg'],
-          tasks: ['happyplan:glyphicons']
+          tasks: ['copy:th_local-assets--glyphicons', 'happyplan:glyphicons']
       },
       livereload: {
           options: {
