@@ -8,16 +8,12 @@ module.exports = function (grunt) {
     'clean:jekyll',
     'happyplan:prepare-build-html', // created in Gruntfile
     'happyplan:config-jekyll',
-    'jekyll:compile'
+    'jekyll:compile',
+    'copy:jekyll-dist'
   ]);
 
   grunt.registerTask('happyplan:build-assets', 'Build the assets for the website', [
     'happyplan:prepare-build-assets', // created in Gruntfile
-
-    // move
-    // @todo replace that part by a "copy only modified files"
-    // to avoid useless livereload
-    //'copy:buildToDist',
 
     // assets
     'copy:media',
