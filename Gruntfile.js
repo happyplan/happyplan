@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   var deepmerge = require('deepmerge');
 
-  var pkg = grunt.file.readJSON(__dirname + '/package.json');
+  var pkg = grunt.file.readJSON('package.json');
 
   // set option
   grunt.option('env', typeof grunt.option('env') !== 'undefined' ? grunt.option('env') : 'dev');
@@ -17,6 +17,7 @@ module.exports = function(grunt) {
   happyplan._ = __dirname;
 
   happyplan.env = grunt.option('env');
+  happyplan.pkg = grunt.file.readJSON(__dirname + '/package.json')
   
   // missing helper for parameters
   // until _.unquote (grunt.util._.unquote) is ok
@@ -164,7 +165,10 @@ module.exports = function(grunt) {
     // remove folders and files
     clean: {
       test_sandbox: {
-        src: ['test/sandbox/**/*']
+        src: [
+          'test/sandbox/**/*',
+          '!test/sandbox/package.json'
+        ]
       },
       dist: {
         src: ['<%= happyplan.dist._ %>']
