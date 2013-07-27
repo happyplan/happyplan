@@ -7,7 +7,20 @@
 Happy plan is a static website generator based on a bundle of amazing tools.
 It's just all about fun.
 
-### What in it?
+## TL;DR
+According you already have Ruby and NPM installed.
+
+```bash
+gem install jekyll compass
+npm install -g grunt-cli bower-canary happyplan-cli
+npm init
+npm install happyplan --save-dev
+happyplan
+```
+
+// TOO MUCH EXPLANATION ON ALL THE README
+
+## What in it?
 
 * A static website generator from html or markdown: [Jekyll](http://jekyllrb.com/).
 * A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & all pre-defined tasks you'll need (scripts, styles & images automatic minification & compression).
@@ -17,17 +30,6 @@ It's just all about fun.
 * Support the [Bower](http://bower.io/) package manager to handle web components.
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
-
-## TL;DR
-According you already have Ruby and NPM installed.
-
-```bash
-gem install jekyll compass
-npm install -g grunt-cli bower-canary happyplan-cli
-npm install happyplan
-npm init
-happyplan
-```
 
 ## Requirements
 
@@ -72,14 +74,14 @@ happyplan
 
 When everything above is okay, just run in your project root:
 
-    $ npm install happyplan
-    $ npm init
+	$ npm init
+    $ npm install happyplan --save-dev
+
+`/!\` _`npm init` will help you to create `package.json` which will be used for minimal requirements (title & version)._
 
 That's it. Now you can start your website bro', using default command
 
     $ happyplan
-
-`/!\` _`npm init` will help you to create `package.json` which will be used for minimal requirements (title & version)._
 
 ## Arborescence
 
@@ -110,13 +112,17 @@ Here is what you can get you will use happyplan :
     ├── package.json                // NPM file where reference to happyplan is keep
     └── README.md                   // Everyone should have a README right ? :)
 
+// I DISAGREE WITH THIS TREE, EVERYTHING SHOULD BE `src`.
+
+// DEFAULT THEME IS USELESS IF WE DO NOT COPY IT INTO USER FOLDER. WE SHOULD CREATE AN HAPPY PLAN INIT WHICH COPY/PASTE THE DEFAULT THEME.
+
 ### Configuration
 
-You can create a `happyplan.json` at the root to override the default configuration [`happyplan.json`][defaultconf]. Both will be **deeply merged** together.
+To override the default configuration [`happyplan.json`][defaultconf] you can create a `happyplan.json` at the root]. Both will be **deeply merged** together.
 
 _We encourage you to take a look to the [default configuration][defaultconf] before playing with it._
 
-As you can see in the [default configuration][defaultconf], _you can change every paths you want_. If you are not happy with basepath, just replace value at the top level (`"_"`).
+As you can see in the [default configuration][defaultconf], _you can change every paths you want_. If you are not happy with basepath, just replace value at the top level (`"_"` attribute).
 Just be sure to be careful when you play with that :)
 
 By default, to configure tools used under the hood, there is a json dedicated section. You should be able to place any native parameters here of the tool in it.
@@ -255,6 +261,8 @@ For more informations about posts, just read [Jekyll's post documentation](http:
 ---
 
 ## Theming
+
+// BLABLABLA, MORE PRACTICE THAN THEORY
 
 Aye, you can theme Happy Plan, great isn't it?
 
