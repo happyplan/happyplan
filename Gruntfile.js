@@ -232,6 +232,7 @@ module.exports = function(grunt) {
           src: [
             '**/*',
             '!_*',
+            '!_**/*',
             '!**/_*'
           ],
           dest: '<%= happyplan.dist.assets._ %>'
