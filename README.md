@@ -26,7 +26,7 @@ Visit the [wiki](wiki) for all the things.
 
 ## TL;DR
 
-According you already have Ruby and NPM installed you can run this commands [more about requirements](wiki/Requirements):
+According you already have Ruby and NPM installed you can run this commands :
 
 ```bash
 gem install jekyll compass
@@ -36,7 +36,7 @@ npm install happyplan --save-dev
 happyplan
 ```
 
-
+[Learn more about requirements](wiki/Requirements)
 
 ---
 
