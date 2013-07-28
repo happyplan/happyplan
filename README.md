@@ -20,8 +20,13 @@ It's just all about fun.
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 
+## Documentation
+
+Visit the [wiki](wiki) for all the things.
+
 ## TL;DR
-According you already have Ruby and NPM installed.
+
+According you already have Ruby and NPM installed you can run this commands [more about requirements](wiki/Requirements):
 
 ```bash
 gem install jekyll compass
@@ -31,9 +36,7 @@ npm install happyplan --save-dev
 happyplan
 ```
 
-## Documentation
 
-Visit the [wiki](/happyplan/happyplan/wiki) for all the things.
 
 ---
 
