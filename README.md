@@ -25,7 +25,7 @@ According you already have Ruby and NPM installed.
 
 ```bash
 gem install jekyll compass
-npm install -g grunt-cli bower-canary happyplan-cli
+npm install -g grunt-cli bower happyplan-cli
 npm init
 npm install happyplan --save-dev
 happyplan
