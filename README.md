@@ -72,7 +72,7 @@ Note: For Wordpress, [wordpress-to-jekyll-exporter](https://github.com/benbalter
 
 Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
 
-[#happyplan on irc.freenode.net](irc://irc.freenode.net/#happyplan)
+<a href="irc://irc.freenode.net/#happyplan">#happyplan on irc.freenode.net</a>
 
 ### Twitter
 
