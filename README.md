@@ -36,7 +36,7 @@ npm install happyplan --save-dev
 happyplan
 ```
 
-[Learn more about requirements](wiki/Requirements)
+[Learn more about requirements](wiki/Requirements).
 
 ---
 

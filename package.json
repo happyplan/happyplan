@@ -3,7 +3,7 @@
   "version": "0.3.0-alpha.3",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
   "author": "Erwann Mest",
-  "license": "BSD",
+  "license": "MIT",
   "dependencies": {
     "bower": "~0.10.0",
     "matchdep": "~0.1.2",
