@@ -181,6 +181,7 @@ module.exports = function(grunt) {
     clean: {
       test_sandbox: {
         src: [
+          'test/**/.DS_Store',
           'test/sandbox/**/*',
           '!test/sandbox/package.json'
         ]

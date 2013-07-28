@@ -52,7 +52,7 @@ exports.newpost = {
         
         test.deepEqual(
           grunt.file.read('test/expected/newpost/' + key + '.md'),
-          grunt.file.read('test/sandbox/posts/_drafts/' +grunt.template.today('yyyy-mm-dd') + '-' + key + '.md'),
+          grunt.file.read('test/sandbox/src/posts/_drafts/' +grunt.template.today('yyyy-mm-dd') + '-' + key + '.md'),
           'Created Posts should be like expectations'
         );
 

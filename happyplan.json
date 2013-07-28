@@ -59,7 +59,7 @@
       }
     },
     "local": {
-      "_": ".",
+      "_": "src",
       "assets": {
         "_": "<%= happyplan.theme.local._ %>/assets",
         "scripts": "<%= happyplan.theme.local.assets._ %>/_scripts",
