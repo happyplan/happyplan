@@ -16,9 +16,7 @@ module.exports = function (grunt) {
     'happyplan:prepare-build-assets', // created in Gruntfile
 
     // assets
-    'copy:media',
     'copy:images',
-    'copy:staticAssets',
     'happyplan:glyphicons',
 
     // css & js

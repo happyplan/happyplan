@@ -7,7 +7,7 @@ npm-debug.log
 
 # packages
 node_modules
-bower_components
+./bower_components
 
 # build
 dist

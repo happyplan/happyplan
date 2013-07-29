@@ -1,7 +1,7 @@
 {
   "theme": {
     "faketheme": {
-      "_": "<%= happyplan.bower_components %>/faketheme",
+      "_": "<%= happyplan.bower_components %>/faketheme/src",
       "assets": {
         "_": "<%= happyplan.theme.faketheme._ %>/assets",
         "styles": "<%= happyplan.theme.faketheme.assets._ %>/_styles",
@@ -10,9 +10,9 @@
         "fonts": "<%= happyplan.theme.faketheme.assets._ %>/fonts"
       },
       "html": {
-        "layouts": "<%= happyplan.theme.faketheme._ %>/layouts",
-        "partials": "<%= happyplan.theme.faketheme._ %>/partials",
-        "pages": "<%= happyplan.theme.faketheme._ %>/pages"
+        "_": "<%= happyplan.theme.faketheme._ %>",
+        "layouts": "<%= happyplan.theme.faketheme.html._ %>/_layouts",
+        "partials": "<%= happyplan.theme.faketheme.html._ %>/_partials"
       }
     }
   },

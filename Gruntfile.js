@@ -93,8 +93,7 @@ module.exports = function(grunt) {
     "html": {
       "layouts": "<%= happyplan.build.jekyll.src %>/_layouts",
       "partials": "<%= happyplan.build.jekyll.src %>/_includes",
-      "plugins": "<%= happyplan.build.jekyll.src %>/_plugins",
-      "pages": "<%= happyplan.build.jekyll.src %>"
+      "plugins": "<%= happyplan.build.jekyll.src %>/_plugins"
     },
     "assets": {
       "scripts": "<%= happyplan.build.assets.scripts %>",
@@ -104,6 +103,10 @@ module.exports = function(grunt) {
       "glyphicons": "<%= happyplan.build.assets.glyphicons %>"
     }
   };
+  var availableStaticFilesPerTheme = {
+    "html": "<%= happyplan.build.jekyll.src %>",
+    "assets": "<%= happyplan.build.assets._ %>"
+  }
   // here we (create tasks to) copy each themes files (in order: defaut, parent(s), local)
   // jekyll files. local are copied last to ovewrite previous files
   for (var themeKey in happyplan.theme) {
@@ -133,6 +136,19 @@ module.exports = function(grunt) {
           prepareBuild_Tasks[objKey].push('copy:' + taskKey);
         }
       }
+      var staticKey = 'th_' +themeKey + '-' + objKey + '--' + 'static';
+      themesCopyTask[staticKey] = {files: [{
+        expand: true,
+        cwd: happyplan.theme[themeKey][objKey]._,
+        src: [
+          '**/*',
+          '!_*',
+          '!_**/*',
+          '!**/_*'
+        ],
+        dest: availableStaticFilesPerTheme[objKey]
+      }]};
+      prepareBuild_Tasks[objKey].push('copy:' + staticKey);
     }
 
     // handle styles from compass paths to keep cache
@@ -142,7 +158,7 @@ module.exports = function(grunt) {
     // }
   }
 
-  // add user post & media
+  // add user post
   themesCopyTask['th_local-html--posts'] = {files: [{
     expand: true,
     cwd: '<%= happyplan.theme.local.posts %>',
@@ -226,33 +242,12 @@ module.exports = function(grunt) {
         }]
       },
 
-      staticAssets: {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.build.assets._ %>',
-          src: [
-            '**/*',
-            '!_*',
-            '!_**/*',
-            '!**/_*'
-          ],
-          dest: '<%= happyplan.dist.assets._ %>'
-        }]
-      },
       images: {
         files: [{
           expand: true,
           cwd: '<%= happyplan.build.assets.images %>',
           src: ['**'],
           dest: '<%= happyplan.dist.assets.images %>'
-        }]
-      },
-      media: {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.theme.local.media %>',
-          src: ['**'],
-          dest: '<%= happyplan.dist.media %>'
         }]
       }
     }),
@@ -381,7 +376,8 @@ module.exports = function(grunt) {
       html: {
           files: [
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html.pages %>/**/*.{html,md,txt,xml}',
+            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*.{html,md,txt,xml}',
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>'
           ],
           tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
       },
@@ -398,7 +394,7 @@ module.exports = function(grunt) {
             '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>',
             '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/**/*'
           ],
-          tasks: ['copy:staticAssets']
+          tasks: ['copy:th_local-assets--static']
       },
       js: {
           files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*.*'],
