@@ -70,12 +70,12 @@ module.exports = function(grunt) {
 
   // imports our tasks
   // (we must change cwd because of how loadNpmTasks works)
-  var cwd = process.cwd();
-  process.chdir(__dirname);
-  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
+  process.chdir(happyplan._);
+  // load devDependencies if we are using grunt from happyplan source directory
+  require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadTasks('tasks');
   // reset cwd to previous value
-  process.chdir(cwd);
+  process.chdir(happyplan.cwd);
 
   // load themes tasks
   for (var key in happyplan.theme) {
