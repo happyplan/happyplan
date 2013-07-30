@@ -28,7 +28,7 @@
     "grunt-gh-pages": "~0.4.0"
   },
   "devDependencies": {
-    "grunt-release": "git://github.com/happyplan/grunt-release.git#semver2"
+    "grunt-release": "0.4.0"
   },
   "repository": {
     "type": "git",
