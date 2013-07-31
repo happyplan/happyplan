@@ -46,10 +46,10 @@ exports.themes = {
         },
         function doneFunction(error, result, code) {
           if (result.stdout) {
-            console.log(result.stdout);
+            console.log("\n" + result.stdout);
           }
           if (result.sterr) {
-            console.log(result.sterr);
+            console.log("\n" + result.sterr);
           }
           // if (error) {
           //   throw error;

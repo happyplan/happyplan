@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title></title>
-        <description></description>
-        <link></link>
-        <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+        <title>testname</title>
+        <description>test description</description>
+        <link>http://te.st/</link>
+        <atom:link href="http://te.st/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
                 <title>Test</title>
                 <description>&lt;p&gt;This is a test&lt;/p&gt;</description>
                 <pubDate>Wed, 10 Jul 2013 00:00:00 +0200</pubDate>
-                <link>/test</link>
-                <guid isPermaLink="true">/test</guid>
+                <link>http://te.st/test</link>
+                <guid isPermaLink="true">http://te.st/test</guid>
             </item>
         
     </channel>

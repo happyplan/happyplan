@@ -4,7 +4,12 @@ module.exports = function(grunt) {
   var deepmerge = require('deepmerge');
   var path = require('path');
 
-  var pkg = grunt.file.readJSON('package.json');
+  try {
+    var pkg = grunt.file.readJSON('package.json');
+  }
+  catch(e) {
+    throw "'package.json' is required. Check the file exist & make sure it's readable by happyplan";
+  }
 
   if (grunt.option('env') === undefined) {
     // force "dist" env if dist task is called.
@@ -24,7 +29,7 @@ module.exports = function(grunt) {
   grunt.verbose.writeln('Real wd is'.grey, __dirname.cyan);
 
   // (happyplan default first, parents, & the local)
-  var happyplan = grunt.file.readJSON(__dirname + '/happyplan.json');
+  var happyplan = deepmerge(pkg, grunt.file.readJSON(__dirname + '/happyplan.json'));
   happyplan.cwd = process.cwd();
   happyplan._ = __dirname;
 
@@ -198,8 +203,6 @@ module.exports = function(grunt) {
 
   // grunt configuration
   grunt.initConfig({
-    pkg: pkg,
-
     happyplan: happyplan,
 
     jshint: happyplan.grunt.jshint,

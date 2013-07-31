@@ -1,3 +1,6 @@
 {
-	
+	"name": "testname",
+	"description": "test description",
+	"version": "0.0.0-alpha.0",
+	"url": "http://te.st"
 }

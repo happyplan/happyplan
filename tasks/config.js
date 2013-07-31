@@ -4,9 +4,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('happyplan:config-jekyll', 'Generate Jekyll config file', function () {
     var jsYaml = require('js-yaml');
-    var config = grunt.config.get(['happyplan','jekyll']);
+    var jekyllConfig = grunt.config.get(['happyplan','jekyll']);
     var configFile = grunt.config.get(['happyplan','build', 'jekyllConfig']);
-    grunt.file.write(configFile, jsYaml.dump(config));
+    
+    jekyllConfig.happyplan = grunt.config.get(['happyplan']);
+    // remove myself 
+    delete jekyllConfig.happyplan.jekyll;
+    
+    grunt.file.write(configFile, jsYaml.dump(jekyllConfig));
     grunt.log.writeln('Jekyll configuration file created: '.grey + configFile.cyan);
   });
 

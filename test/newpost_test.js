@@ -41,10 +41,10 @@ exports.newpost = {
       function doneFunction(error, result, code) {
         if (error) {
           if (result.stdout) {
-            console.log(result.stdout);
+            console.log("\n" + result.stdout);
           }
           if (result.sterr) {
-            console.log(result.sterr);
+            console.log("\n" + result.sterr);
           }
           
           throw error;
