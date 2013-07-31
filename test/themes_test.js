@@ -18,7 +18,6 @@ exports.themes = {
         args: [
           'happyplan:dist',
           "--verbose",
-          "--env=dist",
           "--base=" + path
         ]
       },

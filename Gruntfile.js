@@ -6,9 +6,20 @@ module.exports = function(grunt) {
 
   var pkg = grunt.file.readJSON('package.json');
 
-  // set option
-  grunt.option('env', typeof grunt.option('env') !== 'undefined' ? grunt.option('env') : 'dev');
+  if (grunt.option('env') === undefined) {
+    // force "dist" env if dist task is called.
+    process.argv.forEach(function(value) {
+      if (value == 'happyplan:dist') {
+        grunt.option('env', 'dist');
+      }
+    });
+    // if env is still undefined, set it to 'dev'
+    if (grunt.option('env') === undefined) {
+      grunt.option('env', 'dev');
+    }
+  }
   grunt.verbose.writeln('Environnment is'.grey, grunt.option('env').cyan);
+  
   grunt.verbose.writeln('CWD is'.grey, process.cwd().cyan);
   grunt.verbose.writeln('Real wd is'.grey, __dirname.cyan);
 
