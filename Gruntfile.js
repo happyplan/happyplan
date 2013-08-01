@@ -126,6 +126,10 @@ module.exports = function(grunt) {
   // here we (create tasks to) copy each themes files (in order: defaut, parent(s), local)
   // jekyll files. local are copied last to ovewrite previous files
   for (var themeKey in happyplan.theme) {
+    if (happyplan.theme[themeKey].disable) {
+      continue;
+    }
+    
     for(var objKey in availableFilesPerTheme) {
       if (!prepareBuild_Tasks[objKey]) {
         prepareBuild_Tasks[objKey] = [];
