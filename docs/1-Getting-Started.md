@@ -59,5 +59,5 @@ Now you can easily push your website on this branch via `$ happyplan publish`
 
     $ happyplan newpost --name="This is a test" --tags="change,me,dude"
 
-This create a new post in your draft folder (`posts/_drafts` by default) if the today date.
+This create a new post in your draft folder (`src/_posts/_drafts` by default) if the today date.
 For more informations about posts, just read [Jekyll's post documentation](http://jekyllrb.com/docs/posts/)
