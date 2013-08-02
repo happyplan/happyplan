@@ -1,0 +1,3 @@
+{
+  "cachebuster": "<%= happyplan.version %>"
+}

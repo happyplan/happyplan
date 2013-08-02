@@ -1,4 +1,5 @@
 {
+  "cachebuster": "<%= grunt.template.today('yyyymmddHHMMss') %>",
   "localhost": {
     "hostname": "localhost",
     "port": 8080

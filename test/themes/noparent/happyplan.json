@@ -1,4 +1,5 @@
 {
+	"cachebuster": "<%= happyplan.version %>",
 	"theme": {
 		"default": {
 			"disable": true

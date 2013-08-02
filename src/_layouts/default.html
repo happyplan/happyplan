@@ -6,12 +6,12 @@
         <meta name="description" content="">
         <base href="{{ site.happyplan.baseUrl }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ site.happyplan.baseUrls.styles }}/{{ site.happyplan.assets.main.style }}?{{ 'now' | date: "%Y%m%d%H%M%S" }}">
+        <link rel="stylesheet" href="{{ site.happyplan.baseUrls.styles }}/{{ site.happyplan.assets.main.style }}?{{ site.happyplan.cachebuster }}">
         <link href="feed.xml" rel="alternate" type="application/rss+xml">
     </head>
     <body>
         {{ content }}
-        <script src="{{ site.happyplan.baseUrls.scripts }}/{{ site.happyplan.assets.main.script }}?{{ 'now' | date: "%Y%m%d%H%M%S" }}"></script>
+        <script src="{{ site.happyplan.baseUrls.scripts }}/{{ site.happyplan.assets.main.script }}?{{ site.happyplan.cachebuster }}"></script>
         <script>document.write('<script async="" src=\"http://'
         + (location.host || 'localhost').split(':')[0]
         + ':35728/livereload.js?snipver=1\"><\/script>')
