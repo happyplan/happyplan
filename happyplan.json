@@ -101,7 +101,8 @@
   "jekyll": {
     "source":      "<%= happyplan.build.jekyll.src %>",
     "destination": "<%= happyplan.build.jekyll.dist %>",
-    "permalink": "/:categories/:title"
+    "permalink": "/:categories/:title",
+    "include": [".htaccess", ".htpasswd"]
   },
   "compass": {
     "sass_dir": "<%= happyplan.build.assets.styles %>",

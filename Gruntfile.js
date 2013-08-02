@@ -162,6 +162,7 @@ module.exports = function(grunt) {
         cwd: happyplan.theme[themeKey][objKey]._,
         src: [
           '**/*',
+          '**/.*',
           '!_*',
           '!_**/*',
           '!**/_*'
@@ -255,7 +256,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= happyplan.build.jekyll.dist %>',
-          src: ['**'],
+          src: ['**', '**/.*'],
           dest: '<%= happyplan.dist._ %>'
         }]
       },
@@ -394,7 +395,8 @@ module.exports = function(grunt) {
       html: {
           files: [
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*.{html,md,txt,xml}',
+            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*',
+            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/.*',
             '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>'
           ],
           tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']

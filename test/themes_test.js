@@ -45,7 +45,14 @@ exports.themes = {
             ]
           },
           function doneFunction(error, diffResult, code) {
-            if (error) {              
+            if (error) {
+              if (result.stdout) {
+                console.log(result.stdout);
+              }
+              if (result.sterr) {
+                console.log(result.sterr);
+              }
+              
               if (diffResult.stdout) {
                 console.log("\n" + diffResult.stdout);
               }
@@ -54,12 +61,6 @@ exports.themes = {
               }
               
               if (!diffResult.stdout && !diffResult.sterr) {
-                if (result.stdout) {
-                  console.log(result.stdout);
-                }
-                if (result.sterr) {
-                  console.log(result.sterr);
-                }
                 throw error;
               }
             }
