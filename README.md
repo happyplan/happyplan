@@ -24,7 +24,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 
 ## Documentation
 
-Visit the [docs](docs) for all the things.
+Visit the [documentation](docs) for all the things.
 
 ## TL;DR
 
