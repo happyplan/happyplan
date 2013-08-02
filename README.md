@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
 [![Dependencies Status](https://david-dm.org/happyplan/happyplan.png)](https://david-dm.org/happyplan/happyplan)
-[![Dev Dependencies Status](https://david-dm.org/happyplan/happyplan/dev-status.png)](https://david-dm.org/happyplan/happyplan#info=devDependencies)]
+[![Dev Dependencies Status](https://david-dm.org/happyplan/happyplan/dev-status.png)](https://david-dm.org/happyplan/happyplan#info=devDependencies)
 
 <img align="right" src="https://raw.github.com/happyplan/happyplan/master/logo.png" />
 
