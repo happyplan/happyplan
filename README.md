@@ -22,7 +22,7 @@ Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.c
 
 ## Documentation
 
-Visit the [wiki](https://github.com/happyplan/happyplan/wiki) for all the things.
+Visit the [docs](docs) for all the things.
 
 ## TL;DR
 
@@ -36,7 +36,7 @@ npm install happyplan --save-dev
 happyplan --help
 ```
 
-[Learn more about requirements](https://github.com/happyplan/happyplan/wiki/Requirements).
+[Learn more about requirements](docs/0-Requirements.md).
 
 ## Contributing
 
