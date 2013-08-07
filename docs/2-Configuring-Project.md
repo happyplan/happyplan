@@ -65,13 +65,117 @@ For example, if you want to enhance Jekyll, you can use the following snippet th
 }
 ```
 
+### Assets
+
+**By default, _only one stylesheet_ is included automatically**
+
+Here is currently the kind of assets recognized.
+
+* Scripts
+* Styles
+* Images
+* Glyphicons (svg icons transformed as a web font)
+* Fonts
+
+Scripts & styles have some specials treatments & they can be automatically included in your html layout if you use `happyplan.assets.scripts` & `happyplan.assets.styles` array with appropriate items like this (replace `{{ type }}` by `scripts` or `styles`).
+
+```json
+{
+  "assets": {
+    "{{ type }}": [{
+      "src": [
+        "source-1.ext",
+        "source-2.ext"
+      ],
+      "dest": "<%= happyplan.dist.assets.{{ type }} %>/finalname.ext",
+      "hook": "head_open|head_close|head_before_stylesheets|head_stylesheets|head_after_stylesheets|body_open|body_close"
+      "ifIE": true|"lt IE 9"|"whatever combo you need"
+    }]
+  }
+}
+```
+
+Each objects in the array should at least contains `dest` property.
+It's used for automatic inclusion into html hooks (eg: to include jQuery from a CDN).
+_Note: `happyplan.dist.assets.*` paths used in `dest` key will be automatically adjusted with appropriate base url._
+
+#### Hooks
+
+Hooks are used to attach script or stylesheet (or something else) automatically in some place of your layout (see example above).
+
+Here are default hooks that can be overrided:
+
+```json
+{
+  "assets": {
+    "default_hook": {
+      "styles": "head_stylesheets",
+      "scripts": "body_close"
+    }
+  }
+}
+``` 
+
+#### Script Engine (JavaScript)
+
+_For now, we just concat (for dev) or uglify (for dist) scripts._
+
+If you want to add a script easily you just need to add an item to the `happyplan.assets.scripts` array.
+
+```json
+{
+  "assets": {
+    "scripts": [{
+      "src": [
+        "<%= happyplan.theme.local.assets.scripts %>/script.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/script.js"
+    }]
+  }
+}
+```
+
+Here is a solid example that show you how to includes lots scripts using differents placements:
+
+```json
+{
+  "assets": {
+    "scripts": [{
+      "src": [
+        "<%= happyplan.bower_components %>/Respond/respond.src.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/respond.js",
+      "IEcond": "lt IE 9",
+      "hook": "head_after_stylesheets"
+    }, {
+      "dest": "http://code.jquery.com/jquery-git2.js"
+    }, {
+      "src": [
+        "<%= happyplan.bower_components %>/aight/aight.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/ieshim.js",
+      "IEcond": "lt IE 9"
+    }, {
+      "src": [
+        "<%= happyplan.bower_components %>/picturefill/picturefill.js",
+        "<%= happyplan.theme.local.assets.scripts %>/script.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/script.js"
+    }]
+  }
+}
+```
+
 ### Style Engine (CSS)
 
 For now, only Compass is supported via [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass), but we plan to add other simpler things like [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass) or the faster [grunt-sass](https://github.com/sindresorhus/grunt-sass) based on [node-sass](https://github.com/andrew/node-sass) ([libsass](https://github.com/hcatlin/libsass)).
 
 #### Compass
 
-If you need/want to add some sass or compass plugins and/or add bower_components folder, here is what you can do.
+`_bower_components` path is added into Compass `additional_import_paths._`
+If you want to consume normal CSS in your Scss, you can just import theme as regular Sass files (a task is just making copy of each `.css` to `.scss`).
+
+If you need/want to add some Sass or Compass plugins and/or add `bower_components` folder, here is what you can do.
 
 ```json
 {
@@ -82,42 +186,6 @@ If you need/want to add some sass or compass plugins and/or add bower_components
         "additional_import_paths": [
             "<%= happyplan.bower_components %>/griddle"
         ]
-    }
-}
-```
-
-### Script Engine (JavaScript)
-
-For now, we just concat (for dev) or uglify (for dist) scripts.
-
-### Consuming Bower components
-
-#### Styles
-
-`_bower_components` path is for now added into Compass `additional_import_paths._`
-If you want to consume CSS, you can just import theme as regular Sass files (a task is just making copy of each `.css` to `.scss`).
-
-#### Scripts
-
-Here is a simple example that will produce 2 scripts, one called `ieshim.js` that will need to be included by hand in your layout, the other `vanilla.js` should already be included since it's the `assets.main.script`.
-This one include some bower component + the `vanilla.js` from your local theme.
-
-```json
-{
-    "assets": {
-        "main": {
-            "script": "vanilla.js"
-        },
-        "scripts": {
-            "<%= happyplan.dist.assets.scripts %>/ieshim.js": [
-                "<%= happyplan.bower_components %>/aight/aight.js"
-            ],
-            "<%= happyplan.dist.assets.scripts %>/<%= happyplan.assets.main.script %>": [
-                "<%= happyplan.bower_components %>/picturefill/external/matchmedia.js",
-                "<%= happyplan.bower_components %>/picturefill/picturefill.js",
-                "<%= happyplan.theme.local.assets.scripts %>/<%= happyplan.assets.main.script %>"
-            ]
-        }
     }
 }
 ```

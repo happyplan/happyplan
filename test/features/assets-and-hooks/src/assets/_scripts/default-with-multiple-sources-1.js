@@ -1,0 +1,1 @@
+console.log('default-with-multiple-sources-1.js');

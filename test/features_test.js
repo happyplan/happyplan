@@ -5,7 +5,7 @@ exports.themes = {
     'use strict';
     var cwd = process.cwd();
 
-    require('glob')(cwd + '/test/themes/*', function(error, files) {
+    require('glob')(cwd + '/test/features/*', function(error, files) {
       if (error !== null) {
         throw error;
       }
@@ -45,7 +45,7 @@ exports.themes = {
             ]
           },
           function doneFunction(error, diffResult, code) {
-            if (error) {
+            if (diffResult.stdout || diffResult.sterr) {
               if (result.stdout) {
                 console.log(result.stdout);
               }
@@ -59,10 +59,9 @@ exports.themes = {
               if (diffResult.sterr) {
                 console.log("\n" + diffResult.sterr);
               }
-              
-              if (!diffResult.stdout && !diffResult.sterr) {
-                throw error;
-              }
+            }
+            else if (error) {
+              throw error;
             }
             
             test.deepEqual("", diffResult.stdout, 'There should have no diff between builds');

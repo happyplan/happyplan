@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>{{ page.title }}</title>
-        <meta name="description" content="">
-        <base href="{{ site.happyplan.baseUrl }}" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ site.happyplan.baseUrls.styles }}/{{ site.happyplan.assets.main.style }}?{{ site.happyplan.cachebuster }}">
-        <link href="feed.xml" rel="alternate" type="application/rss+xml">
-    </head>
-    <body>
-        {{ content }}
-        <script src="{{ site.happyplan.baseUrls.scripts }}/{{ site.happyplan.assets.main.script }}?{{ site.happyplan.cachebuster }}"></script>
-    </body>
+<head>
+{{ site.happyplan.html.hooks.head_open }}
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+<meta name="description" content="">
+<base href="{{ site.happyplan.baseUrl }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="feed.xml" rel="alternate" type="application/rss+xml">
+{{ site.happyplan.html.hooks.head_before_stylesheets }}
+{{ site.happyplan.html.hooks.head_stylesheets }}
+{{ site.happyplan.html.hooks.head_after_stylesheets }}
+{{ site.happyplan.html.hooks.head_close }}</head>
+<body>
+{{ site.happyplan.html.hooks.body_open }}
+{{ content }}
+{{ site.happyplan.html.hooks.body_close }}
+</body>
 </html>

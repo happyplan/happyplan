@@ -1,0 +1,40 @@
+{
+  "cachebuster": "<%= happyplan.version %>",
+  "assets": {
+    "banner": "/*! <%= happyplan.name %> - v<%= happyplan.version %> */\n",
+    "styles": [{
+      "dest": "http://blah.css",
+      "hook": "head_open"
+    }],
+    "scripts": [{
+      "src": [
+        "<%= happyplan.theme.local.assets.scripts %>/head_after_stylesheets.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/head_after_stylesheets.js",
+      "ifIE": "lt IE 9",
+      "hook": "head_after_stylesheets"
+    }, {
+      "dest": "http://jquery.js"
+    }, {
+      "src": [
+        "<%= happyplan.theme.local.assets.scripts %>/default-with-explicit-cond.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/default-with-explicit-cond.js",
+      "ifIE": "lt IE 9",
+      "hook": "head_close"
+    }, {
+      "src": [
+        "<%= happyplan.theme.local.assets.scripts %>/default-with-bool-cond.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/default-with-bool-cond.js",
+      "ifIE": true,
+      "hook": "body_open"
+    }, {
+      "src": [
+        "<%= happyplan.theme.local.assets.scripts %>/default-with-multiple-sources-1.js",
+        "<%= happyplan.theme.local.assets.scripts %>/default-with-multiple-sources-2.js"
+      ],
+      "dest": "<%= happyplan.dist.assets.scripts %>/default-with-multiple-sources.js"
+    }]
+  }
+}

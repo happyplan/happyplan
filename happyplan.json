@@ -78,12 +78,14 @@
     }
   },
   "assets": {
-    "banner": "/*! <%= happyplan.name %> - v<%= happyplan.version %> - <%= grunt.template.today('yyyy-mm-dd') %> */\n",
-    "main": {
-      "style": "style.css",
-      "script": "script.js"
+    "default_hook": {
+      "styles": "head_stylesheets",
+      "scripts": "body_close"
     },
-    "scripts": {}
+    "banner": "/*! <%= happyplan.name %> - v<%= happyplan.version %> - <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+    "styles": [{
+      "dest": "<%= happyplan.dist.assets.styles %>/style.css"
+    }]
   },
   "grunt": {
     "jshint": {
@@ -97,6 +99,21 @@
         "<%= happyplan.theme.local.assets.scripts %>/**/*.js",
         "!<%= happyplan.theme.local.assets.scripts %>/lib/**/*"
       ]
+    }
+  },
+  "html": {
+    "hooks": {
+      "head_open": "",
+      "head_close": "",
+      "head_before_stylesheets": "",
+      "head_stylesheets": "",
+      "head_after_stylesheets": "",
+      "body_open": "",
+      "body_close": ""
+    },
+    "helpers": {
+      "styles": "<link rel=\"stylesheet\" href=\"<%= dest %>\">",
+      "scripts": "<script src=\"<%= dest %>\"></script>"
     }
   },
   "jekyll": {
