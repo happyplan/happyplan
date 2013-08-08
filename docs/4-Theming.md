@@ -35,6 +35,19 @@ A theme can herit from a parent theme. To do this, just add this section to you 
 For now `themename` should be a folder accessible in `bower_components` folder.
 But if you feel the need, it won't be difficult to make this lookup smarter.
 
+To disable a theme, you can just set the value `happyplan.theme[themeName].disable` to a true value.
+Ex: Disable the default parent theme.
+
+```json
+{
+    "theme": {
+        "default": {
+            "disable": true
+        }
+    }
+}
+```
+
 ## Install a theme
 
     $ bower install {themename}
