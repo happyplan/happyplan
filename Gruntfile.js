@@ -216,7 +216,7 @@ module.exports = function(grunt) {
       happyplan.html.hooks[happyplan.assets[type][data].hook] += grunt.template.process(happyplan.html.helpers[type], {
         data: grunt.util._.extend({}, happyplan.assets[type][data], {
           happyplan: happyplan,
-          dest: (grunt.template.process(happyplan.assets[type][data].dest, {data: {happyplan:happyplan}}) + '?' + happyplan.cachebuster)
+          dest: (grunt.template.process(happyplan.assets[type][data].dest, {data: {happyplan:happyplan}}) + (happyplan.env == 'dist' && happyplan.cachebuster ? '?' + happyplan.cachebuster : '' ))
             .replace(
               grunt.template.process(happyplan.dist.assets[type], {data: {happyplan:happyplan}}),
               grunt.template.process(happyplan.baseUrls[type], {data: {happyplan:happyplan}})

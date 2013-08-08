@@ -99,6 +99,25 @@ Each objects in the array should at least contains `dest` property.
 It's used for automatic inclusion into html hooks (eg: to include jQuery from a CDN).
 _Note: `happyplan.dist.assets.*` paths used in `dest` key will be automatically adjusted with appropriate base url._
 
+#### Cache-buster
+
+> A cache-buster is a unique piece of code that prevents a browser from reusing something it has already downloaded and cached.
+
+For us, the cache-buster is a value (`happyplan.cachebuster`) that can be used to _force_ some statics files to be updated by browsers when you publish a new version of your website.
+By default, our cache-buster is just a date `"<%= grunt.template.today('yyyymmddHHMMss') %>"`, but you can change it to something like the version of you website like this:
+
+```json
+{
+  "cachebuster": "<%= happyplan.version %>"
+}
+```
+
+Obviously, you can just put whatever you want into the template.
+
+For now, it's used for stylesheets (links href) & scripts (src) when using `--env=dist` option.
+You can disable it by just setting it to `false`.
+It's prepended at the end after `?`.
+
 #### Hooks
 
 Hooks are used to attach script or stylesheet (or something else) automatically in some place of your layout (see example above).
