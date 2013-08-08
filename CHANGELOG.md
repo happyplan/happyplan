@@ -1,18 +1,21 @@
 # Changelog
 
-## 0.3.0 - Unreleased
+## 0.3.0 - Unreleased (available as beta)
 
+- New improved documentation [#79](https://github.com/happyplan/happyplan/issues/79) [#38](https://github.com/happyplan/happyplan/issues/38) [#40](https://github.com/happyplan/happyplan/issues/40)
 - First release as an NPM package [#41](https://github.com/happyplan/happyplan/issues/41)
 - Themes ! [#44 ](https://github.com/happyplan/happyplan/issues/44)
-- Update dependencies (Node 0.10 support)
-- add Travis-CI [#12](https://github.com/happyplan/happyplan/issues/12)
-- add JSHint [#13](https://github.com/happyplan/happyplan/issues/13)
-- add configurable configuration files
-- add embed server & auto open in the browser.
-- Also switch Fontcustom for grunt-webfont [#11](https://github.com/happyplan/happyplan/issues/11) [#30](https://github.com/happyplan/happyplan/pull/30)
+- Add Travis-CI [#12](https://github.com/happyplan/happyplan/issues/12)
+- Add JSHint [#13](https://github.com/happyplan/happyplan/issues/13)
+- Add configurable configuration files
+- Add embed server & auto open in the browser.
+- Switch Fontcustom for grunt-webfont [#11](https://github.com/happyplan/happyplan/issues/11) [#30](https://github.com/happyplan/happyplan/pull/30)
 - Support Jekyll 1.0 [#34](https://github.com/happyplan/happyplan/issues/34)
-- Document how to consume Bower scripts [#38](https://github.com/happyplan/happyplan/issues/38)
 - Use grunt-contrib-watch instead of grunt-regarde + grunt-livereload [#62](https://github.com/happyplan/happyplan/issues/62)
+- New way to handle assets with automatic inclusion [#91](https://github.com/happyplan/happyplan/issues/91) [#90](https://github.com/happyplan/happyplan/issues/90)
+- Entire configuration is now accessible for Jekyll [#86](https://github.com/happyplan/happyplan/issues/86)
+- Update dependencies (Node 0.10 support)
+- Lots of others tiny fixes [#71](https://github.com/happyplan/happyplan/issues/71) [#81](https://github.com/happyplan/happyplan/issues/81) [#85](https://github.com/happyplan/happyplan/issues/85) [#87](https://github.com/happyplan/happyplan/issues/87) ...
 
 ## 0.2.0 - 2013-02-02
 
