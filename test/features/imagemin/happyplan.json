@@ -1,0 +1,7 @@
+{
+  "imagemin": {
+    "#optimizationLevel": "CANNOT REALLY TEST PNG COMPRESSION, RESULT DIFFER ON TRAVIS",
+    "optimizationLevel": 0,
+    "progressive": true
+  }
+}
