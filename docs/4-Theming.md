@@ -1,8 +1,9 @@
 # Theming
 
-Aye, you can theme HappyPlan, great isn't it?
+Aye, you can theme happyplan, great isn't it?
 
 _Just to let you know, everything is a theme for happyplan._
+
 Default files are just the default theme. Local files are just a local theme.
 Every theme can have a `happyplan.json` configuration, so this should be very flexible.
 Here is how themes are interpreted.
@@ -16,7 +17,7 @@ Here is how themes are interpreted.
 
 ## Theme configuration
 
-Each theme have a section in the `theme` one. Just take a look in the (defaultconf)
+Each theme have a section in the `theme` one. Just take a look in the [default configuration][defaultconf]
 
 ## Inheritance
 
@@ -54,6 +55,8 @@ Ex: Disable the default parent theme.
 
 It will download your theme via bower. You can replace `{themename}` bye `user/repo` or whatever Bower can consume.
 
-## Use a theme
+## Using a theme
 
 For now, just do like the snippet above, changing `theme.local.parent` value.
+
+[defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"

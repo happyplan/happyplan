@@ -2,29 +2,28 @@
 
 ## Arborescence
 
-Here is what all you can get using happyplan :
+Here is what the tree you should have with default configuration :
 
 ```
-    ├── assets                      // All about design
-    │   ├── _glyphicons             // Svg icons to be served as webfont
-    │   ├── _images                 // Design images
-    │   ├── _scripts                // JS
-    │   │   └── script.js           // a JS file
-    │   ├── _styles                 // CSS
-    │   │   ├── _font-icons.scss    // Used if you use grunt-webfont (svg-to-font tool), do not edit it
-    │   │   └── style.scss          // Where you put all your styles
-    │   ├── _glyphicons             // SVG transformed into fonts
-    │   └── fonts                   // Fonts
+    ├── src
+    │   ├── _layouts                    // html layouts for your documents
+    │   ├── _partials                    // Partials pieces of documents you can reuse (> jekyll _includes folder)
+    │   ├── _posts                       // Posts for blog
+    │   │   └── _drafts                 // Posts you don't want to publish
+    │   ├── assets                      // All about design
+    │   │   ├── _glyphicons             // Svg icons to be served as webfont
+    │   │   ├── _images                 // Design images
+    │   │   ├── _scripts                // JS
+    │   │   │   └── script.js           // a JS file
+    │   │   ├── _styles                 // CSS
+    │   │   │   ├── _icons.scss         // Used if you use grunt-webfont (svg-to-font tool), do not edit it
+    │   │   │   └── style.scss          // Where you put all your styles
+    │   │   └── fonts                   // Fonts
+    │   └── media                       // Media for your documents
     ├── bower_components            // Bower components
     ├── build                       // Where some magic to build you app happen
     ├── dist                        // App ready to be distributed
-    ├── layouts                     // html layouts for your documents
-    ├── media                       // Media for your documents
     ├── node_modules                // (Happyplan is in that)
-    ├── pages                       // Your documents (mainly html pages) that will be at the root of your app
-    ├── partials                    // Partials pieces of documents you cna reuse (= jekyll _includes folder)
-    ├── posts                       // Posts for blog
-    │   └── _drafts                 // Posts you don't want to publish
     ├── bower.json                  // Where you define your options used by bower
     ├── happyplan.json              // You can create this file to override the default config.
     ├── package.json                // NPM file where reference to happyplan is keep
@@ -64,6 +63,9 @@ For example, if you want to enhance Jekyll, you can use the following snippet th
     }
 }
 ```
+
+`/!\` You should know that under Jekyll files (layouts, pages or posts), the entire happyplan configuration is accessible using `site.happyplan`.
+Eg: `{{ site.happyplan.version }}` or `{{ site.happyplan.cachebuster }}` can be used everywhere you need it.
 
 ### Assets
 

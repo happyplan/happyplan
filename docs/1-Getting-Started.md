@@ -2,7 +2,7 @@
 
 ## Installation
 
-When everything above is okay, just run in your project root:
+When [requirements](0-Requirements.md) are okay, just run in your project root:
 
     $ npm init
     $ npm install happyplan --save-dev
@@ -27,9 +27,11 @@ Livreload do the magic & files should be automatically reloaded into your browse
 
 ## Build
 
-To build the website
+To build the website before distributing.
 
     $ happyplan dist
+
+This task build the website with some stuff optimized (minify assets mainly).
 
 ## Publish on gh-pages (github)
 
@@ -37,11 +39,14 @@ If you want to publish your build on the gh-pages:
 
     $ happyplan publish
 
-This script builds the website (happy dist) & commit + push on gh-pages branch.
+This task will build the website (same as `happy dist`) & _commit + push_ on your `gh-pages` branch.
+Branch can be changed using `happyplan.git.branch`.
+See example below.
 
 #### Warning for username.github.com
 
-`username.github.com` is a bit special. Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (don't try `gh-pages`, it won't work).
+`username.github.com` is a bit special.
+Indeed, the `master` branch acts like a `gh-pages` so you have to publish your website on `master` and not `gh-pages` (just don't try `gh-pages`, it won't work).
 
 For that, create or modify `happyplan.json` and add this option:
 
@@ -53,11 +58,15 @@ For that, create or modify `happyplan.json` and add this option:
 }
 ```
 
-Now you can easily push your website on this branch via `$ happyplan publish`
+Now you can easily push your website on this branch via `happyplan publish`.
 
 ## Create a new post
 
     $ happyplan newpost --name="This is a test" --tags="change,me,dude"
 
-This create a new post in your draft folder (`src/_posts/_drafts` by default) if the today date.
-For more informations about posts, just read [Jekyll's post documentation](http://jekyllrb.com/docs/posts/)
+This will create a new post in your draft folder (`src/_posts/_drafts` by default).
+For more informations about posts, just read [Jekyll's post documentation](http://jekyllrb.com/docs/posts/).
+
+---
+
+Now lets go to [fine tune your project](2-Configuring-Project.md)
