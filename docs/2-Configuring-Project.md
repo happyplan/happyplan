@@ -211,4 +211,14 @@ If you need/want to add some Sass or Compass plugins and/or add `bower_component
 }
 ```
 
+### Glyphicons
+
+The concept is simple: you can drop .svg files in the `_glyphicons` folder & all of them will be "compiled" into a webfont.
+This will create all files format to be compatible with old browsers & also create a `_icons.scss` in the `src/assets/_styles` folder.
+This CSS file will contain a class for each svg.
+Eg: you've put `home.svg`, so `icon_home` class will be accessible.
+
+To use webfont icons directly in your html, you need to be sure that `_icons.scss` is included in your stylesheet & use appropriate html classes.
+Ex: `<i class="icon icon_home"></i>` (here `<i>` is just used because it's shorter, you can obviously use whatever you want).
+
 [defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"
