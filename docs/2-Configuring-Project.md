@@ -221,4 +221,19 @@ Eg: you've put `home.svg`, so `icon_home` class will be accessible.
 To use webfont icons directly in your html, you need to be sure that `_icons.scss` is included in your stylesheet & use appropriate html classes.
 Ex: `<i class="icon icon_home"></i>` (here `<i>` is just used because it's shorter, you can obviously use whatever you want).
 
+### Images
+
+Every images that can be optimized will be (when using `dist` task or `--env=dist`).
+This include .jpeg & .png files.
+To change default option below, just take a look to the [`imagemin` task](https://github.com/gruntjs/grunt-contrib-imagemin#imagemin-task) options.
+
+```json
+{
+  "imagemin": {
+    "optimizationLevel": 3,
+    "progressive": true
+  }
+}
+```
+
 [defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"

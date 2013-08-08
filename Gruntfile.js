@@ -361,10 +361,7 @@ module.exports = function(grunt) {
     // just  write over files because there are already copies
     imagemin: {
       dist: {
-        options: {
-          optimizationLevel: 3,
-          progressive: true
-        },
+        options: happyplan.imagemin,
         files: [{
           expand: true,
           cwd: "<%= happyplan.dist.assets.images %>",

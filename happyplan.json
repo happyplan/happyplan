@@ -137,6 +137,10 @@
       "<%= happyplan.bower_components %>"
     ]
   },
+  "imagemin": {
+    "optimizationLevel": 3,
+    "progressive": true
+  },
   "git": {
     "branch": "gh-pages"
   }
