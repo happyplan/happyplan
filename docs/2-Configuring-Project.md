@@ -1,5 +1,7 @@
 # Configuring Project
 
+**Note: Each time you will change `happyplan.json` you will need to restart `happyplan` command to get updated configuration.**
+
 ## Arborescence
 
 Here is what the tree you should have with default configuration :
