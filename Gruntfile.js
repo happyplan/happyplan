@@ -480,7 +480,7 @@ module.exports = function(grunt) {
 
   // public commands
   grunt.registerTask('happyplan:dev',     ['jshint', 'happyplan:build']);
-  grunt.registerTask('happyplan:dist',    ['jshint', 'happyplan:build', 'imagemin:dist']);//, 'clean:build']);
+  grunt.registerTask('happyplan:dist',    ['jshint', 'happyplan:build', 'imagemin:dist']);
 
   //happyplan: == default
   grunt.registerTask('happyplan:default', ['happyplan:dev', 'connect:server', 'open:dev', 'watch']);

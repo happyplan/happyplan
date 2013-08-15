@@ -27,6 +27,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('happyplan:build', 'Build the website', [
     // clean everything
+    'clean:build',
     'clean:dist',
 
     // run static generator
