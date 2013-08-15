@@ -12,9 +12,9 @@ module.exports = function(grunt) {
   }
 
   if (grunt.option('env') === undefined) {
-    // force "dist" env if dist task is called.
+    // force "dist" env if dist or publish tasks are called.
     process.argv.forEach(function(value) {
-      if (value == 'happyplan:dist') {
+      if (value == 'happyplan:dist' || value == 'happyplan:publish') {
         grunt.option('env', 'dist');
       }
     });
