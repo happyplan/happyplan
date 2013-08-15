@@ -225,6 +225,48 @@ Ex: `<i class="icon icon_home"></i>` (here `<i>` is just used because it's short
 
 ### Images
 
+You can put whatever you want in the default `src/assets/_images` folder, but you need to know that by default, some file formats will be ignored to make the build lighter. Here is the default configuration.
+
+```json
+{
+  "assets": {
+    "images": {
+      "src": [
+        "**",
+        "!**/*.ai",
+        "!**/*.eps",
+        "!**/*.pdf",
+        "!**/*.pxm",
+        "!**/*.psd",
+        "!**/*.raw",
+        "!**/*.xcf"
+      ]
+    }
+  }
+}
+```
+
+If you are not confortable with this settings you can changes everything, and for example just take the opposite approche and specify file formats you want :
+
+```json
+{
+  "assets": {
+    "images": {
+      "src": [
+        "**/*.BMP",
+        "**/*.gif",
+        "**/*.jpg",
+        "**/*.jpeg",
+        "**/*.png",
+        "**/*.webp"
+      ]
+    }
+  }
+}
+```
+
+#### Optimization
+
 Every images that can be optimized will be (when using `dist` task or `--env=dist`).
 This include .jpeg & .png files.
 To change default option below, just take a look to the [`imagemin` task](https://github.com/gruntjs/grunt-contrib-imagemin#imagemin-task) options.

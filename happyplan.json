@@ -85,7 +85,19 @@
     "banner": "/*! <%= happyplan.name %> - v<%= happyplan.version %> - <%= grunt.template.today('yyyy-mm-dd') %> */\n",
     "styles": [{
       "dest": "<%= happyplan.dist.assets.styles %>/style.css"
-    }]
+    }],
+    "images": {
+      "src": [
+        "**",
+        "!**/*.ai",
+        "!**/*.eps",
+        "!**/*.pdf",
+        "!**/*.pxm",
+        "!**/*.psd",
+        "!**/*.raw",
+        "!**/*.xcf"
+      ]
+    }
   },
   "grunt": {
     "jshint": {

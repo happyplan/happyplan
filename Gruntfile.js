@@ -301,7 +301,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= happyplan.build.assets.images %>',
-          src: ['**'],
+          src: '<%= happyplan.assets.images.src %>',
           dest: '<%= happyplan.dist.assets.images %>'
         }]
       }
