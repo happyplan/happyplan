@@ -13,6 +13,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('happyplan:build-assets', 'Build the assets for the website', [
+    'copy:cssAsScss',
+    
     'happyplan:prepare-build-assets', // created in Gruntfile
 
     // assets
