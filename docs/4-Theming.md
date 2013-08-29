@@ -53,7 +53,7 @@ Ex: Disable the default parent theme.
 
     $ bower install {themename}
 
-It will download your theme via bower. You can replace `{themename}` bye `user/repo` or whatever Bower can consume.
+It will download your theme via bower. You can replace `{themename}` by `user/repo` or whatever Bower can consume.
 
 ## Using a theme
 
