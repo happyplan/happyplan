@@ -10,7 +10,7 @@ before_install:
 # compass & compass extensions
   - gem install compass
 # grunt-webfont requirements
-  - sudo apt-get install fontforge ttfautohint
+  - sudo apt-get install fontforge
 # grunt
   - npm install -g grunt-cli
   - npm install
