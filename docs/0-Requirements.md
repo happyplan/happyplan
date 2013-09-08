@@ -29,7 +29,6 @@
 ### Grunt-Webfont[[+](https://github.com/sapegin/grunt-webfont#installation)]
 
     $ brew install fontforge ttfautohint
-    $ brew install https://raw.github.com/sapegin/grunt-webfont/master/Formula/sfnt2woff.rb
 
 ### Bower [[+](https://github.com/bower/bower#installing-bower)]
 
