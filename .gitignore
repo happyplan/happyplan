@@ -7,7 +7,7 @@ npm-debug.log
 
 # packages
 node_modules/
-bower_components/
+./bower_components
 bundler_gems/
 .bundle/
 Gemfile.lock
