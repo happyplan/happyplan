@@ -340,7 +340,8 @@ module.exports = function(grunt) {
     // time to have some styles!
     compass: {
       options: {
-        config: '<%= happyplan.build.compassConfig %>'
+        config: '<%= happyplan.build.compassConfig %>',
+        bundleExec: true
       },
       dev: {
         options: {
