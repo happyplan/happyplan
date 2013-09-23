@@ -33,8 +33,6 @@ According you already have Ruby and NPM installed you can run this commands :
 ### Global requirements
 
 ```bash
-gem install bundler
-bundle install --binstubs bundler_gems
 npm install -g grunt-cli bower happyplan-cli
 ```
 
@@ -54,7 +52,10 @@ When you want to fix a bug or add a feature, just be sure to get all testing req
 
 You can run in one command the build process & the tests.
 
-    $ npm test
+    gem install bundler
+    bundle install --binstubs bundler_gems
+    npm install
+    npm test
 
 In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specified in the `package.json` `script` section. In our case, it run `grunt test`. And to be precise, the `test` task run the `nodeunit` one.
 
