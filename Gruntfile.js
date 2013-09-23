@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
   var deepmerge = require('deepmerge');
   var path = require('path');
+  var fs = require('fs');
 
   try {
     var pkg = grunt.file.readJSON('package.json');
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
     }
   }
   grunt.verbose.writeln('Environnment is'.grey, grunt.option('env').cyan);
-  
+
   grunt.verbose.writeln('CWD is'.grey, process.cwd().cyan);
   grunt.verbose.writeln('Real wd is'.grey, __dirname.cyan);
 
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
 
   happyplan.env = grunt.option('env');
   happyplan.pkg = grunt.file.readJSON(__dirname + '/package.json')
-  
+
   // missing helper for parameters
   // until _.unquote (grunt.util._.unquote) is ok
   // https://github.com/epeli/underscore.string/pull/162
@@ -55,12 +56,12 @@ module.exports = function(grunt) {
   if (grunt.file.exists(localConfigPath)) {
     mergeConfig(localConfigPath, 'local');
   }
-  
+
   function mergeConfig(file, key) {
     if (!grunt.file.exists(file)) {
       throw "Unable to load theme config:" + file + ". Is it installed ?";
     }
-    
+
     var themeConfig = grunt.file.readJSON(file);
     // check if there is a parent theme
     if (themeConfig.theme && themeConfig.theme[key] && themeConfig.theme[key].parent) {
@@ -129,7 +130,7 @@ module.exports = function(grunt) {
     if (happyplan.theme[themeKey].disable) {
       continue;
     }
-    
+
     for(var objKey in availableFilesPerTheme) {
       if (!prepareBuild_Tasks[objKey]) {
         prepareBuild_Tasks[objKey] = [];
@@ -191,7 +192,7 @@ module.exports = function(grunt) {
   // register preparation task for the entire html tree
   grunt.registerTask('happyplan:prepare-build-html', prepareBuild_Tasks.html);
   grunt.registerTask('happyplan:prepare-build-assets', prepareBuild_Tasks.assets);
-  
+
   // clean theme paths
   // this done here because in files section using minimatch & exclude pattern,
   // paths not normalized don't match correctly
@@ -205,7 +206,7 @@ module.exports = function(grunt) {
       }
     });
   }
-  
+
   // create some variables for html engine
   ["styles", "scripts"].forEach(function(type) {
     for (var data in happyplan.assets[type]) {
@@ -228,14 +229,14 @@ module.exports = function(grunt) {
       }
       happyplan.html.hooks[happyplan.assets[type][data].hook] += "\n";
     }
-  });  
+  });
 
   // register scripts for JS engine
   happyplan.grunt.scripts = happyplan.assets.scripts ? {
     options: {
       banner: "<%= happyplan.assets.banner %>"
     },
-    
+
     // skip scripts that don't have source (eg: jquery from cdn)
     files: happyplan.assets.scripts.filter(function(value, i) {
       return value.dest && value.src;
@@ -283,11 +284,23 @@ module.exports = function(grunt) {
           cwd: '<%= happyplan.bower_components %>',
           src: ['**/*.css'],
           dest: '<%= happyplan.bower_components %>',
-          filter: 'isFile',
+          filter: function(src) {
+            if (fs.statSync(src).isFile()) {
+              // try to see if a similar Scss partials doesn't exist already
+              try {
+                return !fs.statSync(path.dirname(src) + path.sep + '_' + path.basename(src, '.css') + '.scss').isFile();
+              }
+              catch (e) {
+                return e.code === 'ENOENT';
+              }
+            }
+
+            return false;
+          },
           ext:    ".scss"
         }]
       },
-      
+
       'jekyll-dist': {
         files: [{
           expand: true,
