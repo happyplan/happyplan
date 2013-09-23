@@ -30,9 +30,17 @@ Visit the [documentation](docs) for all the things.
 
 According you already have Ruby and NPM installed you can run this commands :
 
+### Global requirements
+
 ```bash
-gem install jekyll compass
+gem install bundler
+bundle install --binstubs bundler_gems
 npm install -g grunt-cli bower happyplan-cli
+```
+
+### Local requirements
+
+```bash
 npm init
 npm install happyplan --save-dev
 happyplan --help
