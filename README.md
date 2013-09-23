@@ -30,21 +30,21 @@ Visit the [documentation](docs) for all the things.
 
 According you already have Ruby and NPM installed you can run this commands :
 
-### Global requirements
+### Requirements
 
 ```bash
 npm install -g grunt-cli bower happyplan-cli
 ```
 
-### Local requirements
+[Learn more about requirements](docs/0-Requirements.md).
+
+### Create a project using happyplan
 
 ```bash
 npm init
 npm install happyplan --save-dev
 happyplan --help
 ```
-
-[Learn more about requirements](docs/0-Requirements.md).
 
 ## Contributing
 
