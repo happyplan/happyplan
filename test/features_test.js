@@ -9,7 +9,7 @@ exports.themes = {
       if (error !== null) {
         throw error;
       }
-      
+
       test.expect(files.length);
       var testI = 0;
       grunt.util._.each(files, function(path) {
@@ -24,12 +24,12 @@ exports.themes = {
         function doneFunction(error, result, code) {
           if (error) {
             if (result.stdout) {
-              console.log(result.stdout);
+              grunt.log.writeln(result.stdout);
             }
             if (result.sterr) {
-              console.log(result.sterr);
+              grunt.log.writeln(result.sterr);
             }
-            
+
             throw error;
           }
 
@@ -47,23 +47,23 @@ exports.themes = {
           function doneFunction(error, diffResult, code) {
             if (diffResult.stdout || diffResult.sterr) {
               if (result.stdout) {
-                console.log(result.stdout);
+                grunt.verbose.writeln(result.stdout);
               }
               if (result.sterr) {
-                console.log(result.sterr);
+                grunt.verbose.writeln(result.sterr);
               }
-              
+
               if (diffResult.stdout) {
-                console.log("\n" + diffResult.stdout);
+                grunt.log.writeln("\n" + diffResult.stdout);
               }
               if (diffResult.sterr) {
-                console.log("\n" + diffResult.sterr);
+                grunt.log.writeln("\n" + diffResult.sterr);
               }
             }
             else if (error) {
               throw error;
             }
-            
+
             test.deepEqual("", diffResult.stdout, 'There should have no diff between builds');
 
             testI++;
