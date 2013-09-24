@@ -371,6 +371,16 @@ module.exports = function(grunt) {
       }
     },
 
+    autoprefixer: {
+      options: happyplan.autoprefixer,
+      styles: {
+        expand: true,
+        flatten: true,
+        src: '<%= happyplan.dist.assets.styles %>/*.css',
+        dest: '<%= happyplan.dist.assets.styles %>/'
+      }
+    },
+
     // optimize images
     // just  write over files because there are already copies
     imagemin: {
@@ -459,7 +469,7 @@ module.exports = function(grunt) {
       },
       scss: {
           files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*.*'],
-          tasks: ['copy:th_local-assets--styles', 'compass:dev']
+          tasks: ['copy:th_local-assets--styles', 'compass:dev', 'autoprefixer']
       },
       images: {
           files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*.*'],

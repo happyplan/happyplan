@@ -20,7 +20,7 @@
     "grunt-contrib-imagemin": "~0.3.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-webfont": "~0.1.9",
-    "grunt-shell": "~0.4.0",
+    "grunt-autoprefixer": "~0.3.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-open": "~0.2.2",
@@ -28,7 +28,7 @@
     "grunt-gh-pages": "~0.7.3"
   },
   "devDependencies": {
-    "grunt-release": "0.5.1",
+    "grunt-release": "~0.5.1",
     "glob": "~3.2.6"
   },
   "repository": {

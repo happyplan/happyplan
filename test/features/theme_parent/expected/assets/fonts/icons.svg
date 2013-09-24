@@ -1,31 +1,31 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2013-7-10: Created.
+2013-9-24: Created.
 -->
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Wed Jul 10 08:04:50 2013
+Created by FontForge 20120731 at Tue Sep 24 08:16:07 2013
  By Maxime Thirouin
 Created by Maxime Thirouin with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
 <defs>
-<font id="icons" horiz-adv-x="835" >
+<font id="icons" horiz-adv-x="412" >
   <font-face 
     font-family="icons"
     font-weight="500"
     font-stretch="normal"
-    units-per-em="1000"
+    units-per-em="512"
     panose-1="2 0 6 9 0 0 0 0 0 0"
-    ascent="800"
-    descent="-200"
-    bbox="15 -63.3359 819.688 663.336"
-    underline-thickness="50"
-    underline-position="-100"
+    ascent="448"
+    descent="-64"
+    bbox="0 6 412 378"
+    underline-thickness="25.6"
+    underline-position="-51.2"
     unicode-range="U+F100-F100"
   />
     <missing-glyph />
     <glyph glyph-name="uniF100" unicode="&#xf100;" 
-d="M736.664 261.299v-324.635h-231.967v176.426h-174.709v-176.426h-231.967v324.635h-83.0215l402.344 402.037l402.344 -402.039h-83.0234v0.00195312zM687.016 627.203v-168.621l-93.5879 93.7949v74.8262h93.5879z" />
+d="M369 172v-166h-118v90h-90v-90h-118v166h-43l206 206l206 -206h-43v0zM344 360v-87l-48 48v39h48z" />
   </font>
 </defs></svg>

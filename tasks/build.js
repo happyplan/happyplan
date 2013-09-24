@@ -14,16 +14,19 @@ module.exports = function (grunt) {
 
   grunt.registerTask('happyplan:build-assets', 'Build the assets for the website', [
     'copy:cssAsScss',
-    
+
     'happyplan:prepare-build-assets', // created in Gruntfile
 
     // assets
     'copy:images',
     'happyplan:glyphicons',
 
-    // css & js
+    // css
     'happyplan:config-compass',
     'compass:' + env,
+    'autoprefixer',
+
+    // js
     (env === 'dist' ? 'uglify' : 'concat') + ':scripts_' + env
   ]);
 
