@@ -34,16 +34,20 @@ According you already have Ruby and NPM installed you can run this commands :
 
 ```bash
 npm install -g grunt-cli bower happyplan-cli
+gem install bundler
 ```
 
 [Learn more about requirements](docs/0-Requirements.md).
 
 ### Create a project using happyplan
 
+Copy our Gemfile or create one with version you want, then
+
 ```bash
 npm init
 npm install happyplan --save-dev
-happyplan --help
+bundle install --binstubs bundler_gems
+happyplan
 ```
 
 ## Contributing
@@ -52,8 +56,6 @@ When you want to fix a bug or add a feature, just be sure to get all testing req
 
 You can run in one command the build process & the tests.
 
-    gem install bundler
-    bundle install --binstubs bundler_gems
     npm install
     npm test
 
