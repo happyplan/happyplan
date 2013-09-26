@@ -74,7 +74,8 @@
         "partials": "<%= happyplan.theme.local.html._ %>/_partials",
         "plugins": "<%= happyplan.theme.local.html._ %>/_plugins"
       },
-      "posts": "<%= happyplan.theme.local._ %>/_posts"
+      "posts": "<%= happyplan.theme.local._ %>/_posts",
+      "posts_drafts": "<%= happyplan.theme.local.posts %>/_drafts"
     }
   },
   "assets": {
