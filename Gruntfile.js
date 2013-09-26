@@ -188,6 +188,13 @@ module.exports = function(grunt) {
     dest: '<%= happyplan.build.jekyll.src %>/_posts'
   }]};
   prepareBuild_Tasks.html.push('copy:th_local-html--posts');
+  themesCopyTask['th_local-html--posts_drafts'] = {files: [{
+    expand: true,
+    cwd: '<%= happyplan.theme.local.posts_drafts %>',
+    src: ['**'],
+    dest: '<%= happyplan.build.jekyll.src %>/_drafts'
+  }]};
+  prepareBuild_Tasks.html.push('copy:th_local-html--posts_drafts');
 
   // register preparation task for the entire html tree
   grunt.registerTask('happyplan:prepare-build-html', prepareBuild_Tasks.html);
@@ -271,7 +278,13 @@ module.exports = function(grunt) {
 
     // static file generator
     jekyll: {
-      compile: {
+      dev: {
+        config: grunt.util._.extend({
+          drafts: true,
+          future: true
+        }, happyplan.build.jekyllConfig)
+      },
+      dist: {
         config: '<%= happyplan.build.jekyllConfig %>'
       }
     },

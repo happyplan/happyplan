@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     'clean:jekyll',
     'happyplan:prepare-build-html', // created in Gruntfile
     'happyplan:config-jekyll',
-    'jekyll:compile',
+    'jekyll:' + env,
     'copy:jekyll-dist'
   ]);
 

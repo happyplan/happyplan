@@ -69,6 +69,8 @@ For example, if you want to enhance Jekyll, you can use the following snippet th
 `/!\` You should know that under Jekyll files (layouts, pages or posts), the entire happyplan configuration is accessible using `site.happyplan`.
 Eg: `{{ site.happyplan.version }}` or `{{ site.happyplan.cachebuster }}` can be used everywhere you need it.
 
+__Notice: with the default happyplan command `happyplan` used for development, `drafts` & `future` options of Jekyll are set to `true`__. Obviously you can override that behavior from your configuration.
+
 ### Assets
 
 **By default, _only one stylesheet_ is included automatically**
@@ -137,7 +139,7 @@ Here are default hooks that can be overrided:
     }
   }
 }
-``` 
+```
 
 #### Script Engine (JavaScript)
 
