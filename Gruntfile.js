@@ -278,15 +278,16 @@ module.exports = function(grunt) {
 
     // static file generator
     jekyll: {
+      options: {
+        config: '<%= happyplan.build.jekyllConfig %>'
+      },
       dev: {
-        config: grunt.util._.extend({
+        options: {
           drafts: true,
           future: true
-        }, happyplan.build.jekyllConfig)
+        },
       },
-      dist: {
-        config: '<%= happyplan.build.jekyllConfig %>'
-      }
+      dist: {}
     },
 
     // Copy folders and files
