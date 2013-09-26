@@ -410,9 +410,7 @@ module.exports = function(grunt) {
           hostname: '', // Must be empty to be accessible everywhere and not only "localhost"
           middleware: function(connect, options) {
             return [
-              require('connect-livereload')({
-                excludeList: ['.scss']
-              }),
+              require('connect-livereload')(),
               // Default middlewares
               // Serve static files.
               connect.static(options.base),
