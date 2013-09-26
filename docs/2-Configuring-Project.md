@@ -71,6 +71,46 @@ Eg: `{{ site.happyplan.version }}` or `{{ site.happyplan.cachebuster }}` can be 
 
 __Notice: with the default happyplan command `happyplan` used for development, `drafts` & `future` options of Jekyll are set to `true`__. Obviously you can override that behavior from your configuration.
 
+##### Partials
+
+We have included for you some partials so you can include this
+
+###### Google Analytics
+
+To setup Google Analytics, just add this in you configuration file:
+
+```json
+{
+  "google_analytics_tracking_id": "UA-XXXX-X",
+  "google_universal_analytics": true
+}
+```
+_The last value `google_universal_analytics` needs to be true to enable new Universal Analytics tracker (be sure you account is one)._
+
+Then just add this include at the bottom of you layout
+
+```jekyll
+{% include scripts/google-analytics.html %}
+```
+
+###### Disqus
+
+To setup Google Analytics, just add this in you configuration file:
+
+```json
+{
+  "disqus_short_name": "YOURDISQUSSHORTNAME",
+  "disqus_developer": false,
+}
+```
+_The last value `disqus_developer` needs to be true when you will configure or want to debug comments during development._
+
+Then just add this include at the bottom of you layout.
+This will add automatically the script if disqus comments are enabled and `page.comments` is either empty (index) or set to true (!= false).
+
+```jekyll
+{% include scripts/disqus.html %}
+
 ### Assets
 
 **By default, _only one stylesheet_ is included automatically**
