@@ -442,7 +442,7 @@ module.exports = function(grunt) {
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*',
             '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/.*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>'
+            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*'
           ],
           tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
       },
