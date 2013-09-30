@@ -1,12 +1,12 @@
-/* globals module:true require:true */
 module.exports = function(grunt) {
+  "use strict";
 
-  var deepmerge = require('deepmerge');
-  var path = require('path');
-  var fs = require('fs');
+  var deepmerge = require('deepmerge')
+    , path = require('path')
+    , pkg
 
   try {
-    var pkg = grunt.file.readJSON('package.json');
+    pkg = grunt.file.readJSON('package.json');
   }
   catch(e) {
     throw "'package.json' is required. Check the file exist & make sure it's readable by happyplan";
@@ -37,12 +37,19 @@ module.exports = function(grunt) {
   happyplan.env = grunt.option('env');
   happyplan.pkg = grunt.file.readJSON(__dirname + '/package.json')
 
+  // Init Grunt right now, to get pkg & happyplan in template ASAP
+  grunt.config.init({
+    pkg: pkg,
+    happyplan: happyplan,
+  })
+
   // missing helper for parameters
   // until _.unquote (grunt.util._.unquote) is ok
-  // https://github.com/epeli/underscore.string/pull/162
+  // grunt.util._ will be deprecated in grunt 0.5.x
+  // we need to include our own underscore.string
   grunt.util._.unquote = function unquote(str) {
-    if (str.indexOf('"') === 0 && str.lastIndexOf('"') === str.length-1
-      || str.indexOf("'") === 0 && str.lastIndexOf("'") === str.length-1) {
+    if (str.indexOf('"') === 0 && str.lastIndexOf('"') === str.length-1 ||
+        str.indexOf("'") === 0 && str.lastIndexOf("'") === str.length-1) {
       return str.slice(1,str.length-1);
     }
     return str;
@@ -83,16 +90,7 @@ module.exports = function(grunt) {
   delete happyplan.theme.local;
   happyplan.theme.local = localTmp;
 
-  grunt.verbose.writeln('Runtime config', happyplan);
-
-  // imports our tasks
-  // (we must change cwd because of how loadNpmTasks works)
-  process.chdir(happyplan._);
-  // load devDependencies if we are using grunt from happyplan source directory
-  require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.loadTasks('tasks');
-  // reset cwd to previous value
-  process.chdir(happyplan.cwd);
+  //grunt.verbose.writeln('Runtime config', happyplan);
 
   // load themes tasks
   for (var key in happyplan.theme) {
@@ -103,7 +101,7 @@ module.exports = function(grunt) {
 
   // prepare config for copy task for theme
   // by default, get default theme
-  var themesCopyTask = {}; // all copy tasks
+  happyplan.themesCopyTask = {}; // all copy tasks
   var themeSrcDest_byRessources = {}; // all resources files {layouts..glyphicons}.src|dest used for watching
   var prepareBuild_Tasks = {}; // all copy tasks names by types (html|assets)
   var availableFilesPerTheme = {
@@ -148,7 +146,7 @@ module.exports = function(grunt) {
           }
           themeSrcDest_byRessources[filesKey].src.push(src);
           var taskKey = 'th_' +themeKey + '-' + objKey + '--' + filesKey;
-          themesCopyTask[taskKey] = {files: [{
+          happyplan.themesCopyTask[taskKey] = {files: [{
             expand: true,
             cwd: src,
             src: ['**'],
@@ -158,7 +156,7 @@ module.exports = function(grunt) {
         }
       }
       var staticKey = 'th_' +themeKey + '-' + objKey + '--' + 'static';
-      themesCopyTask[staticKey] = {files: [{
+      happyplan.themesCopyTask[staticKey] = {files: [{
         expand: true,
         cwd: happyplan.theme[themeKey][objKey]._,
         src: [
@@ -181,14 +179,14 @@ module.exports = function(grunt) {
   }
 
   // add user post
-  themesCopyTask['th_local-html--posts'] = {files: [{
+  happyplan.themesCopyTask['th_local-html--posts'] = {files: [{
     expand: true,
     cwd: '<%= happyplan.theme.local.posts %>',
     src: ['**'],
     dest: '<%= happyplan.build.jekyll.src %>/_posts'
   }]};
   prepareBuild_Tasks.html.push('copy:th_local-html--posts');
-  themesCopyTask['th_local-html--posts_drafts'] = {files: [{
+  happyplan.themesCopyTask['th_local-html--posts_drafts'] = {files: [{
     expand: true,
     cwd: '<%= happyplan.theme.local.posts_drafts %>',
     src: ['**'],
@@ -204,14 +202,15 @@ module.exports = function(grunt) {
   // this done here because in files section using minimatch & exclude pattern,
   // paths not normalized don't match correctly
   // ex: include /bla/./bla/**/*, exclude /bla/./bla/**/_* don't work as expected
-  for (var themeKey in happyplan.theme) {
-    ["html", "assets"].forEach(function(type) {
-      if (happyplan.theme[themeKey][type]) {
-        for (var childType in happyplan.theme[themeKey][type]) {
-          happyplan.theme[themeKey][type][childType] = path.normalize(grunt.template.process(happyplan.theme[themeKey][type][childType], { data: { happyplan: happyplan}}));
-        }
+  var cleanPath = function(type) {
+    if (happyplan.theme[thKey][type]) {
+      for (var childType in happyplan.theme[thKey][type]) {
+        happyplan.theme[thKey][type][childType] = path.normalize(grunt.template.process(happyplan.theme[thKey][type][childType], { data: { happyplan: happyplan}}));
       }
-    });
+    }
+  }
+  for (var thKey in happyplan.theme) {
+    ["html", "assets"].forEach(cleanPath);
   }
 
   // create some variables for html engine
@@ -238,289 +237,23 @@ module.exports = function(grunt) {
     }
   });
 
-  // register scripts for JS engine
-  happyplan.grunt.scripts = happyplan.assets.scripts ? {
-    options: {
-      banner: "<%= happyplan.assets.banner %>"
-    },
+  // update happyplan
+  grunt.config.set('happyplan', happyplan);
 
-    // skip scripts that don't have source (eg: jquery from cdn)
-    files: happyplan.assets.scripts.filter(function(value, i) {
-      return value.dest && value.src;
-    })
-  } : {};
+  var taskFolder = grunt.template.process(happyplan.theme.default.tasks)
+  require(taskFolder + '/lib/configloader')(taskFolder + '/config/', grunt, happyplan)
+  //console.log(grunt.config.get('jshint'));
 
-  // grunt configuration
-  grunt.initConfig({
-    happyplan: happyplan,
-
-    jshint: happyplan.grunt.jshint,
-
-    // remove folders and files
-    clean: {
-      test_sandbox: {
-        src: [
-          'test/**/.DS_Store',
-          'test/sandbox/**/*',
-          '!test/sandbox/package.json'
-        ]
-      },
-      dist: {
-        src: ['<%= happyplan.dist._ %>']
-      },
-      build: {
-        src: ['<%= happyplan.build._ %>']
-      },
-      jekyll: {
-        src: ['<%= happyplan.build.jekyll.src %>']
-      }
-    },
-
-    // static file generator
-    jekyll: {
-      options: {
-        config: '<%= happyplan.build.jekyllConfig %>'
-      },
-      dev: {
-        options: {
-          drafts: true,
-          future: true
-        },
-      },
-      dist: {}
-    },
-
-    // Copy folders and files
-    copy: grunt.util._.extend({}, themesCopyTask, {
-      cssAsScss: {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.bower_components %>',
-          src: ['**/*.css'],
-          dest: '<%= happyplan.bower_components %>',
-          filter: function(src) {
-            if (fs.statSync(src).isFile()) {
-              // try to see if a similar Scss partials doesn't exist already
-              try {
-                return !fs.statSync(path.dirname(src) + path.sep + '_' + path.basename(src, '.css') + '.scss').isFile();
-              }
-              catch (e) {
-                return e.code === 'ENOENT';
-              }
-            }
-
-            return false;
-          },
-          ext:    ".scss"
-        }]
-      },
-
-      'jekyll-dist': {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.build.jekyll.dist %>',
-          src: ['**', '**/.*'],
-          dest: '<%= happyplan.dist._ %>'
-        }]
-      },
-
-      images: {
-        files: [{
-          expand: true,
-          cwd: '<%= happyplan.build.assets.images %>',
-          src: '<%= happyplan.assets.images.src %>',
-          dest: '<%= happyplan.dist.assets.images %>'
-        }]
-      }
-    }),
-
-    // concat scripts
-    concat: {
-      scripts_dev: deepmerge(happyplan.grunt.scripts, happyplan.grunt.concat || {})
-    },
-
-    // minify javascript
-    uglify: {
-      // just merge hp options correctly
-      scripts_dist: deepmerge(happyplan.grunt.scripts, happyplan.grunt.uglify || {})
-    },
-
-    webfont: {
-      glyphicons: {
-        src: '<%= happyplan.build.assets.glyphicons %>/*.svg',
-        dest: '<%= happyplan.dist.assets.fonts %>',
-        destCss: '<%= happyplan.theme.local.assets.styles %>',
-        options: {
-            relativeFontPath: require('path').relative(
-              // we must process template here because it's not already done by the grunt.init at this time
-              // PR if u have a better solution :)
-              __dirname + '/' + grunt.template.process('<%= happyplan.dist.assets.styles %>', { data: { happyplan: happyplan}}),
-              __dirname + '/' + grunt.template.process('<%= happyplan.dist.assets.fonts %>', { data: { happyplan: happyplan}})
-            ),
-            stylesheet: 'scss',
-            hashes: false,
-            htmlDemo: false
-        }
-      }
-    },
-
-    // time to have some styles!
-    compass: {
-      options: {
-        config: '<%= happyplan.build.compassConfig %>',
-        bundleExec: true
-      },
-      dev: {
-        options: {
-          outputStyle: 'expanded',
-          noLineComments: false,
-          debugInfo: true
-        }
-      },
-      dist: {
-        options: {
-          outputStyle: 'compressed',
-          noLineComments: true
-        }
-      }
-    },
-
-    autoprefixer: {
-      options: happyplan.autoprefixer,
-      styles: {
-        expand: true,
-        flatten: true,
-        src: '<%= happyplan.dist.assets.styles %>/*.css',
-        dest: '<%= happyplan.dist.assets.styles %>/'
-      }
-    },
-
-    // optimize images
-    // just  write over files because there are already copies
-    imagemin: {
-      dist: {
-        options: happyplan.imagemin,
-        files: [{
-          expand: true,
-          cwd: "<%= happyplan.dist.assets.images %>",
-          src: ["**/*"],
-          dest: "<%= happyplan.dist.assets.images %>"
-        },
-        {
-          expand: true,
-          cwd: "<%= happyplan.dist.media %>",
-          src: ["**/*"],
-          dest: "<%= happyplan.dist.media %>"
-        }]
-      }
-    },
-
-    // static server
-    connect: {
-      server: {
-        options: {
-          port: '<%= happyplan.localhost.port %>',
-          base: '<%= happyplan.dist._ %>/',
-          hostname: '', // Must be empty to be accessible everywhere and not only "localhost"
-          middleware: function(connect, options) {
-            return [
-              require('connect-livereload')(),
-              // Default middlewares
-              // Serve static files.
-              connect.static(options.base),
-              // Make empty directories browsable.
-              connect.directory(options.base)
-            ];
-          }
-        }
-      }
-    },
-
-    // open in browser
-    open : {
-      dev : {
-        path: 'http://<%= happyplan.localhost.hostname %>:<%= happyplan.localhost.port %>/'
-      }
-    },
-
-    watch: {
-      options: {
-         // check status of https://github.com/gruntjs/grunt-contrib-watch/pull/125
-         // to see if we can remove "<%= happyplan.cwd %>/" in files section
-         // & change cwd below with the new option
-         // but if this PR is just closed, we don't really care because it's working
-         cwd: happyplan._
-      },
-      html: {
-          files: [
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*',
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/.*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*'
-          ],
-          tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
-      },
-      staticAssets: {
-          files: [
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*',
-            '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/_*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>',
-            '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/**/*'
-          ],
-          tasks: ['copy:th_local-assets--static']
-      },
-      js: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*.*'],
-          tasks: ['copy:th_local-assets--scripts', 'concat:scripts_dev']
-      },
-      scss: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*.*'],
-          tasks: ['copy:th_local-assets--styles', 'compass:dev', 'autoprefixer']
-      },
-      images: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*.*'],
-          tasks: ['copy:th_local-assets--images', 'copy:images']
-      },
-      glyphicons: {
-          files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/*.svg'],
-          tasks: ['copy:th_local-assets--glyphicons', 'happyplan:glyphicons']
-      },
-      livereload: {
-          options: {
-            livereload: true
-          },
-          files: ['<%= happyplan.cwd %>/<%= happyplan.dist._ %>/**/*.*'],
-          tasks: []
-      }
-    },
-
-    'gh-pages': {
-      options: {
-        base: '<%= happyplan.dist._ %>',
-        branch: '<%= happyplan.git.branch %>'
-      },
-      src: ['**/*']
-    },
-
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js']
-    }
-  });
-
-  // public commands
-  grunt.registerTask('happyplan:dev',     ['jshint', 'happyplan:build']);
-  grunt.registerTask('happyplan:dist',    ['jshint', 'happyplan:build', 'imagemin:dist']);
-
-  //happyplan: == default
-  grunt.registerTask('happyplan:default', ['happyplan:dev', 'connect:server', 'open:dev', 'watch']);
-
-  // test
-  grunt.registerTask('test', ['clean:test_sandbox', 'nodeunit']);
-};
+  // imports tasks
+  // (we must change cwd because of how loadNpmTasks works)
+  process.chdir(happyplan._);
+  // dev dep only...
+  //https://github.com/sindresorhus/load-grunt-tasks/issues/7
+  //require('load-grunt-tasks')(grunt)
+  // load devDependencies if we are using grunt from happyplan source directory
+  require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks);
+  //grunt.loadNpmTasks('assemble') // not handled by load-grunt-tasks
+  grunt.loadTasks(taskFolder)
+  // reset cwd to previous value
+  process.chdir(happyplan.cwd);
+}

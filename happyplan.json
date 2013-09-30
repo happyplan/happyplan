@@ -1,8 +1,8 @@
 {
   "cachebuster": "<%= grunt.template.today('yyyymmddHHMMss') %>",
-  "localhost": {
+  "server": {
     "hostname": "localhost",
-    "port": 8080
+    "port": 4242
   },
   "baseUrl": "/",
   "baseUrls": {
@@ -42,6 +42,7 @@
   },
   "theme": {
     "default": {
+      "tasks": "<%= happyplan._ %>/grunt_tasks",
       "_": "<%= happyplan._ %>/src",
       "assets": {
         "_": "<%= happyplan.theme.default._ %>/assets",
@@ -59,6 +60,7 @@
       }
     },
     "local": {
+      "tasks": "./grunt_tasks",
       "_": "src",
       "assets": {
         "_": "<%= happyplan.theme.local._ %>/assets",
@@ -100,20 +102,6 @@
       ]
     }
   },
-  "grunt": {
-    "jshint": {
-      "files": [
-        "<%= happyplan.wd %>/Gruntfile.js",
-        "<%= happyplan.wd %>/package.json",
-        "package.json",
-        "<%= happyplan.wd %>/happyplan.json",
-        "happyplan.json",
-        "<%= happyplan.theme.default.assets.scripts %>/**/*.js",
-        "<%= happyplan.theme.local.assets.scripts %>/**/*.js",
-        "!<%= happyplan.theme.local.assets.scripts %>/lib/**/*"
-      ]
-    }
-  },
   "html": {
     "hooks": {
       "head_open": "",
@@ -149,12 +137,6 @@
     "additional_import_paths": [
       "<%= happyplan.bower_components %>"
     ]
-  },
-  "autoprefixer": {
-
-  },
-  "imagemin": {
-
   },
   "git": {
     "branch": "gh-pages"
