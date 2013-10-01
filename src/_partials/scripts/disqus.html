@@ -1,0 +1,22 @@
+{% comment %} Load script if disqus comments are enabled and `page.comments` is either empty (index) or set to true {% endcomment %}
+{% if site.happyplan.disqus_short_name and page.comments != false %}
+  <script>
+  var disqus_shortname = '{{ site.happyplan.disqus_short_name }}',
+  {% if site.happyplan.disqus_developer == true %}disqus_developer = 1,{% endif %}
+  {% if page.comments == true %}
+  {% comment %} `page.comments` can be only be set to true on pages/posts, so we embed the comments here. {% endcomment %}
+  disqus_identifier = '{{ site.happyplan.url }}{{ page.url }}',
+  disqus_url = '{{ site.happyplan.url }}{{ page.url }}',
+  disqus_script = 'embed.js';
+  {% else %}
+  {% comment %} As `page.comments` is empty, we must be on the index page. {% endcomment %}
+  disqus_script = 'count.js';
+  {% endif %}
+  {% assign script_async_src = "'http://' + disqus_shortname + '.disqus.com/' + disqus_script" %}
+  (function(d,s) {
+  s = d.createElement('script');s.async=1;s.src = '//' + disqus_shortname + '.disqus.com/'+disqus_script;
+  (d.getElementsByTagName('head')[0]).appendChild(s);
+  })(document);
+  </script>
+{% endif %}
+
