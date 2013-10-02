@@ -1,5 +1,4 @@
-/*global module*/
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   // Create a new multi task.

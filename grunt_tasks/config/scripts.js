@@ -1,5 +1,7 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
+
+  var happyplan = grunt.config.getRaw('happyplan')
 
   return happyplan.assets.scripts ? {
     options: {

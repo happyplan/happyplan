@@ -1,5 +1,4 @@
-/*global module*/
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   grunt.registerTask('happyplan:config-jekyll', 'Generate Jekyll config file', function () {

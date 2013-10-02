@@ -1,8 +1,9 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   var fs = require('fs')
     , path = require('path')
+    , happyplan = grunt.config.getRaw('happyplan')
 
   return grunt.util._.extend({}, happyplan.themesCopyTask, {
     cssAsScss: {

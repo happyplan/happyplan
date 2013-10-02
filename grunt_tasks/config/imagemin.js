@@ -1,11 +1,11 @@
 // optimize images
 // just  write over files because there are already copies
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   return {
     dist: {
-      options: happyplan.imagemin,
+      options: '<%= happyplan.imagemin %>',
       files: [{
         expand: true,
         cwd: "<%= happyplan.dist.assets.images %>",

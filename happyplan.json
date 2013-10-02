@@ -42,7 +42,6 @@
   },
   "theme": {
     "default": {
-      "tasks": "<%= happyplan._ %>/grunt_tasks",
       "_": "<%= happyplan._ %>/src",
       "assets": {
         "_": "<%= happyplan.theme.default._ %>/assets",
@@ -60,7 +59,6 @@
       }
     },
     "local": {
-      "tasks": "./grunt_tasks",
       "_": "src",
       "assets": {
         "_": "<%= happyplan.theme.local._ %>/assets",

@@ -1,4 +1,4 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   var env = grunt.option('env');

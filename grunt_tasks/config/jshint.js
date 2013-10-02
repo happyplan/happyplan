@@ -1,4 +1,4 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   var options = {}
@@ -13,8 +13,7 @@ module.exports = function(grunt, happyplan) {
       ".jshintrc",
       "*.js",
       "*.json",
-      "happyplan.json",
-      "<%= happyplan.theme.local.tasks %>/**/*.js"
+      "happyplan.json"
     ],
     scripts: [
       "<%= happyplan.theme.local.assets.scripts %>/**/*.js",

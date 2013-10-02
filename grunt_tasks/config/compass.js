@@ -1,5 +1,5 @@
 // time to have some styles!
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   return {

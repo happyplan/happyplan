@@ -1,4 +1,4 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   // Execute or skip 'webfont:glyphicons' depending of the presence of SVG files in the '<%= happyplan.src.assets.glyphicons %>' folder.

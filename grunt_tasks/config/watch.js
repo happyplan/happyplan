@@ -1,4 +1,4 @@
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   return {
@@ -7,7 +7,7 @@ module.exports = function(grunt, happyplan) {
        // to see if we can remove "<%= happyplan.cwd %>/" in files section
        // & change cwd below with the new option
        // but if this PR is just closed, we don't really care because it's working
-       cwd: happyplan._
+       cwd: '<%= happyplan._ %>'
     },
     html: {
         files: [

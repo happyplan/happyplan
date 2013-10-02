@@ -1,5 +1,5 @@
 // static file generator
-module.exports = function(grunt, happyplan) {
+module.exports = function(grunt) {
   "use strict";
 
   return {
