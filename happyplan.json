@@ -1,8 +1,8 @@
 {
   "cachebuster": "<%= grunt.template.today('yyyymmddHHMMss') %>",
-  "localhost": {
+  "server": {
     "hostname": "localhost",
-    "port": 8080
+    "port": 4242
   },
   "baseUrl": "/",
   "baseUrls": {
@@ -100,20 +100,6 @@
       ]
     }
   },
-  "grunt": {
-    "jshint": {
-      "files": [
-        "<%= happyplan.wd %>/Gruntfile.js",
-        "<%= happyplan.wd %>/package.json",
-        "package.json",
-        "<%= happyplan.wd %>/happyplan.json",
-        "happyplan.json",
-        "<%= happyplan.theme.default.assets.scripts %>/**/*.js",
-        "<%= happyplan.theme.local.assets.scripts %>/**/*.js",
-        "!<%= happyplan.theme.local.assets.scripts %>/lib/**/*"
-      ]
-    }
-  },
   "html": {
     "hooks": {
       "head_open": "",
@@ -149,12 +135,6 @@
     "additional_import_paths": [
       "<%= happyplan.bower_components %>"
     ]
-  },
-  "autoprefixer": {
-
-  },
-  "imagemin": {
-
   },
   "git": {
     "branch": "gh-pages"

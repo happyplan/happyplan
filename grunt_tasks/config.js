@@ -1,16 +1,15 @@
-/*global module*/
-module.exports = function (grunt) {
-  'use strict';
+module.exports = function(grunt) {
+  "use strict";
 
   grunt.registerTask('happyplan:config-jekyll', 'Generate Jekyll config file', function () {
     var jsYaml = require('js-yaml');
     var jekyllConfig = grunt.config.get(['happyplan','jekyll']);
     var configFile = grunt.config.get(['happyplan','build', 'jekyllConfig']);
-    
+
     jekyllConfig.happyplan = grunt.config.get(['happyplan']);
-    // remove myself 
+    // remove myself
     delete jekyllConfig.happyplan.jekyll;
-    
+
     grunt.file.write(configFile, jsYaml.dump(jekyllConfig));
     grunt.log.writeln('Jekyll configuration file created: '.grey + configFile.cyan);
   });
@@ -21,9 +20,9 @@ module.exports = function (grunt) {
 
     // update include path for stymes
     for (var themeKey in themes) {
-      if (themes[themeKey].assets && themes[themeKey].assets.styles
-        // don't add sass_dir to include path, that's obvious
-        && themes[themeKey].assets.styles !== config.sass_dir) {
+      if (themes[themeKey].assets && themes[themeKey].assets.styles &&
+          // don't add sass_dir to include path, that's obvious
+          themes[themeKey].assets.styles !== config.sass_dir) {
 
         config.additional_import_paths.unshift(themes[themeKey].assets.styles);
       }
@@ -59,7 +58,7 @@ module.exports = function (grunt) {
     var configFile = grunt.config.get(['happyplan','build', 'compassConfig']);
     var currentConfig = '';
     try {
-      var currentConfig = grunt.file.read(configFile);
+      currentConfig = grunt.file.read(configFile);
     }
     catch(e) {}
 

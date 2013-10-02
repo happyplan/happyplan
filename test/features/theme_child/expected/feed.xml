@@ -8,7 +8,9 @@
         
             <item>
                 <title>Test</title>
-                <description>&lt;p&gt;This is a test&lt;/p&gt;</description>
+                <description>
+&lt;p&gt;This is a test&lt;/p&gt;
+</description>
                 <pubDate>Wed, 10 Jul 2013 00:00:00 +0200</pubDate>
                 <link>http://te.st/test</link>
                 <guid isPermaLink="true">http://te.st/test</guid>

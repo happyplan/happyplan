@@ -6,32 +6,39 @@ exports.themes = {
     var cwd = process.cwd();
 
     require('glob')(cwd + '/test/features/*', function(error, files) {
-      if (error !== null) {
+      if (error) {
+        grunt.log.writeln("Unable to try features");
         throw error;
       }
 
       test.expect(files.length);
       var testI = 0;
       grunt.util._.each(files, function(path) {
+        console.log(path);
         grunt.util.spawn({
           cmd: 'grunt',
           args: [
             'happyplan:dist',
             "--verbose",
+            "--stack",
             "--base=" + path
           ]
         },
         function doneFunction(error, result, code) {
+          console.log("Build finished, checking errors");
+
           if (error) {
-            if (result.stdout) {
-              grunt.log.writeln(result.stdout);
-            }
-            if (result.sterr) {
-              grunt.log.writeln(result.sterr);
-            }
+            // if (result.stdout) {
+              console.log(result.stdout);
+            // }
+            // if (result.sterr) {
+              console.log(result.sterr);
+            // }
 
             throw error;
           }
+
+          console.log("Build ok, computing diff");
 
           grunt.util.spawn({
             cmd: 'diff',
@@ -54,10 +61,10 @@ exports.themes = {
               }
 
               if (diffResult.stdout) {
-                grunt.log.writeln("\n" + diffResult.stdout);
+                console.log("\n" + diffResult.stdout);
               }
               if (diffResult.sterr) {
-                grunt.log.writeln("\n" + diffResult.sterr);
+                console.log("\n" + diffResult.sterr);
               }
             }
             else if (error) {
