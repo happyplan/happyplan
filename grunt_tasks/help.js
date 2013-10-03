@@ -1,5 +1,5 @@
-/*global module*/
-module.exports = function (grunt) {
+module.exports = function(grunt) {
+  "use strict";
 
   // Create a new multi task.
   grunt.registerTask('happyplan:help', 'Happy Plan help', function () {
