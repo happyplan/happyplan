@@ -1,18 +1,27 @@
 {
   "theme": {
     "faketheme": {
-      "_": "<%= happyplan.bower_components %>/faketheme/src",
-      "assets": {
-        "_": "<%= happyplan.theme.faketheme._ %>/assets",
-        "styles": "<%= happyplan.theme.faketheme.assets._ %>/_styles",
-        "images": "<%= happyplan.theme.faketheme.assets._ %>/_images",
-        "glyphicons": "<%= happyplan.theme.faketheme.assets._ %>/_glyphicons",
-        "fonts": "<%= happyplan.theme.faketheme.assets._ %>/fonts"
+      "parent": "default",
+      "path": {
+        "_": "<%= happyplan.bower_components %>/faketheme/src",
+        "assets": {
+          "_": "<%= happyplan.theme.faketheme.path._ %>/assets",
+          "styles": "<%= happyplan.theme.faketheme.path.assets._ %>/_styles",
+          "images": "<%= happyplan.theme.faketheme.path.assets._ %>/_images",
+          "glyphicons": "<%= happyplan.theme.faketheme.path.assets._ %>/_glyphicons",
+          "fonts": "<%= happyplan.theme.faketheme.path.assets._ %>/fonts"
+        },
+        "html": {
+          "_": "<%= happyplan.theme.faketheme.path._ %>",
+          "layouts": "<%= happyplan.theme.faketheme.path.html._ %>/_layouts",
+          "partials": "<%= happyplan.theme.faketheme.path.html._ %>/_partials"
+        }
       },
-      "html": {
-        "_": "<%= happyplan.theme.faketheme._ %>",
-        "layouts": "<%= happyplan.theme.faketheme.html._ %>/_layouts",
-        "partials": "<%= happyplan.theme.faketheme.html._ %>/_partials"
+      "assets": {
+        "styles": [{
+          "src": "<%= happyplan.theme.faketheme.path.assets.styles %>/faketheme.scss",
+          "dest": "<%= happyplan.path.dist.assets.styles %>/faketheme.css"
+        }]
       }
     }
   },

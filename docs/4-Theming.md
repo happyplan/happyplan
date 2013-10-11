@@ -25,11 +25,7 @@ A theme can herit from a parent theme. To do this, just add this section to you 
 
 ```json
 {
-    "theme": {
-        "local": {
-            "parent": "themename"
-        }
-    }
+    "parent": "themename"
 }
 ```
 

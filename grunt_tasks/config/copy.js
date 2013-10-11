@@ -32,18 +32,18 @@ module.exports = function(grunt) {
     images: {
       files: [{
         expand: true,
-        cwd: '<%= happyplan.build.assets.images %>',
+        cwd: '<%= happyplan.path.build.assets.images %>',
         src: '<%= happyplan.assets.images.src %>',
-        dest: '<%= happyplan.dist.assets.images %>'
+        dest: '<%= happyplan.path.dist.assets.images %>'
       }]
     },
 
     'jekyll-dist': {
       files: [{
         expand: true,
-        cwd: '<%= happyplan.build.jekyll.dist %>',
+        cwd: '<%= happyplan.path.build.jekyll.dist %>',
         src: ['**', '**/.*'],
-        dest: '<%= happyplan.dist._ %>'
+        dest: '<%= happyplan.path.dist._ %>'
       }]
     }
   })

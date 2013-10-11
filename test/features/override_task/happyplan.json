@@ -2,8 +2,11 @@
   "cachebuster": "<%= happyplan.version %>",
   "assets": {
     "styles": [{
-      "src": "<%= happyplan.path.assets.styles %>/<%= happyplan.name %>.scss",
+      "src": "<%= happyplan.path.assets.styles %>/<%= happyplan.name %>.styl",
       "dest": "<%= happyplan.path.dist.assets.styles %>/<%= happyplan.name %>.css"
     }]
+  },
+  "styl": {
+    "whitespace": true
   }
 }

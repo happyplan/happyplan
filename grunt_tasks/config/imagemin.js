@@ -8,15 +8,15 @@ module.exports = function(grunt) {
       options: '<%= happyplan.imagemin %>',
       files: [{
         expand: true,
-        cwd: "<%= happyplan.dist.assets.images %>",
+        cwd: "<%= happyplan.path.dist.assets.images %>",
         src: ["**/*"],
-        dest: "<%= happyplan.dist.assets.images %>"
+        dest: "<%= happyplan.path.dist.assets.images %>"
       },
       {
         expand: true,
-        cwd: "<%= happyplan.dist.media %>",
+        cwd: "<%= happyplan.path.dist.media %>",
         src: ["**/*"],
-        dest: "<%= happyplan.dist.media %>"
+        dest: "<%= happyplan.path.dist.media %>"
       }]
     }
   }

@@ -12,17 +12,17 @@ module.exports = function(grunt) {
         condense: true,
         indent_scripts: 'keep'
       },
-      layoutdir: '<%= happyplan.src %>/layouts',
-      partials: '<%= happyplan.src %>/partials/*.html',
+      layoutdir: '<%= happyplan.path._ %>/layouts',
+      partials: '<%= happyplan.path._ %>/partials/*.html',
       layout: 'default.html',
-      assets: '<%= happyplan.src %>/assets',
+      assets: '<%= happyplan.path._ %>/assets',
     },
     html: {
       src: [
-        '<%= happyplan.src %>/content/**/*.html',
-        '<%= happyplan.src %>/content/**/*.md'
+        '<%= happyplan.path._ %>/content/**/*.html',
+        '<%= happyplan.path._ %>/content/**/*.md'
       ],
-      dest: '<%= happyplan.dist %>/'
+      dest: '<%= happyplan.path.dist %>/'
     }
   }
 }

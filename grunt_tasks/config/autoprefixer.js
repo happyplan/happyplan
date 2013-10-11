@@ -5,8 +5,8 @@ module.exports = function(grunt) {
     styles: {
       expand: true,
       flatten: true,
-      src: '<%= happyplan.dist.assets.styles %>/*.css',
-      dest: '<%= happyplan.dist.assets.styles %>/'
+      src: '<%= happyplan.path.dist.assets.styles %>/*.css',
+      dest: '<%= happyplan.path.dist.assets.styles %>/'
     }
   }
 }

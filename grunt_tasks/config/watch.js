@@ -11,50 +11,51 @@ module.exports = function(grunt) {
     },
     html: {
         files: [
-          '<%= happyplan.cwd %>/<%= happyplan.theme.local.posts %>/**/*',
-          '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/*',
-          '<%= happyplan.cwd %>/<%= happyplan.theme.local.html._ %>/**/.*',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*'
+          '<%= happyplan.cwd %>/<%= happyplan.path.posts %>/**/*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.posts_drafts %>/**/*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.html._ %>/**/*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.html._ %>/**/.*',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets._ %>/**/*'
         ],
         tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
         //tasks: ['build-html']
     },
     staticAssets: {
         files: [
-          '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/*',
-          '<%= happyplan.cwd %>/<%= happyplan.theme.local.assets._ %>/**/_*',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>',
-          '!<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/**/*'
+          '<%= happyplan.cwd %>/<%= happyplan.path.assets._ %>/**/*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.assets._ %>/**/_*',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.styles %>',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.styles %>/**/*',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.scripts %>',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.scripts %>/**/*',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.images %>',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.images %>/**/*',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.glyphicons %>',
+          '!<%= happyplan.cwd %>/<%= happyplan.path.assets.glyphicons %>/**/*'
         ],
         tasks: ['copy:th_local-assets--static']
     },
     js: {
-        files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.scripts %>/**/*.*'],
+        files: ['<%= happyplan.cwd %>/<%= happyplan.path.assets.scripts %>/**/*.*'],
         tasks: ['copy:th_local-assets--scripts', 'concat:scripts_dev']
     },
     scss: {
-        files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.styles %>/**/*.*'],
-        tasks: ['copy:th_local-assets--styles', 'compass:dev', 'autoprefixer']
+        files: ['<%= happyplan.cwd %>/<%= happyplan.path.assets.styles %>/**/*.*'],
+        tasks: ['happyplan:build-styles']
     },
     images: {
-        files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.images %>/**/*.*'],
+        files: ['<%= happyplan.cwd %>/<%= happyplan.path.assets.images %>/**/*.*'],
         tasks: ['copy:th_local-assets--images', 'copy:images']
     },
     glyphicons: {
-        files: ['<%= happyplan.cwd %>/<%= happyplan.theme.local.assets.glyphicons %>/*.svg'],
+        files: ['<%= happyplan.cwd %>/<%= happyplan.path.assets.glyphicons %>/*.svg'],
         tasks: ['copy:th_local-assets--glyphicons', 'happyplan:glyphicons']
     },
     livereload: {
         options: {
           livereload: true
         },
-        files: ['<%= happyplan.cwd %>/<%= happyplan.dist._ %>/**/*.*'],
+        files: ['<%= happyplan.cwd %>/<%= happyplan.path.dist._ %>/**/*.*'],
         tasks: []
     }
   }
