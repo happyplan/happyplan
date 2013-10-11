@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   "use strict";
 
+  // using try instead of a file.exists also handle json parsing error
   try {
     grunt.config.set('pkg', grunt.file.readJSON('package.json'))
   }
@@ -14,7 +15,11 @@ module.exports = function(grunt) {
 
   // now tasks
   var happyplan = grunt.config.getRaw('happyplan')
-  require('./grunt_tasks/lib/tasks-config-loader')(grunt, happyplan._ + '/grunt_tasks/config')
+  var taskConfigLoader = require('./grunt_tasks/lib/tasks-config-loader');
+  taskConfigLoader(grunt, happyplan._ + '/grunt_tasks/config')
+  if (happyplan.cwd !== happyplan._) {
+    taskConfigLoader(grunt, happyplan.cwd + '/grunt_tasks/config')
+  }
 
   // imports tasks
   process.chdir(happyplan._) // (we must change cwd because of how loadNpmTasks works)
@@ -24,7 +29,13 @@ module.exports = function(grunt) {
   // load devDependencies if we are using grunt from happyplan source directory
   require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks)
   //grunt.loadNpmTasks('assemble') // not handled by load-grunt-tasks
-  grunt.loadTasks('./grunt_tasks')
+  grunt.loadTasks(happyplan._ + '/grunt_tasks')
   // reset cwd to previous value
   process.chdir(happyplan.cwd)
+
+  // try to load local tasks
+  if (happyplan.cwd !== happyplan._) {
+    require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks)
+    grunt.loadTasks(happyplan.cwd + '/grunt_tasks')
+  }
 }

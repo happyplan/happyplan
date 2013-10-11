@@ -10,13 +10,13 @@ module.exports = function(grunt) {
       ]
     },
     dist: {
-      src: ['<%= happyplan.dist._ %>']
+      src: ['<%= happyplan.path.dist._ %>']
     },
     build: {
-      src: ['<%= happyplan.build._ %>']
+      src: ['<%= happyplan.path.build._ %>']
     },
     jekyll: {
-      src: ['<%= happyplan.build.jekyll.src %>']
+      src: ['<%= happyplan.path.build.jekyll.src %>']
     }
   }
 }

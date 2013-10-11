@@ -4,32 +4,34 @@
 
 ## Arborescence
 
-Here is what the tree you should have with default configuration :
+Here is what the tree you should have with default configuration (files are ordered manually for doc purpose):
 
 ```
+    ├── node_modules               // (Happyplan is in that)
+    ├── bower_components           // Bower components if you need
+    ├── grunt_tasks                // Custom task or override
+    │   └── config                 // Custom task config or override
     ├── src
-    │   ├── _layouts                    // html layouts for your documents
-    │   ├── _partials                    // Partials pieces of documents you can reuse (> jekyll _includes folder)
-    │   ├── _posts                       // Posts for blog
-    │   │   └── _drafts                 // Posts you don't want to publish
-    │   ├── assets                      // All about design
-    │   │   ├── _glyphicons             // Svg icons to be served as webfont
-    │   │   ├── _images                 // Design images
-    │   │   ├── _scripts                // JS
-    │   │   │   └── script.js           // a JS file
-    │   │   ├── _styles                 // CSS
-    │   │   │   ├── _icons.scss         // Used if you use grunt-webfont (svg-to-font tool), do not edit it
-    │   │   │   └── style.scss          // Where you put all your styles
-    │   │   └── fonts                   // Fonts
-    │   └── media                       // Media for your documents
-    ├── bower_components            // Bower components
-    ├── build                       // Where some magic to build you app happen
-    ├── dist                        // App ready to be distributed
-    ├── node_modules                // (Happyplan is in that)
-    ├── bower.json                  // Where you define your options used by bower
-    ├── happyplan.json              // You can create this file to override the default config.
-    ├── package.json                // NPM file where reference to happyplan is keep
-    └── README.md                   // Everyone should have a README right ? :)
+    │   ├── _layouts               // html layouts for your documents
+    │   ├── _partials              // Partials pieces
+    │   ├── _posts                 // Posts for blog
+    │   │   └── _drafts            // Posts you don't want to publish
+    │   ├── assets                 // All about design
+    │   │   ├── _glyphicons        // Svg icons to be served as webfont
+    │   │   ├── _images            // Design images
+    │   │   ├── _scripts           // JS
+    │   │   │   └── script.js      // a JS file
+    │   │   ├── _styles            // CSS
+    │   │   │   ├── _icons.scss    // Used if you use grunt-webfont
+    │   │   │   └── style.scss     // Where you put all your styles
+    │   │   └── fonts              // Fonts
+    │   └── media                  // Media for your documents
+    ├── dist                       // => App ready to be distributed
+    ├── build                      // magic folder you can ignore
+    ├── bower.json                 // bower config
+    ├── happyplan.json             // Happyplan config !
+    ├── package.json               // required by NPM
+    └── README.md                  // Everyone should have a README !
 ```
 
 ## Configuration
@@ -133,7 +135,7 @@ Scripts & styles have some specials treatments & they can be automatically inclu
         "source-1.ext",
         "source-2.ext"
       ],
-      "dest": "<%= happyplan.dist.assets.{{ type }} %>/finalname.ext",
+      "dest": "<%= happyplan.path.dist.assets.{{ type }} %>/finalname.ext",
       "hook": "head_open|head_close|head_before_stylesheets|head_stylesheets|head_after_stylesheets|body_open|body_close"
       "ifIE": true|"lt IE 9"|"whatever combo you need"
     }]
@@ -143,7 +145,7 @@ Scripts & styles have some specials treatments & they can be automatically inclu
 
 Each objects in the array should at least contains `dest` property.
 It's used for automatic inclusion into html hooks (eg: to include jQuery from a CDN).
-_Note: `happyplan.dist.assets.*` paths used in `dest` key will be automatically adjusted with appropriate base url._
+_Note: `happyplan.path.dist.assets.*` paths used in `dest` key will be automatically adjusted with appropriate base url._
 
 #### Cache-buster
 
@@ -192,9 +194,9 @@ If you want to add a script easily you just need to add an item to the `happypla
   "assets": {
     "scripts": [{
       "src": [
-        "<%= happyplan.theme.local.assets.scripts %>/script.js"
+        "<%= happyplan.path.assets.scripts %>/script.js"
       ],
-      "dest": "<%= happyplan.dist.assets.scripts %>/script.js"
+      "dest": "<%= happyplan.path.dist.assets.scripts %>/script.js"
     }]
   }
 }
@@ -209,7 +211,7 @@ Here is a solid example that show you how to includes lots scripts using differe
       "src": [
         "<%= happyplan.bower_components %>/Respond/respond.src.js"
       ],
-      "dest": "<%= happyplan.dist.assets.scripts %>/respond.js",
+      "dest": "<%= happyplan.path.dist.assets.scripts %>/respond.js",
       "IEcond": "lt IE 9",
       "hook": "head_after_stylesheets"
     }, {
@@ -218,14 +220,14 @@ Here is a solid example that show you how to includes lots scripts using differe
       "src": [
         "<%= happyplan.bower_components %>/aight/aight.js"
       ],
-      "dest": "<%= happyplan.dist.assets.scripts %>/ieshim.js",
+      "dest": "<%= happyplan.path.dist.assets.scripts %>/ieshim.js",
       "IEcond": "lt IE 9"
     }, {
       "src": [
         "<%= happyplan.bower_components %>/picturefill/picturefill.js",
-        "<%= happyplan.theme.local.assets.scripts %>/script.js"
+        "<%= happyplan.path.assets.scripts %>/script.js"
       ],
-      "dest": "<%= happyplan.dist.assets.scripts %>/script.js"
+      "dest": "<%= happyplan.path.dist.assets.scripts %>/script.js"
     }]
   }
 }
@@ -233,27 +235,45 @@ Here is a solid example that show you how to includes lots scripts using differe
 
 ### Style Engine (CSS)
 
-For now, only Compass is supported via [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass), but we plan to add other simpler things like [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass) or the faster [grunt-sass](https://github.com/sindresorhus/grunt-sass) based on [node-sass](https://github.com/andrew/node-sass) ([libsass](https://github.com/hcatlin/libsass)).
+To avoid a Ruby dependency & keep build fast, we decide to use Sass based on [libsass](https://github.com/hcatlin/libsass) but you will be able to use whatever you want by [configuring your own task (soon)](https://github.com/happyplan/happyplan/issues/80)
 
-#### Compass
+#### Sass
 
-`_bower_components` path is added into Compass `additional_import_paths._`
-If you want to consume normal CSS in your Scss, you can just import theme as regular Sass files (a task is just making copy of each `.css` to `.scss`).
-
-If you need/want to add some Sass or Compass plugins and/or add `bower_components` folder, here is what you can do.
+By default, only `bower_components` is added as an include path, but you can override that in your `happyplan.json`:
 
 ```json
 {
-    "compass": {
-        "require": [
-            "ceaser-easing"
-        ],
-        "additional_import_paths": [
-            "<%= happyplan.bower_components %>/griddle"
-        ]
-    }
+  "sass": {
+    "includePaths": [
+      "<%= happyplan.bower_components %>",
+      "one_more_path"
+    ]
+  }
 }
 ```
+
+If you want to add a stylesheet easily you just need to add an item to the `happyplan.assets.styles` array.
+**Here is what is done by default:**
+
+```json
+{
+  "assets": {
+    "styles": [{
+      "src": "<%= happyplan.path.assets.styles %>/<%= happyplan.name %>.scss",
+      "dest": "<%= happyplan.path.dist.assets.styles %>/<%= happyplan.name %>.css"
+    }]
+  }
+}
+```
+
+For a more solid examples, please refer to the section `Script Engine` above.
+
+#### Custom styles engine example: Styl
+
+Enjoy the power of happyplan & override style task with what you want !
+We wrote a simple example using [Styl](https://github.com/visionmedia/styl) a flexible & solid alternative to Sass.
+You can see it with the [test `override_task`](https://github.com/happyplan/happyplan/tree/master/test/features/override_task).
+This example can be adapted easily to **Less** or something else if you really want to use it :).
 
 ### Glyphicons
 
@@ -321,5 +341,15 @@ To change default option below, just take a look to the [`imagemin` task](https:
   }
 }
 ```
+
+## Override tasks / Custom tasks
+
+Enjoy the power of happyplan & override whatever you want !
+You can see a simple example of an override of the style engine with the [test `override_task`](https://github.com/happyplan/happyplan/tree/master/test/features/override_task).
+_This example can be adapted easily override whatever you want or need._
+You should even be able to plug custom tasks very easily !
+
+The idea is that you can create a `grunt_tasks` & override/add tasks respecting original happyplan worflow.
+You can even change predefined tasks config in `grunt_tasks/config`.
 
 [defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"

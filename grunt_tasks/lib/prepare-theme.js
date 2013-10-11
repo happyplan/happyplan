@@ -2,64 +2,64 @@ module.exports = function prepareThemes(grunt) {
   "use strict";
 
   var happyplan = grunt.config.getRaw('happyplan')
-  var mergeConfig = require('./merge-config')
-  var localConfigPath = happyplan.cwd + '/happyplan.json'
+    , mergeConfig = require('./merge-config')
+    , localConfigPath = happyplan.cwd + '/happyplan.json'
+
   if (grunt.file.exists(localConfigPath)) {
-    happyplan = mergeConfig(localConfigPath, 'local', grunt)
+    happyplan = mergeConfig(localConfigPath, [], grunt)
   }
 
-  // just ensure local is latest key
-  var localTmp = happyplan.theme.local
-  delete happyplan.theme.local
-  happyplan.theme.local = localTmp
+  var themes = require('./get-themes')(grunt)
 
   //grunt.verbose.writeln('Runtime config', happyplan)
 
   // load themes tasks
-  for (var key in happyplan.theme) {
-    if (happyplan.theme[key].path && happyplan.theme[key].path.tasks) {
-      grunt.loadTasks(happyplan.theme[key].path.tasks)
+  for (var key in themes) {
+    if (themes[key] && themes[key].path && themes[key].path.tasks) {
+      grunt.loadTasks(themes[key].path.tasks)
     }
   }
 
   // prepare config for copy task for theme
   // by default, get default theme
-  happyplan.themesCopyTask = {}; // all copy tasks
-  var themeSrcDest_byRessources = {}; // all resources files {layouts..glyphicons}.src|dest used for watching
-  var prepareBuild_Tasks = {}; // all copy tasks names by types (html|assets)
-  var availableFilesPerTheme = {
-    "html": {
-      "layouts": "<%= happyplan.build.jekyll.src %>/_layouts",
-      "partials": "<%= happyplan.build.jekyll.src %>/_includes",
-      "plugins": "<%= happyplan.build.jekyll.src %>/_plugins"
-    },
-    "assets": {
-      "scripts": "<%= happyplan.build.assets.scripts %>",
-      "styles": "<%= happyplan.build.assets.styles %>", // styles -are- *should be* handle by an include path
-      "images": "<%= happyplan.build.assets.images %>",
-      "fonts": "<%= happyplan.build.assets.fonts %>",
-      "glyphicons": "<%= happyplan.build.assets.glyphicons %>"
+
+  // all copy tasks
+  happyplan.themesCopyTask = {}
+
+    // all resources files {layouts..glyphicons}.src|dest used for watching
+  var themeSrcDest_byRessources = {}
+    // all copy tasks names by types (html|assets)
+    , prepareBuild_Tasks = {}
+    , availableFilesPerTheme = {
+      "html": {
+        "layouts": "<%= happyplan.path.build.jekyll.src %>/_layouts",
+        "partials": "<%= happyplan.path.build.jekyll.src %>/_includes",
+        "plugins": "<%= happyplan.path.build.jekyll.src %>/_plugins"
+      },
+      "assets": {
+        "scripts": "<%= happyplan.path.build.assets.scripts %>",
+        "styles": "<%= happyplan.path.build.assets.styles %>", // styles -are- *should be* handle by an include path
+        "images": "<%= happyplan.path.build.assets.images %>",
+        "fonts": "<%= happyplan.path.build.assets.fonts %>",
+        "glyphicons": "<%= happyplan.path.build.assets.glyphicons %>"
+      }
     }
-  };
-  var availableStaticFilesPerTheme = {
-    "html": "<%= happyplan.build.jekyll.src %>",
-    "assets": "<%= happyplan.build.assets._ %>"
-  }
+    , availableStaticFilesPerTheme = {
+      "html": "<%= happyplan.path.build.jekyll.src %>",
+      "assets": "<%= happyplan.path.build.assets._ %>"
+    }
   // here we (create tasks to) copy each themes files (in order: defaut, parent(s), local)
   // jekyll files. local are copied last to ovewrite previous files
-  for (var themeKey in happyplan.theme) {
-    if (happyplan.theme[themeKey].disable) {
-      continue;
-    }
-
+  for (var themeKey in themes) {
     for(var objKey in availableFilesPerTheme) {
       if (!prepareBuild_Tasks[objKey]) {
         prepareBuild_Tasks[objKey] = [];
       }
       for(var filesKey in availableFilesPerTheme[objKey]) {
-        if (happyplan.theme[themeKey][objKey] &&
-            happyplan.theme[themeKey][objKey][filesKey]) {
-          var src = happyplan.theme[themeKey][objKey][filesKey];
+        if (themes[themeKey].path &&
+            themes[themeKey].path[objKey] &&
+            themes[themeKey].path[objKey][filesKey]) {
+          var src = themes[themeKey].path[objKey][filesKey];
           var dest = availableFilesPerTheme[objKey][filesKey];
           if (!themeSrcDest_byRessources[filesKey]) {
             themeSrcDest_byRessources[filesKey] = {
@@ -81,7 +81,7 @@ module.exports = function prepareThemes(grunt) {
       var staticKey = 'th_' +themeKey + '-' + objKey + '--' + 'static';
       happyplan.themesCopyTask[staticKey] = {files: [{
         expand: true,
-        cwd: happyplan.theme[themeKey][objKey]._,
+        cwd: themes[themeKey].path[objKey]._,
         src: [
           '**/*',
           '**/.*',
@@ -93,27 +93,21 @@ module.exports = function prepareThemes(grunt) {
       }]};
       prepareBuild_Tasks[objKey].push('copy:' + staticKey);
     }
-
-    // handle styles from compass paths to keep cache
-    // if (happyplan.theme[themeKey].assets &&
-    //     happyplan.theme[themeKey].assets.styles) {
-    //   happyplan.compass.additional_import_paths.push(happyplan.theme[themeKey].assets.styles)
-    // }
   }
 
   // add user post
   happyplan.themesCopyTask['th_local-html--posts'] = {files: [{
     expand: true,
-    cwd: '<%= happyplan.theme.local.posts %>',
+    cwd: '<%= happyplan.path.posts %>',
     src: ['*'],
-    dest: '<%= happyplan.build.jekyll.src %>/_posts'
+    dest: '<%= happyplan.path.build.jekyll.src %>/_posts'
   }]};
   prepareBuild_Tasks.html.push('copy:th_local-html--posts');
   happyplan.themesCopyTask['th_local-html--posts_drafts'] = {files: [{
     expand: true,
-    cwd: '<%= happyplan.theme.local.posts_drafts %>',
+    cwd: '<%= happyplan.path.posts_drafts %>',
     src: ['*'],
-    dest: '<%= happyplan.build.jekyll.src %>/_drafts'
+    dest: '<%= happyplan.path.build.jekyll.src %>/_drafts'
   }]};
   prepareBuild_Tasks.html.push('copy:th_local-html--posts_drafts');
 
@@ -126,14 +120,18 @@ module.exports = function prepareThemes(grunt) {
   // paths not normalized don't match correctly
   // ex: include /bla/./bla/**/*, exclude /bla/./bla/**/_* don't work as expected
   var path = require('path')
-  var cleanPath = function(type) {
-    if (happyplan.theme[thKey][type]) {
-      for (var childType in happyplan.theme[thKey][type]) {
-        happyplan.theme[thKey][type][childType] = path.normalize(grunt.template.process(happyplan.theme[thKey][type][childType], { data: { happyplan: happyplan}}));
+  var cleanPath = function(themePaths) {
+    ["html", "assets"].forEach(function(type) {
+      if (themePaths[type]) {
+        for (var childType in themePaths[type]) {
+          themePaths[type][childType] = path.normalize(grunt.template.process(themePaths[type][childType], { data: { happyplan: happyplan}}));
+        }
       }
-    }
+    })
   }
   for (var thKey in happyplan.theme) {
-    ["html", "assets"].forEach(cleanPath);
+    if (happyplan.theme[thKey] && happyplan.theme[thKey].path)
+      cleanPath(happyplan.theme[thKey].path)
   }
+  cleanPath(happyplan.path)
 }

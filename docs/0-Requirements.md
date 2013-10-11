@@ -4,10 +4,6 @@
 
     $ (sudo) gem install jekyll
 
-## Compass [[+](http://compass-style.org/install/)]
-
-    $ (sudo) gem install compass
-
 ## Node.js [[+](https://github.com/joyent/node/wiki/Installation)]
 
     $ brew install node
@@ -26,7 +22,7 @@
 
 ## Optionals
 
-### Grunt-Webfont[[+](https://github.com/sapegin/grunt-webfont#installation)]
+### Grunt-Webfont requirements [[+](https://github.com/sapegin/grunt-webfont#installation)]
 
     $ brew install fontforge ttfautohint
 

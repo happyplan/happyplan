@@ -1,30 +1,34 @@
 module.exports = function prepareThemes(grunt) {
   "use strict";
 
-  var happyplan = grunt.config.getRaw('happyplan')
+  var happyplan = grunt.config.get('happyplan')
+    , helpers = grunt.config.getRaw(['happyplan', 'html', 'helpers'])
 
   // create some variables for html engine
   var assetsType = ["styles", "scripts"]
   assetsType.forEach(function(type) {
-    for (var data in happyplan.assets[type]) {
-      happyplan.assets[type][data].hook = happyplan.assets[type][data].hook ? happyplan.assets[type][data].hook : happyplan.assets.default_hook[type];
-      if (happyplan.assets[type][data].ifIE) {
-        happyplan.html.hooks[happyplan.assets[type][data].hook] += '<!--[if ' + (typeof happyplan.assets[type][data].ifIE === 'string' ? happyplan.assets[type][data].ifIE : 'IE') + ']>'
+    var assets = require('../lib/get-theme-config')(grunt, ['assets', type])
+    for (var data in assets) {
+      assets[data].hook = assets[data].hook ? assets[data].hook : happyplan.assets.default_hook[type]
+      if (assets[data].ifIE) {
+        happyplan.html.hooks[assets[data].hook] += '<!--[if ' + (typeof assets[data].ifIE === 'string' ? assets[data].ifIE : 'IE') + ']>'
       }
-      happyplan.html.hooks[happyplan.assets[type][data].hook] += grunt.template.process(happyplan.html.helpers[type], {
-        data: grunt.util._.extend({}, happyplan.assets[type][data], {
+      happyplan.html.hooks[assets[data].hook] += grunt.template.process(helpers[type], {
+        data: grunt.util._.extend({}, assets[data], {
           happyplan: happyplan,
-          dest: (grunt.template.process(happyplan.assets[type][data].dest, {data: {happyplan:happyplan}}) + (happyplan.env == 'dist' && happyplan.cachebuster ? '?' + happyplan.cachebuster : '' ))
+          dest: (assets[data].dest + (happyplan.env == 'dist' && happyplan.cachebuster ? '?' + happyplan.cachebuster : '' ))
             .replace(
-              grunt.template.process(happyplan.dist.assets[type], {data: {happyplan:happyplan}}),
-              grunt.template.process(happyplan.baseUrls[type], {data: {happyplan:happyplan}})
+              happyplan.path.dist.assets[type],
+              happyplan.baseUrls[type]
             )
         })
-      });
-      if (happyplan.assets[type][data].ifIE) {
-        happyplan.html.hooks[happyplan.assets[type][data].hook] += '<![endif]-->';
+      })
+      if (assets[data].ifIE) {
+        happyplan.html.hooks[assets[data].hook] += '<![endif]-->'
       }
-      happyplan.html.hooks[happyplan.assets[type][data].hook] += "\n";
+      happyplan.html.hooks[assets[data].hook] += "\n"
     }
   })
+
+  grunt.config.set("happyplan", happyplan)
 }

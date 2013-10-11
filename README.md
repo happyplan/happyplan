@@ -11,14 +11,16 @@
 HappyPlan is a static website generator based on a bundle of amazing tools.
 It's just all about fun.
 
-### What in it?
+### What in it ?
 
 * A static website generator from html or markdown: [Jekyll](http://jekyllrb.com/).
 * A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & all pre-defined tasks you'll need (scripts, styles & images automatic minification & compression).
-* An amazing CSS pre-processor, [Sass](http://sass-lang.com/) directly served with [Compass](http://compass-style.org/).
+* An amazing CSS pre-processor, [Sass](http://sass-lang.com/) (via [libsass](https://github.com/hcatlin/libsass).
 * A quick way to provide scalable icons as font thanks an awesome Grunt task [grunt-webfont](https://github.com/sapegin/grunt-webfont).
 * A [Livereload](http://livereload.com/) server provided by the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task) to make development as fast as hell.
 * Support the [Bower](http://bower.io/) package manager to handle web components.
+
+_Notice: you can change/override/add stuff very easily, thanks to grunt. [More about that in the documentation](https://github.com/happyplan/happyplan/blob/master/docs/2-Configuring-Project.md)_
 
 Oh, by the way, why "happy plan" ? [Here is not the answer](http://www.youtube.com/watch?v=5zVVKXT8Vi0).
 

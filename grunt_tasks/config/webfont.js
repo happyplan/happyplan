@@ -1,15 +1,18 @@
 module.exports = function(grunt) {
   "use strict";
 
+  var happyplan = grunt.config.get('happyplan')
+console.log(happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
+            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'fonts']));
   return {
     glyphicons: {
-      src: '<%= happyplan.build.assets.glyphicons %>/*.svg',
-      dest: '<%= happyplan.dist.assets.fonts %>',
-      destCss: '<%= happyplan.theme.local.assets.styles %>',
+      src: '<%= happyplan.path.build.assets.glyphicons %>/*.svg',
+      dest: '<%= happyplan.path.dist.assets.fonts %>',
+      destCss: '<%= happyplan.path.assets.styles %>',
       options: {
           relativeFontPath: require('path').relative(
-            __dirname + '/' + grunt.config.get(['happyplan', 'dist', 'assets', 'styles']),
-            __dirname + '/' + grunt.config.get(['happyplan', 'dist', 'assets', 'fonts'])
+            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
+            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'fonts'])
           ),
           stylesheet: 'scss',
           hashes: false,

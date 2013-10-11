@@ -16,8 +16,8 @@ module.exports = function(grunt) {
       "happyplan.json"
     ],
     scripts: [
-      "<%= happyplan.theme.local.assets.scripts %>/**/*.js",
-      "!<%= happyplan.theme.local.assets.scripts %>/lib/**/*"
+      "<%= happyplan.path.assets.scripts %>/**/*.js",
+      "!<%= happyplan.path.assets.scripts %>/lib/**/*"
     ]
   }
 }
