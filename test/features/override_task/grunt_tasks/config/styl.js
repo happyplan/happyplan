@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var happyplan = grunt.config.get('happyplan')
-    , styles = require('../lib/get-theme-config')(grunt, ['assets', 'styles'])
+    , styles = require(happyplan._ + '/grunt_tasks/lib/get-theme-config')(grunt, ['assets', 'styles'])
     , files = {}
 
   if (styles) {
@@ -17,10 +17,10 @@ module.exports = function(grunt) {
       }
     })
   }
-
+  console.log(happyplan.styl)
   return {
     styles: {
-      options: '<%= happyplan.sass %>',
+      options: '<%= happyplan.styl %>',
       files: files
     }
   }

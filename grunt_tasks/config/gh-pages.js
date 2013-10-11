@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   return {
     options: {
-      base: '<%= happyplan.dist._ %>',
+      base: '<%= happyplan.path.dist._ %>',
       branch: '<%= happyplan.git.branch %>'
     },
     src: ['**/*']

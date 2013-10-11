@@ -4,22 +4,21 @@ module.exports = function(grunt) {
   var env = grunt.option('env');
 
   grunt.registerTask('happyplan:build-assets', 'Build the assets for the website', [
-    'copy:cssAsScss',
+      'copy:cssAsScss'
 
-    'happyplan:prepare-build-assets', // created in Gruntfile
+    // created during runtime
+    , 'happyplan:prepare-build-assets'
 
     // assets
-    'copy:images',
-    'happyplan:glyphicons',
+    , 'copy:images'
+    , 'happyplan:glyphicons'
 
     // css
-    //'sass'
-    // css
-    'happyplan:config-compass',
-    'compass:' + env,
-    'autoprefixer',
+    , 'happyplan:build-styles'
 
     // js
-    (env === 'dist' ? 'uglify' : 'concat') + ':scripts_' + env
+    , (env === 'dist' ? 'uglify' : 'concat') + ':scripts_' + env
   ])
+
+
 }

@@ -12,81 +12,86 @@
     "fonts": "<%= happyplan.baseUrl %>assets/fonts",
     "media": "<%= happyplan.baseUrl %>media"
   },
-  "build": {
-    "_": "build",
+  "path": {
+    "_": "src",
     "assets": {
-      "_": "<%= happyplan.build._ %>/assets",
-      "scripts": "<%= happyplan.build.assets._ %>/_js",
-      "styles": "<%= happyplan.build.assets._ %>/_css",
-      "images": "<%= happyplan.build.assets._ %>/_img",
-      "fonts": "<%= happyplan.build.assets._ %>/fonts",
-      "glyphicons": "<%= happyplan.build.assets._ %>/_glyphicons"
+      "_": "<%= happyplan.path._ %>/assets",
+      "scripts": "<%= happyplan.path.assets._ %>/_scripts",
+      "styles": "<%= happyplan.path.assets._ %>/_styles",
+      "images": "<%= happyplan.path.assets._ %>/_images",
+      "glyphicons": "<%= happyplan.path.assets._ %>/_glyphicons",
+      "fonts": "<%= happyplan.path.assets._ %>/fonts"
     },
-    "jekyll": {
-      "src": "<%= happyplan.build._ %>/jekyll/src",
-      "dist": "<%= happyplan.build._ %>/jekyll/dist"
+    "html": {
+      "_": "<%= happyplan.path._ %>",
+      "layouts": "<%= happyplan.path.html._ %>/_layouts",
+      "partials": "<%= happyplan.path.html._ %>/_partials",
+      "plugins": "<%= happyplan.path.html._ %>/_plugins"
     },
-    "jekyllConfig": "<%= happyplan.build.jekyll.src %>/_config.yml",
-    "compassConfig": "<%= happyplan.build._ %>/config.rb"
-  },
-  "dist": {
-    "_": "dist",
-    "assets": {
-      "_": "<%= happyplan.dist._ %>/assets",
-      "scripts": "<%= happyplan.dist.assets._ %>/js",
-      "styles": "<%= happyplan.dist.assets._ %>/css",
-      "images": "<%= happyplan.dist.assets._ %>/img",
-      "fonts": "<%= happyplan.dist.assets._ %>/fonts"
+    "posts": "<%= happyplan.path._ %>/_posts",
+    "posts_drafts": "<%= happyplan.path.posts %>/_drafts",
+    "build": {
+      "_": "build",
+      "assets": {
+        "_": "<%= happyplan.path.build._ %>/assets",
+        "scripts": "<%= happyplan.path.build.assets._ %>/_js",
+        "styles": "<%= happyplan.path.build.assets._ %>/_css",
+        "images": "<%= happyplan.path.build.assets._ %>/_img",
+        "fonts": "<%= happyplan.path.build.assets._ %>/fonts",
+        "glyphicons": "<%= happyplan.path.build.assets._ %>/_glyphicons"
+      },
+      "jekyll": {
+        "src": "<%= happyplan.path.build._ %>/jekyll/src",
+        "dist": "<%= happyplan.path.build._ %>/jekyll/dist"
+      },
+      "jekyllConfig": "<%= happyplan.path.build.jekyll.src %>/_config.yml"
     },
-    "media": "<%= happyplan.dist._ %>/media"
+    "dist": {
+      "_": "dist",
+      "assets": {
+        "_": "<%= happyplan.path.dist._ %>/assets",
+        "scripts": "<%= happyplan.path.dist.assets._ %>/js",
+        "styles": "<%= happyplan.path.dist.assets._ %>/css",
+        "images": "<%= happyplan.path.dist.assets._ %>/img",
+        "fonts": "<%= happyplan.path.dist.assets._ %>/fonts"
+      },
+      "media": "<%= happyplan.path.dist._ %>/media"
+    }
   },
   "theme": {
     "default": {
-      "_": "<%= happyplan._ %>/src",
-      "assets": {
-        "_": "<%= happyplan.theme.default._ %>/assets",
-        "scripts": "<%= happyplan.theme.default.assets._ %>/_scripts",
-        "styles": "<%= happyplan.theme.default.assets._ %>/_styles",
-        "images": "<%= happyplan.theme.default.assets._ %>/_images",
-        "glyphicons": "<%= happyplan.theme.default.assets._ %>/_glyphicons",
-        "fonts": "<%= happyplan.theme.default.assets._ %>/fonts"
+      "path": {
+        "_": "<%= happyplan._ %>/src",
+        "assets": {
+          "_": "<%= happyplan.theme.default.path._ %>/assets",
+          "scripts": "<%= happyplan.theme.default.path.assets._ %>/_scripts",
+          "styles": "<%= happyplan.theme.default.path.assets._ %>/_styles",
+          "images": "<%= happyplan.theme.default.path.assets._ %>/_images",
+          "glyphicons": "<%= happyplan.theme.default.path.assets._ %>/_glyphicons",
+          "fonts": "<%= happyplan.theme.default.path.assets._ %>/fonts"
+        },
+        "html": {
+          "_": "<%= happyplan.theme.default.path._ %>/",
+          "layouts": "<%= happyplan.theme.default.path.html._ %>/_layouts",
+          "partials": "<%= happyplan.theme.default.path.html._ %>/_partials",
+          "plugins": "<%= happyplan.theme.default.path.html._ %>/_plugins"
+        }
       },
-      "html": {
-        "_": "<%= happyplan.theme.default._ %>/",
-        "layouts": "<%= happyplan.theme.default.html._ %>/_layouts",
-        "partials": "<%= happyplan.theme.default.html._ %>/_partials",
-        "plugins": "<%= happyplan.theme.default.html._ %>/_plugins"
+      "assets": {
+        "styles": [{
+          "src": "<%= happyplan.theme.default.path.assets.styles %>/happyplan.scss",
+          "dest": "<%= happyplan.path.dist.assets.styles %>/happyplan.css"
+        }]
       }
-    },
-    "local": {
-      "_": "src",
-      "assets": {
-        "_": "<%= happyplan.theme.local._ %>/assets",
-        "scripts": "<%= happyplan.theme.local.assets._ %>/_scripts",
-        "styles": "<%= happyplan.theme.local.assets._ %>/_styles",
-        "images": "<%= happyplan.theme.local.assets._ %>/_images",
-        "glyphicons": "<%= happyplan.theme.local.assets._ %>/_glyphicons",
-        "fonts": "<%= happyplan.theme.local.assets._ %>/fonts"
-      },
-      "html": {
-        "_": "<%= happyplan.theme.local._ %>",
-        "layouts": "<%= happyplan.theme.local.html._ %>/_layouts",
-        "partials": "<%= happyplan.theme.local.html._ %>/_partials",
-        "plugins": "<%= happyplan.theme.local.html._ %>/_plugins"
-      },
-      "posts": "<%= happyplan.theme.local._ %>/_posts",
-      "posts_drafts": "<%= happyplan.theme.local.posts %>/_drafts"
     }
   },
+  "parent": "default",
   "assets": {
     "default_hook": {
       "styles": "head_stylesheets",
       "scripts": "body_close"
     },
     "banner": "/*! <%= happyplan.name %> - v<%= happyplan.version %> - <%= grunt.template.today('yyyy-mm-dd') %> */\n",
-    "styles": [{
-      "dest": "<%= happyplan.dist.assets.styles %>/style.css"
-    }],
     "images": {
       "src": [
         "**",
@@ -116,23 +121,13 @@
     }
   },
   "jekyll": {
-    "source":      "<%= happyplan.build.jekyll.src %>",
-    "destination": "<%= happyplan.build.jekyll.dist %>",
+    "source":      "<%= happyplan.path.build.jekyll.src %>",
+    "destination": "<%= happyplan.path.build.jekyll.dist %>",
     "permalink": "/:categories/:title",
     "include": [".htaccess", ".htpasswd"]
   },
-  "compass": {
-    "sass_dir": "<%= happyplan.build.assets.styles %>",
-    "css_dir": "<%= happyplan.dist.assets.styles %>",
-    "images_dir": "<%= happyplan.build.assets.images %>",
-    "javascripts_dir": "<%= happyplan.build.assets.scripts %>",
-    "fonts_dir": "<%= happyplan.build.assets.fonts %>",
-    "http_path": "<%= happyplan.baseUrl %>",
-    "http_images_path": "<%= happyplan.baseUrls.images %>",
-    "http_javascripts_path": "<%= happyplan.baseUrls.scripts %>",
-    "http_fonts_path": "<%= happyplan.baseUrls.fonts %>",
-    "require": [],
-    "additional_import_paths": [
+  "sass": {
+    "includePaths": [
       "<%= happyplan.bower_components %>"
     ]
   },

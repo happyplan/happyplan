@@ -42,7 +42,8 @@ Create a file `src/_styles/BLAH.scss`. Note the `.scss` extension here, & `.css`
 {
   "assets": {
     "styles": [{
-      "dest": "<%= happyplan.dist.assets.styles %>/BLAH.css"
+      "src": "<%= happyplan.path.assets.styles %>/BLAH.scss",
+      "dest": "<%= happyplan.path.dist.assets.styles %>/BLAH.css"
     }]
   }
 }
@@ -58,13 +59,14 @@ Create a file `src/_scripts/BLAH.js` & edit `assets` section
 {
   "assets": {
     "styles": [{
-      "dest": "<%= happyplan.dist.assets.styles %>/BLAH.css"
+      "src": "<%= happyplan.path.assets.styles %>/BLAH.scss",
+      "dest": "<%= happyplan.path.dist.assets.styles %>/BLAH.css"
     }],
     "scripts": [{
       "src": [
-        "<%= happyplan.theme.local.assets.scripts %>/BLAH.js"
+        "<%= happyplan.path.assets.scripts %>/BLAH.js"
       ],
-      "dest": "<%= happyplan.dist.assets.scripts %>/BLAH.js"
+      "dest": "<%= happyplan.path.dist.assets.scripts %>/BLAH.js"
     }]
   }
 }

@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
   return {
     options: {
-      config: '<%= happyplan.build.jekyllConfig %>'
+      config: '<%= happyplan.path.build.jekyllConfig %>'
     },
     dev: {
       options: {

@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     ].join('\n')
 
     var fileName = grunt.template.process(
-      '<%= happyplan.theme.local.posts %>/_drafts/<%= grunt.template.today("yyyy-mm-dd") %>-'+
+      '<%= happyplan.path.posts %>/_drafts/<%= grunt.template.today("yyyy-mm-dd") %>-'+
       postName.toLowerCase().split(' ').join('-').split(',').join('') +
       '.md'
     )

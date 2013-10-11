@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     server: {
       options: {
         port: '<%= happyplan.server.port %>',
-        base: '<%= happyplan.dist._ %>/',
+        base: '<%= happyplan.path.dist._ %>/',
         hostname: '', // Must be empty to be accessible everywhere and not only "localhost"
         middleware: function(connect, options) {
           return [
