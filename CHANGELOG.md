@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 - Unreleased (available as beta)
+## 0.3.0 - 2013-10-02
 
 - New improved documentation [#79](https://github.com/happyplan/happyplan/issues/79) [#38](https://github.com/happyplan/happyplan/issues/38) [#40](https://github.com/happyplan/happyplan/issues/40)
 - First release as an NPM package [#41](https://github.com/happyplan/happyplan/issues/41)
