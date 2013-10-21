@@ -17,7 +17,7 @@ It's just all about fun.
 * A static website generator from html or markdown: [assemble](http://assemble.io/).
 * An amazing CSS pre-processor, [Sass](http://sass-lang.com/) (via [libsass](https://github.com/hcatlin/libsass)).
 * A quick way to provide scalable icons as font thanks an awesome Grunt task [grunt-webfont](https://github.com/sapegin/grunt-webfont).
-* A [Livereload](http://livereload.com/) server provided by the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task) to make development as fast as hell.
+* A [Livereload](http://livereload.com/) server provided by the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task to make development as fast as hell.
 * Support the [Bower](http://bower.io/) package manager to handle web components.
 
 _Notice: you can change/override/add stuff very easily, thanks to grunt. [More about that in the documentation](https://github.com/happyplan/happyplan/blob/master/docs/2-Configuring-Project.md)_
