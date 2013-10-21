@@ -3,7 +3,25 @@ module.exports = function(grunt) {
 
   var fs = require('fs')
     , path = require('path')
+    , getThemeConfig = require('../lib/get-theme-config')
     , happyplan = grunt.config.getRaw('happyplan')
+    , filesPatterns = happyplan.excludeFilesPatterns.slice()
+    , staticFiles = []
+
+  filesPatterns.unshift('!**/*.hbs')
+  happyplan.dotfiles.forEach(function(dotfile) {
+    filesPatterns.unshift(dotfile)
+  })
+  filesPatterns.unshift('**/*')
+
+  getThemeConfig(grunt, ['path', '_'], { merge: true } ).forEach(function(src) {
+    staticFiles.push({
+      expand: true,
+      cwd: src,
+      src: filesPatterns,
+      dest: '<%= happyplan.path.dist._ %>/'
+    })
+  });
 
   return grunt.util._.extend({}, happyplan.themesCopyTask, {
     cssAsScss: {
@@ -29,21 +47,16 @@ module.exports = function(grunt) {
       }]
     },
 
+    staticFiles: {
+      files: staticFiles
+    },
+
     images: {
       files: [{
         expand: true,
         cwd: '<%= happyplan.path.build.assets.images %>',
         src: '<%= happyplan.assets.images.src %>',
         dest: '<%= happyplan.path.dist.assets.images %>'
-      }]
-    },
-
-    'jekyll-dist': {
-      files: [{
-        expand: true,
-        cwd: '<%= happyplan.path.build.jekyll.dist %>',
-        src: ['**', '**/.*'],
-        dest: '<%= happyplan.path.dist._ %>'
       }]
     }
   })

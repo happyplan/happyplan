@@ -21,7 +21,7 @@ You just need to launch default task to start using the watcher that will allow 
 
 This should make a first fresh build, start a static server & the livereload one, then open the appropriate page in your browser.
 
-Now you can start to add/modify assets or posts & save them.
+Now you can start to add/modify assets, pages or posts & save them.
 BOOM.
 Livreload do the magic & files should be automatically reloaded into your browser.
 
@@ -64,8 +64,13 @@ Now you can easily push your website on this branch via `happyplan publish`.
 
     $ happyplan newpost --name="This is a test" --tags="change,me,dude"
 
-This will create a new post in your draft folder (`src/_posts/_drafts` by default).
-For more informations about posts, just read [Jekyll's post documentation](http://jekyllrb.com/docs/posts/).
+This will create a new post in your draft folder (`src/post/` by default).
+
+## Writing page or post
+
+We currently use [assemble](http://assemble.io/) (that use [handlebars](http://handlebarsjs.com/) with [lots](http://assemble.io/helpers/) [of](http://assemble.io/docs/Custom-Helpers.html) [helpers](http://assemble.io/docs/Helpers.html)), so checkout [assemble docs](http://assemble.io/docs/) !
+
+Note: assemble allow us to change the engine used. We don't support that for now, but it can be done easily. PRs are welcome ;)
 
 ---
 

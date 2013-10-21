@@ -1,4 +1,8 @@
 {
-	"cachebuster": "<%= happyplan.version %>",
-	"parent": false
+  "pkg": {
+    "version": "x.y.z"
+  },
+  "buildDate": "2013-10-21T12:34:56 +0200",
+  "cachebuster": "<%= happyplan.version %>",
+  "parent": false
 }

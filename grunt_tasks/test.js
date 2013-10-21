@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'jshint',
     'clean:test_sandbox',
+    'clean:test_builds',
     'nodeunit'
   ])
 }

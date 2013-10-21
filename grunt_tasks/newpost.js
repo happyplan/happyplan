@@ -19,21 +19,24 @@ module.exports = function(grunt) {
 
     // Template
     var fileContent = [
-      '---',
-      'layout: post',
-      'title: ' + postName + '',
-      'tags: [\'' + tags.join('\', \'') + '\']',
-      '---',
-      '',
-      '# ' + postName,
-      '',
-      ''
-    ].join('\n')
+      "---",
+      "layout: post",
+      "type: post",
+      "draft: true",
+      "title: " + postName + "",
+      "tags: ['" + tags.join("', '") + "']",
+      //"date: " + grunt.template.today("yyyy-mm-dd"),
+      "---",
+      "",
+      "{{#markdown}}",
+      "",
+      "{{/markdown}}"
+    ].join('\n') + "\n"
 
     var fileName = grunt.template.process(
-      '<%= happyplan.path.posts %>/_drafts/<%= grunt.template.today("yyyy-mm-dd") %>-'+
+      '<%= happyplan.path.posts %>/' +
       postName.toLowerCase().split(' ').join('-').split(',').join('') +
-      '.md'
+      '.html.hbs'
     )
 
     grunt.file.write(fileName, fileContent)

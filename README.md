@@ -1,20 +1,20 @@
 # HappyPlan!
 
 [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
-[![Dependencies Status](https://david-dm.org/happyplan/happyplan.png)](https://david-dm.org/happyplan/happyplan)
-[![Dev Dependencies Status](https://david-dm.org/happyplan/happyplan/dev-status.png)](https://david-dm.org/happyplan/happyplan#info=devDependencies)
+[![Dependency Status](https://gemnasium.com/happyplan/happyplan.png)](https://gemnasium.com/happyplan/happyplan)
+[![NPM version](https://badge.fury.io/js/happyplan.png)](http://badge.fury.io/js/happyplan)
 
 <img align="right" src="https://raw.github.com/happyplan/happyplan/master/logo.png" />
 
-> When Grunt.js uses Jekyll as a peon.
+> A fantastic preconfigured static website generator, based on Grunt.js
 
 HappyPlan is a static website generator based on a bundle of amazing tools.
 It's just all about fun.
 
 ### What in it ?
 
-* A static website generator from html or markdown: [Jekyll](http://jekyllrb.com/).
 * A task-based command line build tool: [Grunt.js](http://gruntjs.com/) & all pre-defined tasks you'll need (scripts, styles & images automatic minification & compression).
+* A static website generator from html or markdown: [assemble](http://assemble.io/).
 * An amazing CSS pre-processor, [Sass](http://sass-lang.com/) (via [libsass](https://github.com/hcatlin/libsass).
 * A quick way to provide scalable icons as font thanks an awesome Grunt task [grunt-webfont](https://github.com/sapegin/grunt-webfont).
 * A [Livereload](http://livereload.com/) server provided by the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task) to make development as fast as hell.
@@ -35,8 +35,7 @@ According you already have Ruby and NPM installed you can run this commands :
 ### Requirements
 
 ```bash
-npm install -g grunt-cli bower happyplan-cli
-gem install bundler
+npm install -g grunt-cli happyplan-cli bower
 ```
 
 [Learn more about requirements](docs/0-Requirements.md).
@@ -48,7 +47,6 @@ Copy our Gemfile or create one with version you want, then
 ```bash
 npm init
 npm install happyplan --save-dev
-bundle install --binstubs bundler_gems
 happyplan
 ```
 

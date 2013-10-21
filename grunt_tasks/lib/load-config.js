@@ -15,16 +15,19 @@ module.exports = function loadConfig(grunt, happyplanRoot) {
       grunt.option('env', 'dev')
     }
   }
-  grunt.verbose.writeln('Environnment is'.grey, grunt.option('env').cyan)
-  grunt.verbose.writeln('CWD is'.grey, process.cwd().cyan)
-  grunt.verbose.writeln('Real wd is'.grey, happyplanRoot.cyan)
 
   // (happyplan default first, parents, & the local)
   var happyplan = deepmerge(grunt.config.get('pkg'), grunt.file.readJSON(happyplanRoot + '/happyplan.json'))
-  happyplan.cwd = process.cwd()
-  happyplan._ = happyplanRoot
 
   happyplan.env = grunt.option('env')
+  grunt.verbose.writeln('Environnment is'.grey, happyplan.env)
+
+  happyplan.cwd = process.cwd()
+  grunt.verbose.writeln('CWD is'.grey, happyplan.cwd.cyan)
+
+  happyplan._ = happyplanRoot
+  grunt.verbose.writeln('happyplan wd is'.grey, happyplan._.cyan)
+
   happyplan.pkg = grunt.file.readJSON(happyplanRoot + '/package.json')
 
   // load bower config

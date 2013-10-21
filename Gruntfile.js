@@ -28,7 +28,7 @@ module.exports = function(grunt) {
   //require('load-grunt-tasks')(grunt)
   // load devDependencies if we are using grunt from happyplan source directory
   require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks)
-  //grunt.loadNpmTasks('assemble') // not handled by load-grunt-tasks
+  grunt.loadNpmTasks('assemble') // not handled by load-grunt-tasks
   grunt.loadTasks(happyplan._ + '/grunt_tasks')
   // reset cwd to previous value
   process.chdir(happyplan.cwd)

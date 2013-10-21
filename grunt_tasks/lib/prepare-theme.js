@@ -32,9 +32,7 @@ module.exports = function prepareThemes(grunt) {
     , prepareBuild_Tasks = {}
     , availableFilesPerTheme = {
       "html": {
-        "layouts": "<%= happyplan.path.build.jekyll.src %>/_layouts",
-        "partials": "<%= happyplan.path.build.jekyll.src %>/_includes",
-        "plugins": "<%= happyplan.path.build.jekyll.src %>/_plugins"
+        "layouts": "<%= happyplan.path.build.html.layouts %>"
       },
       "assets": {
         "scripts": "<%= happyplan.path.build.assets.scripts %>",
@@ -44,12 +42,8 @@ module.exports = function prepareThemes(grunt) {
         "glyphicons": "<%= happyplan.path.build.assets.glyphicons %>"
       }
     }
-    , availableStaticFilesPerTheme = {
-      "html": "<%= happyplan.path.build.jekyll.src %>",
-      "assets": "<%= happyplan.path.build.assets._ %>"
-    }
   // here we (create tasks to) copy each themes files (in order: defaut, parent(s), local)
-  // jekyll files. local are copied last to ovewrite previous files
+  // engine files. local are copied last to ovewrite previous files
   for (var themeKey in themes) {
     for(var objKey in availableFilesPerTheme) {
       if (!prepareBuild_Tasks[objKey]) {
@@ -78,38 +72,8 @@ module.exports = function prepareThemes(grunt) {
           prepareBuild_Tasks[objKey].push('copy:' + taskKey);
         }
       }
-      var staticKey = 'th_' +themeKey + '-' + objKey + '--' + 'static';
-      happyplan.themesCopyTask[staticKey] = {files: [{
-        expand: true,
-        cwd: themes[themeKey].path[objKey]._,
-        src: [
-          '**/*',
-          '**/.*',
-          '!_*',
-          '!_**/*',
-          '!**/_*'
-        ],
-        dest: availableStaticFilesPerTheme[objKey]
-      }]};
-      prepareBuild_Tasks[objKey].push('copy:' + staticKey);
     }
   }
-
-  // add user post
-  happyplan.themesCopyTask['th_local-html--posts'] = {files: [{
-    expand: true,
-    cwd: '<%= happyplan.path.posts %>',
-    src: ['*'],
-    dest: '<%= happyplan.path.build.jekyll.src %>/_posts'
-  }]};
-  prepareBuild_Tasks.html.push('copy:th_local-html--posts');
-  happyplan.themesCopyTask['th_local-html--posts_drafts'] = {files: [{
-    expand: true,
-    cwd: '<%= happyplan.path.posts_drafts %>',
-    src: ['*'],
-    dest: '<%= happyplan.path.build.jekyll.src %>/_drafts'
-  }]};
-  prepareBuild_Tasks.html.push('copy:th_local-html--posts_drafts');
 
   // register preparation task for the entire html tree
   grunt.registerTask('happyplan:prepare-build-html', prepareBuild_Tasks.html);

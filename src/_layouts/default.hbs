@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{{ happyplan.html.hooks.head_open }}}
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+<meta name="description" content="">
+<base href="{{ happyplan.baseUrl }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="feed.xml" rel="alternate" type="application/rss+xml">
+{{{ happyplan.html.hooks.head_before_stylesheets }}}
+{{{ happyplan.html.hooks.head_stylesheets }}}
+{{{ happyplan.html.hooks.head_after_stylesheets }}}
+{{{ happyplan.html.hooks.head_close }}}</head>
+<body>
+{{{ happyplan.html.hooks.body_open }}}
+<header>
+  <h1>{{ happyplan.name }}</h1>
+</header>
+{{> body }}
+{{{ happyplan.html.hooks.body_close }}}
+</body>
+</html>

@@ -24,8 +24,5 @@
         }]
       }
     }
-  },
-  "jekyll": {
-    "permalink": "/:categories/:year/:title.html"
   }
 }

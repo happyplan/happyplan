@@ -14,8 +14,7 @@ Here is what the tree you should have with default configuration (files are orde
     ├── src
     │   ├── _layouts               // html layouts for your documents
     │   ├── _partials              // Partials pieces
-    │   ├── _posts                 // Posts for blog
-    │   │   └── _drafts            // Posts you don't want to publish
+    │   ├── posts                  // Posts for blog
     │   ├── assets                 // All about design
     │   │   ├── _glyphicons        // Svg icons to be served as webfont
     │   │   ├── _images            // Design images
@@ -49,29 +48,20 @@ Whenever it's possible, we will use simple json to whatever is needed conversion
 
 ### Document Engine (HTML)
 
-For now, only Jekyll is supported to render html & markdown.
-But we are open to alternatives or suggestion [[+](https://github.com/happyplan/happyplan/issues/45)];
+We are using [assemble](https://github.com/assemble/assemble) to render html & markdown.
+Checkout [Getting Started](1-Getting-Started.md) to learn more about how to write content.
 
-#### Jekyll
+#### Assemble
 
-`jekyll` configuration section will be used converted into YML for Jekyll build (using [`js-yaml`](https://github.com/nodeca/js-yaml)).
+Assemble is similar to Jekyll: it uses layouts, partials & content files,
+but right now config is very simple so there nothing you can change in the config.
+Obviously if you need it, you can [override](#override-tasks--custom-tasks) assemble task
+with the config you want !
 
-For example, if you want to enhance Jekyll, you can use the following snippet that will:
+##### Layouts
 
-```json
-{
-    "jekyll": {
-        "include": [".htaccess"],
-        "markdown": "redcarpet",
-        "any other data": "that jekyll will be able to use"
-    }
-}
-```
-
-`/!\` You should know that under Jekyll files (layouts, pages or posts), the entire happyplan configuration is accessible using `site.happyplan`.
-Eg: `{{ site.happyplan.version }}` or `{{ site.happyplan.cachebuster }}` can be used everywhere you need it.
-
-__Notice: with the default happyplan command `happyplan` used for development, `drafts` & `future` options of Jekyll are set to `true`__. Obviously you can override that behavior from your configuration.
+Default theme only have a simple HTML 5 default layout that include HappyPlan hooks.
+Be sure to check it before doing your own.
 
 ##### Partials
 
@@ -91,8 +81,8 @@ _The last value `google_universal_analytics` needs to be true to enable new Univ
 
 Then just add this include at the bottom of you layout
 
-```jekyll
-{% include scripts/google-analytics.html %}
+```handlebars
+{> google-analytics }
 ```
 
 ###### Disqus
@@ -110,8 +100,9 @@ _The last value `disqus_developer` needs to be true when you will configure or w
 Then just add this include at the bottom of you layout.
 This will add automatically the script if disqus comments are enabled and `page.comments` is either empty (index) or set to true (!= false).
 
-```jekyll
-{% include scripts/disqus.html %}
+```handlebars
+{> disqus }
+```
 
 ### Assets
 

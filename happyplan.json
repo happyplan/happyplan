@@ -1,4 +1,5 @@
 {
+  "buildDate": "<%= grunt.template.today('yyyy-mm-ddTHH:MM:ss +ZZ') %>",
   "cachebuster": "<%= grunt.template.today('yyyymmddHHMMss') %>",
   "server": {
     "hostname": "localhost",
@@ -25,11 +26,9 @@
     "html": {
       "_": "<%= happyplan.path._ %>",
       "layouts": "<%= happyplan.path.html._ %>/_layouts",
-      "partials": "<%= happyplan.path.html._ %>/_partials",
-      "plugins": "<%= happyplan.path.html._ %>/_plugins"
+      "partials": "<%= happyplan.path.html._ %>/_partials"
     },
-    "posts": "<%= happyplan.path._ %>/_posts",
-    "posts_drafts": "<%= happyplan.path.posts %>/_drafts",
+    "posts": "<%= happyplan.path._ %>/posts",
     "build": {
       "_": "build",
       "assets": {
@@ -40,11 +39,11 @@
         "fonts": "<%= happyplan.path.build.assets._ %>/fonts",
         "glyphicons": "<%= happyplan.path.build.assets._ %>/_glyphicons"
       },
-      "jekyll": {
-        "src": "<%= happyplan.path.build._ %>/jekyll/src",
-        "dist": "<%= happyplan.path.build._ %>/jekyll/dist"
-      },
-      "jekyllConfig": "<%= happyplan.path.build.jekyll.src %>/_config.yml"
+      "html": {
+        "_": "<%= happyplan.path.build._ %>",
+        "layouts": "<%= happyplan.path.build._ %>/_layouts",
+        "partials": "<%= happyplan.path.build._ %>/_partials"
+      }
     },
     "dist": {
       "_": "dist",
@@ -73,8 +72,7 @@
         "html": {
           "_": "<%= happyplan.theme.default.path._ %>/",
           "layouts": "<%= happyplan.theme.default.path.html._ %>/_layouts",
-          "partials": "<%= happyplan.theme.default.path.html._ %>/_partials",
-          "plugins": "<%= happyplan.theme.default.path.html._ %>/_plugins"
+          "partials": "<%= happyplan.theme.default.path.html._ %>/_partials"
         }
       },
       "assets": {
@@ -105,6 +103,11 @@
       ]
     }
   },
+  "excludeFilesPatterns": [
+    "!**/_*",
+    "!**/_**/*",
+    "!_*/**/*"
+  ],
   "html": {
     "hooks": {
       "head_open": "",
@@ -120,12 +123,10 @@
       "scripts": "<script src=\"<%= dest %>\"></script>"
     }
   },
-  "jekyll": {
-    "source":      "<%= happyplan.path.build.jekyll.src %>",
-    "destination": "<%= happyplan.path.build.jekyll.dist %>",
-    "permalink": "/:categories/:title",
-    "include": [".htaccess", ".htpasswd"]
-  },
+  "dotfiles": [
+    "**/.ht*"
+  ],
+  "assemble": {},
   "sass": {
     "includePaths": [
       "<%= happyplan.bower_components %>"

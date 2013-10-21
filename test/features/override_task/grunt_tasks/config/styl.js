@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       }
     })
   }
-  console.log(happyplan.styl)
+
   return {
     styles: {
       options: '<%= happyplan.styl %>',
