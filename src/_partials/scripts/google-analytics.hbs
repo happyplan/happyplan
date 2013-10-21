@@ -1,20 +1,20 @@
-{% if site.happyplan.google_analytics_tracking_id %}
-	{% if site.happyplan.google_universal_analytics %}
+{{#if happyplan.google_analytics_tracking_id }}
+	{{#if happyplan.google_universal_analytics }}
 	<script>
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
 		e.src='//www.google-analytics.com/analytics.js';
 		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-		ga('create','{{ site.google_analytics_tracking_id }}');ga('send','pageview');
+		ga('create','{{ happyplan.google_analytics_tracking_id }}');ga('send','pageview');
 	</script>
-	{% else %}
+	{{else}}
 	<script>
-		var _gaq=[['_setAccount','{{ site.google_analytics_tracking_id }}'],['_trackPageview']];
+		var _gaq=[['_setAccount','{{ happyplan.google_analytics_tracking_id }}'],['_trackPageview']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 		g.src='//www.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
 	</script>
-	{% endif %}
-{% endif %}
+	{{/if}}
+{{/if}}
 

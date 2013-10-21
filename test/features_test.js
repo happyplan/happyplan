@@ -38,8 +38,10 @@ exports.themes = {
           grunt.util.spawn({
             cmd: 'grunt',
             args: [
-              'happyplan:dist',
-              "--base=" + testPath
+                'happyplan:dist'
+              , "--base=" + testPath
+              , "--verbose"
+              , "--stack"
             ]
           },
           function doneFunction(error, result, code) {

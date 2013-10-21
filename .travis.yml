@@ -1,18 +1,10 @@
 language: node_js
-node_js:
-  - "0.8"
-  - "0.10"
 before_install:
-  - gem --version
-  - gem update --system
-  - gem install bundler
-# ruby dependencies (jekyll, compass)
-  - bundle install --binstubs bundler_gems
-# node dependencies
-  - npm install -g grunt-cli bower happyplan-cli
+# global requirements
+  - make install
+# local requirements
+  - make update
 # grunt-webfont requirements
   - sudo apt-get install fontforge
-# local dependencies
-  - npm install
 # for some test with dates
   - sudo cp /usr/share/zoneinfo/Europe/Paris /etc/localtime

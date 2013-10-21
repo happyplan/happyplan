@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 - (Unreleased - available as alpha)
+
+happyplan is really more flexible than before according to the way themes & config are handled. Tasks & tasks config are overridable.
+
+- No more ruby dependencies (Jekyll > Assemble [#114](https://github.com/happyplan/happyplan/pull/114), Compass > libsass [#112](https://github.com/happyplan/happyplan/pull/112))
+- Gruntfile split/cleanup [#111](https://github.com/happyplan/happyplan/pull/111)
+- Add Google Analytics & Disqus scripts as partials [#109](https://github.com/happyplan/happyplan/pull/109)
+
 ## 0.3.0 - 2013-10-02
 
 - New improved documentation [#79](https://github.com/happyplan/happyplan/issues/79) [#38](https://github.com/happyplan/happyplan/issues/38) [#40](https://github.com/happyplan/happyplan/issues/40)

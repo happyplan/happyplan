@@ -9,14 +9,14 @@ module.exports = function(grunt) {
         '!test/sandbox/package.json'
       ]
     },
+    test_builds: {
+      src: ['test/**/<%= happyplan.path.build._ %>']
+    },
     dist: {
       src: ['<%= happyplan.path.dist._ %>']
     },
     build: {
       src: ['<%= happyplan.path.build._ %>']
-    },
-    jekyll: {
-      src: ['<%= happyplan.path.build.jekyll.src %>']
     }
   }
 }

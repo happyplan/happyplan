@@ -1,0 +1,10 @@
+---
+layout: default.hbs
+title: Home
+---
+<h2>Article</h2>
+<ul class="posts">
+{{#each pages}}{{#is data.type "post"}}
+  <li><time datetime="{{ data.date }}" class="time">{{moment data.date format="ddd, DD MMMM YYYY HH:mm:ss ZZ" }}</time> <a href="{{relative ../../page.dest this.dest}}" class="title">{{ data.title }}</a>
+{{/is}}{{/each}}
+</ul>

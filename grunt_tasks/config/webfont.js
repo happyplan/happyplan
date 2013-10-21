@@ -2,8 +2,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var happyplan = grunt.config.get('happyplan')
-console.log(happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
-            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'fonts']));
+
   return {
     glyphicons: {
       src: '<%= happyplan.path.build.assets.glyphicons %>/*.svg',

@@ -3,7 +3,7 @@ var grunt = require('grunt');
 exports.newpost = {
   posts: function(test) {
     'use strict';
-    
+
     // -name should be the key
     var testsOpts = {
       'name': [
@@ -29,7 +29,7 @@ exports.newpost = {
     };
     var testsOptsLength = 6;
     test.expect(testsOptsLength);
-    
+
     var testI = 0;
     grunt.util._.each(testsOpts, function(opts, key) {
       opts.push('happyplan:newpost');
@@ -46,13 +46,13 @@ exports.newpost = {
           if (result.sterr) {
             console.log("\n" + result.sterr);
           }
-          
+
           throw error;
         }
-        
+
         test.deepEqual(
-          grunt.file.read('test/expected/newpost/' + key + '.md'),
-          grunt.file.read('test/sandbox/src/_posts/_drafts/' +grunt.template.today('yyyy-mm-dd') + '-' + key + '.md'),
+          grunt.file.read('test/expected/newpost/' + key + '.html.hbs'),
+          grunt.file.read('test/sandbox/src/posts/'+ key + '.html.hbs'),
           'Created Posts should be like expectations'
         );
 

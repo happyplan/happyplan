@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   "use strict";
-
+  console.log(grunt.config.process('<%= happyplan.cwd %>/<%= happyplan.path.html._ %>'))
+  console.log(grunt.config.process('<%= happyplan.cwd %>/<%= happyplan.path.assets.styles %>'))
   return {
     options: {
        // check status of https://github.com/gruntjs/grunt-contrib-watch/pull/125
@@ -11,14 +12,12 @@ module.exports = function(grunt) {
     },
     html: {
         files: [
-          '<%= happyplan.cwd %>/<%= happyplan.path.posts %>/**/*',
-          '<%= happyplan.cwd %>/<%= happyplan.path.posts_drafts %>/**/*',
           '<%= happyplan.cwd %>/<%= happyplan.path.html._ %>/**/*',
-          '<%= happyplan.cwd %>/<%= happyplan.path.html._ %>/**/.*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.html.layouts %>/**/*',
+          '<%= happyplan.cwd %>/<%= happyplan.path.html.partials %>/**/*',
           '!<%= happyplan.cwd %>/<%= happyplan.path.assets._ %>/**/*'
         ],
-        tasks: ['happyplan:prepare-build-html', 'happyplan:build-html']
-        //tasks: ['build-html']
+        tasks: ['happyplan:build-html']
     },
     staticAssets: {
         files: [

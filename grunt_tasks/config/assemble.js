@@ -1,28 +1,39 @@
 module.exports = function(grunt) {
   "use strict";
 
+  var getThemeConfig = require('../lib/get-theme-config')
+    , partials = []
+    , files = []
+    , happyplan = grunt.config.getRaw('happyplan')
+    , filesPatterns = happyplan.excludeFilesPatterns.slice()
+
+  filesPatterns.unshift('**/*.hbs')
+
+  getThemeConfig(grunt, ['path', 'html', 'partials'], { merge: true } ).forEach(function(src) {
+    partials.push(src + '/**/*.hbs')
+  });
+
+  getThemeConfig(grunt, ['path', 'html', '_'], { merge: true } ).forEach(function(src) {
+    files.push({
+      expand: true,
+      cwd: src,
+      src: filesPatterns,
+      dest: '<%= happyplan.path.dist._ %>/'
+    })
+  });
+
   return {
     options: {
-      pkg: '<%= pkg %>',
+      assets: '<%= happyplan.path.assets._ %>',
+      layoutdir: '<%= happyplan.path.build.html.layouts %>',
+      partials: partials,
+      helpers: [require('path').relative(happyplan.cwd, happyplan._ +'/node_modules/helper-moment/moment.js')],
+      ext: '',
+
       happyplan: '<%= happyplan %>',
-      flatten: true,
-      // Load prettify helper from node_modules.
-      //helpers: ['<%= _.loadDev("helper-*") %>'],
-      prettify: {
-        condense: true,
-        indent_scripts: 'keep'
-      },
-      layoutdir: '<%= happyplan.path._ %>/layouts',
-      partials: '<%= happyplan.path._ %>/partials/*.html',
-      layout: 'default.html',
-      assets: '<%= happyplan.path._ %>/assets',
     },
     html: {
-      src: [
-        '<%= happyplan.path._ %>/content/**/*.html',
-        '<%= happyplan.path._ %>/content/**/*.md'
-      ],
-      dest: '<%= happyplan.path.dist %>/'
+      files: files
     }
   }
 }
