@@ -4,6 +4,5 @@ module.exports = function(grunt) {
   grunt.registerTask('happyplan:build-html', 'Build the html for the website', [
       'happyplan:prepare-build-html'
     , 'assemble:html'
-    , 'copy:staticFiles'
   ])
 }
