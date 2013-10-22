@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     // Template
     var fileContent = [
       "---",
-      "layout: post",
+      "layout: post.hbs",
       "type: post",
       "draft: true",
       "title: " + postName + "",
