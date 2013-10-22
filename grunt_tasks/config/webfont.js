@@ -1,12 +1,18 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var happyplan = grunt.config.get('happyplan')
+  var getThemeConfig = require('../lib/get-theme-config')
+    , happyplan = grunt.config.get('happyplan')
+    , glyphicons = []
+
+  getThemeConfig(grunt, ['path', 'assets', 'glyphicons'], { merge: true } ).forEach(function(src) {
+    glyphicons.push(src + '/**/*.svg')
+  });
 
   return {
     glyphicons: {
-      src: '<%= happyplan.path.build.assets.glyphicons %>/*.svg',
-      dest: '<%= happyplan.path.dist.assets.fonts %>',
+      src: glyphicons,
+      dest: '<%= happyplan.path.assets.fonts %>',
       destCss: '<%= happyplan.path.assets.styles %>',
       options: {
           relativeFontPath: require('path').relative(

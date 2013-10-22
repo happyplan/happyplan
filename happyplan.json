@@ -132,6 +132,9 @@
       "<%= happyplan.bower_components %>"
     ]
   },
+  "glyphicons": {
+    "build": "ifpossible"
+  },
   "git": {
     "branch": "gh-pages"
   }

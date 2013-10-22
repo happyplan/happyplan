@@ -36,10 +36,8 @@ module.exports = function prepareThemes(grunt) {
       },
       "assets": {
         "scripts": "<%= happyplan.path.build.assets.scripts %>",
-        "styles": "<%= happyplan.path.build.assets.styles %>", // styles -are- *should be* handle by an include path
         "images": "<%= happyplan.path.build.assets.images %>",
-        "fonts": "<%= happyplan.path.build.assets.fonts %>",
-        "glyphicons": "<%= happyplan.path.build.assets.glyphicons %>"
+        "fonts": "<%= happyplan.path.build.assets.fonts %>"
       }
     }
   // here we (create tasks to) copy each themes files (in order: defaut, parent(s), local)

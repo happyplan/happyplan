@@ -15,4 +15,7 @@ Gemfile.lock
 # build
 dist
 build
+
+# test files
 test/sandbox/*
+test/features/*/src/assets/fonts/icons.*
