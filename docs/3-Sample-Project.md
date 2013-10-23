@@ -36,7 +36,10 @@ When you will save this file, you should get the result in you browser in a seco
 
 ## My first Stylesheet
 
-Create a file `src/_styles/BLAH.scss`. Note the `.scss` extension here, & `.css` below.
+Create a file `src/_styles/BLAH.scss`. 
+
+Update your `happyplan.json` file with the configuration below. 
+Note the `.scss` extension for the source and `.css` for the destination.
 
 ```json
 {
