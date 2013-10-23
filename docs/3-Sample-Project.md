@@ -24,21 +24,26 @@ If you are working with git (we hope so), you should create a `.gitignore` file 
 
 ## My first `index.html
 
-You can override default `src/index.html`
+You can override default `src/index.html.hbs`
 
     ---
-    layout: default
+    layout: default.hbs
     title: Home
     ---
     <h1>My first Index with happyplan \o/</h1>
+
+    {{#markdown}}
+    This will create a html _paragraphe_ for you,
+    enhanced by [Markdown](http://en.wikipedia.org/wiki/Markdown)
+    {{/markdown}}
 
 When you will save this file, you should get the result in you browser in a second.
 
 ## My first Stylesheet
 
-Create a file `src/_styles/BLAH.scss`. 
+Create a file `src/_styles/BLAH.scss`.
 
-Update your `happyplan.json` file with the configuration below. 
+Update your `happyplan.json` file with the configuration below.
 Note the `.scss` extension for the source and `.css` for the destination.
 
 ```json
