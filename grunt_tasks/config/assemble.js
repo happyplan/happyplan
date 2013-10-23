@@ -19,8 +19,6 @@ module.exports = function(grunt) {
     helpers.push(src + '/**/*.js')
   });
 
-  console.log(helpers)
-
   getThemeConfig(grunt, ['path', 'html', '_'], { merge: true } ).forEach(function(src) {
     files.push({
       expand: true,
