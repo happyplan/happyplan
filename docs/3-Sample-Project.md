@@ -28,16 +28,27 @@ You can override default `src/index.html.hbs`
 
     ---
     layout: default.hbs
-    title: Home
+    title: My first Index with happyplan \o/
     ---
-    <h1>My first Index with happyplan \o/</h1>
+    <h1>{{ this.title }}</h1>
 
     {{#markdown}}
     This will create a html _paragraphe_ for you,
     enhanced by [Markdown](http://en.wikipedia.org/wiki/Markdown)
+
+    Hey checkout this photo of me ![me, naked]({{ happyplan.baseUrls.media }}/me-naked.jpg)
     {{/markdown}}
 
+    <footer><img alt="" src="{{ happyplan.baseUrls.images }}/hr.png" />
+
+### Variables
+
 When you will save this file, you should get the result in you browser in a second.
+Oh wait, you will see that 2 files are missing !
+
+You just need to add yourself naked in `src/media/me-naked.jpg`,
+& the awesome asset image to replace html `<hr />` in `src/assets/_images/hr.png`.
+Boom it should work better now. And now you know how to use happyplan variables ;)
 
 ## My first Stylesheet
 
