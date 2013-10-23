@@ -14,6 +14,7 @@ Here is what the tree you should have with default configuration (files are orde
     ├── src
     │   ├── _layouts               // html layouts for your documents
     │   ├── _partials              // Partials pieces
+    │   ├── _helpers               // Handlebars helpers
     │   ├── posts                  // Posts for blog
     │   ├── assets                 // All about design
     │   │   ├── _glyphicons        // Svg icons to be served as webfont
@@ -103,6 +104,15 @@ This will add automatically the script if disqus comments are enabled and `page.
 ```handlebars
 {> disqus }
 ```
+
+##### Helpers
+
+The default engine (Handlebars) supports helpers. You can add pretty much what you want
+to extend the engine.
+By default, we use a [lots of helpers](http://assemble.io/helpers/), but you can add you own in the `src/_helpers` folder.
+You'll learn quickly how to write your own just reading
+[some](https://github.com/assemble/handlebars-helpers/tree/master/lib/helpers)
+[helpers](https://github.com/assemble/handlebars-helpers-examples/tree/master/experimental/helpers).
 
 ### Assets
 

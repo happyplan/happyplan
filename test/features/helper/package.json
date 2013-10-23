@@ -1,0 +1,9 @@
+{
+  "name": "testname",
+  "description": "test description",
+  "version": "0.0.0-alpha.0",
+  "url": "http://te.st",
+  "devDependencies": {
+    "lodash": "~2.2.1"
+  }
+}

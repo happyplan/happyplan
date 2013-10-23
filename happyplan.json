@@ -26,7 +26,8 @@
     "html": {
       "_": "<%= happyplan.path._ %>",
       "layouts": "<%= happyplan.path.html._ %>/_layouts",
-      "partials": "<%= happyplan.path.html._ %>/_partials"
+      "partials": "<%= happyplan.path.html._ %>/_partials",
+      "helpers": "<%= happyplan.path.html._ %>/_helpers"
     },
     "posts": "<%= happyplan.path._ %>/posts",
     "build": {
@@ -72,7 +73,8 @@
         "html": {
           "_": "<%= happyplan.theme.default.path._ %>/",
           "layouts": "<%= happyplan.theme.default.path.html._ %>/_layouts",
-          "partials": "<%= happyplan.theme.default.path.html._ %>/_partials"
+          "partials": "<%= happyplan.theme.default.path.html._ %>/_partials",
+          "helpers": "<%= happyplan.theme.default.path.html._ %>/_helpers"
         }
       },
       "assets": {
