@@ -20,12 +20,22 @@ module.exports = function(grunt) {
   });
 
   getThemeConfig(grunt, ['path', 'html', '_'], { merge: true } ).forEach(function(src) {
-    files.push({
-      expand: true,
-      cwd: src,
-      src: filesPatterns,
-      dest: '<%= happyplan.path.dist._ %>/'
+    // retrieve files from parent theme that are not existing already from child theme
+    var themeFiles = grunt.file.expandMapping(filesPatterns, '<%= happyplan.path.dist._ %>/', { cwd: src })
+      , newFiles = []
+
+    files.forEach(function(file) {
+      var existingInChildTheme = false
+      themeFiles.forEach(function(thfile) {
+        if (thfile.dest === file.dest) {
+           existingInChildTheme = true
+        }
+      })
+      if (!existingInChildTheme) {
+        newFiles.push(file)
+      }
     })
+    files = newFiles.concat(themeFiles)
   });
 
   return {
