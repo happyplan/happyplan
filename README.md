@@ -1,5 +1,6 @@
 # HappyPlan!
 
+[![Code Climate](https://codeclimate.com/github/happyplan/happyplan.png)](https://codeclimate.com/github/happyplan/happyplan)
 [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
 [![Dependency Status](https://gemnasium.com/happyplan/happyplan.png)](https://gemnasium.com/happyplan/happyplan)
 [![NPM version](https://badge.fury.io/js/happyplan.png)](http://badge.fury.io/js/happyplan)
