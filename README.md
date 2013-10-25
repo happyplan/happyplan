@@ -87,3 +87,7 @@ Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent
 
 + [@kud](https://github.com/kud)
 + [@MoOx](https://github.com/MoOx)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/happyplan/happyplan/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
