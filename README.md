@@ -32,9 +32,9 @@ Visit the [documentation](docs) for all the things.
 
 ## TL;DR
 
-According you already have Node & NPM installed you can run this commands :
-
 ### Requirements
+
+According you already have Node & NPM installed you can run this commands:
 
 ```bash
 npm install -g grunt-cli happyplan-cli bower
@@ -65,7 +65,7 @@ In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specifie
 
 ## Release History
 
-Checkout [CHANGELOG](CHANGELOG.md)
+Checkout [CHANGELOG](CHANGELOG.md).
 
 ## Support
 
@@ -77,7 +77,7 @@ Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)!
 
 ### Twitter
 
-Follow us on Twitter to get latest news: [@happyplanapp](https://twitter.com/happyplanapp)
+Follow us on Twitter to get latest news: [@happyplanapp](https://twitter.com/happyplanapp).
 
 ## Credits
 
@@ -87,3 +87,7 @@ Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent
 
 + [@kud](https://github.com/kud)
 + [@MoOx](https://github.com/MoOx)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/happyplan/happyplan/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
