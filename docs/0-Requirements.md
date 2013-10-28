@@ -1,12 +1,8 @@
 # Requirements
 
-## Node.js [[+](https://github.com/joyent/node/wiki/Installation)]
+## Node.js/NPM [[+](https://github.com/joyent/node/wiki/Installation)]
 
     $ brew install node
-
-### Npm [[+](https://github.com/isaacs/npm)]
-
-    $ curl http://npmjs.org/install.sh | sh
 
 ## Grunt.js CLI [[+](http://gruntjs.com/getting-started)]
 
