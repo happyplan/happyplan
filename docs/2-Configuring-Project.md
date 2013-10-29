@@ -88,7 +88,7 @@ Then just add this include at the bottom of you layout
 
 ###### Disqus
 
-To setup Google Analytics, just add this in you configuration file:
+To setup Disqus, just add this in you configuration file:
 
 ```json
 {
