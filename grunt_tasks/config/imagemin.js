@@ -9,13 +9,13 @@ module.exports = function(grunt) {
       files: [{
         expand: true,
         cwd: "<%= happyplan.path.dist.assets.images %>",
-        src: ["**/*"],
+        src: ["**/*.*"],
         dest: "<%= happyplan.path.dist.assets.images %>"
       },
       {
         expand: true,
         cwd: "<%= happyplan.path.dist.media %>",
-        src: ["**/*"],
+        src: ["**/*.*"],
         dest: "<%= happyplan.path.dist.media %>"
       }]
     }
