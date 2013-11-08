@@ -22,12 +22,10 @@ module.exports = function(grunt) {
   }
 
   // imports tasks
-  process.chdir(happyplan._) // (we must change cwd because of how loadNpmTasks works)
-  // dev dep only...
-  //https://github.com/sindresorhus/load-grunt-tasks/issues/7
-  //require('load-grunt-tasks')(grunt)
-  // load devDependencies if we are using grunt from happyplan source directory
-  require('matchdep')[ happyplan.cwd !== happyplan._ ? 'filter' : 'filterAll']('grunt-*').forEach(grunt.loadNpmTasks)
+  // (we must change cwd because of how loadNpmTasks works)
+  process.chdir(happyplan._)
+  var depScope = happyplan.cwd === happyplan._ ? ['devDependencies', 'dependencies'] : ['dependencies']
+  require('load-grunt-tasks')(grunt, {scope: depScope})
   grunt.loadNpmTasks('assemble') // not handled by load-grunt-tasks
   grunt.loadTasks(happyplan._ + '/grunt_tasks')
   // reset cwd to previous value
@@ -35,7 +33,7 @@ module.exports = function(grunt) {
 
   // try to load local tasks
   if (happyplan.cwd !== happyplan._) {
-    require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks)
+    require('load-grunt-tasks')(grunt)
     grunt.loadTasks(happyplan.cwd + '/grunt_tasks')
   }
 }
