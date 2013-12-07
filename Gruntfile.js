@@ -34,6 +34,8 @@ module.exports = function(grunt) {
   // try to load local tasks
   if (happyplan.cwd !== happyplan._) {
     require('load-grunt-tasks')(grunt)
-    grunt.loadTasks(happyplan.cwd + '/grunt_tasks')
+    if (require('fs').existsSync(happyplan.cwd + '/grunt_tasks')) {
+      grunt.loadTasks(happyplan.cwd + '/grunt_tasks')
+    }
   }
 }
