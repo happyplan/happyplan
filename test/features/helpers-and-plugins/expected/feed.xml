@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>testname</title>
+        <description>test description</description>
+        <link>http://te.st/</link>
+        <generator>happyplan x.y.z</generator>
+        <lastBuildDate>Mon, 21 Oct 2013 12:34:56 +0200</lastBuildDate>
+        <atom:link href="http://te.st/feed.xml" rel="self" type="application/rss+xml" />
+
+          <item>
+              <title></title>
+              <description><![CDATA[
+]]></description>
+              <pubDate>Sun, 22 Dec 2013 00:00:00 +0100</pubDate>
+              <link>http://te.st/posts/c.html</link>
+              <guid isPermaLink="true">http://te.st/dist/posts/c.html</guid>
+          </item>
+
+          <item>
+              <title></title>
+              <description><![CDATA[
+]]></description>
+              <pubDate>Sat, 21 Dec 2013 00:00:00 +0100</pubDate>
+              <link>http://te.st/posts/b.html</link>
+              <guid isPermaLink="true">http://te.st/dist/posts/b.html</guid>
+          </item>
+
+          <item>
+              <title></title>
+              <description><![CDATA[
+]]></description>
+              <pubDate>Fri, 20 Dec 2013 00:00:00 +0100</pubDate>
+              <link>http://te.st/posts/a.html</link>
+              <guid isPermaLink="true">http://te.st/dist/posts/a.html</guid>
+          </item>
+
+    </channel>
+</rss>

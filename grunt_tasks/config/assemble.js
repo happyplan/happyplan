@@ -5,8 +5,9 @@ module.exports = function(grunt) {
     , happyplan = grunt.config.getRaw('happyplan')
     , filesPatterns = happyplan.excludeFilesPatterns.slice()
 
-    , helpers = [require('path').relative(happyplan.cwd, happyplan._ +'/node_modules/helper-moment/moment.js')]
     , partials = []
+    , helpers = [require('path').relative(happyplan.cwd, happyplan._ +'/node_modules/helper-moment/moment.js')]
+    , plugins = []
     , files = []
 
   filesPatterns.unshift('**/*.hbs')
@@ -18,6 +19,23 @@ module.exports = function(grunt) {
   getThemeConfig(grunt, ['path', 'html', 'helpers'], { merge: true } ).forEach(function(src) {
     helpers.push(src + '/**/*.js')
   });
+
+  getThemeConfig(grunt, ['path', 'html', 'plugins'], { merge: true } ).forEach(function(src) {
+    plugins.push(src + '/**/*.js')
+  });
+
+  // https://github.com/assemble/assemble/issues/411
+  // dirty fix to remove when the issue above is fixed
+  helpers.forEach(function(h, i, helpers) {
+    if (h.indexOf(happyplan._) === 0) {
+      helpers[i] = require('path').relative(happyplan.cwd, h);
+    }
+  })
+  plugins.forEach(function(p, i, plugins) {
+    if (p.indexOf(happyplan._) === 0) {
+      plugins[i] = require('path').relative(happyplan.cwd, p);
+    }
+  })
 
   getThemeConfig(grunt, ['path', 'html', '_'], { merge: true } ).forEach(function(src) {
     // retrieve files from parent theme that are not existing already from child theme
@@ -44,6 +62,7 @@ module.exports = function(grunt) {
       layoutdir: '<%= happyplan.path.build.html.layouts %>',
       partials: partials,
       helpers: helpers,
+      plugins: plugins,
       ext: '',
 
       happyplan: '<%= happyplan %>',

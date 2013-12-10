@@ -5,15 +5,16 @@
         <description>{{ happyplan.description }}</description>
         <link>{{ happyplan.url }}/</link>
         <generator>{{ happyplan.pkg.name }} {{ happyplan.pkg.version }}</generator>
-        <lastBuildDate>{{moment happyplan.buildDate format="ddd, DD MMMM YYYY HH:mm:ss ZZ" }}</lastBuildDate>
-{{#each pages}}{{#is data.type "post"}}
+        <lastBuildDate>{{moment happyplan.buildDate format="ddd, DD MMM YYYY HH:mm:ss ZZ" }}</lastBuildDate>
+        <atom:link href="{{ happyplan.url }}/feed.xml" rel="self" type="application/rss+xml" />
+{{#posts pages}}
           <item>
               <title>{{ data.title }}</title>
-              <description>{{ page }}</description>
-              <pubDate>{{moment data.date format="ddd, DD MMMM YYYY HH:mm:ss ZZ" }}</pubDate>
-              <link>{{ ../../happyplan.url }}/{{ relative ../../page.dest this.dest }}</link>
-              <guid isPermaLink="true">{{ ../../happyplan.url }}/{{ relative ../../page.dest this.dest }}</guid>
+              <description><![CDATA[{{#handlebarsception}}{{{ page }}}{{/handlebarsception}}]]></description>
+              <pubDate>{{moment data.date format="ddd, DD MMM YYYY HH:mm:ss ZZ" }}</pubDate>
+              <link>{{ ../happyplan.url }}/{{ relative ../page.dest this.dest }}</link>
+              <guid isPermaLink="true">{{ ../happyplan.url }}/{{url this.dest }}</guid>
           </item>
-{{/is}}{{/each}}
+{{/posts}}
     </channel>
 </rss>

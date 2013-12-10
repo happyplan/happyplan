@@ -53,6 +53,6 @@ It will download your theme via bower. You can replace `{themename}` by `user/re
 
 ## Using a theme
 
-For now, just do like the snippet above, changing `theme.local.parent` value.
+For now, just do like the snippet above, changing `parent` value.
 
 [defaultconf]: https://github.com/happyplan/happyplan/blob/master/happyplan.json "default config"

@@ -114,6 +114,35 @@ You'll learn quickly how to write your own just reading
 [some](https://github.com/assemble/handlebars-helpers/tree/master/lib/helpers)
 [helpers](https://github.com/assemble/handlebars-helpers-examples/tree/master/experimental/helpers).
 
+###### `{{#posts pages}}`
+
+Allow you to loop on pages that have the `type: post`.
+
+You can pass the following parameters:
+
+- limit
+
+###### `{{url dest}}`
+
+Allow you to transform a file destination to an url. Currently it just remove the `dist` folder name & also remove `index.html`.
+
+###### `{{#handlebarception}}`
+
+Allow you to render some handlebars content that's into a variable.
+
+##### Plugins
+
+[Assemble support plugins](http://assemble.io/plugins/).
+They allow you to modify the process during the render of the pages.
+You can plug every behavior you want on some hooks.
+
+###### Date from filename
+
+For now there is only one plugin by default that allow you to specify dates at the beginning of a filename.
+Handy to sort blog posts ;)
+
+`src/posts/2013-12-25-xmax-post/index.html.hbs` will become `dist/posts/xmax-post/index.html` with date `2013-12-25` available as a file meta.
+
 ### Assets
 
 **By default, _only one stylesheet_ is included automatically**

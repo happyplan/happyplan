@@ -27,7 +27,8 @@
       "_": "<%= happyplan.path._ %>",
       "layouts": "<%= happyplan.path.html._ %>/_layouts",
       "partials": "<%= happyplan.path.html._ %>/_partials",
-      "helpers": "<%= happyplan.path.html._ %>/_helpers"
+      "helpers": "<%= happyplan.path.html._ %>/_helpers",
+      "plugins": "<%= happyplan.path.html._ %>/_plugins"
     },
     "posts": "<%= happyplan.path._ %>/posts",
     "build": {
@@ -74,7 +75,8 @@
           "_": "<%= happyplan.theme.default.path._ %>/",
           "layouts": "<%= happyplan.theme.default.path.html._ %>/_layouts",
           "partials": "<%= happyplan.theme.default.path.html._ %>/_partials",
-          "helpers": "<%= happyplan.theme.default.path.html._ %>/_helpers"
+          "helpers": "<%= happyplan.theme.default.path.html._ %>/_helpers",
+          "plugins": "<%= happyplan.theme.default.path.html._ %>/_plugins"
         }
       },
       "assets": {

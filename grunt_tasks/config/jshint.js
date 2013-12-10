@@ -15,6 +15,10 @@ module.exports = function(grunt) {
       "*.json",
       "happyplan.json"
     ],
+    engine: [
+      "<%= happyplan.path.html.helpers %>/**/*.js",
+      "<%= happyplan.path.html.plugins %>/**/*.js"
+    ],
     scripts: [
       "<%= happyplan.path.assets.scripts %>/**/*.js",
       "!<%= happyplan.path.assets.scripts %>/lib/**/*"

@@ -9,6 +9,10 @@ module.exports = function(grunt) {
       // but if this PR is just closed, we don't really care because it's working
       cwd: '<%= happyplan._ %>'
     },
+    jsconfig: {
+      files: '<%= jshint.config %>',
+      tasks: ['jshint:config']
+    },
     html: {
       files: [
         '<%= happyplan.cwd %>/<%= happyplan.path.html._ %>/**/*',
@@ -17,6 +21,13 @@ module.exports = function(grunt) {
         '!<%= happyplan.cwd %>/<%= happyplan.path.assets._ %>/**/*'
       ],
       tasks: ['happyplan:build-html']
+    },
+    html_engine: {
+      files: [
+        '<%= happyplan.cwd %>/<%= happyplan.path.html.helpers %>/**/*.js',
+        '<%= happyplan.cwd %>/<%= happyplan.path.html.plugins %>/**/*.js'
+      ],
+      tasks: ['happyplan:build-html', 'jshint:engine']
     },
     staticAssets: {
       files: [
