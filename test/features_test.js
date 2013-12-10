@@ -1,21 +1,14 @@
-var grunt = require('grunt')
+var cwd = process.cwd()
+  , path = require('path')
+  , grunt = require('grunt')
 
 exports.themes = {
   dist: function(test) {
     "use strict";
 
-    var cwd = process.cwd()
-      , path = require('path')
-
-    require('glob')(cwd + '/test/features/*', function(error, files) {
-      if (error) {
-        grunt.log.writeln("Unable to try features")
-        throw error
-      }
-
-      test.expect(files.length)
+    function testFeatures(features) {
       var testI = 0
-      grunt.util._.each(files, function(testPath) {
+      grunt.util._.each(features, function(testPath) {
         grunt.util.spawn({
           cmd: 'npm',
           args: ['install'],
@@ -95,13 +88,36 @@ exports.themes = {
               test.ok(!diffResult.stdout && !diffResult.sterr, 'There should have no diff between builds')
 
               testI++
-              if (testI===files.length) {
+              if (testI===features.length) {
                 test.done()
               }
             })
           })
         })
       })
-    })
+    }
+
+    if (grunt.option('features')) {
+      var features = []
+      grunt.option('features').split(',').forEach(function(arg) {
+        features.push(cwd + '/test/features/' + arg)
+      })
+
+      testFeatures(features)
+
+      test.expect(features.length)
+    }
+    else {
+      require('glob')(cwd + '/test/features/*', function(error, files) {
+        if (error) {
+          grunt.log.writeln("Unable to try features")
+          throw error
+        }
+
+        testFeatures(files)
+
+        test.expect(files.length)
+      })
+    }
   }
 }

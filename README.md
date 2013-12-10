@@ -63,6 +63,14 @@ You can run in one command the build process & the tests.
 
 In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specified in the `package.json` `script` section. In our case, it run `grunt test`. And to be precise, the `test` task run the `nodeunit` one.
 
+### Tests some features
+
+Features are tested using a simple build & a diff.
+Checkout test/features/* to find existing tested features.
+By default all features are tested, but you can run just some of them using the `features` option.
+
+    grunt test -features=feature1,feature2
+
 ## Release History
 
 Checkout [CHANGELOG](CHANGELOG.md).
