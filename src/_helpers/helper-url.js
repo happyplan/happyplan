@@ -4,7 +4,7 @@ module.exports.register = function(Handlebars, options, params) {
   var urlReplacements = [
   // requirement: remove dist folder
   {
-      regexp: new RegExp("/^" + params.grunt.config.get('happyplan', ['path', 'dist', '_']) +  "\//")
+      regexp: new RegExp("^" + params.grunt.config.get(['happyplan', 'path', 'dist', '_']) +  "\/")
     , replacement: ''
   }
   // index.html is useless if it's at the end

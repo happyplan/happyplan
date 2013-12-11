@@ -5,6 +5,9 @@ title: Home
 <h2>Posts</h2>
 <ul class="posts">
 {{#posts pages}}
-  <li><time datetime="{{ data.date }}" class="time">{{moment data.date format="ddd, DD MMM YYYY HH:mm:ss ZZ" }}</time> <a href="{{url this.dest}}" class="title">{{ data.title }}</a>
+  <li>
+    <time datetime="{{moment data.date format="ddd, DD MMM YYYY HH:mm:ss ZZ" }}" class="time">{{moment data.date format="ddd, DD MMM YYYY" }}</time>
+    <a href="{{url this.dest}}" class="title">{{ data.title }}</a>
+  </li>
 {{/posts}}
 </ul>

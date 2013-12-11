@@ -12,7 +12,7 @@
               <title>{{ data.title }}</title>
               <description><![CDATA[{{#handlebarsception}}{{{ page }}}{{/handlebarsception}}]]></description>
               <pubDate>{{moment data.date format="ddd, DD MMM YYYY HH:mm:ss ZZ" }}</pubDate>
-              <link>{{ ../happyplan.url }}/{{ relative ../page.dest this.dest }}</link>
+              <link>{{ ../happyplan.url }}/{{url this.dest }}</link>
               <guid isPermaLink="true">{{ ../happyplan.url }}/{{url this.dest }}</guid>
           </item>
 {{/posts}}
