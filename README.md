@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
 [![Dependency Status](https://gemnasium.com/happyplan/happyplan.png)](https://gemnasium.com/happyplan/happyplan)
 [![NPM version](https://badge.fury.io/js/happyplan.png)](http://badge.fury.io/js/happyplan)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 <img align="right" src="https://raw.github.com/happyplan/happyplan/master/logo.png" />
 
