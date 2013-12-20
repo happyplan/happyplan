@@ -1,40 +1,48 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var getThemeConfig = require('../lib/get-theme-config')
+  var path = require('path')
+    , getThemeConfig = require('../lib/get-theme-config')
     , happyplan = grunt.config.getRaw('happyplan')
     , filesPatterns = happyplan.excludeFilesPatterns.slice()
 
-    , partials = []
-    , helpers = [require('path').relative(happyplan.cwd, happyplan._ +'/node_modules/helper-moment/moment.js')]
-    , plugins = []
+    , assembleOptions = {
+        partials: []
+      , helpers: [path.relative(happyplan.cwd, happyplan._ +'/node_modules/helper-moment/moment.js')]
+      , plugins: []
+    }
     , files = []
+    , optionsToMerge = [{
+          type: 'partials'
+        , ext: 'hbs'
+      }
+      , {
+          type: 'helpers'
+        , ext: 'js'
+      }
+      , {
+          type: 'plugins'
+        , ext: 'js'
+      }]
 
+  // add handlebars, otherwise we do nothing here :)
   filesPatterns.unshift('**/*.hbs')
 
-  getThemeConfig(grunt, ['path', 'html', 'partials'], { merge: true } ).forEach(function(src) {
-    partials.push(src + '/**/*.hbs')
-  });
-
-  getThemeConfig(grunt, ['path', 'html', 'helpers'], { merge: true } ).forEach(function(src) {
-    helpers.push(src + '/**/*.js')
-  });
-
-  getThemeConfig(grunt, ['path', 'html', 'plugins'], { merge: true } ).forEach(function(src) {
-    plugins.push(src + '/**/*.js')
-  });
+  optionsToMerge.forEach(function(optType) {
+    getThemeConfig(grunt, ['path', 'html', optType.type], { merge: true } ).forEach(function(src) {
+      assembleOptions[optType.type].push(src + '/**/*.' + optType.ext)
+    })
+  })
 
   // https://github.com/assemble/assemble/issues/411
   // dirty fix to remove when the issue above is fixed
-  helpers.forEach(function(h, i, helpers) {
-    if (h.indexOf(happyplan._) === 0) {
-      helpers[i] = require('path').relative(happyplan.cwd, h);
-    }
-  })
-  plugins.forEach(function(p, i, plugins) {
-    if (p.indexOf(happyplan._) === 0) {
-      plugins[i] = require('path').relative(happyplan.cwd, p);
-    }
+  var typesToFix = ['helpers', 'plugins']
+  typesToFix.forEach(function(type) {
+    assembleOptions[type].forEach(function(item, i, collection) {
+      if (item.indexOf(happyplan._) === 0) {
+        collection[i] = path.relative(happyplan.cwd, item)
+      }
+    })
   })
 
   getThemeConfig(grunt, ['path', 'html', '_'], { merge: true } ).forEach(function(src) {
@@ -54,20 +62,20 @@ module.exports = function(grunt) {
       }
     })
     files = newFiles.concat(themeFiles)
-  });
+  })
 
   return {
     options: {
-      assets: '<%= happyplan.path.assets._ %>',
-      layoutdir: '<%= happyplan.path.build.html.layouts %>',
-      partials: partials,
-      helpers: helpers,
-      plugins: plugins,
-      ext: '',
+        assets: '<%= happyplan.path.assets._ %>'
+      , layoutdir: '<%= happyplan.path.build.html.layouts %>'
+      , partials: assembleOptions.partials
+      , helpers: assembleOptions.helpers
+      , plugins: assembleOptions.plugins
+      , ext: ''
 
-      happyplan: '<%= happyplan %>',
-    },
-    html: {
+      , happyplan: '<%= happyplan %>'
+    }
+  , html: {
       files: files
     }
   }
