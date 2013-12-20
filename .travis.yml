@@ -9,5 +9,10 @@ before_install:
 # for some test with dates
   - sudo cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
+cache:
+  directories:
+    - bower_components
+    - node_modules
+
 notifications:
   irc: "irc.freenode.org#happyplan"
