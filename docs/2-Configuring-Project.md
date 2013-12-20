@@ -134,6 +134,11 @@ You can pass the following parameters:
 
 Allow you to transform a file destination to an url. Currently it just remove the `dist` folder name & also remove `index.html`.
 
+###### `{{dirname dest}}`
+
+Allow you to get the url dirname (current path) of the given destination.
+Convenient to call ressource from the same place you are in.
+
 ###### `{{#handlebarception}}`
 
 Allow you to render some handlebars content that's into a variable.
