@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         spawn: false
       },
       files: ['<%= happyplan.cwd %>/<%= happyplan.path.assets.glyphicons %>/*.svg'],
-      tasks: ['happyplan:glyphicons']
+      tasks: ['happyplan:glyphicons', 'happyplan:build-styles']
     },
     livereload: {
       options: {
