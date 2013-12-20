@@ -122,6 +122,14 @@ You can pass the following parameters:
 
 - limit
 
+###### `{{#each_dateSorted pages}}`
+
+Allow you to loop on pages, sorted on the date (most recent first).
+
+You can pass the following parameters:
+
+- limit
+
 ###### `{{url dest}}`
 
 Allow you to transform a file destination to an url. Currently it just remove the `dist` folder name & also remove `index.html`.
