@@ -156,6 +156,33 @@ Handy to sort blog posts ;)
 
 `src/posts/2013-12-25-xmax-post/index.html.hbs` will become `dist/posts/xmax-post/index.html` with date `2013-12-25` available as a file meta.
 
+#### Code Highlight
+
+Code is highlighted by `CodeMirror` library.
+To highlight some code, you can use block à la GitHub.
+
+    ```html
+    <!doctype>
+    ```
+
+Here is a list of language/alias already supported:
+
+- html: htmlmixed
+- js: javascript
+- bash: shell
+- zsh: shell
+
+Note that [native CodeMirror mode names](http://codemirror.net/mode/index.html) are obviously supported.
+
+_Tip: To see mode names, just over the pretty language name on the page above & checkout name in the url._
+
+**Warning: Some languages (like html) can require more mode to be loaded.**
+So if you want load that kind of language, please be sure to override happyplan configuration key `codeHighlightMap` (please look this key in [default configuration][defaultconf] to know how to do).
+
+_Note: you will need to add a theme by hand. Checkout available [themes](http://codemirror.net/demo/theme.html].
+[You can download themes directly from GitHub](https://github.com/marijnh/CodeMirror/tree/master/theme), or build your own ;)
+
+
 ### Assets
 
 **By default, _only one stylesheet_ is included automatically**

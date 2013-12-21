@@ -142,4 +142,15 @@
   "git": {
     "branch": "gh-pages"
   }
+  , "codeHighlightMap": {
+      "html" : [
+          "xml"
+        , "javascript"
+        , "css"
+        , "htmlmixed"
+      ]
+    , "js" : ["javascript"]
+    , "bash" : ["shell"]
+    , "zsh" : ["shell"]
+  }
 }

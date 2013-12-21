@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var path = require('path')
+    , codeMirrorHighlight = require('highlight-codemirror')
     , getThemeConfig = require('../lib/get-theme-config')
     , happyplan = grunt.config.getRaw('happyplan')
     , filesPatterns = happyplan.excludeFilesPatterns.slice()
@@ -74,6 +75,32 @@ module.exports = function(grunt) {
       , ext: ''
 
       , happyplan: '<%= happyplan %>'
+
+      , marked: {
+        highlight: function (code, lang) {
+          if (lang) {
+            try {
+              var langs = happyplan.codeHighlightMap[lang] ? happyplan.codeHighlightMap[lang] : [lang]
+              for(var i in langs) {
+                codeMirrorHighlight.loadMode(langs[i])
+              }
+              //`name` options should be `mode`
+              //https://github.com/ForbesLindesay/highlight-codemirror/issues/1
+              return codeMirrorHighlight.highlight(code, { name: langs[langs.length-1] })
+            }
+            catch(e) {
+              if (e.code === 'MODULE_NOT_FOUND') {
+                grunt.log.warn('Language "' + lang + '" not found or doesn\'t have an mapped corresponding language.')
+              }
+              else {
+                grunt.warn(e)
+              }
+            }
+          }
+
+          return code
+        }
+      }
     }
   , html: {
       files: files
