@@ -24,7 +24,7 @@ module.exports.register = function(Handlebars, options, params) {
           context = context.sort(sortCallback)
         }
         if (options.hash.limit) {
-          context = context.slice(options.hash.limit)
+          context = context.slice(0, options.hash.limit)
         }
         for(var j = context.length; i<j; i++) {
           if (data) {
