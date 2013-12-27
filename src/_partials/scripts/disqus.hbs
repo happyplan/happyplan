@@ -5,8 +5,8 @@
   {{#if happyplan.disqus_developer }}disqus_developer = 1,{{/if}}
   {{#if page.comments }}
   {{! `page.comments` can be only be set to true on pages/posts, so we embed the comments here. }}
-  disqus_identifier = '{{ happyplan.url }}{{ page.url }}',
-  disqus_url = '{{ happyplan.url }}{{ page.url }}',
+  disqus_identifier = '{{ happyplan.url }}/{{ url page.dest }}',
+  disqus_url = '{{ happyplan.url }}/{{ url page.dest }}',
   disqus_script = 'embed.js';
   {{else}}
   {{! As `page.comments` is empty, we must be on the index page. }}
