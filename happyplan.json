@@ -157,9 +157,9 @@
         "css"
       , "text/x-less"
     ]
-    , "js" : "javascript"
-    , "bash" : "shell"
-    , "zsh" : "shell"
+    , "js" : ["javascript"]
+    , "bash" : ["shell"]
+    , "zsh" : ["shell"]
     , "ini": [
       "properties",
       "text/x-ini"
