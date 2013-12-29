@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
   var path = require('path')
     , codeMirrorHighlight = require('highlight-codemirror')
+    , codeMirrorHighlightLoadedModes = []
     , getThemeConfig = require('../lib/get-theme-config')
     , happyplan = grunt.config.getRaw('happyplan')
     , filesPatterns = happyplan.excludeFilesPatterns.slice()
@@ -92,9 +93,9 @@ module.exports = function(grunt) {
                   grunt.verbose.write('Language "' + modeName + '" assumed as MIME type & will not be loaded as a mode.')
                 }
                 for(var i in langs) {
-                  if (codeMirrorHighlightLoadedMode.indexOf(langs[i]) === -1) {
+                  if (codeMirrorHighlightLoadedModes.indexOf(langs[i]) === -1) {
                     codeMirrorHighlight.loadMode(langs[i])
-                    codeMirrorHighlightLoadedMode.push(langs[i])
+                    codeMirrorHighlightLoadedModes.push(langs[i])
                   }
                 }
                 return codeMirrorHighlight.highlight(code, { name: modeName })
