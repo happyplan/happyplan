@@ -81,12 +81,24 @@ module.exports = function(grunt) {
           if (lang) {
             try {
               var langs = happyplan.codeHighlightMap[lang] ? happyplan.codeHighlightMap[lang] : [lang]
-              for(var i in langs) {
-                codeMirrorHighlight.loadMode(langs[i])
+              if (langs.length) {
+                var modeName = langs[langs.length-1]
+
+                // last lang from the array can be a code mirror mime type
+                // so it doesn't require to be loaded
+                // but this will still need to be used as mode name
+                if (modeName.indexOf('/') > -1) {
+                  langs.pop()
+                  grunt.verbose.write('Language "' + modeName + '" assumed as MIME type & will not be loaded as a mode.')
+                }
+                for(var i in langs) {
+                  if (codeMirrorHighlightLoadedMode.indexOf(langs[i]) === -1) {
+                    codeMirrorHighlight.loadMode(langs[i])
+                    codeMirrorHighlightLoadedMode.push(langs[i])
+                  }
+                }
+                return codeMirrorHighlight.highlight(code, { name: modeName })
               }
-              //`name` options should be `mode`
-              //https://github.com/ForbesLindesay/highlight-codemirror/issues/1
-              return codeMirrorHighlight.highlight(code, { name: langs[langs.length-1] })
             }
             catch(e) {
               if (e.code === 'MODULE_NOT_FOUND') {
