@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   return {
     glyphicons: {
       src: glyphicons,
-      dest: '<%= happyplan.path.build.assets.fonts %>',
+      dest: '<%= happyplan.path.dist.assets.fonts %>',
       destCss: '<%= happyplan.path.build.assets.styles %>',
       options: {
           relativeFontPath: require('path').relative(
