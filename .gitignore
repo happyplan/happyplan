@@ -14,7 +14,7 @@ Gemfile.lock
 
 # build
 dist
-build
+.tmp
 
 # test files
 test/sandbox/*

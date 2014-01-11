@@ -32,7 +32,7 @@
     },
     "posts": "<%= happyplan.path._ %>/posts",
     "build": {
-      "_": "build",
+      "_": ".tmp",
       "assets": {
         "_": "<%= happyplan.path.build._ %>/assets",
         "scripts": "<%= happyplan.path.build.assets._ %>/_js",
