@@ -37,7 +37,8 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-gh-pages": "~0.8.1",
     "lodash": "~2.4.1",
-    "highlight-codemirror": "~3.20.0"
+    "highlight-codemirror": "~3.20.0",
+    "jshint-stylish": "~0.1.5"
   },
   "devDependencies": {
     "grunt-release": "~0.6.0",

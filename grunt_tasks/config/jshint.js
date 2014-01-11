@@ -1,7 +1,9 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var options = {}
+  var options = {
+    reporter: require('jshint-stylish')
+  }
 
   if (grunt.file.exists('.jshintrc')) {
     options.jshintrc = ".jshintrc"
