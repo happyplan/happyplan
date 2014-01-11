@@ -348,12 +348,31 @@ This example can be adapted easily to **Less** or something else if you really w
 ### Glyphicons
 
 The concept is simple: you can drop .svg files in the `_glyphicons` folder & all of them will be "compiled" into a webfont.
-This will create all files format to be compatible with old browsers & also create a `_icons.scss` in the `src/assets/_styles` folder.
+This will create all files format to be compatible with old browsers & also create a `_icons.scss` in the `build/assets/_styles` folder
+(this path is normally added as a Sass include path).
 This CSS file will contain a class for each svg.
 Eg: you've put `home.svg`, so `icon_home` class will be accessible.
 
-To use webfont icons directly in your html, you need to be sure that `_icons.scss` is included in your stylesheet & use appropriate html classes.
+To use glyphicons directly in your html, you need to be sure that `_icons.scss` is included in your stylesheet (`@import "icons"` should be enough)
+& use appropriate html classes.
 Ex: `<i class="icon icon_home"></i>` (here `<i>` is just used because it's shorter, you can obviously use whatever you want).
+
+By default, a node engine is used. If you are not happy with the result,
+you can use fontforge (you need to install it) & activate it as the default engine.
+After checking fontforge is correctly installed on you machine
+(check with `fontforge --version`),
+you will need to specify it in your `happyplan.json`:
+
+```js
+{
+  "glyphicons": {
+    "engine": "fontforge"
+  }
+}
+```
+
+Remember that if fontforge is not available in the PATH during the process, build will be skipped
+(you will see a notification about the skip).
 
 ### Images
 

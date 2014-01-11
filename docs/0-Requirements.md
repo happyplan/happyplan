@@ -18,6 +18,22 @@
 
     $ npm install -g bower
 
-### Grunt-Webfont requirements [[+](https://github.com/sapegin/grunt-webfont#installation)]
+### Grunt-Webfont options [[+](https://github.com/sapegin/grunt-webfont#installation)]
 
-    $ brew install fontforge ttfautohint
+To improve font hint
+
+    $ brew install ttfautohint
+
+To use fontforge instead of node engine
+
+    $ brew install fontforge
+
+Note: To use fontforge engine, you also need to specify in your `happyplan.json`
+
+```js
+{
+  "glyphicons": {
+    "engine": "fontforge"
+  }
+}
+```

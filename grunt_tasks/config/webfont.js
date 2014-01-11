@@ -12,8 +12,8 @@ module.exports = function(grunt) {
   return {
     glyphicons: {
       src: glyphicons,
-      dest: '<%= happyplan.path.assets.fonts %>',
-      destCss: '<%= happyplan.path.assets.styles %>',
+      dest: '<%= happyplan.path.build.assets.fonts %>',
+      destCss: '<%= happyplan.path.build.assets.styles %>',
       options: {
           relativeFontPath: require('path').relative(
             happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
@@ -21,7 +21,8 @@ module.exports = function(grunt) {
           ),
           stylesheet: 'scss',
           hashes: false,
-          htmlDemo: false
+          htmlDemo: false,
+          engine: '<%= happyplan.glyphicons.engine %>'
       }
     }
   }

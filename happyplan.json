@@ -133,13 +133,15 @@
   "assemble": {},
   "sass": {
     "includePaths": [
-      "<%= happyplan.bower_components %>"
+        "<%= happyplan.path.build.assets.styles %>"
+      , "<%= happyplan.bower_components %>"
     ]
-  },
-  "glyphicons": {
-    "build": "ifpossible"
-  },
-  "git": {
+  }
+  , "glyphicons": {
+      "build": "ifpossible"
+    , "engine": "node"
+  }
+  , "git": {
     "branch": "gh-pages"
   }
   , "codeHighlightMap": {

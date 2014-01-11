@@ -13,8 +13,10 @@ module.exports = function(grunt) {
     if (grunt.file.expand(glyphicons).length) {
       var happyplan = grunt.config.get('happyplan');
 
-      // for fist run, if optional checking availability of fontforge
-      // then define variable to really execute task
+      happyplan.glyphicons.build = happyplan.glyphicons.engine === "node"
+
+      // if fontforge asked, for fist run, we check availability of fontforge
+      // and so change the `build` variable to really execute task
       if (happyplan.glyphicons.build === true) {
         grunt.log.writeln(grunt.template.process("SVG files found. Executing 'webfont:glyphicons'."))
         grunt.task.run('webfont:glyphicons')
