@@ -2,13 +2,6 @@ module.exports = function(grunt) {
   "use strict";
 
   return {
-    options: {
-      // check status of https://github.com/gruntjs/grunt-contrib-watch/pull/125
-      // to see if we can remove "<%= happyplan.cwd %>/" in files section
-      // & change cwd below with the new option
-      // but if this PR is just closed, we don't really care because it's working
-      cwd: '<%= happyplan._ %>'
-    },
     jsconfig: {
       files: '<%= jshint.config %>',
       tasks: ['jshint:config']
