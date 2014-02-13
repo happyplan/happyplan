@@ -1,9 +1,9 @@
 language: node_js
 before_install:
 # global requirements
-  - make install
+  - make init
 # local requirements
-  - make update
+  - make install
 # for some test with dates
   - sudo cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
