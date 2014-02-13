@@ -1,6 +1,11 @@
+init:
+	npm install -g bower grunt-cli happyplan-cli
+
 install:
-	npm install -g bower grunt-cli
+	npm install
+	bower install
 
 update:
 	npm install
-	bower install
+	bower prune
+	bower update
