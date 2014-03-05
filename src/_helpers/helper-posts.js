@@ -21,7 +21,7 @@ module.exports.register = function(Handlebars, options, params) {
           context = context.filter(filterCallback)
         }
         if (sortCallback) {
-          context = context.sort(sortCallback)
+          context = context.slice(0).sort(sortCallback)
         }
         if (options.hash.limit) {
           context = context.slice(0, options.hash.limit)
