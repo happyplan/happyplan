@@ -1,14 +1,9 @@
 # HappyPlan!
 
-[![Code Climate](https://codeclimate.com/github/happyplan/happyplan.png)](https://codeclimate.com/github/happyplan/happyplan)
-[![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
-[![Dependency Status](https://gemnasium.com/happyplan/happyplan.png)](https://gemnasium.com/happyplan/happyplan)
 [![NPM version](https://badge.fury.io/js/happyplan.png)](http://badge.fury.io/js/happyplan)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Build Status](https://travis-ci.org/happyplan/happyplan.png?branch=master)](https://travis-ci.org/happyplan/happyplan)
 
-<img align="right" src="https://raw.github.com/happyplan/happyplan/master/logo.png" />
-
-> A fantastic preconfigured static website generator, based on Grunt.js
+> A fantastic preconfigured static website generator
 
 HappyPlan is a static website generator based on a bundle of amazing tools.
 It's just all about fun.
@@ -37,20 +32,18 @@ Visit the [documentation](docs) for all the things.
 
 According you already have Node & NPM installed you can run this commands:
 
-```bash
-npm install -g grunt-cli happyplan-cli bower
+```console
+$ npm install -g grunt-cli happyplan-cli bower
 ```
 
 [Learn more about requirements](docs/0-Requirements.md).
 
 ### Create a project using happyplan
 
-Copy our Gemfile or create one with version you want, then
-
-```bash
-npm init
-npm install happyplan --save-dev
-happyplan
+```console
+$ npm init
+$ npm install happyplan --save-dev
+$ happyplan
 ```
 
 ## Contributing
@@ -59,8 +52,10 @@ When you want to fix a bug or add a feature, just be sure to get all testing req
 
 You can run in one command the build process & the tests.
 
-    npm install
-    npm test
+```console
+$ npm install
+$ npm test
+```
 
 In case you don't know it yet, `npm {cmd}` just run the command `{cmd}` specified in the `package.json` `script` section. In our case, it run `grunt test`. And to be precise, the `test` task run the `nodeunit` one.
 
@@ -70,29 +65,17 @@ Features are tested using a simple build & a diff.
 Checkout test/features/* to find existing tested features.
 By default all features are tested, but you can run just some of them using the `features` option.
 
-    grunt test -features=feature1,feature2
+```console
+$ grunt test -features=feature1,feature2
+```
 
-## Release History
+---
 
-Checkout [CHANGELOG](CHANGELOG.md).
+## [CHANGELOG](CHANGELOG.md)
 
-## Support
+## [LICENSE](LICENSE.md)
 
-### IRC
-
-Come up and say hello on [IRC](http://webchat.freenode.net/?channels=happyplan)! We'll be glad to answer you if you have any questions.
-
-<a href="irc://irc.freenode.net/#happyplan">#happyplan on irc.freenode.net</a>
-
-### Twitter
-
-Follow us on Twitter to get latest news: [@happyplanapp](https://twitter.com/happyplanapp).
-
+---
 ## Credits
 
-Thank you [Catherine Please](http://www.catherineplease.com/) for your excellent logo.
-
-## Authors
-
-+ [@kud](https://github.com/kud)
-+ [@MoOx](https://github.com/MoOx)
+- [Catherine Please](http://www.catherineplease.com/) for the logo.

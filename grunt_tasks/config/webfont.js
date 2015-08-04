@@ -15,14 +15,14 @@ module.exports = function(grunt) {
       dest: '<%= happyplan.path.dist.assets.fonts %>',
       destCss: '<%= happyplan.path.build.assets.styles %>',
       options: {
-          relativeFontPath: require('path').relative(
-            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
-            happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'fonts'])
-          ),
-          stylesheet: 'scss',
-          hashes: false,
-          htmlDemo: false,
-          engine: '<%= happyplan.glyphicons.engine %>'
+        relativeFontPath: require('path').relative(
+          happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'styles']),
+          happyplan.cwd + '/' + grunt.config.get(['happyplan', 'path', 'dist', 'assets', 'fonts'])
+        ),
+        stylesheet: 'scss',
+        hashes: false,
+        htmlDemo: false,
+        engine: '<%= happyplan.glyphicons.engine %>'
       }
     }
   }

@@ -5,7 +5,7 @@ html {
 @font-face {
   font-family: "icons";
   src: url("../fonts/icons.eot");
-  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff") format("woff"), url("../fonts/icons.ttf") format("truetype"), url("../fonts/icons.svg?#icons") format("svg");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons.woff") format("woff"), url("../fonts/icons.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
@@ -19,9 +19,9 @@ html {
   speak: none;
   text-decoration: inherit;
   text-transform: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
 .icon_home:before {
-  content: "\e001"; }
+  content: "\f101"; }
