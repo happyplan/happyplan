@@ -4,13 +4,5 @@ module.exports = function(grunt) {
   grunt.registerTask('happyplan:publish', "Publish your website", [
       'happyplan:dist'
     , 'gh-pages'
-    , 'notify:publish'
-  ]
-    //function() {
-      // @todo
-      // call
-      // grunt-release for bumping version
-      // & grunt:publish if it's for gh-pages || something else for ftp like
-    //});
-  )
+  ])
 }

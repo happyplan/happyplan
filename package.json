@@ -1,15 +1,11 @@
 {
   "name": "happyplan",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Happy plan is bundle of amazing tools to be used as a static website generator.",
   "keywords": [
     "static",
     "website",
     "generator",
-    "grunt",
-    "assemble",
-    "bower",
-    "sass",
     "gh-pages"
   ],
   "authors": [

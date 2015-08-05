@@ -1,3 +1,7 @@
+# 0.4.1 - 2015-08-05
+
+- Fixed: `happyplan publish` works again (`notify:publish` has been removed).
+
 # 0.4.0 - 2015-08-04
 
 happyplan is really more flexible than before according to the way themes & config are handled.
