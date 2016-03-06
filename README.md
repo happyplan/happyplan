@@ -1,3 +1,11 @@
+# UNMAINTAINED
+
+**I can only recommend you to checkout this brand new static website generator which is far more flexible than this one.**
+
+➡ https://github.com/MoOx/statinamic
+
+---
+
 # HappyPlan!
 
 [![NPM version](https://badge.fury.io/js/happyplan.png)](http://badge.fury.io/js/happyplan)
